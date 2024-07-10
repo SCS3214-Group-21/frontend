@@ -1,25 +1,20 @@
-import "./App.css";
-import RegisterProgress from "./components/ui/RegisterProgress";
-import SelectionCard from "./components/common/SectionCard";
-import StatusCard from "./components/common/StatusCard";
+import './App.css'
+import RegisterProgress from './components/ui/RegisterProgress'
+import ServiceCard from './components/common/ServiceCard'
 
 function App() {
   return (
     <>
-      {/* <RegisterProgress precentage={50}></RegisterProgress>
-      <SelectionCard title={'DreamWed'} subtitle={"WedEase"} buttontext={"Login"}></SelectionCard> */}
-      <div className="absolute  bottom-10 left-6 text-right">
-      <StatusCard
-        title={"Business not going as Planned Need a"}
-        subtitle={"Boost..?"}
-        paragraph={
-          "Get Idea about our boosting service, ideally make for improving your business"
-        }
-        button={"Details"}
+      {/* <RegisterProgress precentage={50}></RegisterProgress> */}
+      <div className='w-60 h-96 bg-black'>
+      <ServiceCard 
+        img={"src/assets/Images/Images/07.png"}
+        title={"photography"}
+        text={"Best photographers with experience"}
       />
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
