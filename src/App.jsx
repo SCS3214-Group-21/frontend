@@ -1,12 +1,15 @@
 import './App.css'
 import RegisterProgress from './components/ui/RegisterProgress'
-import VenderRegisterCarousel from './components/VenderRegisterCarousel'
+import TermsConditions from './components/TermsConditions'
 
 function App() {
   return (
     <>
       {/* <RegisterProgress precentage={50}></RegisterProgress> */}
-      <VenderRegisterCarousel />
+      <div className='flex flex-row p-10 gap-10 bg-white'>
+      <TermsConditions />
+      <TermsConditions />
+      </div>
     </>
   )
 }
