@@ -31,7 +31,7 @@ import ServiceCard from "./common/ServiceCard";
 //   );
 // };
 
-const Carousel = () => {
+const ServicesCarousel = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -154,4 +154,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default ServicesCarousel;
