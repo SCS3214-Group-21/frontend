@@ -1,12 +1,12 @@
 import './App.css'
 import RegisterProgress from './components/ui/RegisterProgress'
-import ReviewCarousel from './components/ReviewCarousel'
+import VenderRegisterCarousel from './components/VenderRegisterCarousel'
 
 function App() {
   return (
     <>
       {/* <RegisterProgress precentage={50}></RegisterProgress> */}
-      <ReviewCarousel />
+      <VenderRegisterCarousel />
     </>
   )
 }

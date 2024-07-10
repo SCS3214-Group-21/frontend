@@ -146,7 +146,7 @@ const ReviewCarousel = () => {
       `}</style>
       <Slider {...settings}>
         {slides.map((slide) => (
-          <div key={slide.id} className="">
+          <div key={slide.id} className="px-16 sm:px-2">
             <div className='w-72 h-60'>
                 <ReviewCard 
                 img={slide.image}
