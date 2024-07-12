@@ -1,15 +1,13 @@
 import React from "react";
 import { useState } from "react";
 
-function LandingHeader() {
+function LoginHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
     { id: 1, label: "Home", link: "/" },
-    { id: 2, label: "Services", link: "/couples" },
     { id: 4, label: "About", link: "/about" },
     { id: 5, label: "Register", link: "/reviews" },
-    { id: 6, label: "Login", link: "/contact" },
   ];
 
   const toggleMenu = () => {
@@ -22,7 +20,7 @@ function LandingHeader() {
 
   return (
     <div className="sticky top-0 z-50">
-      <style jsx>{`
+        <style jsx>{`
         .hover-underline::before {
             content: '';
             position: absolute;
@@ -82,7 +80,7 @@ function LandingHeader() {
           </ul>
         </div>
         
-        <h1 className="block md:hidden cursor-pointer text-lg flex-wrap text-custom-primary">Login</h1>
+        <h1 className="block md:hidden cursor-pointer text-lg flex-wrap text-custom-primary">Register</h1>
       
       </div>
 
@@ -114,4 +112,4 @@ function LandingHeader() {
   );
 }
 
-export default LandingHeader;
+export default LoginHeader;
