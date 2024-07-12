@@ -2,10 +2,10 @@ import React from "react"
 
 function PrimaryButton(props) {
     return (
-        <button type="button" class="text-white bg-gradient-to-br from-yellow-300 via-amber-500 to-orange-700 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+        <button className="border-0 rounded-full px-8 h-10 bg-gradient-to-r from-custom-yellow-light via-custom-primary to-custom-yellow-dark text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:from-custom-gray hover:via-custom-gray hover:to-custom-gray hover:text-custom-secondary hover:border-2 hover:border-custom-secondary">
             {props.text}
         </button>
     )
 }
 
-export default PrimaryButton
+export default PrimaryButton;
