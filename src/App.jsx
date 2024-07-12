@@ -1,12 +1,12 @@
 import './App.css'
 import RegisterProgress from './components/ui/RegisterProgress'
-import Header02 from './components/common/RegisterHeader'
+import Footer from './components/common/LandingFooter'
 
 function App() {
   return (
     <>
       {/* <RegisterProgress precentage={50}></RegisterProgress> */}
-      <Header02 />
+      <Footer />
     </>
   )
 }
