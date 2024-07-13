@@ -2,8 +2,8 @@ import React from "react";
 
 function TermsConditions() {
   return (
-    <div className="w-full border-2 rounded-lg p-8">
-      <h1 className="text-3xl font-bold mb-4 text-black">Terms & Condition</h1>
+    <div className="w-3/4 border border-black rounded-lg p-8">
+      <h1 className="text-3xl font-normal mb-4 text-black">Terms & Condition</h1>
       <ul className="list-disc ml-6 text-black">
         <li>Lorem ipsum dolor sit amet consectetur.</li>
         <li>Molestie tortor tempor sed ultricies molestie dis iaculis.</li>
