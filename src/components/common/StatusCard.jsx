@@ -14,13 +14,13 @@ function SectionCard(props) {
       <br />
       <p className="text-black font-sans text-xl sm:text-2xl">{paragraph}</p>
       <br />
-      if (button) {
+      {button ? (
         <PrimaryButton text={button}></PrimaryButton>
-      } else if (button2) {
-        <SecondaryButton text={button}></SecondaryButton>
-      } else {
-        <CustomPinkButton text={button}></CustomPinkButton>
-      }
+      ) : button2 ? (
+        <SecondaryButton text={button2}></SecondaryButton>
+      ) : (
+        <CustomPinkButton text={button3}></CustomPinkButton>
+      )}
     </div>
   );
 }

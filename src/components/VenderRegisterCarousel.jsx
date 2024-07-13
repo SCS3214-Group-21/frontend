@@ -3,12 +3,11 @@ import 'tailwindcss/tailwind.css';
 
 const VenderRegisterCarousel = () => {
   const images = [
-    '../src/assets/images/Images/06.png',
-    '../src/assets/images/Images/05.png',
-    '../src/assets/images/Images/04.png',
-    '../src/assets/images/Images/03.png',
-    '../src/assets/images/Images/02.png',
-    '../src/assets/images/Images/01.png',
+    '../src/assets/images/Images/r01.png',
+    '../src/assets/images/Images/r02.png',
+    '../src/assets/images/Images/r03.png',
+    '../src/assets/images/Images/r04.png',
+    '../src/assets/images/Images/r05.png',
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,11 +21,11 @@ const VenderRegisterCarousel = () => {
   }, [images.length]);
 
   return (
-    <div className="carousel w-full h-screen">
+    <div className="carousel absolute w-full h-full top-0 left-0 z-0">
       {images.map((image, index) => (
         <div
           key={index}
-          className={`carousel-item w-full ${index === currentIndex ? 'block' : 'hidden'}`}
+          className={`carousel-item absolute w-full h-full ${index === currentIndex ? 'block' : 'hidden'}`}
         >
           <img src={image} className="w-full h-full object-cover" alt={`Slide ${index + 1}`} />
         </div>
