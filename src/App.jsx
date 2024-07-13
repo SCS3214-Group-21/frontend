@@ -2,15 +2,14 @@ import './App.css'
 import LandingPage from './pages/LandingPage'
 import ServicesCarousel from './components/ServicesCarousel'
 import ReviewCarousel from './components/ReviewCarousel'
-import VendorRegister01 from './pages/VendorRegister01'
+import VendorRegister02 from './pages/VendorRegister02'
 
 function App() {
   return (
     <>
-      {/* <LandingPage /> */}
       {/* <ServicesCarousel /> */}
       {/* <ReviewCarousel /> */}
-      <VendorRegister01 />
+      <VendorRegister02 />
     </>
   )
 }
