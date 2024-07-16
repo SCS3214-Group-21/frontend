@@ -12,12 +12,12 @@ import AllPhotographers from './pages/ClientVendorsPage/AllPhotographers'
 import HotelVendorDetails from './pages/ClientVendorsDetailsPage/HotelVendorDetails'
 
 
-
 function App() {
   return (
     <>
 
       <HotelVendorDetails />
+
     </>
   )
 }

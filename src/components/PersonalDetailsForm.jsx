@@ -3,29 +3,29 @@ import React from "react";
 function PersonalDetailsForm() {
   return (
     <div className="flex justify-center items-center w-3/4">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white border-2 rounded-lg">
-        <h1 className="text-3xl font-bold text-center text-black">Personal Details</h1>
+      <div className="w-full max-w-md p-8 space-y-6 border border-black rounded-lg">
+        <h1 className="text-3xl font-normal text-center text-black">Personal Details</h1>
         
-        <div className="space-y-4 flex flex-col gap-4">
+        <div className="space-y-4 flex flex-col gap-4 text-black">
           <div className="text-black">
             <input
               type="text"
               placeholder="name"
-              className="input input-bordered w-full bg-white"
+              className="input input-bordered border border-black w-full bg-transparent"
             />
           </div>
           <div>
             <input
               type="email"
               placeholder="email"
-              className="input input-bordered w-full bg-white"
+              className="input input-bordered border border-black w-full bg-transparent"
             />
           </div>
           <div className="relative">
             <input
               type="password"
               placeholder="password"
-              className="input input-bordered w-full pr-10 bg-white"
+              className="input input-bordered border border-black w-full bg-transparent pr-10"
             />
             <span className="absolute inset-y-0 right-0 pr-3 flex items-center">
               <button type="button" className="focus:outline-none">
@@ -56,13 +56,13 @@ function PersonalDetailsForm() {
             <input
               type="text"
               placeholder="nic"
-              className="input input-bordered w-full bg-white"
+              className="input input-bordered border border-black w-full bg-transparent"
             />
           </div>
         </div>
         
         <div className="flex justify-center">
-          <button className="btn btn-primary">
+          <button className="btn btn-primary bg-black border-black text-white hover:border-black hover:bg-transparent hover:text-black">
             Upload NIC Image
             <svg
               className="ml-2 h-5 w-5"
