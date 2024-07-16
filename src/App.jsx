@@ -3,102 +3,21 @@ import RegisterProgress from './components/ui/RegisterProgress'
 import Pagination from './components/common/Pagination'
 import ServiceCard from './components/common/ServiceCard'
 
-const items = [
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  { img: 'src/assets/Images/Images/07.png', title: 'Photography', text: 'Best photographers with experience' },
-  // Add more items here...
-];
+import ClientRegisterPage from './pages/ClientRegisterPage'
+import ClientAllVendors from './pages/ClientVendorsPage/ClientAllVendors'
+import ClientVendorCategory from "./pages/ClientVendorsPage/ClientVendorCategory"
+import LoginPage from './pages/LoginPage'
+import AllHotelsPage from './pages/ClientVendorsPage/AllHotelsPage'
+import AllPhotographers from './pages/ClientVendorsPage/AllPhotographers'
+import HotelVendorDetails from './pages/ClientVendorsDetailsPage/HotelVendorDetails'
 
-const renderItems = (currentItems) => (
-  <div className='flex flex-row flex-wrap gap-10 items-center justify-center'>
-    {currentItems.map((item, index) => (
-      <div key={index} className='w-60 h-96 bg-black'>
-        <ServiceCard 
-          img={item.img}
-          title={item.title}
-          text={item.text}
-        />
-      </div>
-    ))}
-  </div>
-);
 
 
 function App() {
   return (
     <>
-      {/* <RegisterProgress precentage={50}></RegisterProgress> */}
-      <Pagination items={items} itemsPerPage={5} renderItems={renderItems} />
+
+      <HotelVendorDetails />
     </>
   )
 }
