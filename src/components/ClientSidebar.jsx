@@ -4,13 +4,13 @@ import SidebarButton from './ui/SidebarButton';
 
 export default function ClientSidebar() {
     const [isDrawerOpen, setDrawerOpen] = useState(false);
-    const location = useLocation(); // Use useLocation to get the current path
+    //const location = useLocation(); // Use useLocation to get the current path
 
     const toggleDrawer = () => {
         setDrawerOpen(!isDrawerOpen);
     };
 
-    const isMyWeddingPage = location.pathname === '/client-dashboard';
+    const isMyWeddingPage = location.pathname === '/';
     const isVendorsPage = location.pathname === '/';//rename actual path
     const isBudgetPage = location.pathname === '/';//rename actual path
     const isNotificationPage = location.pathname === '/';//rename actual path

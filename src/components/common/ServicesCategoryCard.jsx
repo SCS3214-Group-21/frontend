@@ -1,22 +1,29 @@
-function ServicesCategoryCard(props) {
+import React from 'react';
 
-    const { img, alt, type, href } = props
+function ServicesCategoryCard(props) {
+    const { img, alt, type, href } = props;
     return (
-        <div>
-            <a href={href} className="shadow-xl  card bg-base-100 image-full w-[225px] h-[180px]">
-                <figure>
+        <div className="relative w-[225px] h-[180px] overflow-hidden rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+            <a href={href} className="block w-full h-full bg-base-100">
+                <figure className="w-full h-full">
                     <img
                         src={img}
-                        alt={alt} />
+                        alt={alt}
+                        className="object-cover w-full h-full rounded-lg"
+                    />
+                    <div className="absolute inset-0 transition-opacity duration-300 bg-black rounded-lg opacity-50 hover:opacity-30"></div>
                 </figure>
-                <div className="card-body">
-                    <div className="justify-start mt-24 card-actions">
-                        <h2 className="text-white card-title">{type}</h2>
+                <div className="absolute inset-0 flex items-end p-4">
+                    <div className="p-0 card-body">
+                        <div className="card-actions">
+                            <h2 className="text-white card-title">{type}</h2>
+                        </div>
                     </div>
                 </div>
             </a>
         </div>
-    )
+    );
 }
 
 export default ServicesCategoryCard;
+
