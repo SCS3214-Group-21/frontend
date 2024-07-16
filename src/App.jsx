@@ -1,15 +1,16 @@
 import './App.css'
-import LandingPage from './pages/LandingPage'
-import ServicesCarousel from './components/ServicesCarousel'
-import ReviewCarousel from './components/ReviewCarousel'
-import VendorRegister06 from './pages/VendorRegister06'
+import AddCard from './components/common/AddCard'
 
 function App() {
   return (
     <>
       {/* <ServicesCarousel /> */}
       {/* <ReviewCarousel /> */}
-      <VendorRegister06 />
+      {/* <div className='w-96'> */}
+      <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
+        <AddCard />
+      </div>
+      {/* </div> */}
     </>
   )
 }
