@@ -1,7 +1,7 @@
 import React from 'react';
 
 function TextAreaField(props) {
-    const { id, placeholder, name } = props;
+    const { id, placeholder, name, height } = props;
 
     return (
         <div>
@@ -31,7 +31,7 @@ function TextAreaField(props) {
                     border: 2px #000000 solid;
                     border-radius: 5px;
                     background: #FFF8F5;
-                    height: 100%;
+                    height: ${height};
                     color: #000000;
                 }
                 

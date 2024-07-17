@@ -12,7 +12,9 @@ function App() {
         <AddCard />
       </div> */}
       {/* </div> */}
-      <CreatePackageForm />
+      <div className='w-full h-full bg-white p-10'>
+        <CreatePackageForm />
+      </div>
     </>
   )
 }
