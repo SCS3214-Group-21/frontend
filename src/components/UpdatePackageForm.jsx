@@ -6,7 +6,7 @@ import PrimaryNoneFillButton from './ui/PrimaryNoneFillButton';
 import PrimaryButton from './ui/PrimaryButton';
 import Swal from 'sweetalert2';
 
-function CreatePackageForm() {
+function UpdatePackageForm() {
     const [items, setItems] = useState([
         { id: 1, name: "Item 1" }, 
         { id: 2, name: "Item 2" }, 
@@ -107,11 +107,11 @@ function CreatePackageForm() {
                 </div>
                 <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 p-3 px-5'>
                     <PrimaryNoneFillButton text={"Reset"} />
-                    <PrimaryButton text={"Save Changes"} />
+                    <PrimaryButton text={"Update"} />
                 </div>
             </form>
         </div>
     );
 }
 
-export default CreatePackageForm;
+export default UpdatePackageForm;
