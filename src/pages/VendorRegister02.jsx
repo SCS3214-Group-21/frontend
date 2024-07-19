@@ -80,6 +80,7 @@ function VendorRegister02() {
         </h1>
         <div className="flex flex-row justify-end pt-5 pr-10 sm:pr-20">
             <SecondaryButton 
+                link={'/vendorregister3'}
                 text={"Next >>"}
             />
         </div>  

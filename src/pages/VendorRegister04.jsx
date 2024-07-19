@@ -21,7 +21,10 @@ function VendorRegister04() {
             className="input input-bordered border border-black w-3/4 md:w-1/4 bg-transparent text-black"
           />
           <div className="flex flex-row justify-start pt-5 pr-10 sm:pr-20">
-          <SecondaryButton text={"Next >>"} />
+          <SecondaryButton 
+            link={'/vendorregister5'}
+            text={"Next >>"} 
+          />
             </div>
         </div>
         <div className="flex flex-col rounded-xl gap-3 items-center justify-center w-full pt-5 px-10 sm:px-20 text-center text-black">
