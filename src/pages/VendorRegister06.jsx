@@ -18,7 +18,10 @@ function VendorRegister06() {
         <span className="text-xl sm:text-2xl">Your account has been created successfully</span>
       </h1>
       <div className="flex flex-row justify-center pt-5 px-5">
-        <CustomPinkButton text={"View Profile"} />
+        <CustomPinkButton 
+          link={'/'}
+          text={"View Profile"} 
+        />
       </div>
     </div>
     <div className="flex flex-col rounded-xl gap-3 items-center justify-center w-full pt-5 px-10 sm:px-20 text-center text-black">

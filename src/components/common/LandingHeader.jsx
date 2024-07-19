@@ -8,8 +8,8 @@ function LandingHeader() {
     { id: 1, label: "Home", link: "/" },
     { id: 2, label: "Services", link: "/couples" },
     { id: 4, label: "About", link: "/about" },
-    { id: 5, label: "Register", link: "/reviews" },
-    { id: 6, label: "Login", link: "/contact" },
+    { id: 5, label: "Register", link: "/register" },
+    { id: 6, label: "Login", link: "/login" },
   ];
 
   const toggleMenu = () => {
