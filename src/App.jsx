@@ -3,6 +3,7 @@ import AddCard from './components/common/AddCard'
 import PackageCard from './components/common/PackageCard'
 import CreatePackageForm from './components/CreatePackageForm'
 import UpdatePackageForm from './components/UpdatePackageForm'
+import BusinessDetailsForm from './components/BusinessDetailsForm'
 
 function App() {
   return (
@@ -23,11 +24,14 @@ function App() {
         />
       </div> */}
       {/* </div> */}
-      <div className='w-full h-full bg-white p-10'>
+      {/* <div className='w-full h-full bg-white p-10'>
         <CreatePackageForm />
       </div>
       <div className='w-full h-full bg-white p-10'>
         <UpdatePackageForm />
+      </div> */}
+      <div className='w-full h-full bg-white p-10'>
+        <BusinessDetailsForm />
       </div>
     </>
   )
