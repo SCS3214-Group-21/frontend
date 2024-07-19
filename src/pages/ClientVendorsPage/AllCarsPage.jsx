@@ -1,6 +1,6 @@
 import React from 'react';
 import VendorCategory from '../../components/VendorCategory';
-const AllHotelsPage = () => {
+const AllCarsPage = () => {
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/' },
         { label: 'Vendors', href: '/' },
@@ -171,4 +171,4 @@ const AllHotelsPage = () => {
     );
 };
 
-export default AllHotelsPage;
+export default AllCarsPage;
