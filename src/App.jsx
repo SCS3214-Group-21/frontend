@@ -13,12 +13,13 @@ import HotelVendorDetails from './pages/ClientVendorsDetailsPage.jsx/HotelVendor
 import ClientChatPage from './pages/ClientChatPage/ClientChatPage'
 import AllFloralsPage from './pages/ClientVendorsPage/AllFloralsPage'
 import AllCarsPage from './pages/ClientVendorsPage/AllCarsPage'
+import VendorRegister01 from './pages/VendorRegister01'
 
 function App() {
   return (
     <>
 
-      <HotelVendorDetails />
+      <VendorRegister01 />
 
 
     </>
