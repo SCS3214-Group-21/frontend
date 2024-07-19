@@ -14,13 +14,12 @@ import ClientChatPage from './pages/ClientChatPage/ClientChatPage'
 import AllFloralsPage from './pages/ClientVendorsPage/AllFloralsPage'
 import AllCarsPage from './pages/ClientVendorsPage/AllCarsPage'
 
-
 function App() {
   return (
     <>
 
-      { /*   <HotelVendorDetails /> */}
-      <AllCarsPage />
+      <HotelVendorDetails />
+
 
     </>
   )
