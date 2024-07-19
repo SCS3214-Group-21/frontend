@@ -9,15 +9,19 @@ import ClientVendorCategory from "./pages/ClientVendorsPage/ClientVendorCategory
 import LoginPage from './pages/LoginPage'
 import AllHotelsPage from './pages/ClientVendorsPage/AllHotelsPage'
 import AllPhotographers from './pages/ClientVendorsPage/AllPhotographers'
-import HotelVendorDetails from './pages/ClientVendorsDetailsPage/HotelVendorDetails'
-
+import HotelVendorDetails from './pages/ClientVendorsDetailsPage.jsx/HotelVendorDetails'
+import ClientChatPage from './pages/ClientChatPage/ClientChatPage'
+import AllFloralsPage from './pages/ClientVendorsPage/AllFloralsPage'
+import AllCarsPage from './pages/ClientVendorsPage/AllCarsPage'
 
 
 function App() {
   return (
     <>
 
-      <HotelVendorDetails />
+      { /*   <HotelVendorDetails /> */}
+      <AllCarsPage />
+
     </>
   )
 }
