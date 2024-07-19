@@ -29,7 +29,10 @@ function VendorRegister05() {
         <option value="other">Other</option>
       </select>
       <div className="flex flex-row justify-start pt-5 pr-10 sm:pr-20">
-        <SecondaryButton text={"Finish"} />
+        <SecondaryButton 
+          link={'/vendorregister6'}
+          text={"Finish"} 
+        />
       </div>
     </div>
     <div className="flex flex-col rounded-xl gap-3 items-center justify-center w-full pt-5 px-10 sm:px-20 text-center text-black">

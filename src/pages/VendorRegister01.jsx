@@ -14,6 +14,7 @@ function VendorRegister01() {
                         <p>Register now and showcase your talents to thousands of couples.</p>
                         <p>No fees until your first booking..!</p>
                         <CustomButton 
+                            link={'/vendorregister2'}
                             bgColor={"bg-black"}
                             text={"Get Started"}
                         />
