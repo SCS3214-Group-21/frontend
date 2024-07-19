@@ -3,7 +3,7 @@ import VendorCategory from '../../components/VendorCategory';
 const AllCarsPage = () => {
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/' },
-        { label: 'Vendors', href: '/' },
+        { label: 'Vendors', href: '/allvendors' },
         { label: 'Cars' },
     ];
 
