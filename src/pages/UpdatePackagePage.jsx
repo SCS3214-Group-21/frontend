@@ -2,9 +2,9 @@ import React from "react";
 import RegisterHeader from "../components/common/RegisterHeader";
 import VendorSidebar from "../components/VendorSidebar";
 import Breadcrumb from '../components/ui/Breadcrumb';
-import CreatePackageForm from '../components/CreatePackageForm'
+import UpdatePackageForm from '../components/UpdatePackageForm'
 
-function CreatePackagePage(){
+function UpdatePackagePage(){
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/' },
         { label: 'Vendors', href: '/' },
@@ -22,10 +22,10 @@ function CreatePackagePage(){
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-custom-primary font-bold text-4xl'>Create Packages</h1>
+                        <h1 className='text-custom-primary font-bold text-4xl'>Update Packages</h1>
                     </div>
                     <div className="pb-5">
-                        <CreatePackageForm />
+                        <UpdatePackageForm />
                     </div>
                 </div>
             </div>
@@ -33,4 +33,4 @@ function CreatePackagePage(){
     )
 }
 
-export default CreatePackagePage
+export default UpdatePackagePage
