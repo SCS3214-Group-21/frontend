@@ -13,6 +13,7 @@ import AllHotelsPage from "../pages/ClientVendorsPage/AllHotelsPage";
 import AllPhotographers from "../pages/ClientVendorsPage/AllPhotographers";
 import AllFloralsPage from "../pages/ClientVendorsPage/AllFloralsPage";
 import AllCarsPage from "../pages/ClientVendorsPage/AllCarsPage";
+import HotelVendorDetails from "../pages/ClientVendorsDetailsPage.jsx/HotelVendorDetails";
 import ClientChatPage from "../pages/ClientChatPage/ClientChatPage";
 import ClientAllChats from "../pages/ClientChatPage/ClientAllChats";
 
@@ -35,6 +36,7 @@ function PublicRoute() {
                     <Route path="/allphotographers" element={<AllPhotographers />}></Route>
                     <Route path="/allflorals" element={<AllFloralsPage />}></Route>
                     <Route path="/allcars" element={<AllCarsPage />}></Route>
+                    <Route path="/hoteldetails" element={<HotelVendorDetails />}></Route>
                     <Route path="/allchats" element={<ClientAllChats />}></Route>
                     <Route path="/chat2" element={<ClientChatPage />}></Route>
                 </Routes>
