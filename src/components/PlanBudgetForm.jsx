@@ -3,7 +3,6 @@ import InputField2 from './ui/InputField2';
 import SelectField from './ui/SelectField';
 import PrimaryNoneFillButton from './ui/PrimaryNoneFillButton';
 import PrimaryButton from './ui/PrimaryButton';
-import Swal from 'sweetalert2';
 import CheckboxField from './ui/CheckboxField';
 
 function PlanBudgetForm() {
@@ -83,8 +82,8 @@ function PlanBudgetForm() {
                     </div>
                 </div>
                 <div className="w-full p-3 px-5 relative">
-                    <h1 className="relative bg-[#FFF8F5] text-black font-bold text-[0.75rem] top-[0.5rem] ml-[7px] px-[3px] w-fit z-10">Services</h1>
-                    <div className='flex flex-row flex-wrap items-center justify-center gap-10 p-10 border-2 border-black w-full bg-[#FFF8F5] rounded-lg'>
+                    <h1 className="relative bg-[#FFF8F5] text-black font-bold text-[0.75rem] top-[0.5rem] ml-[7px] px-[3px] w-fit">Services</h1>
+                    <div className='flex flex-row flex-wrap items-center justify-start gap-10 p-10 border-2 border-black w-full bg-[#FFF8F5] rounded-lg'>
                         <CheckboxField
                             id="photographers"
                             label="Photographers"
@@ -118,8 +117,15 @@ function PlanBudgetForm() {
                     </div>
                 </div>
                 <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 p-3 px-5'>
-                    {/* <PrimaryNoneFillButton text={"Reset"} />
-                    <PrimaryButton text={"Save Changes"} /> */}
+                    <PrimaryNoneFillButton 
+                    text={"Reset"} 
+                    link={"/planbudget"}
+                    />
+
+                    <PrimaryButton 
+                    text={"Save Changes"} 
+                    link={"/"}
+                    />
                 </div>
             </form>
         </div>

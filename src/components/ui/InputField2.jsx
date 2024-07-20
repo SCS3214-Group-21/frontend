@@ -88,7 +88,8 @@ function InputField2(props) {
                 }
                 /* General styles for the date picker */
                 .react-datepicker {
-                    border: none; /* custom-primary */
+                    border: none;
+
                 }
 
                 /* Header styles */

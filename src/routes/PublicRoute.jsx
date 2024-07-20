@@ -14,6 +14,7 @@ import UpdatePackagePage from "../pages/UpdatePackagePage";
 import ViewPackagePage from "../pages/ViewPackagePage";
 import VendorDashboardPage from "../pages/VendorDashboardPage";
 import BudgetPage from "../pages/BudgetPage";
+import PlanBudgetPage from "../pages/PlanBudgetPage";
 
 function PublicRoute(){
     return (
@@ -35,7 +36,7 @@ function PublicRoute(){
                     <Route path="/viewpackage" element={<ViewPackagePage />}></Route>
                     <Route path="/vendordashboard" element={<VendorDashboardPage />}></Route>
                     <Route path="/budget" element={<BudgetPage />}></Route>
-                    <Route path="/planbudget" element={<BudgetPage />}></Route>
+                    <Route path="/planbudget" element={<PlanBudgetPage />}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
