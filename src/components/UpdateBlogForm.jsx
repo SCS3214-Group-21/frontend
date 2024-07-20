@@ -108,8 +108,8 @@ function UpdateBlogForm() {
                     />
                 </div>
                 
-                <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 p-3 px-5'>
-                    {/* <PrimaryNoneFillButton 
+                <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 p-3 px-5 md:px-[5%]'>
+                    <PrimaryNoneFillButton 
                     text={"Reset"} 
                     link={"/planbudget"}
                     />
@@ -117,7 +117,7 @@ function UpdateBlogForm() {
                     <PrimaryButton 
                     text={"Save Changes"} 
                     link={"/"}
-                    /> */}
+                    />
                 </div>
             </form>
         </div>

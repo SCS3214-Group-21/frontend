@@ -16,6 +16,7 @@ import VendorDashboardPage from "../pages/VendorDashboardPage";
 import BudgetPage from "../pages/BudgetPage";
 import PlanBudgetPage from "../pages/PlanBudgetPage";
 import CreateBlogPage from "../pages/CreateBlogPage";
+import UpdateBlogPage from "../pages/UpdateBlogPage";
 
 function PublicRoute(){
     return (
@@ -39,7 +40,7 @@ function PublicRoute(){
                     <Route path="/budget" element={<BudgetPage />}></Route>
                     <Route path="/planbudget" element={<PlanBudgetPage />}></Route>
                     <Route path="/createblog" element={<CreateBlogPage />}></Route>
-                    <Route path="/updateblog" element={<CreateBlogPage />}></Route>
+                    <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
