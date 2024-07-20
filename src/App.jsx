@@ -4,13 +4,13 @@ import './App.css'
 // import VendorProfilePage from './pages/VendorProfilePage'
 // import VendorIncomeGraph from './components/VendorIncomeGraph'
 // import BusinessDetailsForm from './components/BusinessDetailsForm'
-import CreateBlogForm from './components/CreateBlogForm'
+import UpdateBlogForm from './components/UpdateBlogForm'
 
 function App() {
   return (
     <>
       {/* <PublicRoute /> */}
-      <CreateBlogForm />
+      <UpdateBlogForm />
       {/* <VendorProfilePage /> */}
       {/* <div className="bg-gray-100 w-full h-[30rem] p-10">
         <VendorIncomeGraph />
