@@ -7,6 +7,7 @@ import VendorRegister03 from "../pages/VendorRegister03";
 import VendorRegister04 from "../pages/VendorRegister04";
 import VendorRegister05 from "../pages/VendorRegister05";
 import VendorRegister06 from "../pages/VendorRegister06";
+import VendorProfilePage from "../pages/VendorProfilePage"
 
 function PublicRoute(){
     return (
@@ -21,6 +22,7 @@ function PublicRoute(){
                     <Route path="/vendorregister4" element={<VendorRegister04 />}></Route>
                     <Route path="/vendorregister5" element={<VendorRegister05 />}></Route>
                     <Route path="/vendorregister6" element={<VendorRegister06 />}></Route>
+                    <Route path="/vendorprofile" element={<VendorProfilePage />}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
