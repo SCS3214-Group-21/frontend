@@ -1,10 +1,6 @@
 import React from "react";
 import RegisterHeader from "../components/common/RegisterHeader";
 import VendorSidebar from "../components/VendorSidebar";
-import BusinesSDetailsForm from "../components/BusinessDetailsForm";
-import SocialMediaForm from "../components/SocialMediaForm";
-import PrimaryButton from "../components/ui/PrimaryButton";
-import PrimaryNoneFillButton from "../components/ui/PrimaryNoneFillButton";
 import Breadcrumb from '../components/ui/Breadcrumb';
 import VendorIncomeGraph from "../components/VendorIncomeGraph";
 
