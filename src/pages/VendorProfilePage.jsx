@@ -1,6 +1,6 @@
 import React from "react";
 import RegisterHeader from "../components/common/RegisterHeader";
-import ClientSidebar from "../components/VendorSidebar";
+import VendorSidebar from "../components/VendorSidebar";
 import BusinesSDetailsForm from "../components/BusinessDetailsForm";
 import SocialMediaForm from "../components/SocialMediaForm";
 import PrimaryButton from "../components/ui/PrimaryButton";
@@ -19,7 +19,7 @@ function VendorProfilePage(){
             {/* <ClientSidebar /> */}
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
                 <div className="w-[5%] sm:w-[10%] md:w-[20%]">
-                    <ClientSidebar />
+                    <VendorSidebar />
                 </div>
                 <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
                     <div className="pb-5">

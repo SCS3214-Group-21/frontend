@@ -8,7 +8,8 @@ import VendorRegister04 from "../pages/VendorRegister04";
 import VendorRegister05 from "../pages/VendorRegister05";
 import VendorRegister06 from "../pages/VendorRegister06";
 import VendorProfilePage from "../pages/VendorProfilePage"
-import VendorPackages from "../pages/VendorPackagesPage";
+import VendorPackagesPage from "../pages/VendorPackagesPage";
+import CreatePackagePage from "../pages/CreatePackagePage";
 
 function PublicRoute(){
     return (
@@ -24,8 +25,8 @@ function PublicRoute(){
                     <Route path="/vendorregister5" element={<VendorRegister05 />}></Route>
                     <Route path="/vendorregister6" element={<VendorRegister06 />}></Route>
                     <Route path="/vendorprofile" element={<VendorProfilePage />}></Route>
-                    <Route path="/vendorpackages" element={<VendorPackages />}></Route>
-                    <Route path="createpackage" element={<LandingPage />}></Route>
+                    <Route path="/vendorpackages" element={<VendorPackagesPage />}></Route>
+                    <Route path="createpackage" element={<CreatePackagePage />}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
