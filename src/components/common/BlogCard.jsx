@@ -7,7 +7,7 @@ function BlogCard(props) {
     return (        
         <div className="w-full h-full bg-[#FFFBEB] rounded-lg shadow-md flex flex-col gap-1 items-center justify-center border border-custom-primary p-2">
             <div>
-                <img src={img} className='rounded-lg'/>
+                <img src={img} className='rounded-lg w-60 h-32'/>
             </div>
 
             <div className="text-black text-sm font-medium">{text}</div>
@@ -27,10 +27,10 @@ function BlogCard(props) {
                 </div>
             </div>
             <div className='p-1'>
-                {/* <PrimaryNoneFillButton 
+                <PrimaryNoneFillButton 
                     link = {link}
                     text={button} 
-                /> */}
+                />
             </div>
         </div>
     );
