@@ -7,6 +7,17 @@ import VendorRegister03 from "../pages/VendorRegister03";
 import VendorRegister04 from "../pages/VendorRegister04";
 import VendorRegister05 from "../pages/VendorRegister05";
 import VendorRegister06 from "../pages/VendorRegister06";
+import VendorProfilePage from "../pages/VendorProfilePage"
+import VendorPackagesPage from "../pages/VendorPackagesPage";
+import CreatePackagePage from "../pages/CreatePackagePage";
+import UpdatePackagePage from "../pages/UpdatePackagePage";
+import ViewPackagePage from "../pages/ViewPackagePage";
+import VendorDashboardPage from "../pages/VendorDashboardPage";
+import BudgetPage from "../pages/BudgetPage";
+import PlanBudgetPage from "../pages/PlanBudgetPage";
+import CreateBlogPage from "../pages/CreateBlogPage";
+import UpdateBlogPage from "../pages/UpdateBlogPage";
+import BlogPage from "../pages/BlogsPage";
 
 function PublicRoute(){
     return (
@@ -21,6 +32,17 @@ function PublicRoute(){
                     <Route path="/vendorregister4" element={<VendorRegister04 />}></Route>
                     <Route path="/vendorregister5" element={<VendorRegister05 />}></Route>
                     <Route path="/vendorregister6" element={<VendorRegister06 />}></Route>
+                    <Route path="/vendorprofile" element={<VendorProfilePage />}></Route>
+                    <Route path="/vendorpackages" element={<VendorPackagesPage />}></Route>
+                    <Route path="/createpackage" element={<CreatePackagePage />}></Route>
+                    <Route path="/updatepackage" element={<UpdatePackagePage />}></Route>
+                    <Route path="/viewpackage" element={<ViewPackagePage />}></Route>
+                    <Route path="/vendordashboard" element={<VendorDashboardPage />}></Route>
+                    <Route path="/budget" element={<BudgetPage />}></Route>
+                    <Route path="/planbudget" element={<PlanBudgetPage />}></Route>
+                    <Route path="/createblog" element={<CreateBlogPage />}></Route>
+                    <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
+                    <Route path="/blog" element={<BlogPage />}></Route>
                 </Routes>
             </BrowserRouter>
         </div>

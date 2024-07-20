@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import InputField2 from './ui/InputField2';
 import TextAreaField from './ui/TextAreaField';
-import PrimaryNoneFillButton from './ui/PrimaryNoneFillButton';
-import PrimaryButton from './ui/PrimaryButton';
 
 function BusinessDetailsForm() {
     const [items, setItems] = useState([ ]);
