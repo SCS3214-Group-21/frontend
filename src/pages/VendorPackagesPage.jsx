@@ -30,7 +30,7 @@ function VendorPackagesPage(){
                             <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
                                 <AddCard 
                                     text={"Create Package"}
-                                    link={"/createpackage"}
+                                    link={"/viewpackage"}
                                 />
                             </div>
                             <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
@@ -38,6 +38,7 @@ function VendorPackagesPage(){
                                     img={"../src/assets/images/Images/00.png"}
                                     text={"Package 01"}
                                     button={"See more"}
+                                    link={"/viewpackage"}
                                 />
                             </div>
                             <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
@@ -45,6 +46,7 @@ function VendorPackagesPage(){
                                     img={"../src/assets/images/Images/00.png"}
                                     text={"Package 01"}
                                     button={"See more"}
+                                    link={"/viewpackage"}
                                 />
                             </div>
                             <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
@@ -52,6 +54,7 @@ function VendorPackagesPage(){
                                     img={"../src/assets/images/Images/00.png"}
                                     text={"Package 01"}
                                     button={"See more"}
+                                    link={"/viewpackage"}
                                 />
                             </div>
                             <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
@@ -59,6 +62,7 @@ function VendorPackagesPage(){
                                     img={"../src/assets/images/Images/00.png"}
                                     text={"Package 01"}
                                     button={"See more"}
+                                    link={"/viewpackage"}
                                 />
                             </div>
                             <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
@@ -66,6 +70,7 @@ function VendorPackagesPage(){
                                     img={"../src/assets/images/Images/00.png"}
                                     text={"Package 01"}
                                     button={"See more"}
+                                    link={"/viewpackage"}
                                 />
                             </div>
                             <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
@@ -73,6 +78,7 @@ function VendorPackagesPage(){
                                     img={"../src/assets/images/Images/00.png"}
                                     text={"Package 01"}
                                     button={"See more"}
+                                    link={"/viewpackage"}
                                 />
                             </div>
                         </div>

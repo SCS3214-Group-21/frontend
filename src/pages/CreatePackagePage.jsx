@@ -22,7 +22,7 @@ function CreatePackagePage(){
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-custom-primary font-bold text-4xl'>Create Packages</h1>
+                        <h1 className='text-custom-primary font-bold text-4xl'>Create Package</h1>
                     </div>
                     <div className="pb-5">
                         <CreatePackageForm />

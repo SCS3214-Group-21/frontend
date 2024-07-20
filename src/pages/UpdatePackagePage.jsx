@@ -22,7 +22,7 @@ function UpdatePackagePage(){
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-custom-primary font-bold text-4xl'>Update Packages</h1>
+                        <h1 className='text-custom-primary font-bold text-4xl'>Update Package</h1>
                     </div>
                     <div className="pb-5">
                         <UpdatePackageForm />
