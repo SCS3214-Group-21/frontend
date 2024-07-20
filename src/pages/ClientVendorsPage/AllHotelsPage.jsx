@@ -9,7 +9,7 @@ const AllHotelsPage = () => {
 
     const hotelData = [
         {
-            href: "#",
+            href: "/hoteldetails",
             img: "../src/assets/images/Images/03.png",
             alt: "Shangrila",
             name: "Shangrila",
