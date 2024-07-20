@@ -143,7 +143,7 @@ function VendorIncomeGraph() {
           <h2 className="text-2xl font-bold">$12.7k</h2>
           <p className="text-green-500 text-sm">+1.3% VS LAST YEAR</p>
         </div>
-        <div className="flex space-x-2">
+        <div className="flex gap-2 flex-wrap flex-row items-center justify-center">
           {["Daily", "Weekly", "Annually"].map((item) => (
             <button
               key={item}
