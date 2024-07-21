@@ -2,7 +2,7 @@ import React from 'react';
 import PrimaryNoneFillButton from '../ui/PrimaryNoneFillButton';
 
 function PackageCard(props) {
-    const { img, text, button } = props;
+    const { img, text, button, link } = props;
 
     return (        
         <div className="w-full h-full bg-white rounded-lg shadow-md flex flex-col gap-3 items-center justify-center border border-custom-primary">
@@ -12,7 +12,10 @@ function PackageCard(props) {
 
             <div className="text-black text-sm font-medium">{text}</div>
             <div className='p-1'>
-                <PrimaryNoneFillButton text={button} />
+                <PrimaryNoneFillButton 
+                    link = {link}
+                    text={button} 
+                />
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 
 function TextAreaField(props) {
-    const { id, placeholder, name, height } = props;
+    const { id, placeholder, name, height, value } = props;
 
     return (
         <div>
@@ -41,7 +41,7 @@ function TextAreaField(props) {
             `}</style>
             <div className="coolinput2">
                 <label htmlFor={id} className="text2">{name}</label>
-                <textarea id={id} placeholder={placeholder} className="input2" />
+                <textarea id={id} placeholder={placeholder} className="input2">{value}</textarea>
             </div>
         </div>
     )
