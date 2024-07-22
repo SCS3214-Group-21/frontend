@@ -1,15 +1,16 @@
 import React from 'react'
 import './App.css'
-import PublicRoute from './routes/PublicRoute'
+// import PublicRoute from './routes/PublicRoute'
 // import VendorProfilePage from './pages/VendorProfilePage'
 // import VendorIncomeGraph from './components/VendorIncomeGraph'
 // import BusinessDetailsForm from './components/BusinessDetailsForm'
-// import BlogCard from './components/common/BlogCard'
+import CommentSection from './components/common/CommentSection'
 
 function App() {
   return (
     <>
-      <PublicRoute />
+      {/* <PublicRoute /> */}
+      <CommentSection />
       {/* <div className="flex items-center justify-center h-[22rem] w-96 bg-white p-2">
       <BlogCard 
         img={"../src/assets/images/Images/01.png"}
