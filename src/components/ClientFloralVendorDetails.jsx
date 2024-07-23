@@ -50,15 +50,17 @@ const ClientFloralVendorDetails = ({
     };
 
     return (
-        <div className="flex flex-col p-8 mt-10 bg-white border-b-4 border-[#FFDBC8] rounded-lg shadow-md relative  md:mx-24 lg:mx-10 xl:mx-10 mb-6 w-full max-w-[1500px] mx-auto">
-            <div className="flex flex-col items-stretch lg:flex-row">
-                <figure className="flex-shrink-0 w-full lg:w-1/2">
-                    <img className="object-cover w-full h-full rounded-lg" src={`../src/assets/images/Images/${mainImage}`} alt={vendorName} />
-                </figure>
-                <div className="flex flex-col justify-between flex-1 ml-0 text-black lg:ml-8">
+        <div className="flex flex-col p-8 mt-10 bg-white border-b-4 text-black border-[#FFDBC8] rounded-lg shadow-md relative md:mx-24 lg:mx-10 xl:mx-10 mb-6 w-full max-w-[1500px] mx-auto">
+            <div className="flex flex-col lg:flex-row">
+                <div className="flex flex-col items-center justify-center p-4 space-y-4 lg:w-1/2">
+                    {[mainImage, ...smallImages].map((image, index) => (
+                        <img key={index} className="object-cover w-full h-auto max-w-md rounded-lg" src={`../src/assets/images/Images/${image}`} alt={`Image ${index + 1}`} />
+                    ))}
+                </div>
+                <div className="flex flex-col justify-between flex-1 p-4">
                     <div>
                         <h2 className="font-bold text-5xl text-[#A57E17] lg:whitespace-nowrap">{vendorName}</h2>
-                        <p className="mt-4">
+                        <p className="mt-4 text-black">
                             {location}<br />
                             {email}<br />
                             <StarRating starCount={rating} /><br />
@@ -98,28 +100,22 @@ const ClientFloralVendorDetails = ({
                         )}
                         <div className="mt-4 divider"></div>
                     </div>
-                </div>
-            </div>
-            <div className="flex items-center justify-between mt-4">
-                <div className="flex w-full space-x-2 lg:w-1/2">
-                    {smallImages.map((image, index) => (
-                        <img key={index} className="object-cover w-1/3 h-24 rounded-lg" src={`../src/assets/images/Images/${image}`} alt={`Small ${index + 1}`} />
-                    ))}
-                </div>
-                <div className='flex items-center space-x-4 '>
-                    <button className="flex items-center justify-center w-10 h-10 rounded-full bg-[#F0DFD7] hover:ring-2 hover:ring-[#A57E17]" onClick={handleDecrement}>
-                        <svg className="w-6 h-6 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14" />
-                        </svg>
-                    </button>
-                    <div className='font-bold text-black'>{quantity}</div>
-                    <button className="flex items-center justify-center w-10 h-10 rounded-full bg-[#F0DFD7] hover:bg-[#dbc9c0] hover:ring-2 hover:ring-[#A57E17]" onClick={handleIncrement}>
-                        <svg className="w-6 h-6 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-7-7v14" />
-                        </svg>
-                    </button>
-
-                    <SecondaryButton text="Check Availability" />
+                    <div className="flex items-center justify-between mt-4">
+                        <div className='flex items-center space-x-4'>
+                            <button className="flex items-center justify-center w-10 h-10 rounded-full bg-[#F0DFD7] hover:ring-2 hover:ring-[#A57E17]" onClick={handleDecrement}>
+                                <svg className="w-6 h-6 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14" />
+                                </svg>
+                            </button>
+                            <div className='font-bold text-black'>{quantity}</div>
+                            <button className="flex items-center justify-center w-10 h-10 rounded-full bg-[#F0DFD7] hover:bg-[#dbc9c0] hover:ring-2 hover:ring-[#A57E17]" onClick={handleIncrement}>
+                                <svg className="w-6 h-6 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-7-7v14" />
+                                </svg>
+                            </button>
+                            <SecondaryButton text="Check Availability" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
