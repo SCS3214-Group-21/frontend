@@ -18,6 +18,12 @@ function ClientVendorDetails({ MainImgPath, Name, StarCount, LocationCity, Email
         setIsOpen(false);
     };
 
+    const downloadPDF = () => {
+        // Implement the logic to download the PDF of the selected package
+        // This might involve fetching the PDF from a server or generating it on the fly
+        console.log('Downloading PDF for package:', selectedPackage.name);
+    };
+
     return (
         <>
             <div className='flex-row shadow-lg'>
@@ -65,9 +71,19 @@ function ClientVendorDetails({ MainImgPath, Name, StarCount, LocationCity, Email
                             ))}
                         </div>
                     </div>
+
                     {isOpen && selectedPackage && (
                         <div className="modal" role="dialog" id="popup">
                             <div className="modal-box bg-[#f9e9e3] text-black relative">
+                                <button
+                                    className="absolute btn btn-sm btn-circle btn-ghost right-12 top-2"
+                                    onClick={downloadPDF}
+                                >
+                                    <svg className="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 13V4M7 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2m-1-5-4 5-4-5m9 8h.01" />
+                                    </svg>
+
+                                </button>
                                 <button
                                     className="absolute btn btn-sm btn-circle btn-ghost right-2 top-2"
                                     onClick={closeModal}
@@ -87,12 +103,14 @@ function ClientVendorDetails({ MainImgPath, Name, StarCount, LocationCity, Email
                                         </label>
                                     ))}
                                 </div>
-                                <div className="relative mt-4">
+                                {selectedPackage.additional && (<div className="relative mt-4">
                                     <div className="absolute -top-3 left-3 bg-[#f9e9e3] px-1">
                                         <span className="text-sm text-gray-700">Description</span>
                                     </div>
-                                    <textarea className="w-full h-24 border-black bg-[#f9e9e3] textarea textarea-bordered"></textarea>
-                                </div>
+                                    <p className="w-full border-black bg-[#f9e9e3] border mt-5 p-2">
+                                        {selectedPackage.additional}
+                                    </p>
+                                </div>)}
                                 <div className='flex mt-4'>
                                     <PrimaryNoneFillButton text="Get Quotation" />
                                     <div className="absolute mb-4 right-4 bottom">
