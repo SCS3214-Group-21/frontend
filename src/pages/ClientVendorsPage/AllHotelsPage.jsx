@@ -3,13 +3,13 @@ import VendorCategory from '../../components/VendorCategory';
 const AllHotelsPage = () => {
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/' },
-        { label: 'Vendors', href: '/' },
+        { label: 'Vendors', href: '/allvendors' },
         { label: 'Hotels' },
     ];
 
     const hotelData = [
         {
-            href: "#",
+            href: "/hoteldetails",
             img: "../src/assets/images/Images/03.png",
             alt: "Shangrila",
             name: "Shangrila",

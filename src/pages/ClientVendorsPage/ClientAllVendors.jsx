@@ -6,21 +6,21 @@ import ServicesCategoryCard from '../../components/common/ServicesCategoryCard';
 
 function ClientAllVendors() {
     const cardData = [
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Hotels", href: "./AllHotelsPage" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Dressers", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Photography", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Floral", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Jewellery", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Dancing Groups", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Ashtaka", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Salons", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Djs", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Honeymoon", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Cakes", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Cars", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Invitation Cards", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Poruwa", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Catering", href: "#" }
+        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Hotels", href: "./allhotels" },
+        { img: "../src/assets/images/Images/03.png", alt: "Dressers", type: "Dressers", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Photography", type: "Photography", href: "/allphotographers" },
+        { img: "../src/assets/images/Images/03.png", alt: "Floral", type: "Floral", href: "/allflorals" },
+        { img: "../src/assets/images/Images/03.png", alt: "Jewellery", type: "Jewellery", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Dancing Groups", type: "Dancing Groups", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Ashtaka", type: "Ashtaka", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Salons", type: "Salons", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Djs", type: "Djs", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Honeymoon", type: "Honeymoon", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Cakes", type: "Cakes", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Cars", type: "Cars", href: "/allcars" },
+        { img: "../src/assets/images/Images/03.png", alt: "Invitation Cards", type: "Invitation Cards", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Poruwa", type: "Poruwa", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Catering", type: "Catering", href: "#" }
     ];
 
     return (
