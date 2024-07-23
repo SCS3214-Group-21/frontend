@@ -16,7 +16,7 @@ function ClientAllVendors() {
         { img: "../src/assets/images/Images/03.png", alt: "Salons", type: "Salons", href: "#" },
         { img: "../src/assets/images/Images/03.png", alt: "Djs", type: "Djs", href: "#" },
         { img: "../src/assets/images/Images/03.png", alt: "Honeymoon", type: "Honeymoon", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "Cakes", type: "Cakes", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Cakes", type: "Cakes", href: "/allcakes" },
         { img: "../src/assets/images/Images/03.png", alt: "Cars", type: "Cars", href: "/allcars" },
         { img: "../src/assets/images/Images/03.png", alt: "Invitation Cards", type: "Invitation Cards", href: "#" },
         { img: "../src/assets/images/Images/03.png", alt: "Poruwa", type: "Poruwa", href: "#" },

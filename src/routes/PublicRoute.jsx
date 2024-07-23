@@ -12,9 +12,12 @@ import ClientAllVendors from "../pages/ClientVendorsPage/ClientAllVendors";
 import AllHotelsPage from "../pages/ClientVendorsPage/AllHotelsPage";
 import AllPhotographers from "../pages/ClientVendorsPage/AllPhotographers";
 import AllFloralsPage from "../pages/ClientVendorsPage/AllFloralsPage";
+import AllCakesPage from "../pages/ClientVendorsPage/AllCakesPage";
 import AllCarsPage from "../pages/ClientVendorsPage/AllCarsPage";
 import HotelVendorDetails from "../pages/ClientVendorsDetailsPage/HotelVendorDetails";
 import FloralVendorDetails from "../pages/ClientVendorsDetailsPage/FloralVendorDetails";
+import CakesVendorDetails from "../pages/ClientVendorsDetailsPage/CakesVendorDetails";
+import CarsVendorDetails from "../pages/ClientVendorsDetailsPage/CarsVendorDetails";
 import ClientChatPage from "../pages/ClientChatPage/ClientChatPage";
 import ClientAllChats from "../pages/ClientChatPage/ClientAllChats";
 import VendorProfilePage from "../pages/VendorProfilePage"
@@ -47,9 +50,12 @@ function PublicRoute() {
                     <Route path="/allhotels" element={<AllHotelsPage />}></Route>
                     <Route path="/allphotographers" element={<AllPhotographers />}></Route>
                     <Route path="/allflorals" element={<AllFloralsPage />}></Route>
+                    <Route path="/allcakes" element={<AllCakesPage />}></Route>
                     <Route path="/allcars" element={<AllCarsPage />}></Route>
                     <Route path="/hoteldetails" element={<HotelVendorDetails />}></Route>
                     <Route path="/floraldetails" element={<FloralVendorDetails />}></Route>
+                    <Route path="/cakesdetails" element={<CakesVendorDetails />}></Route>
+                    <Route path="/carsdetails" element={<CarsVendorDetails />}></Route>
                     <Route path="/allchats" element={<ClientAllChats />}></Route>
                     <Route path="/chat2" element={<ClientChatPage />}></Route>
                     <Route path="/vendorprofile" element={<VendorProfilePage />}></Route>

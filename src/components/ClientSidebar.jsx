@@ -18,7 +18,6 @@ export default function ClientSidebar() {
     const isCalendarPage = location.pathname === '/';//rename actual path
     const isBookingsPage = location.pathname === '/';//rename actual path
     const isBlogsPage = location.pathname === '/';//rename actual path
-    const isCardDesignsPage = location.pathname === '/';//rename actual path
     //const isLogoutPage = location.pathname === '/';//rename actual path
 
 
@@ -108,14 +107,14 @@ export default function ClientSidebar() {
                             isActive={isBlogsPage}
 
                         />
-                        <SidebarButton
+                        {/* <SidebarButton
                             href="#"
                             iconPath="m4.988 19.012 5.41-5.41m2.366-6.424 4.058 4.058-2.03 5.41L5.3 20 4 18.701l3.355-9.494 5.41-2.029Zm4.626 4.625L12.197 6.61 14.807 4 20 9.194l-2.61 2.61Z"
                             label="Card designs"
                             isOpen={isDrawerOpen}
                             isActive={isCardDesignsPage}
 
-                        />
+                        />*/}
                         <SidebarButton
                             href="/"
                             iconPath="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"

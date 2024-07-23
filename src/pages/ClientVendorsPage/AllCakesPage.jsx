@@ -2,25 +2,26 @@ import React from 'react';
 import VendorCategory from '../../components/VendorCategory';
 import RegisterHeader from '../../components/common/RegisterHeader';
 import ClientSidebar from '../../components/ClientSidebar';
-const AllFloralsPage = () => {
+
+const AllCakesPage = () => {
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/' },
         { label: 'Vendors', href: '/allvendors' },
-        { label: 'Floral' },
+        { label: 'Cakes' },
     ];
 
-    const floralData = [
+    const cakeData = [
         {
-            href: "/floraldetails",
-            img: "../src/assets/images/Images/floral.png",
-            alt: "Rose Garden",
-            name: "Rose Garden",
-            description: "Rose Garden offers exceptional service with their exquisite rose arrangements, creating a romantic atmosphere for weddings.",
+            href: "/cakesdetails",
+            img: "../src/assets/images/Images/cake.png",
+            alt: "Orange Blooms Cake",
+            name: "Orange Blooms Cake",
+            description: "Orange Blooms Cake offers exceptional service with their exquisite rose arrangements, creating a romantic atmosphere for weddings.",
             starCount: 5
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Lily Paradise",
             name: "Lily Paradise",
             description: "Lily Paradise provides outstanding service, with beautiful lily decorations that bring a touch of elegance to any wedding.",
@@ -28,7 +29,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Orchid Haven",
             name: "Orchid Haven",
             description: "Orchid Haven is known for their excellent service and stunning orchid displays, perfect for a tropical wedding theme.",
@@ -36,7 +37,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Jasmine Grove",
             name: "Jasmine Grove",
             description: "Jasmine Grove offers great service with fragrant jasmine flowers that add a delightful scent to the wedding ambiance.",
@@ -44,7 +45,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Daisy Fields",
             name: "Daisy Fields",
             description: "Daisy Fields provides charming service, with endless fields of daisies creating a whimsical and joyful wedding setting.",
@@ -52,7 +53,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Tulip Terrace",
             name: "Tulip Terrace",
             description: "Tulip Terrace offers top-notch service with a terrace overlooking a valley of tulips, making it a picturesque wedding venue.",
@@ -60,7 +61,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Lavender Lawn",
             name: "Lavender Lawn",
             description: "Lavender Lawn provides soothing service, with lavender flowers covering the venue for a calming and serene wedding backdrop.",
@@ -68,7 +69,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Sunflower Spot",
             name: "Sunflower Spot",
             description: "Sunflower Spot is known for their friendly service and vibrant sunflower arrangements, adding a bright and cheerful touch to weddings.",
@@ -76,7 +77,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Peony Place",
             name: "Peony Place",
             description: "Peony Place offers excellent service with lush peony decorations, creating a luxurious and elegant wedding atmosphere.",
@@ -84,7 +85,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Marigold Meadow",
             name: "Marigold Meadow",
             description: "Marigold Meadow provides wonderful service, with bright marigold flowers that bring a festive and vibrant feel to weddings.",
@@ -92,7 +93,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Cherry Blossom Corner",
             name: "Cherry Blossom Corner",
             description: "Cherry Blossom Corner offers exceptional service with delicate cherry blossom arrangements, perfect for a spring wedding theme.",
@@ -100,7 +101,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Gardenia Grove",
             name: "Gardenia Grove",
             description: "Gardenia Grove provides great service, with fragrant gardenia flowers adding a touch of elegance to the wedding decor.",
@@ -108,7 +109,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Hydrangea Haven",
             name: "Hydrangea Haven",
             description: "Hydrangea Haven offers top-quality service with beautiful hydrangea arrangements, creating a stunning visual impact for weddings.",
@@ -116,7 +117,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Violet Valley",
             name: "Violet Valley",
             description: "Violet Valley is known for their excellent service and lovely violet flower decorations, perfect for a charming wedding setting.",
@@ -124,7 +125,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/cake.png",
             alt: "Camellia Court",
             name: "Camellia Court",
             description: "Camellia Court provides exceptional service with elegant camellia flower arrangements, adding a touch of sophistication to weddings.",
@@ -161,11 +162,11 @@ const AllFloralsPage = () => {
     ];
 
     const typeOptions = [
-        { label: 'Bouquet', type: 'type', value: 1 },
-        { label: 'Hydrangea', type: 'type', value: 2 },
-        { label: 'Boutonnieres', type: 'type', value: 3 },
-        { label: 'Walls', type: 'type', value: 4 },
-        { label: 'Bridesmaids bouquets', type: 'type', value: 5 },
+        { label: 'Traditional cake', type: 'type', value: 1 },
+        { label: 'Floral cake', type: 'type', value: 2 },
+        { label: 'Wedding cakes', type: 'type', value: 3 },
+        { label: 'Jar cakes', type: 'type', value: 4 },
+        { label: 'Chocolates', type: 'type', value: 5 },
         // Add more rating options
     ];
 
@@ -183,13 +184,13 @@ const AllFloralsPage = () => {
             <RegisterHeader />
             <ClientSidebar />
             <VendorCategory
-                title="Florals"
+                title="Cakes"
                 breadcrumbItems={breadcrumbItems}
-                vendorData={floralData}
+                vendorData={cakeData}
                 sortingButtons={sortingButtons}
             />
         </>
     );
 };
 
-export default AllFloralsPage;
+export default AllCakesPage;

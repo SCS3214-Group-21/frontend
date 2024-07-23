@@ -18,7 +18,7 @@ function HotelVendorDetails() {
     ];
 
     const packages = [
-        { img: "../src/assets/images/Images/03.png", alt: "Package 01", name: "Package 01", price: "Price per person 20000LKR", description: "maximum 150 guests", showStars: false, value: 'package1' },
+        { img: "../src/assets/images/Images/03.png", alt: "Package 01", name: "Package 01", price: "Price per person 20000LKR", description: "maximum 150 guests", showStars: false, value: 'package1', additional: 'This is package more details in paragraph.I want to show how this works and this is give more better idea about the package' },
         { img: "../src/assets/images/Images/03.png", alt: "Package 02", name: "Package 02", price: "Price per person 25000LKR", description: "maximum 200 guests", showStars: false, value: 'package2' },
         // Add more packages as needed
     ];
