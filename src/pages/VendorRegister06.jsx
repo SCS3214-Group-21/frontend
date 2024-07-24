@@ -19,7 +19,7 @@ function VendorRegister06() {
       </h1>
       <div className="flex flex-row justify-center pt-5 px-5">
         <CustomPinkButton 
-          link={'/'}
+          link={'/vendordashboard'}
           text={"View Profile"} 
         />
       </div>
