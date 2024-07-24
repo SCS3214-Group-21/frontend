@@ -4,6 +4,41 @@ import VendorSidebar from "../components/VendorSidebar";
 import Breadcrumb from '../components/ui/Breadcrumb';
 import AddCard from '../components/common/AddCard';
 import PackageCard from '../components/common/PackageCard';
+import Pagination from '../components/common/Pagination'
+
+const items = [
+    { img: 'src/assets/Images/Images/01.png', text: 'Package 01', link: '/viewpackage',  },
+    { img: 'src/assets/Images/Images/01.png', text: 'Package 02', link: '/viewpackage',  },
+    { img: 'src/assets/Images/Images/01.png', text: 'Package 03', link: '/viewpackage',  },
+    { img: 'src/assets/Images/Images/01.png', text: 'Package 04', link: '/viewpackage',  },
+    { img: 'src/assets/Images/Images/01.png', text: 'Package 05', link: '/viewpackage',  },
+    { img: 'src/assets/Images/Images/01.png', text: 'Package 06', link: '/viewpackage',  },
+    { img: 'src/assets/Images/Images/01.png', text: 'Package 07', link: '/viewpackage',  },
+    { img: 'src/assets/Images/Images/01.png', text: 'Package 08', link: '/viewpackage',  },
+];
+
+const renderItems = (currentItems) => (
+    // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
+        <div className="flex flex-row flex-wrap gap-10 items-center justify-center">
+            <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
+                <AddCard 
+                    text={"Create Package"}
+                    link={"/createpackage"}
+                />
+            </div>
+            {currentItems.map((item, index) => (
+                <div key={index} className="flex items-center justify-center h-60 w-52 bg-white p-2">
+                <PackageCard 
+                    img={item.img}
+                    text={item.text}
+                    button={"See more"}
+                    link={item.link}
+                />
+                </div>
+            ))}
+        </div>
+    // </div>
+  );
 
 function VendorPackagesPage(){
     const breadcrumbItems = [
@@ -27,60 +62,7 @@ function VendorPackagesPage(){
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-                            <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
-                                <AddCard 
-                                    text={"Create Package"}
-                                    link={"/viewpackage"}
-                                />
-                            </div>
-                            <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
-                                <PackageCard 
-                                    img={"../src/assets/images/Images/00.png"}
-                                    text={"Package 01"}
-                                    button={"See more"}
-                                    link={"/viewpackage"}
-                                />
-                            </div>
-                            <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
-                                <PackageCard 
-                                    img={"../src/assets/images/Images/00.png"}
-                                    text={"Package 01"}
-                                    button={"See more"}
-                                    link={"/viewpackage"}
-                                />
-                            </div>
-                            <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
-                                <PackageCard 
-                                    img={"../src/assets/images/Images/00.png"}
-                                    text={"Package 01"}
-                                    button={"See more"}
-                                    link={"/viewpackage"}
-                                />
-                            </div>
-                            <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
-                                <PackageCard 
-                                    img={"../src/assets/images/Images/00.png"}
-                                    text={"Package 01"}
-                                    button={"See more"}
-                                    link={"/viewpackage"}
-                                />
-                            </div>
-                            <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
-                                <PackageCard 
-                                    img={"../src/assets/images/Images/00.png"}
-                                    text={"Package 01"}
-                                    button={"See more"}
-                                    link={"/viewpackage"}
-                                />
-                            </div>
-                            <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
-                                <PackageCard 
-                                    img={"../src/assets/images/Images/00.png"}
-                                    text={"Package 01"}
-                                    button={"See more"}
-                                    link={"/viewpackage"}
-                                />
-                            </div>
+                            <Pagination items={items} itemsPerPage={5} renderItems={renderItems} />
                         </div>
                     </div>
                 </div>
