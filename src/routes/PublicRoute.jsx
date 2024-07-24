@@ -17,7 +17,7 @@ import AllCarsPage from "../pages/ClientVendorsPage/AllCarsPage";
 import HotelVendorDetails from "../pages/ClientVendorsDetailsPage/HotelVendorDetails";
 import FloralVendorDetails from "../pages/ClientVendorsDetailsPage/FloralVendorDetails";
 import CakesVendorDetails from "../pages/ClientVendorsDetailsPage/CakesVendorDetails";
-import CarsVendorDetails from "../pages/ClientVendorsDetailsPage/CarsVendorDetails";
+// import CarsVendorDetails from "../pages/ClientVendorsDetailsPage/CarsVendorDetails";
 import ClientChatPage from "../pages/ClientChatPage/ClientChatPage";
 import ClientAllChats from "../pages/ClientChatPage/ClientAllChats";
 import VendorProfilePage from "../pages/VendorProfilePage"
@@ -31,6 +31,7 @@ import PlanBudgetPage from "../pages/PlanBudgetPage";
 import CreateBlogPage from "../pages/CreateBlogPage";
 import UpdateBlogPage from "../pages/UpdateBlogPage";
 import BlogPage from "../pages/BlogsPage";
+// import RegisterType from "../components/common/RegisterType";
 
 function PublicRoute() {
     return (
@@ -55,7 +56,7 @@ function PublicRoute() {
                     <Route path="/hoteldetails" element={<HotelVendorDetails />}></Route>
                     <Route path="/floraldetails" element={<FloralVendorDetails />}></Route>
                     <Route path="/cakesdetails" element={<CakesVendorDetails />}></Route>
-                    <Route path="/carsdetails" element={<CarsVendorDetails />}></Route>
+                    {/* <Route path="/carsdetails" element={<CarsVendorDetails />}></Route> */}
                     <Route path="/allchats" element={<ClientAllChats />}></Route>
                     <Route path="/chat2" element={<ClientChatPage />}></Route>
                     <Route path="/vendorprofile" element={<VendorProfilePage />}></Route>
@@ -69,6 +70,7 @@ function PublicRoute() {
                     <Route path="/createblog" element={<CreateBlogPage />}></Route>
                     <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
                     <Route path="/blog" element={<BlogPage />}></Route>
+                    {/* <Route path="/registertype" element={<RegisterType />}></Route> */}
                 </Routes>
             </BrowserRouter>
         </div>
