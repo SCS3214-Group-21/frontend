@@ -11,20 +11,21 @@ function ClientChatPage() {
     ];
 
     return (
-        <div className="bg-[#FFF8F5] min-h-screen flex flex-col">
+        <>
+
             <RegisterHeader />
-            <div className="flex flex-1">
-                <ClientSidebar />
-                <div className="flex flex-col flex-1">
-                    <div className="flex flex-col mt-4 ml-4 md:ml-24 lg:ml-80">
-                        <div className="flex items-center">
-                            <h1 className="text-3xl font-bold text-[#A57E17]">Chat</h1>
-                            <div className="flex-row ml-6 lg:ml-20">
-                                <Breadcrumb items={breadcrumbItems} />
-                            </div>
-                        </div>
+            <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
+                <div className="w-[5%] sm:w-[10%] md:w-[20%]">
+                    <ClientSidebar />
+                </div>
+                <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
+                    <div className="pb-5">
+                        <Breadcrumb items={breadcrumbItems} />
                     </div>
-                    <div className="flex flex-col flex-1 p-4 mt-10 mr-8 bg-white border-b-4 border-[#FFDBC8] rounded-lg shadow-md relative overflow-hidden ml-4 md:ml-24 lg:ml-80 mb-6">
+                    <div className="pb-5">
+                        <h1 className='text-4xl font-bold text-custom-primary'>Chat</h1>
+                    </div>
+                    <div className="flex flex-col flex-1 p-4 mt-10 mr-8 bg-white border-b-4 border-[#FFDBC8] rounded-lg shadow-md relative overflow-hidden  mb-6">
                         <div className="flex-1 space-y-4 overflow-y-auto">
                             <div className="chat chat-start">
                                 <div className="chat-image avatar">
@@ -150,7 +151,8 @@ function ClientChatPage() {
                     </div>
                 </div>
             </div>
-        </div>
+
+        </>
     );
 }
 

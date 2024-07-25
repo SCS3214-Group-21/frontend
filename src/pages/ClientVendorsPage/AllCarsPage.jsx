@@ -2,6 +2,7 @@ import React from 'react';
 import VendorCategory from '../../components/VendorCategory';
 import ClientSidebar from '../../components/ClientSidebar';
 import RegisterHeader from '../../components/common/RegisterHeader';
+import Breadcrumb from '../../components/ui/Breadcrumb';
 const AllCarsPage = () => {
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/' },
@@ -171,14 +172,24 @@ const AllCarsPage = () => {
     ];
 
     return (
-        <><RegisterHeader />
-            <ClientSidebar />
-            <VendorCategory
-                title="Wedding Cars"
-                breadcrumbItems={breadcrumbItems}
-                vendorData={carsData}
-                sortingButtons={sortingButtons}
-            />
+        <>
+            <RegisterHeader />
+            <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
+                <div className="w-[5%] sm:w-[10%] md:w-[20%]">
+                    <ClientSidebar />
+                </div>
+                <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
+                    <div className="pb-5">
+                        <Breadcrumb items={breadcrumbItems} />
+                    </div>
+                    <VendorCategory
+                        title="Wedding Cars"
+
+                        vendorData={carsData}
+                        sortingButtons={sortingButtons}
+                    />
+                </div>
+            </div>
         </>
     );
 };

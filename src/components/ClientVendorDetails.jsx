@@ -31,7 +31,7 @@ function ClientVendorDetails({ MainImgPath, Name, StarCount, LocationCity, Email
                     <figure>
                         <img className='h-full w-96' src={MainImgPath} alt="Album" />
                     </figure>
-                    <div className="card-body bg-[#f9e9e3] text-black">
+                    <div className="card-body bg-[#f9e9e3] text-black ">
                         <h2 className="card-title font-bold text-6xl text-[#A57E17]">{Name}</h2>
                         <p>{StarCount} star hotel
                             <br />{LocationCity}
@@ -55,7 +55,7 @@ function ClientVendorDetails({ MainImgPath, Name, StarCount, LocationCity, Email
                 </div>
                 <div className="h-96">
                     <div className='flex justify-center mt-5 space-x-10 '>
-                        <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2'>
+                        <div className='flex flex-row flex-wrap items-center justify-center gap-10'>
                             {packages.map((pkg, index) => (
                                 <div key={index} onClick={() => openModal(pkg)}>
                                     <ServiceDescriptionCard
