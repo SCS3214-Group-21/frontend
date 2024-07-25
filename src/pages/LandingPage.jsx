@@ -12,7 +12,7 @@ function LandingPage(){
         <div>
             <LandingHeader />
             <div
-                className="bg-[#FFF8F5] h-[60rem] w-full bg-no-repeat bg-cover relative"
+                className="bg-[#FFF8F5] h-[42rem] w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/00.png')" }}
             >
                 <div className='absolute bottom-10 left-6 text-left'>
@@ -21,11 +21,12 @@ function LandingPage(){
                         subtitle = {"Celebrate"}
                         paragraph = {"From finding the perfect venue to choosing the right vendors, our platform makes wedding planning a breeze. Start your journey with us and create unforgettable memories."}
                         button = {"Login"}
+                        link = {"/login"}
                     />
                 </div>
             </div>
             <div
-                className="bg-[#FFF8F5] h-[60rem] w-full bg-no-repeat bg-cover relative"
+                className="bg-[#FFF8F5] h-[42rem] w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/000.png')" }}
             >
                 <div className='absolute bottom-10 right-6 text-right'>
@@ -34,6 +35,7 @@ function LandingPage(){
                         subtitle = {"Couples"}
                         paragraph = {"Create your free account today and start exploring top-notch services to bring your vision to life."}
                         button = {"Register"}
+                        link = {"/register"}
                     />
                 </div>
             </div>
@@ -48,7 +50,7 @@ function LandingPage(){
                 <PartnerBadges />
             </div>
             <div
-                className="bg-[#FFF8F5] h-[60rem] w-full bg-no-repeat bg-cover relative"
+                className="bg-[#FFF8F5] h-[42rem] w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/001.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
@@ -57,6 +59,7 @@ function LandingPage(){
                         subtitle = {"Service Provider"}
                         paragraph = {"Register now and showcase your talents to thousands of couples. No fees until your first booking!"}
                         button = {"Register"}
+                        link = {"/vendorregister1"}
                     />
                 </div>
             </div>
@@ -81,12 +84,13 @@ function LandingPage(){
             />
                         <CustomPinkButton 
                             text={"Subscribe"}
+                            link={"/"}
                         />
                     </div>
                 </div>
             </div>
             <div
-                className="bg-[#FFF8F5] h-[60rem] w-full bg-no-repeat bg-cover relative"
+                className="bg-[#FFF8F5] h-[42rem] w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/003.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
@@ -95,11 +99,12 @@ function LandingPage(){
                         subtitle = {"Boost..?"}
                         paragraph = {"Get Idea about our boosting service, ideally make for improving your business"}
                         button2 = {"Details"}
+                        link2 = {"/"}
                     />
                 </div>
             </div>
             <div
-                className="bg-[#FFF8F5] h-[60rem] w-full bg-no-repeat bg-cover relative"
+                className="bg-[#FFF8F5] h-[42rem] w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/004.png')" }}
             >
                 <div className='absolute  bottom-10 right-6 text-right'>
@@ -108,11 +113,12 @@ function LandingPage(){
                         subtitle = {"idea..?"}
                         paragraph = {"Read our excellent blogs and get idea about every simple steps easily. No Fee, Totally Free"}
                         button2 = {"Details"}
+                        link2 = {"/"}
                     />
                 </div>
             </div>
             <div
-                className="bg-[#FFF8F5] h-[60rem] w-full bg-no-repeat bg-cover relative"
+                className="bg-[#FFF8F5] h-[42rem] w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/005.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
@@ -120,6 +126,7 @@ function LandingPage(){
                         title = {"Feedback"}
                         paragraph = {"We value your thoughts! Share your thought with us... "}
                         button3 = {"Contact Us"}
+                        link3 = {"/"}
                     />
                 </div>
             </div>

@@ -4,13 +4,21 @@ import PublicRoute from './routes/PublicRoute'
 // import VendorProfilePage from './pages/VendorProfilePage'
 // import VendorIncomeGraph from './components/VendorIncomeGraph'
 // import BusinessDetailsForm from './components/BusinessDetailsForm'
-import CommentSection from './components/common/CommentSection'
+// import CommentSection from './components/common/CommentSection'
+// import LandingPage from './pages/LandingPage'
+// import ClientAllVendors from './pages/ClientVendorsPage/ClientAllVendors'
+// import RegisterType from './components/common/RegisterType'
 
 function App() {
   return (
     <>
+
+      {/* <LandingPage /> */}
+      {/* <ClientAllVendors /> */}
       <PublicRoute />
-      {/*<CommentSection />*/}
+      {/* <RegisterType /> */}
+      {/* <CommentSection /> */}
+
       {/* <div className="flex items-center justify-center h-[22rem] w-96 bg-white p-2">
       <BlogCard 
         img={"../src/assets/images/Images/01.png"}
