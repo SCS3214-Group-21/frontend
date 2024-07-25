@@ -1,27 +1,24 @@
 import React, { useState } from 'react';
 import StarRating from './ui/StarRating';
-import CustomGrayButton from './ui/CustomGrayButton';
 import SecondaryButton from './ui/SecondaryButton';
 
-const ClientFloralVendorDetails = ({
+const ClientCarsVendorDetails = ({
     vendorName,
     location,
     email,
     rating,
-    defaultColor,
+    defaultImage,
     images,
-    colorOptions,
     description,
     rentalTerms,
     paymentTerms,
-    basePrice
+    basePrice,
+    packageOptions
 }) => {
     const [isRentalTermsVisible, setIsRentalTermsVisible] = useState(false);
     const [isPaymentTermsVisible, setIsPaymentTermsVisible] = useState(false);
     const [quantity, setQuantity] = useState(1);
-    const [selectedColor, setSelectedColor] = useState(defaultColor); // Default color
-    const [mainImage, setMainImage] = useState(images[defaultColor]?.main || images[defaultColor]?.small[0]); // Default image
-    const [smallImages, setSmallImages] = useState(images[defaultColor]?.small || []);
+    const [selectedPackage, setSelectedPackage] = useState(packageOptions[0].name); // Default package
     const [price, setPrice] = useState(basePrice);
 
     const handleToggleRentalTerms = () => {
@@ -42,18 +39,17 @@ const ClientFloralVendorDetails = ({
         }
     };
 
-    const handleColorChange = (color) => {
-        setSelectedColor(color);
-        setMainImage(images[color]?.main || images[defaultColor]?.main);
-        setSmallImages(images[color]?.small || images[defaultColor]?.small);
-        setPrice(images[color]?.price || basePrice);
+    const handlePackageChange = (event) => {
+        const selectedOption = packageOptions.find(option => option.name === event.target.value);
+        setSelectedPackage(selectedOption.name);
+        setPrice(selectedOption.price);
     };
 
     return (
         <div className="flex flex-col p-8 mt-10 bg-white border-b-4 text-black border-[#FFDBC8] rounded-lg shadow-md relative md:mx-24 lg:mx-10 xl:mx-10 mb-6 w-full max-w-[1500px] mx-auto">
             <div className="flex flex-col lg:flex-row">
                 <div className="flex flex-col items-center justify-center p-4 space-y-4 lg:w-1/2">
-                    {[mainImage, ...smallImages].map((image, index) => (
+                    {images.map((image, index) => (
                         <img key={index} className="object-cover w-full h-auto max-w-md rounded-lg" src={`../src/assets/images/Images/${image}`} alt={`Image ${index + 1}`} />
                     ))}
                 </div>
@@ -64,15 +60,9 @@ const ClientFloralVendorDetails = ({
                             {location}<br />
                             {email}<br />
                             <StarRating starCount={rating} /><br />
-                            <b>{quantity * price} LKR</b>
                         </p>
                     </div>
-                    <div className='grid grid-cols-2 gap-4 p-4 lg:grid-cols-3 md:grid-cols-3 md:p-8'>
-                        {colorOptions.map((color) => (
-                            <CustomGrayButton key={color} text={color} onClick={() => handleColorChange(color)} />
-                        ))}
-                    </div>
-                    <p className='textarea-xs'>{description}</p>
+                    <p className='mt-4 textarea-xs'>{description}</p>
                     <div className="flex flex-col w-full">
                         <div className="divider"></div>
                         <div className="flex items-center justify-between cursor-pointer" onClick={handleToggleRentalTerms}>
@@ -100,6 +90,19 @@ const ClientFloralVendorDetails = ({
                         )}
                         <div className="mt-4 divider"></div>
                     </div>
+                    <div className="flex flex-col w-full mt-4">
+                        <label htmlFor="package" className="text-lg font-bold">Select Package:</label>
+                        <select
+                            id="package"
+                            value={selectedPackage}
+                            onChange={handlePackageChange}
+                            className="p-2 mt-2 border rounded"
+                        >
+                            {packageOptions.map((option, index) => (
+                                <option key={index} value={option.name}>{option.name}</option>
+                            ))}
+                        </select>
+                    </div>
                     <div className="flex items-center justify-between mt-4">
                         <div className='flex items-center space-x-4'>
                             <button className="flex items-center justify-center w-10 h-10 rounded-full bg-[#F0DFD7] hover:ring-2 hover:ring-[#A57E17]" onClick={handleDecrement}>
@@ -116,10 +119,13 @@ const ClientFloralVendorDetails = ({
                             <SecondaryButton text="Check Availability" />
                         </div>
                     </div>
+                    <div className="mt-4">
+                        <b>{quantity * price} LKR per day</b>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default ClientFloralVendorDetails;
+export default ClientCarsVendorDetails;

@@ -12,11 +12,13 @@ import PublicRoute from './routes/PublicRoute'
 function App() {
   return (
     <>
+
       {/* <LandingPage /> */}
       {/* <ClientAllVendors /> */}
       <PublicRoute />
       {/* <RegisterType /> */}
       {/* <CommentSection /> */}
+
       {/* <div className="flex items-center justify-center h-[22rem] w-96 bg-white p-2">
       <BlogCard 
         img={"../src/assets/images/Images/01.png"}
