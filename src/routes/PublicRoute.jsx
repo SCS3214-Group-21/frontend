@@ -34,6 +34,8 @@ import BlogPage from "../pages/BlogsPage";
 // import RegisterType from "../components/common/RegisterType";
 import ViewBlogPage from "../pages/ViewBlogPage";
 import ViewMyBlogPage from "../pages/ViewMyBlogPage";
+import ViewSaloonPage from "../pages/ViewSaloonPage";
+import ViewJewelleryPage from "../pages/ViewJewelleryPage";
 
 function PublicRoute() {
     return (
@@ -75,6 +77,8 @@ function PublicRoute() {
                     {/* <Route path="/registertype" element={<RegisterType />}></Route> */}
                     <Route path="viewblog" element={<ViewBlogPage />}></Route>
                     <Route path="viewmyblog" element={<ViewMyBlogPage />}></Route>
+                    <Route path="viewsaloons" element={<ViewSaloonPage />}></Route>
+                    <Route path="viewjewellery" element={<ViewJewelleryPage />}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
