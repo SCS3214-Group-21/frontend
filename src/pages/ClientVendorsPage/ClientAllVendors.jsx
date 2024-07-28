@@ -3,6 +3,7 @@ import RegisterHeader from "../../components/common/RegisterHeader";
 import ClientSidebar from "../../components/ClientSidebar"
 import LandingFooter from "../../components/common/LandingFooter";
 import ServicesCategoryCard from '../../components/common/ServicesCategoryCard';
+import Breadcrumb from '../../components/ui/Breadcrumb';
 
 function ClientAllVendors() {
     const cardData = [
@@ -22,23 +23,39 @@ function ClientAllVendors() {
         { img: "../src/assets/images/Images/03.png", alt: "Poruwa", type: "Poruwa", href: "#" },
         { img: "../src/assets/images/Images/03.png", alt: "Catering", type: "Catering", href: "#" }
     ];
+    const breadcrumbItems = [
+        { label: 'My Wedding', href: '/' },
+
+        { label: 'Vendors' },
+    ];
+
 
     return (
         <>
             <RegisterHeader />
-            <ClientSidebar />
-            <div className="flex flex-col bg-[#FFF8F5]">
-                <h1 className='text-3xl font-bold text-[#A57E17] ml-80 mt-4'>Vendors</h1>
-                <div className='grid grid-cols-4 gap-6 p-8 ml-80'>
-                    {cardData.map((card, index) => (
-                        <ServicesCategoryCard
-                            key={index}
-                            img={card.img}
-                            alt={card.alt}
-                            type={card.type}
-                            href={card.href}
-                        />
-                    ))}
+            <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
+                <div className="w-[5%] sm:w-[10%] md:w-[20%]">
+                    <ClientSidebar />
+                </div>
+                <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
+                    <div className="pb-5">
+                        <Breadcrumb items={breadcrumbItems} />
+                    </div>
+
+                    <div className="pb-5">
+                        <h1 className='text-4xl font-bold text-custom-primary'>Vendors</h1>
+                    </div>
+                    <div className="flex flex-wrap items-center justify-center gap-10">
+                        {cardData.map((card, index) => (
+                            <ServicesCategoryCard
+                                key={index}
+                                img={card.img}
+                                alt={card.alt}
+                                type={card.type}
+                                href={card.href}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </>

@@ -20,6 +20,7 @@ function HotelVendorDetails() {
     const packages = [
         { img: "../src/assets/images/Images/03.png", alt: "Package 01", name: "Package 01", price: "Price per person 20000LKR", description: "maximum 150 guests", showStars: false, value: 'package1', additional: 'This is package more details in paragraph.I want to show how this works and this is give more better idea about the package' },
         { img: "../src/assets/images/Images/03.png", alt: "Package 02", name: "Package 02", price: "Price per person 25000LKR", description: "maximum 200 guests", showStars: false, value: 'package2' },
+        { img: "../src/assets/images/Images/03.png", alt: "Package 03", name: "Package 03", price: "Price per person 25000LKR", description: "maximum 200 guests", showStars: false, value: 'package3' },
         // Add more packages as needed
     ];
 
@@ -34,19 +35,27 @@ function HotelVendorDetails() {
             { label: 'Transportation Services', type: 'text', value: 'transportation' },
             // More items
         ],
+        package3: [
+            { label: 'Decorated Venue', type: 'text', value: 'decoratedVenue' },
+            { label: 'Transportation Services', type: 'text', value: 'transportation' },
+            // More items
+        ],
+
         // Add more package items as needed
     };
 
     return (
         <>
             <RegisterHeader />
-            <div className="flex flex-col md:flex-row">
-                <ClientSidebar />
-                <div className="flex-1 bg-[#FFF8F5] min-h-screen">
-                    <div className="mt-4 ml-4 md:ml-24 lg:ml-80">
+            <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
+                <div className="w-[5%] sm:w-[10%] md:w-[20%]">
+                    <ClientSidebar />
+                </div>
+                <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
+                    <div className="pb-5">
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
-                    <div className="mt-4 ml-4 mr-4 md:ml-20 md:mr-20 lg:ml-80 lg:mr-80">
+                    <div className="mt-4 ml-4 mr-4 ">
                         <ClientVendorDetails
                             MainImgPath="../src/assets/images/Images/03.png"
                             Name="Shangri-la"
