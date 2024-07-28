@@ -12,12 +12,12 @@ export default function ClientSidebar() {
 
     const isMyWeddingPage = location.pathname === '/';
     const isVendorsPage = location.pathname === '/allvendors' || location.pathname === '/allhotels' || location.pathname === '/allphotographers' || location.pathname === '/allflorals';
-    const isBudgetPage = location.pathname === '/';//rename actual path
+    const isBudgetPage = location.pathname === '/budget' || location.pathname === '/planbudget';//rename actual path
     const isNotificationPage = location.pathname === '/';//rename actual path
     const isMessagesPage = location.pathname === '/allchats' || location.pathname === '/chat2';//rename actual path
     const isCalendarPage = location.pathname === '/';//rename actual path
     const isBookingsPage = location.pathname === '/';//rename actual path
-    const isBlogsPage = location.pathname === '/';//rename actual path
+    const isBlogsPage = location.pathname === '/blog';//rename actual path
     //const isLogoutPage = location.pathname === '/';//rename actual path
 
 
@@ -62,7 +62,7 @@ export default function ClientSidebar() {
                             isActive={isVendorsPage}
                         />
                         <SidebarButton
-                            href="#"
+                            href="/budget"
                             iconPath="M13.6 16.733c.234.269.548.456.895.534a1.4 1.4 0 0 0 1.75-.762c.172-.615-.446-1.287-1.242-1.481-.796-.194-1.41-.861-1.241-1.481a1.4 1.4 0 0 1 1.75-.762c.343.077.654.26.888.524m-1.358 4.017v.617m0-5.939v.725M4 15v4m3-6v6M6 8.5 10.5 5 14 7.5 18 4m0 0h-3.5M18 4v3m2 8a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"
                             label="Budget"
                             isOpen={isDrawerOpen}
@@ -100,7 +100,7 @@ export default function ClientSidebar() {
 
                         />
                         <SidebarButton
-                            href="#"
+                            href="/blog"
                             iconPath="M11 9h6m-6 3h6m-6 3h6M6.996 9h.01m-.01 3h.01m-.01 3h.01M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
                             label="Blogs"
                             isOpen={isDrawerOpen}

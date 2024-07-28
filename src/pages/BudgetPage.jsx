@@ -4,13 +4,12 @@ import ClientSidebar from "../components/ClientSidebar";
 import Breadcrumb from '../components/ui/Breadcrumb';
 import AddCard from '../components/common/AddCard';
 
-function BudgetPage(){
+function BudgetPage() {
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/' },
-        { label: 'Vendors', href: '/' },
-        { label: 'Hotels' },
+        { label: 'Budget' },
     ];
-    return(
+    return (
         <div>
             <RegisterHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
@@ -22,12 +21,12 @@ function BudgetPage(){
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-custom-primary font-bold text-4xl'>Budgets</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>Budget</h1>
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-                            <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
-                                <AddCard 
+                            <div className="flex items-center justify-center p-2 bg-white h-60 w-52">
+                                <AddCard
                                     text={"Plan Budget"}
                                     link={"/planbudget"}
                                 />

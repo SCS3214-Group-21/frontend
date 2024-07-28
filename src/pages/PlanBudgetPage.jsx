@@ -5,13 +5,13 @@ import Breadcrumb from '../components/ui/Breadcrumb';
 import AddCard from '../components/common/AddCard';
 import PlanBudgetForm from "../components/PlanBudgetForm";
 
-function PlanBudgetPage(){
+function PlanBudgetPage() {
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/' },
-        { label: 'Vendors', href: '/' },
-        { label: 'Hotels' },
+        { label: 'Budget', href: '/budget' },
+        { label: 'Plan Budget' },
     ];
-    return(
+    return (
         <div>
             <RegisterHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
@@ -23,7 +23,7 @@ function PlanBudgetPage(){
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-custom-primary font-bold text-4xl'>Plan Budget</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>Plan Budget</h1>
                     </div>
                     <div className="pb-5">
                         <PlanBudgetForm />

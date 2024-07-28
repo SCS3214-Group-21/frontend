@@ -54,14 +54,18 @@ function FloralVendorDetails() {
 
   return (
     <>
+
       <RegisterHeader />
-      <div className="flex flex-col md:flex-row">
-        <ClientSidebar />
-        <div className="flex-1 bg-[#FFF8F5] min-h-screen">
-          <div className="mt-4 ml-4 md:ml-24 lg:ml-80">
+      <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
+        <div className="w-[5%] sm:w-[10%] md:w-[20%]">
+          <ClientSidebar />
+        </div>
+        <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
+          <div className="pb-5">
             <Breadcrumb items={breadcrumbItems} />
           </div>
-          <div className="mt-4 ml-4 mr-4 md:ml-20 md:mr-20 lg:ml-80 lg:mr-80">
+
+          <div className="mt-4 ml-2 mr-4 ">
             <ClientFloralVendorDetails {...vendorDetails} />
           </div>
         </div>

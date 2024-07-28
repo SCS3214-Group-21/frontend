@@ -2,8 +2,13 @@ import React from 'react';
 import RegisterHeader from '../../components/common/RegisterHeader';
 import ClientSidebar from '../../components/ClientSidebar';
 import Chatbox from '../../components/common/Chatbox';
+import Breadcrumb from '../../components/ui/Breadcrumb';
 
 function ClientAllChats() {
+    const breadcrumbItems = [
+        { label: 'My Wedding', href: '/' },
+        { label: 'Messages' },
+    ];
     return (
         <>
             <div className="bg-[#FFF8F5] min-h-screen flex flex-col">
@@ -12,8 +17,11 @@ function ClientAllChats() {
                     <ClientSidebar />
                     <div className="flex flex-col flex-1">
                         <div className="flex flex-col mt-4 ml-4 md:ml-24 lg:ml-80">
-                            <div className="flex items-center">
-                                <h1 className="text-3xl font-bold text-[#A57E17]">Chat</h1>
+                            <div className="pb-5">
+                                <Breadcrumb items={breadcrumbItems} />
+                            </div>
+                            <div className="pb-3">
+                                <h1 className='text-4xl font-bold text-custom-primary'>Messages</h1>
                             </div>
                         </div>
 
