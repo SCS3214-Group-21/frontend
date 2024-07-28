@@ -2,7 +2,7 @@ import React from "react";
 import SecondaryButton from "./ui/SecondaryButton";
 
 function VendorDescription(props){
-    const { o_name, address, email, starCount, showStars, img, v_name, text, link } = props;
+    const { o_name, address, email, starCount, showStars, img, v_name, text, link, button } = props;
 
     return(
         <div className="w-full min-h-52">
@@ -32,7 +32,7 @@ function VendorDescription(props){
                         </div>
                     )}
                 </div>
-                <SecondaryButton link={link} text={"Book Now"} />
+                <SecondaryButton link={link} text={button} />
             </div>
             <div className="flex flex-col lg:flex-row items-center w-full flex-wrap gap-5 lg:gap-[5%] py-5">
                 <div className="flex flex-col w-56 lg:w-[30%] h-80">

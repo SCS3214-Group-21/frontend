@@ -36,6 +36,8 @@ import ViewBlogPage from "../pages/ViewBlogPage";
 import ViewMyBlogPage from "../pages/ViewMyBlogPage";
 import ViewSaloonPage from "../pages/ViewSaloonPage";
 import ViewJewelleryPage from "../pages/ViewJewelleryPage";
+import ViewDressingPage from "../pages/ViewDressingPage";
+import CalenderPage from "../pages/CalenderPage";
 
 function PublicRoute() {
     return (
@@ -79,6 +81,8 @@ function PublicRoute() {
                     <Route path="viewmyblog" element={<ViewMyBlogPage />}></Route>
                     <Route path="viewsaloons" element={<ViewSaloonPage />}></Route>
                     <Route path="viewjewellery" element={<ViewJewelleryPage />}></Route>
+                    <Route path="viewdressing" element={<ViewDressingPage />}></Route>
+                    <Route path="calender" element={<CalenderPage />}></Route>
                 </Routes>
             </BrowserRouter>
         </div>

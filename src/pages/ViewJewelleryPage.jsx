@@ -97,11 +97,12 @@ function ViewJewelleryPage(){
                             v_name={"Dhanushi Premarathne"}
                             text={"We offer a comprehensive range of beauty treatments designed to meet all your needs and exceed your expectations. Our expert team, is dedicated to providing you with an exceptional experience, using the latest techniques and top-quality products. Whether you're looking for a refreshing new look or a relaxing retreat, we have the perfect solution to enhance your natural beauty and boost your confidence. Experience the epitome of beauty at Liyo Salon, where your satisfaction is our top priority. Discover the finest selection of beauty products at Liyo Salon, carefully curated to ensure you achieve salon-quality results at home. Our range includes top-tier brands and exclusive items that cater to all your hair, skin, and beauty needs. Each product is chosen for its superior quality and effectiveness, helping you maintain and enhance your natural beauty between visits.."}
                             link={"/"}
+                            button={"Book Now"}
                         />
                     </div>
                     <div className="flex items-center justify-center w-full py-5 bg-[#f9f7f5]">
-                        <div className="flex-grow h-[1px] bg-custom-primary mx-2"></div>
-                        <span className="text-custom-primary font-bold">Bridal Packages</span>
+                        <div className="flex-grow h-[1px] bg-custom-primary m-2"></div>
+                        <span className="text-custom-primary font-bold">Services</span>
                         <div className="flex-grow h-[1px] bg-custom-primary mx-2"></div>
                     </div>
                     <div className="pb-5">
@@ -111,7 +112,7 @@ function ViewJewelleryPage(){
                     </div>
                     <div className="flex items-center justify-center w-full py-5">
                         <div className="flex-grow h-[1px] bg-custom-primary mx-2"></div>
-                        <span className="text-custom-primary font-bold">Bridal Services</span>
+                        <span className="text-custom-primary font-bold">Bridal Packages</span>
                         <div className="flex-grow h-[1px] bg-custom-primary mx-2"></div>
                     </div>
                     <div className="pb-5">
