@@ -23,7 +23,7 @@ function FileInputField(props) {
                     padding: 0 3px;
                     background: #FFF8F5;
                     width: fit-content;
-                    z-index: 10;
+                    // z-index: ;
                 }
 
                 .file-input {

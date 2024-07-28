@@ -32,8 +32,17 @@ import CreateBlogPage from "../pages/CreateBlogPage";
 import UpdateBlogPage from "../pages/UpdateBlogPage";
 import BlogPage from "../pages/BlogsPage";
 // import RegisterType from "../components/common/RegisterType";
+
 import ClientAllBookings from "../pages/ClientBookingPage/ClientAllBookings";
 import ClientBookingDetailsPage from "../pages/ClientBookingPage/ClientBookingDetailsPage";
+
+import ViewBlogPage from "../pages/ViewBlogPage";
+import ViewMyBlogPage from "../pages/ViewMyBlogPage";
+import ViewSaloonPage from "../pages/ViewSaloonPage";
+import ViewJewelleryPage from "../pages/ViewJewelleryPage";
+import ViewDressingPage from "../pages/ViewDressingPage";
+import CalenderPage from "../pages/CalenderPage";
+
 
 function PublicRoute() {
     return (
@@ -73,8 +82,17 @@ function PublicRoute() {
                     <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
                     <Route path="/blog" element={<BlogPage />}></Route>
                     {/* <Route path="/registertype" element={<RegisterType />}></Route> */}
+
                     <Route path="/bookings" element={<ClientAllBookings />}></Route>
                     <Route path="/bookingdetails" element={<ClientBookingDetailsPage />}></Route>
+
+                    <Route path="viewblog" element={<ViewBlogPage />}></Route>
+                    <Route path="viewmyblog" element={<ViewMyBlogPage />}></Route>
+                    <Route path="viewsaloons" element={<ViewSaloonPage />}></Route>
+                    <Route path="viewjewellery" element={<ViewJewelleryPage />}></Route>
+                    <Route path="viewdressing" element={<ViewDressingPage />}></Route>
+                    <Route path="calender" element={<CalenderPage />}></Route>
+
                 </Routes>
             </BrowserRouter>
         </div>
