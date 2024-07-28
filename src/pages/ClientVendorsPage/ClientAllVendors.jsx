@@ -45,7 +45,7 @@ function ClientAllVendors() {
                     <div className="pb-5">
                         <h1 className='text-4xl font-bold text-custom-primary'>Vendors</h1>
                     </div>
-                    <div className="flex flex-wrap items-center justify-center gap-10">
+                    <div className="flex flex-wrap items-center justify-center gap-10 mb-10">
                         {cardData.map((card, index) => (
                             <ServicesCategoryCard
                                 key={index}

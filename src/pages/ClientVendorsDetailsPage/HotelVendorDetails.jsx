@@ -18,9 +18,9 @@ function HotelVendorDetails() {
     ];
 
     const packages = [
-        { img: "../src/assets/images/Images/03.png", alt: "Package 01", name: "Package 01", price: "Price per person 20000LKR", description: "maximum 150 guests", showStars: false, value: 'package1', additional: 'This is package more details in paragraph.I want to show how this works and this is give more better idea about the package' },
-        { img: "../src/assets/images/Images/03.png", alt: "Package 02", name: "Package 02", price: "Price per person 25000LKR", description: "maximum 200 guests", showStars: false, value: 'package2' },
-        { img: "../src/assets/images/Images/03.png", alt: "Package 03", name: "Package 03", price: "Price per person 25000LKR", description: "maximum 200 guests", showStars: false, value: 'package3' },
+        { img: "../src/assets/images/Images/03.png", alt: "Package 01", name: "Package 01", price: "20000LKR", description: "maximum 150 guests", showStars: false, value: 'package1', additional: 'This is package more details in paragraph.I want to show how this works and this is give more better idea about the package' },
+        { img: "../src/assets/images/Images/03.png", alt: "Package 02", name: "Package 02", price: "25000LKR", description: "maximum 200 guests", showStars: false, value: 'package2' },
+        { img: "../src/assets/images/Images/03.png", alt: "Package 03", name: "Package 03", price: "25000LKR", description: "maximum 200 guests", showStars: false, value: 'package3' },
         // Add more packages as needed
     ];
 
@@ -59,6 +59,7 @@ function HotelVendorDetails() {
                         <ClientVendorDetails
                             MainImgPath="../src/assets/images/Images/03.png"
                             Name="Shangri-la"
+                            Type="Hotel"
                             StarCount="4"
                             LocationCity="Colombo, Hambantota"
                             Email="shangrila@gmail.com"

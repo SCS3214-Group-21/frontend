@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import SecondaryNoneFillButton from './ui/SecondaryNoneFillButton';
 import ServiceDescriptionCard from './common/ServiceDescriptionCard';
-import PrimaryNoneFillButton from './ui/PrimaryNoneFillButton';
 import VendorImagesPopup from './common/VendorImagesPopup';
+import PackageModal from './PackageModal';
 
-function ClientVendorDetails({ MainImgPath, Name, StarCount, LocationCity, Email, ServiceDescription, packages, packageItems, images }) {
+
+function ClientVendorDetails({ MainImgPath, Name, Type, StarCount, LocationCity, Email, ServiceDescription, packages, packageItems, images }) {
     const [selectedPackage, setSelectedPackage] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -33,7 +33,7 @@ function ClientVendorDetails({ MainImgPath, Name, StarCount, LocationCity, Email
                     </figure>
                     <div className="card-body bg-[#f9e9e3] text-black ">
                         <h2 className="card-title font-bold text-6xl text-[#A57E17]">{Name}</h2>
-                        <p>{StarCount} star hotel
+                        <p>{StarCount} star {Type}
                             <br />{LocationCity}
                             <br />{Email}</p>
                         <div className='flex'>
@@ -73,52 +73,15 @@ function ClientVendorDetails({ MainImgPath, Name, StarCount, LocationCity, Email
                     </div>
 
                     {isOpen && selectedPackage && (
-                        <div className="modal" role="dialog" id="popup">
-                            <div className="modal-box bg-[#f9e9e3] text-black relative">
-                                <button
-                                    className="absolute btn btn-sm btn-circle btn-ghost right-12 top-2"
-                                    onClick={downloadPDF}
-                                >
-                                    <svg className="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 13V4M7 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2m-1-5-4 5-4-5m9 8h.01" />
-                                    </svg>
+                        <PackageModal
+                            selectedPackage={selectedPackage}
+                            packageItems={packageItems}
+                            closeModal={closeModal}
+                            downloadPDF={downloadPDF}
+                            vendorName={Name}
+                            vendorType={Type}
 
-                                </button>
-                                <button
-                                    className="absolute btn btn-sm btn-circle btn-ghost right-2 top-2"
-                                    onClick={closeModal}
-                                >
-                                    ✕
-                                </button>
-                                <h3 className="text-lg font-bold">{selectedPackage.name}</h3>
-                                <div className="grid grid-cols-2 gap-2 py-4 form-control">
-                                    {packageItems[selectedPackage.value]?.map((item, index) => (
-                                        <label key={index} className="cursor-pointer label">
-                                            <span className="text-black label-text"> {item.label}</span>
-                                            <input
-                                                type="checkbox"
-                                                defaultChecked
-                                                className="checkbox border-[#A57E17] [--chkbg:#A57E17] [--chkfg:white] checked:border-[#A57E17]"
-                                            />
-                                        </label>
-                                    ))}
-                                </div>
-                                {selectedPackage.additional && (<div className="relative mt-4">
-                                    <div className="absolute -top-3 left-3 bg-[#f9e9e3] px-1">
-                                        <span className="text-sm text-gray-700">Description</span>
-                                    </div>
-                                    <p className="w-full border-black bg-[#f9e9e3] border mt-5 p-2">
-                                        {selectedPackage.additional}
-                                    </p>
-                                </div>)}
-                                <div className='flex mt-4'>
-                                    <PrimaryNoneFillButton text="Get Quotation" />
-                                    <div className="absolute mb-4 right-4 bottom">
-                                        <SecondaryNoneFillButton text="Book Now!" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        />
                     )}
                 </div>
             </div>
