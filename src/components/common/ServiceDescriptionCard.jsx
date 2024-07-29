@@ -4,7 +4,7 @@ function ServiceDescriptionCard(props) {
     const { href, img, alt, name, price, description, starCount, showStars } = props;
 
     return (
-        <div className={`w-[264px] h-[340px] max-w-sm bg-[#FFFBEB] border border-gray-200 rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl ${showStars ? '' : 'hide-stars'}`}>
+        <div className={`w-[264px] h-full max-w-sm bg-[#FFFBEB] border border-gray-200 rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl ${showStars ? '' : 'hide-stars'}`}>
             <a href={href} className="block">
                 <div className="p-4">
                     <img className="object-cover w-full h-40 rounded-lg" src={img} alt={alt} />
@@ -12,7 +12,7 @@ function ServiceDescriptionCard(props) {
                 <div className="px-5 pb-4">
                     <h6 className="text-lg font-semibold tracking-tight text-gray-900">{name}</h6>
                     <div className="flex items-center justify-between mt-2">
-                        <span className="text-lg font-bold text-gray-900">{price}</span>
+                        <span className="text-lg font-bold text-gray-900">Price per person<br />{price}</span>
                     </div>
                     <p className="mt-2 text-sm text-gray-600 line-clamp-2">
                         {description}
