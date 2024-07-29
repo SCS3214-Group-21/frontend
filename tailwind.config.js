@@ -38,6 +38,9 @@ export default {
         'custom-blue-dark': '#005f6b',  // dark teal blue
         'custom-pink': '#CE427B',
       },
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [

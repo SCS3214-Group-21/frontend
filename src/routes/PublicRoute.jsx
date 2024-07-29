@@ -31,7 +31,8 @@ import PlanBudgetPage from "../pages/PlanBudgetPage";
 import CreateBlogPage from "../pages/CreateBlogPage";
 import UpdateBlogPage from "../pages/UpdateBlogPage";
 import BlogPage from "../pages/BlogsPage";
-// import RegisterType from "../components/common/RegisterType";
+
+import LandingPageBackup from "../pages/LandingPageBackup.jsx";
 
 import ClientAllBookings from "../pages/ClientBookingPage/ClientAllBookings";
 import ClientBookingDetailsPage from "../pages/ClientBookingPage/ClientBookingDetailsPage";
@@ -49,7 +50,8 @@ function PublicRoute() {
         <div>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<LandingPage />}></Route>
+                    {/*<Route path="/" element={<LandingPage />}></Route>*/}
+                    <Route path="/" element={<LandingPageBackup />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                     <Route path="/register" element={<ClientRegisterPage />}></Route>
                     <Route path="/vendorregister1" element={<VendorRegister01 />}></Route>
@@ -81,7 +83,8 @@ function PublicRoute() {
                     <Route path="/createblog" element={<CreateBlogPage />}></Route>
                     <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
                     <Route path="/blog" element={<BlogPage />}></Route>
-                    {/* <Route path="/registertype" element={<RegisterType />}></Route> */}
+
+
 
                     <Route path="/bookings" element={<ClientAllBookings />}></Route>
                     <Route path="/bookingdetails" element={<ClientBookingDetailsPage />}></Route>

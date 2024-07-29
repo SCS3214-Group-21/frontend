@@ -6,7 +6,7 @@ function PrimaryButton(props) {
     return (
         <button 
             type="button" 
-            class="text-white bg-gradient-to-br from-yellow-500 to-yellow-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2.5 mb-2"
+            className="text-white bg-gradient-to-br from-yellow-600 to-yellow-800 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-yellow-600 dark:focus:ring-yellow-700 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2.5 mb-2"
         >
             {props.text}
         </button>
