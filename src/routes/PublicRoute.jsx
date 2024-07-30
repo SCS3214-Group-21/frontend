@@ -79,7 +79,7 @@ function PublicRoute() {
                     <Route path="/budget" element={<BudgetPage />}></Route>
                     <Route path="/planbudget" element={<PlanBudgetPage />}></Route>
                     <Route path="/createblog" element={<CreateBlogPage />}></Route>
-                    <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
+                    <Route path="/updateblog/:id" element={<UpdateBlogPage />}></Route>
                     <Route path="/blogs" element={<BlogPage />}></Route>
                     {/* <Route path="/registertype" element={<RegisterType />}></Route> */}
 
@@ -87,7 +87,7 @@ function PublicRoute() {
                     <Route path="/bookingdetails" element={<ClientBookingDetailsPage />}></Route>
 
                     <Route path="viewblog/:id" element={<ViewBlogPage />}></Route>
-                    <Route path="viewmyblog" element={<ViewMyBlogPage />}></Route>
+                    <Route path="viewmyblog/:id" element={<ViewMyBlogPage />}></Route>
                     <Route path="viewsaloons" element={<ViewSaloonPage />}></Route>
                     <Route path="viewjewellery" element={<ViewJewelleryPage />}></Route>
                     <Route path="viewdressing" element={<ViewDressingPage />}></Route>

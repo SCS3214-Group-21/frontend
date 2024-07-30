@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import CommentSection from "../components/common/CommentSection";
 import RegisterHeader from "../components/common/RegisterHeader";
@@ -13,6 +13,7 @@ function ViewBlogPage() {
     const [blog, setBlog] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBlog = async () => {
@@ -28,6 +29,15 @@ function ViewBlogPage() {
 
         fetchBlog();
     }, [id]);
+
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`${baseURL}/delete-blog/${id}`);
+            navigate('/blogs'); // Redirect to the blogs page after deletion
+        } catch (error) {
+            setError('Failed to delete blog.');
+        }
+    };
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
@@ -60,9 +70,12 @@ function ViewBlogPage() {
                                 <img src={`http://localhost:8000/uploads/blogs/${blog.img}`} alt={blog.title} className="w-full h-full sm:w-3/4 sm:h-[32rem]" />
                             </div>
                             <div>
-                                <p className="text-justify text-black p-5">{blog.description}</p> {/* Assuming 'content' field is present */}
+                                <p className="text-justify text-black p-5">{blog.description}</p> {/* Assuming 'description' field is present */}
                             </div>
                             <h2 className="font-semibold p-5 text-black">Published By : <span className="font-normal">{blog.author}</span></h2> {/* Assuming 'author' field */}
+                            <div className="mt-4 flex justify-end">
+                                <button onClick={handleDelete} className="bg-red-500 text-white p-2 rounded">Delete Blog</button>
+                            </div>
                             <CommentSection />
                         </div>
                     </div>
