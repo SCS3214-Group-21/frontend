@@ -86,7 +86,7 @@ function PublicRoute() {
                     <Route path="/bookings" element={<ClientAllBookings />}></Route>
                     <Route path="/bookingdetails" element={<ClientBookingDetailsPage />}></Route>
 
-                    <Route path="viewblog" element={<ViewBlogPage />}></Route>
+                    <Route path="viewblog/:id" element={<ViewBlogPage />}></Route>
                     <Route path="viewmyblog" element={<ViewMyBlogPage />}></Route>
                     <Route path="viewsaloons" element={<ViewSaloonPage />}></Route>
                     <Route path="viewjewellery" element={<ViewJewelleryPage />}></Route>

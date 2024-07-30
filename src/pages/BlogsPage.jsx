@@ -1,52 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import RegisterHeader from "../components/common/RegisterHeader";
 import ClientSidebar from "../components/ClientSidebar";
 import Breadcrumb from '../components/ui/Breadcrumb';
-import AddCard from '../components/common/AddCard';
 import BlogCard from "../components/common/BlogCard";
-import Pagination from '../components/common/Pagination'
+import Pagination from '../components/common/Pagination';
 
-const items = [
-    { img: 'src/assets/Images/Images/01.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: 'src/assets/Images/Images/02.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: 'src/assets/Images/Images/03.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: 'src/assets/Images/Images/04.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: 'src/assets/Images/Images/05.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: 'src/assets/Images/Images/06.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: 'src/assets/Images/Images/07.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-];
-
-const renderItems = (currentItems) => (
-    // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-    <div className="flex flex-row flex-wrap items-center justify-center gap-10">
-        {/* <div className="flex items-center justify-center p-2 bg-white h-72 w-60">
-            <AddCard
-                text={"Create Blog"}
-                link={"/createblog"}
-            />
-        </div> */}
-        {currentItems.map((item, index) => (
-            <div key={index} className='flex items-center justify-center p-2 bg-white h-72 w-60'>
-                <BlogCard
-                    img={item.img}
-                    text={item.text}
-                    date={item.date}
-                    time={item.time}
-                    button={"Read Blog"}
-                    link={"/"}
-                />
-            </div>
-        ))}
-    </div>
-    // </div>
-);
+const baseURL = "http://localhost:8000/blog";
 
 function BlogPage() {
+    const [blogs, setBlogs] = useState([]);
+
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const response = await axios.get(`${baseURL}/view-blogs`);
+                console.log('Response data:', response.data); // Log response data
+                setBlogs(response.data);
+            } catch (error) {
+                console.error('Error fetching blogs', error);
+            }
+        };
+    
+        fetchBlogs();
+    }, []);
+
+    const renderItems = (currentItems) => (
+        <div className="flex flex-row flex-wrap items-center justify-center gap-10">
+            {currentItems.length > 0 ? (
+                currentItems.map((blog, index) => {
+                    const image = `http://localhost:8000/uploads/blogs/${blog.img}`;
+                    return (
+                        <div key={index} className='flex items-center justify-center p-2 bg-white h-72 w-60'>
+                            <BlogCard
+                                img={image}
+                                text={blog.title}
+                                date={blog.date}
+                                time={blog.time}
+                                button={"Read Blog"}
+                                link={`/viewblog/${blog.blog_id}`} // Modify this link as needed
+                            />
+                        </div>
+                    );
+                })
+            ) : (
+                <p>No blogs available</p>
+            )}
+        </div>
+    );
+
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/' },
         { label: 'Vendors', href: '/' },
-        { label: 'Hotels' },
+        { label: 'Blogs' },
     ];
+
     return (
         <div>
             <RegisterHeader />
@@ -55,21 +63,21 @@ function BlogPage() {
                     <ClientSidebar />
                 </div>
                 <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
-                    {/* <div className="pb-5">
+                    <div className="pb-5">
                         <Breadcrumb items={breadcrumbItems} />
-                    </div> */}
+                    </div>
                     <div className="pb-5">
                         <h1 className='text-4xl font-bold text-custom-primary'>Blogs</h1>
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-                            <Pagination items={items} itemsPerPage={5} renderItems={renderItems} />
+                            <Pagination items={blogs} itemsPerPage={5} renderItems={renderItems} />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default BlogPage
+export default BlogPage;
