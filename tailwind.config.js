@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}"
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -18,6 +18,7 @@ export default {
         'custom-gray': '#ECF2F3',
         'white-80': 'rgba(255, 255, 255, 0.8)',
         'custom-pink': '#CE427B',
+        'custom-gray-16': 'rgba(29, 27, 32, 0.16)', // 16% opacity for #1D1B20
       },
       textColor: {
         'custom-primary': '#A57E17',
@@ -44,4 +45,3 @@ export default {
     require('daisyui'),
   ],
 }
-

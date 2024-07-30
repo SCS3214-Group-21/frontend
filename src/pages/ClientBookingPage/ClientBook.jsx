@@ -4,6 +4,7 @@ import ClientSidebar from "../../components/ClientSidebar";
 import Breadcrumb from "../../components/ui/Breadcrumb";
 import WhiteCard from "../../components/WhiteCard";
 import Chatbox2 from "../../components/common/Chatbox2";
+import FilterChip from "../../components/common/FilterChip";
 
 function ClientBook() {
   const breadcrumbItems = [
@@ -22,15 +23,16 @@ function ClientBook() {
             </div>
             <div>
               <h1 className="text-4xl font-bold text-custom-primary">
-                Booking
+                Bookings
               </h1>
+            <FilterChip/>
             </div>
           </div>
           <div className="flex flex-col flex-1 p-4 mt-5 mr-10 lg:mr-35 bg-white border-b-4 border-[#FFDBC8] rounded-lg shadow-md relative overflow-hidden ml-8 md:ml-24 lg:ml-80 mb-6 space-y-0">
             <Chatbox2
               Name="Vendor1"
               Status="Sent"
-              Message="Accept"
+              Message="Accepted"
               Time="12:34"
               Path="/chat2"
               buttontext="View Details"
@@ -38,11 +40,12 @@ function ClientBook() {
             <Chatbox2
               Name="Vendor2"
               Status="Delivered"
-              Message="Accept"
+              Message="Accepted"
               Time="10:20"
               Path="/chat2"
               buttontext="View Details"
             />
+            
           </div>
         </div>
       </div>

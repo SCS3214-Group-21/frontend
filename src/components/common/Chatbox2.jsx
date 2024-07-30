@@ -13,14 +13,14 @@ function Chatbox(props) {
                             src="../../src/assets/images/Images/Profile.png"
                         />
                     </div>
-                    <div className='flex flex-col ml-10 text-black mt-2'>
+                    <div className='flex flex-col ml-10 text-black mt-2 font-bold'>
                         {Name}
 
                     </div>
                         <div className='flex text-gray-200 ml-10'>
-                        <a href="#" className="inline-flex items-center px-2 py-0 text-sm font-medium text-center text-grey bg-[#00696D] rounded-lg  focus:ring-4 focus:outline-none focus:ring-[#00696D]-2 dark:bg-[#00696D]-600 dark:hover:bg-[#00696D]-700 dark:focus:ring-[#00696D]-800">  
-                        {Message}
-                        </a>
+                        <span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 mt-4 rounded-full dark:bg-green-900 dark:text-green-300">
+      {Message}
+    </span>
                         </div>
                     <div className='ml-auto mt-2 text-black'>
                         {Time}
