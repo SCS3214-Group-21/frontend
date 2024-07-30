@@ -31,6 +31,7 @@ import PlanBudgetPage from "../pages/PlanBudgetPage";
 import CreateBlogPage from "../pages/CreateBlogPage";
 import UpdateBlogPage from "../pages/UpdateBlogPage";
 import BlogPage from "../pages/BlogsPage";
+import ClientBook from "../pages/ClientBookingPage/ClientBook";
 // import RegisterType from "../components/common/RegisterType";
 
 function PublicRoute() {
@@ -70,6 +71,7 @@ function PublicRoute() {
                     <Route path="/createblog" element={<CreateBlogPage />}></Route>
                     <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
                     <Route path="/blog" element={<BlogPage />}></Route>
+                    <Route path="/clientbook" element={<ClientBook />}></Route>
                     {/* <Route path="/registertype" element={<RegisterType />}></Route> */}
                 </Routes>
             </BrowserRouter>

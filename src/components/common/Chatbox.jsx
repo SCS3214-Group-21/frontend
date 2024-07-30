@@ -5,9 +5,9 @@ function Chatbox(props) {
     return (
         <div>
             <a href={Path} >
-                <div className='flex  flex-1 px-4 py-4 mb-5 bg-[#FFDBC8] border-2 border-[#FFDBC8] rounded-lg shadow-md left-3 right-3 hover:border-[#bbaaa2]'>
+                <div className='flex  flex-1 px-4 py-3 mb-1.5 bg-[#FFDBC8] border-2 border-[#FFDBC8] rounded-lg shadow-md left-3 right-3 hover:border-[#bbaaa2]'>
 
-                    <div className="w-20 ml-10 rounded-full lg:w-10">
+                    <div className="w-20 ml-5 rounded-full lg:w-10">
                         <img
                             alt="Avatar"
                             src="../../src/assets/images/Images/Profile.png"
