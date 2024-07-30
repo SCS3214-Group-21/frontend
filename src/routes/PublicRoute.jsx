@@ -80,7 +80,7 @@ function PublicRoute() {
                     <Route path="/planbudget" element={<PlanBudgetPage />}></Route>
                     <Route path="/createblog" element={<CreateBlogPage />}></Route>
                     <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
-                    <Route path="/blog" element={<BlogPage />}></Route>
+                    <Route path="/blogs" element={<BlogPage />}></Route>
                     {/* <Route path="/registertype" element={<RegisterType />}></Route> */}
 
                     <Route path="/bookings" element={<ClientAllBookings />}></Route>
