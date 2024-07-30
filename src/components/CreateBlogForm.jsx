@@ -43,7 +43,7 @@ function CreateBlogForm() {
 
             if (response.status === 200) {
                 console.log('Blog creation successful');
-                navigate("/"); // Redirect to the desired page
+                navigate("/blogs"); // Redirect to the desired page
             } else {
                 alert('Blog creation failed');
             }
