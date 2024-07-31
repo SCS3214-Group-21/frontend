@@ -9,25 +9,37 @@ function ClientAllChats() {
         { label: 'My Wedding', href: '/mywedding' },
         { label: 'Messages' },
     ];
+
     return (
         <>
-            <div className="bg-[#FFF8F5] min-h-screen flex flex-col">
-                <RegisterHeader />
-                <div className="flex flex-1">
+            <RegisterHeader />
+            <div className="bg-[#FFF8F5] min-h-screen flex flex-row">
+                <div className="w-[5%] sm:w-[10%] md:w-[20%]">
                     <ClientSidebar />
-                    <div className="flex flex-col flex-1">
-                        <div className="flex flex-col mt-4 ml-4 md:ml-24 lg:ml-80">
-                            <div className="pb-5">
-                                <Breadcrumb items={breadcrumbItems} />
-                            </div>
-                            <div className="pb-3">
-                                <h1 className='text-4xl font-bold text-custom-primary'>Messages</h1>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col flex-1 p-4 mt-10 mr-10 lg:mr-20 bg-white border-b-4 border-[#FFDBC8] rounded-lg shadow-md relative overflow-hidden ml-8 md:ml-24 lg:ml-80 mb-6 space-y-4">
-                            <Chatbox Name="Vendor1" Status="Sent" Message="This is suit to my wedding" Time="12:34" Path="/chat2" />
-                            <Chatbox Name="Vendor2" Status="Delivered" Message="Okay thank you!" Time="10:20" Path="/chat2" />
+                </div>
+                <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
+                    <div className="pb-5">
+                        <Breadcrumb items={breadcrumbItems} />
+                    </div>
+                    <div className="pb-5">
+                        <h1 className='text-4xl font-bold text-custom-primary'>Messages</h1>
+                    </div>
+                    <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-5 sm:p-10'>
+                        <div className="space-y-4">
+                            <Chatbox
+                                Name="Vendor1"
+                                Status="Sent"
+                                Message="This is suit to my wedding"
+                                Time="12:34"
+                                Path="/chat2"
+                            />
+                            <Chatbox
+                                Name="Vendor2"
+                                Status="Delivered"
+                                Message="Okay thank you!"
+                                Time="10:20"
+                                Path="/chat2"
+                            />
                         </div>
                     </div>
                 </div>
