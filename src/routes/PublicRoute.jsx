@@ -52,7 +52,12 @@ import AllJewelleryPage from "../pages/ClientVendorsPage/AllJewelleryPage";
 import AllSalonPage from "../pages/ClientVendorsPage/AllSalonPage";
 import AllDressersPage from "../pages/ClientVendorsPage/AllDressersPage";
 import NotificationPage from "../pages/NotificationPage";
+
+import AdminBlogAcceptPage from "../pages/AdminBlogAcceptPage";
+
+
 import VendorRegister from "../pages/VendorRegister.jsx";
+
 
 
 function PublicRoute() {
@@ -114,6 +119,7 @@ function PublicRoute() {
                     <Route path="/adminblogs" element={<AdminBlogPage />}></Route>
                     <Route path="/admincreateblog" element={<AdminCreateBlogPage />}></Route>
                     <Route path="/notification" element={<NotificationPage />}></Route>
+                    <Route path="/acceptblogs" element={<AdminBlogAcceptPage />}></Route>
 
 
                 </Routes>
