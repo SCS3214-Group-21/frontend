@@ -6,7 +6,7 @@ import AddCard from '../components/common/AddCard';
 
 function BudgetPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
+        { label: 'My Wedding', href: '/mywedding' },
         { label: 'Budget' },
     ];
     return (

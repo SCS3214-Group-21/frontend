@@ -33,7 +33,7 @@ const renderItems = (currentItems) => (
                     date={item.date}
                     time={item.time}
                     button={"Read Blog"}
-                    link={"/"}
+                    link={"/viewblog"}
                 />
             </div>
         ))}
@@ -43,9 +43,9 @@ const renderItems = (currentItems) => (
 
 function BlogPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
-        { label: 'Vendors', href: '/' },
-        { label: 'Hotels' },
+        { label: 'My Wedding', href: '/mywedding' },
+        { label: 'Blogs' },
+
     ];
     return (
         <div>
@@ -55,9 +55,9 @@ function BlogPage() {
                     <ClientSidebar />
                 </div>
                 <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
-                    {/* <div className="pb-5">
+                    <div className="pb-5">
                         <Breadcrumb items={breadcrumbItems} />
-                    </div> */}
+                    </div>
                     <div className="pb-5">
                         <h1 className='text-4xl font-bold text-custom-primary'>Blogs</h1>
                     </div>

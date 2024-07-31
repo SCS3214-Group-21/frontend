@@ -44,7 +44,7 @@ function BookingStatusCard(props) {
                 <div className='absolute right-10 lg:right-16'>
                     {/*after create db this can use <SecondaryButton text="View" link="/bookingdetails" />*/}
                     <Link to="/bookingdetails" state={bookingDetails}>
-                        <button className="px-4 py-2 border-0 rounded-full h-10 bg-gradient-to-r from-custom-blue-light via-custom-secondary to-custom-blue-dark text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:from-custom-gray hover:via-custom-gray hover:to-custom-gray hover:text-custom-primary hover:border-2 hover:border-custom-primary">
+                        <button className="px-6 border-0 rounded-full h-8 mt-1 bg-custom-blue-dark text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:from-custom-gray hover:via-custom-gray hover:to-custom-gray hover:text-custom-primary hover:border-2 hover:border-custom-primary">
                             View
                         </button>
                     </Link>

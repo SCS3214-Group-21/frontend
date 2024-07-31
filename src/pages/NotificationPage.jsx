@@ -1,15 +1,13 @@
-import React from "react";
-import RegisterHeader from "../components/common/RegisterHeader";
-import ClientSidebar from "../components/ClientSidebar";
+import React from 'react'
 import Breadcrumb from '../components/ui/Breadcrumb';
-import AddCard from '../components/common/AddCard';
-import PlanBudgetForm from "../components/PlanBudgetForm";
+import ClientSidebar from '../components/ClientSidebar';
+import RegisterHeader from '../components/common/RegisterHeader';
 
-function PlanBudgetPage() {
+
+function NotificationPage() {
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/mywedding' },
-        { label: 'Budget', href: '/budget' },
-        { label: 'Plan Budget' },
+        { label: 'Budget' },
     ];
     return (
         <div>
@@ -23,10 +21,11 @@ function PlanBudgetPage() {
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-4xl font-bold text-custom-primary'>Plan Budget</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>Notifications</h1>
                     </div>
                     <div className="pb-5">
-                        <PlanBudgetForm />
+                        <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -34,4 +33,4 @@ function PlanBudgetPage() {
     )
 }
 
-export default PlanBudgetPage
+export default NotificationPage
