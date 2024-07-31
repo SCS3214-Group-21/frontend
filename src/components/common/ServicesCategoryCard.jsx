@@ -11,7 +11,7 @@ function ServicesCategoryCard(props) {
                         alt={alt}
                         className="object-cover w-full h-full rounded-lg"
                     />
-                    <div className="absolute inset-0 transition-opacity duration-300 bg-black rounded-lg opacity-50 hover:opacity-30"></div>
+                    <div className="absolute inset-0 transition-opacity duration-300 bg-black rounded-lg opacity-20 hover:opacity-30"></div>
                 </figure>
                 <div className="absolute inset-0 flex items-end p-4">
                     <div className="p-0 card-body">

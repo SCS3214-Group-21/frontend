@@ -80,10 +80,11 @@ const ReviewCarousel = () => {
       image: "../src/assets/images/Icons/man (1).png",
       name: "Ramath Perera",
       time: "5h Ago",
-      text: "This website made planning our wedding so much easier! We found the perfect photographer and florist in just a few clicks. Organizing Content was so easy",
+      text: "This website made planning our wedding so much easier! We found the perfect photographer and florist in just a few clicks. Organizing content was so easy.",
     },
     {
       id: 2,
+
       image: "../src/assets/images/Icons/girl.png",
       name: "Binuri Mindula",
       time: "5h Ago",
@@ -126,6 +127,7 @@ const ReviewCarousel = () => {
     },
   ];
 
+
   return (
     <div className="w-full px-0 sm:px-10 md:px-20 xl:px-44">
       <style jsx>{`
@@ -147,8 +149,10 @@ const ReviewCarousel = () => {
       <Slider {...settings}>
         {slides.map((slide) => (
           <div key={slide.id} className="px-16 sm:px-2">
-            <div className='w-72 h-60'>
+
+            <div className='w-72 h-72'>
               <ReviewCard
+
                 img={slide.image}
                 name={slide.name}
                 time={slide.time}
