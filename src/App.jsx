@@ -39,3 +39,35 @@ function App() {
 }
 
 export default App
+
+// import React from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import LoginPage from './pages/LoginPage';
+// import RegisterPage from './pages/ClientRegisterPage';
+// import AllVendorsPage from './pages/ClientVendorsPage/ClientAllVendors';
+// import VendorProfilePage from './pages/VendorProfilePage';
+// import VendorDashboardPage from './pages/VendorDashboardPage';
+// import PrivateRoute from './routes/PrivateRoute';
+// import PublicRoute from './routes/PublicRoute';
+
+// function App() {
+//     return (
+//       <div>
+//         <Router>
+//             <Routes>
+//                 <Route path="/login" element={<LoginPage />} />
+//                 <Route path="/register" element={<RegisterPage />} />
+
+//                 <PrivateRoute path="/allvendors" element={<AllVendorsPage />} roleRequired="client" />
+//                 <PrivateRoute path="/vendorprofile" element={<VendorProfilePage />} roleRequired="serviceprovider" />
+//                 <PrivateRoute path="/vendordashboard" element={<VendorDashboardPage />} roleRequired="admin" />
+
+//                 <Route path="*" element={<Navigate to="/login" replace />} />
+//             </Routes>
+//         </Router>
+//         <PublicRoute />
+//         </div>
+//     );
+// }
+
+// export default App;

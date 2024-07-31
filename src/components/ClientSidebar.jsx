@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom'; // Import useLocation hook
+import { useLocation, useNavigate } from 'react-router-dom'; // Import useLocation and useNavigate hooks
 import SidebarButton from './ui/SidebarButton';
 
 export default function ClientSidebar() {
     const [isDrawerOpen, setDrawerOpen] = useState(false);
-    //const location = useLocation(); // Use useLocation to get the current path
+    const location = useLocation(); // Use useLocation to get the current path
+    const navigate = useNavigate();
 
     const toggleDrawer = () => {
         setDrawerOpen(!isDrawerOpen);
@@ -20,6 +21,17 @@ export default function ClientSidebar() {
     const isBlogsPage = location.pathname === '/blog';//rename actual path
     //const isLogoutPage = location.pathname === '/';//rename actual path
 
+    function handleLogout() {
+        // Clear authentication data from localStorage, sessionStorage, or cookies
+        localStorage.removeItem('authToken');
+        sessionStorage.removeItem('authToken');
+        
+        // You can also clear cookies if you're using them
+        // document.cookie = "authToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    
+        // Redirect to the login page
+        navigate('/login');
+    }
 
 
 
@@ -116,12 +128,11 @@ export default function ClientSidebar() {
 
                         />*/}
                         <SidebarButton
-                            href="/"
+                            href="#"
                             iconPath="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"
                             label="Logout"
                             isOpen={isDrawerOpen}
-
-
+                            onClick={handleLogout} // Use onClick instead of href
                         />
 
                     </ul>

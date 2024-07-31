@@ -1,13 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from "../pages/LandingPage";
 import LoginPage from "../pages/LoginPage";
 import ClientRegisterPage from "../pages/ClientRegisterPage"
 import VendorRegister01 from "../pages/VendorRegister01";
-import VendorRegister02 from "../pages/VendorRegister02";
-import VendorRegister03 from "../pages/VendorRegister03";
-import VendorRegister04 from "../pages/VendorRegister04";
-import VendorRegister05 from "../pages/VendorRegister05";
-import VendorRegister06 from "../pages/VendorRegister06";
+// import VendorRegister02 from "../pages/VendorRegister02";
+// import VendorRegister03 from "../pages/VendorRegister03";
+// import VendorRegister04 from "../pages/VendorRegister04";
+// import VendorRegister05 from "../pages/VendorRegister05";
+// import VendorRegister06 from "../pages/VendorRegister06";
 import ClientAllVendors from "../pages/ClientVendorsPage/ClientAllVendors";
 import AllHotelsPage from "../pages/ClientVendorsPage/AllHotelsPage";
 import AllPhotographers from "../pages/ClientVendorsPage/AllPhotographers";
@@ -57,13 +57,14 @@ import AdminBlogAcceptPage from "../pages/AdminBlogAcceptPage";
 
 
 import VendorRegister from "../pages/VendorRegister.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
 
 
 
 function PublicRoute() {
     return (
         <div>
-            <BrowserRouter>
+            <Router>
                 <Routes>
                     {/*<Route path="/" element={<LandingPage />}></Route>*/}
                     <Route path="/" element={<LandingPageBackup />}></Route>
@@ -121,9 +122,12 @@ function PublicRoute() {
                     <Route path="/notification" element={<NotificationPage />}></Route>
                     <Route path="/acceptblogs" element={<AdminBlogAcceptPage />}></Route>
 
+                    <PrivateRoute path="/allvendors" element={<ClientAllVendors />} roleRequired="client" />
+                <PrivateRoute path="/vendorprofile" element={<VendorProfilePage />} roleRequired="serviceprovider" />
+                <PrivateRoute path="/vendordashboard" element={<VendorDashboardPage />} roleRequired="admin" />
 
                 </Routes>
-            </BrowserRouter>
+            </Router>
         </div>
     );
 }
