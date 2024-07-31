@@ -65,6 +65,7 @@ import VendorAllChatsPage from "../pages/VendorAllChatsPage.jsx";
 import VendorChatPage from "../pages/VendorChatPage.jsx";
 import VendorSchedulePage from "../pages/VendorSchedulePage.jsx";
 import VendorNotificationPage from "../pages/VendorNotificationPage.jsx";
+import VendorRegisterPage from '../pages/VendorRegistration.jsx';
 
 
 function PublicRoute() {
@@ -77,7 +78,7 @@ function PublicRoute() {
                     <Route path="/login" element={<LoginPage />}></Route>
                     <Route path="/register" element={<ClientRegisterPage />}></Route>
                     <Route path="/vendorregister" element={<VendorRegister />}></Route>
-                    <Route path="/vendorregister1" element={<VendorRegister01 />}></Route>
+                    <Route path="/vendorregister1" element={<VendorRegisterPage />}></Route>
                     {/* <Route path="/vendorregister2" element={<VendorRegister02 />}></Route>
                     <Route path="/vendorregister3" element={<VendorRegister03 />}></Route>
                     <Route path="/vendorregister4" element={<VendorRegister04 />}></Route>
