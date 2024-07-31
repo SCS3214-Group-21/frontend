@@ -18,7 +18,7 @@ const items = [
 
 const renderItems = (currentItems) => (
     // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-    <div className="flex flex-row flex-wrap items-center justify-center gap-10">
+    <div className="flex flex-row flex-wrap items-center justify-center gap-6">
         {/* <div className="flex items-center justify-center p-2 bg-white h-72 w-60">
             <AddCard
                 text={"Create Blog"}
@@ -63,7 +63,7 @@ function BlogPage() {
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-                            <Pagination items={items} itemsPerPage={5} renderItems={renderItems} />
+                            <Pagination items={items} itemsPerPage={8} renderItems={renderItems} />
                         </div>
                     </div>
                 </div>

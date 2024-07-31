@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom'
 import InputField from '../components/ui/InputField'
 import SocialButton from '../components/ui/SocialButton'
 import LoginHeader from '../components/common/LoginHeader'
+import ClientRegistrationHeader from "../components/common/ClientRegistrationHeader";
 
 // import asset
 import backgroundImage from '../assets/images/login/l1.png'
@@ -37,7 +38,7 @@ export default function ClientRegisterPage() {
     return (
         <div className="bg-[#FFF8F5]">
 
-            <LoginHeader />
+            <ClientRegistrationHeader />
 
             <div
                 className="flex items-center justify-center text-black h-screen bg-center bg-no-repeat bg-cover "

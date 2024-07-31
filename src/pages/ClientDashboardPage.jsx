@@ -44,9 +44,24 @@ function ClientDashboardPage() {
     };
 
     const handleDateChange = (date) => {
-        setWeddingDate(date);
-        setShowCountdown(true);
+        if (date) {
+            const today = new Date();
+            // Set time to start of the day for comparison
+            today.setHours(0, 0, 0, 0);
+            const selectedDate = new Date(date);
+            selectedDate.setHours(0, 0, 0, 0);
+
+            if (selectedDate <= today) {
+                // Show an alert if the selected date is today or in the past
+                alert("Please select a future wedding date.");
+            } else {
+                // Set the date and show countdown if it's a valid future date
+                setWeddingDate(date);
+                setShowCountdown(true);
+            }
+        }
     };
+
 
     const daysUntilWedding = () => {
         if (!weddingDate) return 0;
