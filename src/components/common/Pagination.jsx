@@ -50,7 +50,7 @@ function Pagination({ items, itemsPerPage, renderItems }) {
           <ul className="flex pl-0 rounded list-none flex-wrap items-center justify-center">
             {/* Previous Button */}
             <li
-              className={`relative block py-2 px-3 leading-tight border border-custom-secondary mr-1 rounded cursor-pointer ${
+              className={`relative block py-2 px-3 leading-tight border border-custom-secondary mr-1 rounded-full w-10 h-10 cursor-pointer ${
                 currentPage === 1
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed border-gray-300'
                   : 'bg-white text-gray-600 hover:bg-gray-200'
@@ -69,7 +69,7 @@ function Pagination({ items, itemsPerPage, renderItems }) {
             {paginationRange.map((page, index) => (
               <li
                 key={index}
-                className={`relative block py-2 px-3 leading-tight border border-custom-secondary mr-1 rounded cursor-pointer ${
+                className={`relative block py-2 px-3 leading-tight border border-custom-secondary mr-1 rounded-full w-10 h-10 cursor-pointer ${
                   currentPage === page ? 'bg-custom-primary text-white' : 'bg-white text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -85,7 +85,7 @@ function Pagination({ items, itemsPerPage, renderItems }) {
 
             {/* Next Button */}
             <li
-              className={`relative block py-2 px-3 leading-tight border border-custom-secondary mr-1 rounded cursor-pointer ${
+              className={`relative block py-2 px-3 leading-tight border border-custom-secondary mr-1 rounded-full w-10 h-10 cursor-pointer ${
                 currentPage === totalPages
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed border-gray-300'
                   : 'bg-white text-gray-600 hover:bg-gray-200'

@@ -76,7 +76,7 @@ function LandingPage(){
 
             {/* reviews section */}
             <section
-                className="bg-[#FFF8F5] h-screen w-full flex flex-col items-center pt-20"
+                className="bg-[#FFF8F5] min-h-screen w-full flex flex-col items-center pt-20 pb-5"
                 style={{ backgroundImage: "url('./src/assets/images/landing/p4.png')" }}
             >
                 <h1 className="text-black font-sans font-normal text-4xl sm:text-5xl text-center pb-10">
