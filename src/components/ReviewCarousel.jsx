@@ -7,7 +7,7 @@ import ReviewCard from "./common/ReviewCard";
 //   const { onClick } = props;
 //   return (
 //     <button
-//       className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 btn btn-circle bg-custom-primary hover:bg-custom-secondary border-none hover:text-white"
+//       className="absolute z-10 transform -translate-y-1/2 border-none left-2 top-1/2 btn btn-circle bg-custom-primary hover:bg-custom-secondary hover:text-white"
 //       onClick={onClick}
 //     >
 //       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -21,7 +21,7 @@ import ReviewCard from "./common/ReviewCard";
 //   const { onClick } = props;
 //   return (
 //     <button
-//       className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 btn btn-circle bg-custom-primary hover:bg-custom-secondary border-none hover:text-white"
+//       className="absolute z-10 transform -translate-y-1/2 border-none right-2 top-1/2 btn btn-circle bg-custom-primary hover:bg-custom-secondary hover:text-white"
 //       onClick={onClick}
 //     >
 //       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -57,13 +57,13 @@ const ReviewCarousel = () => {
           slidesToScroll: 1,
         },
       },
-        {
-          breakpoint: 768, // Adjust the breakpoint as needed
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-          },
+      {
+        breakpoint: 768, // Adjust the breakpoint as needed
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
         },
+      },
       {
         breakpoint: 640, // Adjust the breakpoint as needed
         settings: {
@@ -77,57 +77,57 @@ const ReviewCarousel = () => {
   const slides = [
     {
       id: 1,
-      image: "../src/assets/images/Images/01.png",
+      image: "../src/assets/images/Icons/man (1).png",
       name: "Ramath Perera",
       time: "5h Ago",
       text: "This website made planning our wedding so much easier! We found the perfect photographer and florist in just a few clicks. Organizing Content was so easy",
     },
     {
       id: 2,
-      image: "../src/assets/images/Images/02.png",
-      name: "Ramath Perera",
+      image: "../src/assets/images/Icons/girl.png",
+      name: "Binuri Mindula",
       time: "5h Ago",
       text: "This website made planning our wedding so much easier! We found the perfect photographer and florist in just a few clicks. Organizing Content was so easy",
     },
     {
       id: 3,
-      image: "../src/assets/images/Images/03.png",
-      name: "Ramath Perera",
+      image: "../src/assets/images/Icons/woman (1).png",
+      name: "Nimesha Lakshani",
       time: "5h Ago",
       text: "This website made planning our wedding so much easier! We found the perfect photographer and florist in just a few clicks. Organizing Content was so easy",
     },
     {
       id: 4,
-      image: "../src/assets/images/Images/04.png",
-      name: "Ramath Perera",
+      image: "../src/assets/images/Icons/man (2).png",
+      name: "Ashan Proboda",
       time: "5h Ago",
       text: "This website made planning our wedding so much easier! We found the perfect photographer and florist in just a few clicks. Organizing Content was so easy",
     },
     {
       id: 5,
-      image: "../src/assets/images/Images/05.png",
-      name: "Ramath Perera",
+      image: "../src/assets/images/Icons/man (1).png",
+      name: "Kavishka Yapa",
       time: "5h Ago",
       text: "This website made planning our wedding so much easier! We found the perfect photographer and florist in just a few clicks. Organizing Content was so easy",
     },
     {
       id: 6,
-      image: "../src/assets/images/Images/06.png",
-      name: "Ramath Perera",
+      image: "../src/assets/images/Icons/man (2).png",
+      name: "Sahan Thathsara",
       time: "5h Ago",
       text: "This website made planning our wedding so much easier! We found the perfect photographer and florist in just a few clicks. Organizing Content was so easy",
     },
     {
       id: 7,
-      image: "../src/assets/images/Images/00.png",
-      name: "Ramath Perera",
+      image: "../src/assets/images/Icons/woman (1).png",
+      name: "Anna Shanel",
       time: "5h Ago",
       text: "This website made planning our wedding so much easier! We found the perfect photographer and florist in just a few clicks. Organizing Content was so easy",
     },
   ];
 
   return (
-    <div className="w-full  px-0 sm:px-10 md:px-20 xl:px-44">
+    <div className="w-full px-0 sm:px-10 md:px-20 xl:px-44">
       <style jsx>{`
         .slick-dots {
           bottom: -30px !important; /* Adjust position */
@@ -148,12 +148,12 @@ const ReviewCarousel = () => {
         {slides.map((slide) => (
           <div key={slide.id} className="px-16 sm:px-2">
             <div className='w-72 h-60'>
-                <ReviewCard 
+              <ReviewCard
                 img={slide.image}
                 name={slide.name}
                 time={slide.time}
                 review={slide.text}
-                />
+              />
             </div>
           </div>
         ))}

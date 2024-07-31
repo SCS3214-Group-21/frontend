@@ -50,7 +50,7 @@ function AdminManageUsersPage() {
                         </div>
                     </div>
                     <div className="pb-5">
-                        <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row gap-10 sm:gap-5 flex-wrap'>
+                        <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row gap-6 sm:gap-1 flex-wrap'>
                             {userData.map((user, index) => (
                                 <UserTypeBox key={index} {...user} />
                             ))}
