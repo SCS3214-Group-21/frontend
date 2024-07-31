@@ -26,7 +26,7 @@ function LandingHeader() {
     };
 
     return (
-        <div className="sticky top-0 z-50">
+        <div className="fixed top-0 z-50 w-full">
             <style jsx>{`
                 .hover-underline::before {
                     content: '';

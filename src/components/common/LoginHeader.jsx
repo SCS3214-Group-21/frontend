@@ -7,7 +7,7 @@ function LoginHeader() {
   const menuItems = [
     { id: 1, label: "Home", link: "/" },
     { id: 4, label: "About", link: "/about" },
-    { id: 5, label: "Register", link: "/reviews" },
+    { id: 5, label: "Register", link: "/register" },
   ];
 
   const toggleMenu = () => {
@@ -19,7 +19,7 @@ function LoginHeader() {
   };
 
   return (
-    <div className="sticky top-0 z-50">
+    <div className="fixed top-0 z-50 w-full">
         <style jsx>{`
         .hover-underline::before {
             content: '';

@@ -31,7 +31,8 @@ import PlanBudgetPage from "../pages/PlanBudgetPage";
 import CreateBlogPage from "../pages/CreateBlogPage";
 import UpdateBlogPage from "../pages/UpdateBlogPage";
 import BlogPage from "../pages/BlogsPage";
-// import RegisterType from "../components/common/RegisterType";
+
+import LandingPageBackup from "../pages/LandingPageBackup.jsx";
 
 import ClientAllBookings from "../pages/ClientBookingPage/ClientAllBookings";
 import ClientBookingDetailsPage from "../pages/ClientBookingPage/ClientBookingDetailsPage";
@@ -51,7 +52,11 @@ import AllJewelleryPage from "../pages/ClientVendorsPage/AllJewelleryPage";
 import AllSalonPage from "../pages/ClientVendorsPage/AllSalonPage";
 import AllDressersPage from "../pages/ClientVendorsPage/AllDressersPage";
 import NotificationPage from "../pages/NotificationPage";
+
 import AdminBlogAcceptPage from "../pages/AdminBlogAcceptPage";
+
+
+import VendorRegister from "../pages/VendorRegister.jsx";
 
 
 
@@ -60,15 +65,17 @@ function PublicRoute() {
         <div>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<LandingPage />}></Route>
+                    {/*<Route path="/" element={<LandingPage />}></Route>*/}
+                    <Route path="/" element={<LandingPageBackup />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                     <Route path="/register" element={<ClientRegisterPage />}></Route>
+                    <Route path="/vendorregister" element={<VendorRegister />}></Route>
                     <Route path="/vendorregister1" element={<VendorRegister01 />}></Route>
-                    <Route path="/vendorregister2" element={<VendorRegister02 />}></Route>
+                    {/* <Route path="/vendorregister2" element={<VendorRegister02 />}></Route>
                     <Route path="/vendorregister3" element={<VendorRegister03 />}></Route>
                     <Route path="/vendorregister4" element={<VendorRegister04 />}></Route>
                     <Route path="/vendorregister5" element={<VendorRegister05 />}></Route>
-                    <Route path="/vendorregister6" element={<VendorRegister06 />}></Route>
+                    <Route path="/vendorregister6" element={<VendorRegister06 />}></Route> */}
                     <Route path="/allvendors" element={<ClientAllVendors />}></Route>
                     <Route path="/allhotels" element={<AllHotelsPage />}></Route>
                     <Route path="/allphotographers" element={<AllPhotographers />}></Route>
@@ -95,7 +102,8 @@ function PublicRoute() {
                     <Route path="/createblog" element={<CreateBlogPage />}></Route>
                     <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
                     <Route path="/blog" element={<BlogPage />}></Route>
-                    {/* <Route path="/registertype" element={<RegisterType />}></Route> */}
+
+
 
                     <Route path="/bookings" element={<ClientAllBookings />}></Route>
                     <Route path="/bookingdetails" element={<ClientBookingDetailsPage />}></Route>
