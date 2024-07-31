@@ -6,7 +6,7 @@ function RegisterType({ onClose }) {
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
             <div className='relative w-11/12 md:w-2/3 lg:w-1/2 bg-white rounded-xl flex flex-col md:flex-row'>
                 <button
-                    className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                    className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-3xl hover:bg-custom-primary rounded-full w-8 h-8 transform transition-transform duration-300 hover:rotate-180"
                     onClick={onClose}
                 >
                     &times; {/* This represents the close icon */}

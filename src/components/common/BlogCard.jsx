@@ -5,7 +5,7 @@ function BlogCard(props) {
     const { img, text, date, time, button, link } = props;
 
     return (        
-        <div className="w-full h-full bg-[#FFFBEB] rounded-lg shadow-md flex flex-col gap-1 items-center justify-center border border-custom-primary p-2">
+        <div className=" bg-[#FFFBEB] rounded-lg shadow-md flex flex-col gap-1 items-center justify-center border border-custom-primary p-2">
             <div>
                 <img src={img} className='rounded-lg w-60 h-32'/>
             </div>
