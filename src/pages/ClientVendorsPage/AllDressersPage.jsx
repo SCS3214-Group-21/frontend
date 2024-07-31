@@ -14,7 +14,7 @@ const AllDressersPage = () => {
     const dresserData = [
         {
             href: "/viewdressing",
-            img: "../src/assets/Images/Images/img1.png",
+            img: "../src/assets/Images/Images/dressing1.jpg",
             alt: "Nilanthi Bridal Designs",
             name: "Nilanthi Bridal Designs",
             description: "Nilanthi Bridal Designs provides bespoke tailoring and elegant dress designs, ensuring a perfect fit for any occasion.",
@@ -22,7 +22,7 @@ const AllDressersPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/Images/Images/img1.png",
+            img: "../src/assets/Images/Images/dressing7.jpg",
             alt: "Elegance Dress Studio",
             name: "Elegance Dress Studio",
             description: "Elegance Dress Studio offers custom-made dresses with a focus on timeless style and high-quality fabrics.",
@@ -30,7 +30,7 @@ const AllDressersPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/Images/Images/img1.png",
+            img: "../src/assets/Images/Images/dressing3.jpg",
             alt: "Classic Tailors",
             name: "Classic Tailors",
             description: "Classic Tailors specializes in traditional and contemporary dress designs, providing professional tailoring services.",
@@ -38,7 +38,7 @@ const AllDressersPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/Images/Images/img1.png",
+            img: "../src/assets/Images/Images/dressing4.jpg",
             alt: "Glamour Dress Makers",
             name: "Glamour Dress Makers",
             description: "Glamour Dress Makers offers stunning dress designs and tailoring services for weddings, parties, and formal events.",
@@ -46,7 +46,7 @@ const AllDressersPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/Images/Images/img1.png",
+            img: "../src/assets/Images/Images/dressing8.jpg",
             alt: "Sophisticated Styles",
             name: "Sophisticated Styles",
             description: "Sophisticated Styles provides a wide range of dress options, from classic to modern, tailored to your personal taste.",
@@ -54,7 +54,7 @@ const AllDressersPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/Images/Images/img1.png",
+            img: "../src/assets/Images/Images/dressing6.jpg",
             alt: "Chic Couture",
             name: "Chic Couture",
             description: "Chic Couture is known for its innovative dress designs and exceptional craftsmanship, perfect for any special occasion.",

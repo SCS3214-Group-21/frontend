@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'; // Import useLocation hook
 import SidebarButton from './ui/SidebarButton';
 
 
-export default function ClientNavbar() {
+export default function VendorSidebar() {
     const [isDrawerOpen, setDrawerOpen] = useState(false);
     const location = useLocation(); // Use useLocation to get the current pat
 
@@ -13,13 +13,13 @@ export default function ClientNavbar() {
 
     const isDashboard = location.pathname === '/vendordashboard';
     const isProfilePage = location.pathname === '/vendorprofile';//rename actual path
-    const isPackagesPage = location.pathname === '/';//rename actual path
-    const isNotificationPage = location.pathname === '/';//rename actual path
-    const isMessagesPage = location.pathname === '/';//rename actual path
-    const isSchedulePage = location.pathname === '/';//rename actual path
+    const isPackagesPage = location.pathname === '/vendorpackages' || location.pathname === '/viewpackage' || location.pathname === '/createpackage';//rename actual path
+    const isNotificationPage = location.pathname === '/vendornotification';//rename actual path
+    const isMessagesPage = location.pathname === '/vendorallchats' || location.pathname === '/vendorchat';//rename actual path
+    const isSchedulePage = location.pathname === '/vendorschedule';//rename actual path
     const isOrdersPage = location.pathname === '/';//rename actual path
     const isHistoryPage = location.pathname === '/';//rename actual path
-    const isBlogsPage = location.pathname === '/blog';//rename actual path
+    const isBlogsPage = location.pathname === '/vendorblog' || location.pathname === '/viewmyblog' || location.pathname === '/vendorcreateblog';//rename actual path
     const isReviewsPage = location.pathname === '/';//rename actual path
     const isLogoutPage = location.pathname === '/';//rename actual path
 
@@ -63,7 +63,7 @@ export default function ClientNavbar() {
                         />
 
                         <SidebarButton
-                            href="#"
+                            href="/vendorpackages"
                             iconPath="M8 7H5a2 2 0 0 0-2 2v4m5-6h8M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m0 0h3a2 2 0 0 1 2 2v4m0 0v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6m18 0s-4 2-9 2-9-2-9-2m9-2h.01"
                             label="Packages"
                             isOpen={isDrawerOpen}
@@ -71,7 +71,7 @@ export default function ClientNavbar() {
                         />
 
                         <SidebarButton
-                            href="#"
+                            href="/vendornotification"
                             iconPath="m10.827 5.465-.435-2.324m.435 2.324a5.338 5.338 0 0 1 6.033 4.333l.331 1.769c.44 2.345 2.383 2.588 2.6 3.761.11.586.22 1.171-.31 1.271l-12.7 2.377c-.529.099-.639-.488-.749-1.074C5.813 16.73 7.538 15.8 7.1 13.455c-.219-1.169.218 1.162-.33-1.769a5.338 5.338 0 0 1 4.058-6.221Zm-7.046 4.41c.143-1.877.822-3.461 2.086-4.856m2.646 13.633a3.472 3.472 0 0 0 6.728-.777l.09-.5-6.818 1.277Z"
                             label="Notifications"
                             isOpen={isDrawerOpen}
@@ -79,7 +79,7 @@ export default function ClientNavbar() {
                         />
 
                         <SidebarButton
-                            href="#"
+                            href="/vendorallchats"
                             iconPath="M16 10.5h.01m-4.01 0h.01M8 10.5h.01M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-6.6a1 1 0 0 0-.69.275l-2.866 2.723A.5.5 0 0 1 8 18.635V17a1 1 0 0 0-1-1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
                             label="Messages"
                             isOpen={isDrawerOpen}
@@ -94,7 +94,7 @@ export default function ClientNavbar() {
                         />
 
                         <SidebarButton
-                            href="#"
+                            href="/vendorschedule"
                             iconPath="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"
                             label="Schedule"
                             isOpen={isDrawerOpen}
@@ -120,7 +120,7 @@ export default function ClientNavbar() {
                         /> */}
 
                         <SidebarButton
-                            href="/blog"
+                            href="/vendorblog"
                             iconPath="M11 9h6m-6 3h6m-6 3h6M6.996 9h.01m-.01 3h.01m-.01 3h.01M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
                             label="Blogs"
                             isOpen={isDrawerOpen}

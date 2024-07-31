@@ -19,7 +19,7 @@ const CarsVendorDetails = () => {
         location: 'Dream Blooms, Galle Road, Colombo 7',
         email: 'obcakes@gmail.com',
         rating: 4,
-        images: ['cars.png', 'cars.png', 'cars.png', 'cars.png'],
+        images: ['cars.png', 'car1.jpg', 'car2.jpg', 'car3.jpg'],
         description: 'Luxury cars available for rent with driver and without driver options.',
         rentalTerms: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut quam vestibulum.',
         paymentTerms: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia est ac sapien.',

@@ -11,13 +11,13 @@ export default function ClientSidebar() {
     };
 
     const isMyWeddingPage = location.pathname === '/mywedding';
-    const isVendorsPage = location.pathname === '/allvendors' || location.pathname === '/allhotels' || location.pathname === '/hoteldetails' || location.pathname === '/alljewellery' || location.pathname === '/alldressers' || location.pathname === '/viewdressing' || location.pathname === '/allphotographers' || location.pathname === '/viewjewellery' || location.pathname === '/floraldetails' || location.pathname === '/allflorals';
+    const isVendorsPage = location.pathname === '/allvendors' || location.pathname === '/allhotels' || location.pathname === '/hoteldetails' || location.pathname === '/alljewellery' || location.pathname === '/alldressers' || location.pathname === '/viewdressing' || location.pathname === '/allphotographers' || location.pathname === '/viewjewellery' || location.pathname === '/floraldetails' || location.pathname === '/allflorals' || location.pathname === '/carsdetails' || location.pathname === '/allcars' || location.pathname === '/allsalons' || location.pathname === '/viewsaloons' || location.pathname === '/allcakes';
     const isBudgetPage = location.pathname === '/budget' || location.pathname === '/planbudget';//rename actual path
     const isNotificationPage = location.pathname === '/notification';//rename actual path
     const isMessagesPage = location.pathname === '/allchats' || location.pathname === '/chat2';//rename actual path
     const isCalendarPage = location.pathname === '/calender';//rename actual path
     const isBookingsPage = location.pathname === '/bookings' || location.pathname === '/bookingdetails';//rename actual path
-    const isBlogsPage = location.pathname === '/blog';//rename actual path
+    const isBlogsPage = location.pathname === '/blog' || location.pathname === '/viewblog';//rename actual path
     //const isLogoutPage = location.pathname === '/';//rename actual path
 
 
@@ -71,7 +71,7 @@ export default function ClientSidebar() {
                         <SidebarButton
                             href="/notification"
                             iconPath="m10.827 5.465-.435-2.324m.435 2.324a5.338 5.338 0 0 1 6.033 4.333l.331 1.769c.44 2.345 2.383 2.588 2.6 3.761.11.586.22 1.171-.31 1.271l-12.7 2.377c-.529.099-.639-.488-.749-1.074C5.813 16.73 7.538 15.8 7.1 13.455c-.219-1.169.218 1.162-.33-1.769a5.338 5.338 0 0 1 4.058-6.221Zm-7.046 4.41c.143-1.877.822-3.461 2.086-4.856m2.646 13.633a3.472 3.472 0 0 0 6.728-.777l.09-.5-6.818 1.277Z"
-                            label="Notifications"
+                            label="Notification"
                             isOpen={isDrawerOpen}
                             isActive={isNotificationPage}
                         />

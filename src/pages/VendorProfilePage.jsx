@@ -9,7 +9,7 @@ import Breadcrumb from '../components/ui/Breadcrumb';
 
 function VendorProfilePage() {
     const breadcrumbItems = [
-        { label: 'Dashboard', href: '/' },
+        { label: 'Dashboard', href: '/vendordashboard' },
         { label: 'Profile' },
 
     ];
