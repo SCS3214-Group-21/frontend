@@ -2,31 +2,32 @@ import React from "react";
 import RegisterHeader from "../components/common/RegisterHeader";
 import ClientSidebar from "../components/ClientSidebar";
 import Breadcrumb from '../components/ui/Breadcrumb';
-import AddCard from '../components/common/AddCard';
-import PlanBudgetForm from "../components/PlanBudgetForm";
+import CreateBlogForm from "../components/CreateBlogForm";
+import AdminHeader from "../components/common/AdminHeader";
+import AdminSidebar from "../components/AdminSidebar";
 
-function PlanBudgetPage() {
+function AdminCreateBlogPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/mywedding' },
-        { label: 'Budget', href: '/budget' },
-        { label: 'Plan Budget' },
+        { label: 'Dashboard', href: '/admindashboard' },
+        { label: 'Blogs', href: '/adminblogs' },
+        { label: 'Create Blog' },
     ];
     return (
         <div>
-            <RegisterHeader />
+            <AdminHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
                 <div className="w-[5%] sm:w-[10%] md:w-[20%]">
-                    <ClientSidebar />
+                    <AdminSidebar />
                 </div>
                 <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
                     <div className="pb-5">
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-4xl font-bold text-custom-primary'>Plan Budget</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>Create Your Blog</h1>
                     </div>
                     <div className="pb-5">
-                        <PlanBudgetForm />
+                        <CreateBlogForm />
                     </div>
                 </div>
             </div>
@@ -34,4 +35,4 @@ function PlanBudgetPage() {
     )
 }
 
-export default PlanBudgetPage
+export default AdminCreateBlogPage

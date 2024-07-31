@@ -8,13 +8,13 @@ import Breadcrumb from '../../components/ui/Breadcrumb';
 function ClientAllVendors() {
     const cardData = [
         { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Hotels", href: "./allhotels" },
-        { img: "../src/assets/images/Images/03.png", alt: "Dressers", type: "Dressers", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Dressers", type: "Dressers", href: "/alldressers" },
         { img: "../src/assets/images/Images/03.png", alt: "Photography", type: "Photography", href: "/allphotographers" },
         { img: "../src/assets/images/Images/03.png", alt: "Floral", type: "Floral", href: "/allflorals" },
-        { img: "../src/assets/images/Images/03.png", alt: "Jewellery", type: "Jewellery", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Jewellery", type: "Jewellery", href: "/alljewellery" },
         { img: "../src/assets/images/Images/03.png", alt: "Dancing Groups", type: "Dancing Groups", href: "#" },
         { img: "../src/assets/images/Images/03.png", alt: "Ashtaka", type: "Ashtaka", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "Salons", type: "Salons", href: "#" },
+        { img: "../src/assets/images/Images/03.png", alt: "Salons", type: "Salons", href: "/allsalons" },
         { img: "../src/assets/images/Images/03.png", alt: "Djs", type: "Djs", href: "#" },
         { img: "../src/assets/images/Images/03.png", alt: "Honeymoon", type: "Honeymoon", href: "#" },
         { img: "../src/assets/images/Images/03.png", alt: "Cakes", type: "Cakes", href: "/allcakes" },
@@ -24,7 +24,7 @@ function ClientAllVendors() {
         { img: "../src/assets/images/Images/03.png", alt: "Catering", type: "Catering", href: "#" }
     ];
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
+        { label: 'My Wedding', href: '/mywedding' },
 
         { label: 'Vendors' },
     ];

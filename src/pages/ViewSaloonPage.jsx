@@ -28,51 +28,52 @@ const items2 = [
 
 const renderItems1 = (currentItems) => (
     // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-        <div className="flex flex-row flex-wrap gap-10 items-center justify-center pb-5">
+    <div className="flex flex-row flex-wrap items-center justify-center gap-10 pb-5">
         {currentItems.map((item, index) => (
-            <div key={index} className='flex items-center justify-center h-80 w-80 p-2'>
-            <ServiceDescriptionCard 
-                href="#popup"
-                img={item.img}
-                alt={"imagesaloog"}
-                name={item.name}
-                price={item.price}
-                description={item.text}
-                showStars={false}
-            />
+            <div key={index} className='flex items-center justify-center p-2 h-80 w-80'>
+                <ServiceDescriptionCard
+                    href="#popup"
+                    img={item.img}
+                    alt={"imagesaloog"}
+                    name={item.name}
+                    price={item.price}
+                    description={item.text}
+                    showStars={false}
+                />
             </div>
         ))}
-        </div>
+    </div>
     // </div>
-  );
+);
 
-  const renderItems2 = (currentItems) => (
+const renderItems2 = (currentItems) => (
     // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-        <div className="flex flex-row flex-wrap gap-10 items-center justify-center pb-5">
+    <div className="flex flex-row flex-wrap items-center justify-center gap-10 pb-5">
         {currentItems.map((item, index) => (
-            <div key={index} className='flex items-center justify-center h-80 w-80 p-2'>
-            <ServiceDescriptionCard 
-                href="#popup"
-                img={item.img}
-                alt={"imagesaloog"}
-                name={item.name}
-                price={item.price}
-                description={item.text}
-                showStars={false}
-            />
+            <div key={index} className='flex items-center justify-center p-2 h-80 w-80'>
+                <ServiceDescriptionCard
+                    href="#popup"
+                    img={item.img}
+                    alt={"imagesaloog"}
+                    name={item.name}
+                    price={item.price}
+                    description={item.text}
+                    showStars={false}
+                />
             </div>
         ))}
-        </div>
+    </div>
     // </div>
-  );
+);
 
-function ViewSaloonPage(){
+function ViewSaloonPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
-        { label: 'Vendors', href: '/' },
-        { label: 'Hotels' },
+        { label: 'My Wedding', href: '/mywedding' },
+        { label: 'Vendors', href: '/allvendors' },
+        { label: 'Salons', href: '/allsalons' },
+        { label: 'Orange Beauty Salon' },
     ];
-    return(
+    return (
         <div>
             <RegisterHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
@@ -84,10 +85,10 @@ function ViewSaloonPage(){
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-custom-primary font-bold text-4xl'>Beauty Salon</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>Beauty Salon</h1>
                     </div>
                     <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-5 sm:p-10'>
-                        <VendorDescription 
+                        <VendorDescription
                             o_name={"Orange Beauty Salon "}
                             address={"Bridal Story, Galle Road, Colombo 7"}
                             email={"nilanthibridals@gmail.com"}
@@ -102,21 +103,21 @@ function ViewSaloonPage(){
                     </div>
                     <div className="flex items-center justify-center w-full py-5 bg-[#f9f7f5]">
                         <div className="flex-grow h-[1px] bg-custom-primary mx-2"></div>
-                        <span className="text-custom-primary font-bold">Services</span>
+                        <span className="font-bold text-custom-primary">Services</span>
                         <div className="flex-grow h-[1px] bg-custom-primary mx-2"></div>
                     </div>
                     <div className="pb-5">
-                        <div className='w-full p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
+                        <div className='flex flex-row flex-wrap items-center justify-center w-full gap-10 p-8 sm:gap-5'>
                             <Pagination items={items1} itemsPerPage={3} renderItems={renderItems1} />
                         </div>
                     </div>
                     <div className="flex items-center justify-center w-full py-5">
                         <div className="flex-grow h-[1px] bg-custom-primary mx-2"></div>
-                        <span className="text-custom-primary font-bold">Bridal Packages</span>
+                        <span className="font-bold text-custom-primary">Bridal Packages</span>
                         <div className="flex-grow h-[1px] bg-custom-primary mx-2"></div>
                     </div>
                     <div className="pb-5">
-                        <div className='w-full p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
+                        <div className='flex flex-row flex-wrap items-center justify-center w-full gap-10 p-8 sm:gap-5'>
                             <Pagination items={items2} itemsPerPage={3} renderItems={renderItems2} />
                         </div>
                     </div>

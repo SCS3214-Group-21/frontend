@@ -7,38 +7,39 @@ import ServiceDescriptionCard from "../components/common/ServiceDescriptionCard"
 import VendorDescription from "../components/VendorDescription";
 
 const items = [
-    { img: 'src/assets/Images/Images/01.png'},
-    { img: 'src/assets/Images/Images/02.png'},
-    { img: 'src/assets/Images/Images/03.png'},
-    { img: 'src/assets/Images/Images/04.png'},
-    { img: 'src/assets/Images/Images/05.png'},
-    { img: 'src/assets/Images/Images/06.png'},
-    { img: 'src/assets/Images/Images/07.png'},
-    { img: 'src/assets/Images/Images/00.png'},
-    { img: 'src/assets/Images/Images/img1.png'},
-    { img: 'src/assets/Images/Images/000.png'},
-    
+    { img: 'src/assets/Images/Images/01.png' },
+    { img: 'src/assets/Images/Images/02.png' },
+    { img: 'src/assets/Images/Images/03.png' },
+    { img: 'src/assets/Images/Images/04.png' },
+    { img: 'src/assets/Images/Images/05.png' },
+    { img: 'src/assets/Images/Images/06.png' },
+    { img: 'src/assets/Images/Images/07.png' },
+    { img: 'src/assets/Images/Images/00.png' },
+    { img: 'src/assets/Images/Images/img1.png' },
+    { img: 'src/assets/Images/Images/000.png' },
+
 ];
 
-  const renderItems = (currentItems) => (
+const renderItems = (currentItems) => (
     // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-        <div className="flex flex-row flex-wrap gap-10 items-center justify-center pb-5">
+    <div className="flex flex-row flex-wrap items-center justify-center gap-10 pb-5">
         {currentItems.map((item, index) => (
-            <div key={index} className='flex items-center justify-center h-80 w-80 p-2'>
-                <img src={item.img} className="w-72 h-80"/>
+            <div key={index} className='flex items-center justify-center p-2 h-80 w-80'>
+                <img src={item.img} className="w-72 h-80" />
             </div>
         ))}
-        </div>
+    </div>
     // </div>
-  );
+);
 
-function ViewDressingPage(){
+function ViewDressingPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
-        { label: 'Vendors', href: '/' },
-        { label: 'Hotels' },
+        { label: 'My Wedding', href: '/mywedding' },
+        { label: 'Vendors', href: '/allvendors' },
+        { label: 'Dressing', href: '/alldressers' },
+        { label: 'Nilanthi Bridal Designs' },
     ];
-    return(
+    return (
         <div>
             <RegisterHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
@@ -50,10 +51,10 @@ function ViewDressingPage(){
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-custom-primary font-bold text-4xl'>Dressing</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>Dressing</h1>
                     </div>
                     <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-5 sm:p-10'>
-                        <VendorDescription 
+                        <VendorDescription
                             o_name={"Nilanthi Bridal Designs"}
                             address={"Bridal Story, Galle Road, Colombo 7"}
                             email={"nilanthibridals@gmail.com"}
@@ -68,11 +69,11 @@ function ViewDressingPage(){
                     </div>
                     <div className="flex items-center justify-center w-full py-5 bg-[#f9f7f5]">
                         <div className="flex-grow h-[1px] bg-custom-primary m-2"></div>
-                        <span className="text-custom-primary font-bold">Recent</span>
+                        <span className="font-bold text-custom-primary">Recent</span>
                         <div className="flex-grow h-[1px] bg-custom-primary mx-2"></div>
                     </div>
                     <div className="pb-5">
-                        <div className='w-full p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
+                        <div className='flex flex-row flex-wrap items-center justify-center w-full gap-10 p-8 sm:gap-5'>
                             <Pagination items={items} itemsPerPage={6} renderItems={renderItems} />
                         </div>
                     </div>
