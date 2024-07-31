@@ -25,9 +25,9 @@ function PlanBudgetForm() {
     return (
         <div>
             <form className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 pb-5'>
-                <div className='flex flex-col md:flex-row gap-5 lg:gap-20 w-full p-3 px-5'>
+                <div className='flex flex-col w-full gap-5 p-3 px-5 md:flex-row lg:gap-20'>
                     <div className='w-full'>
-                        <InputField2 
+                        <InputField2
                             id={1}
                             name={"Plan Name "}
                             placeholder={"Input"}
@@ -35,17 +35,18 @@ function PlanBudgetForm() {
                         />
                     </div>
                     <div className='w-full'>
-                        <SelectField 
-                            id="select-input" 
-                            name="Budget Category" 
+                        <SelectField
+                            id="select-input"
+                            name="Budget Category"
                             options={[
-                                { value: 'Budget1', label: 'Budget 1' },
-                                { value: 'Budget2', label: 'Budget 2' }
-                            ]} 
+                                { value: 'low', label: 'Low' },
+                                { value: 'medium', label: 'Medium' },
+                                { value: 'luxury', label: 'Luxury' }
+                            ]}
                         />
                     </div>
                     <div className='w-full'>
-                        <InputField2 
+                        <InputField2
                             id={1}
                             name={"Budget Amount(Rs.)"}
                             placeholder={"Input"}
@@ -53,9 +54,9 @@ function PlanBudgetForm() {
                         />
                     </div>
                 </div>
-                <div className='flex flex-col md:flex-row gap-5 lg:gap-20 w-full p-3 px-5'>
+                <div className='flex flex-col w-full gap-5 p-3 px-5 md:flex-row lg:gap-20'>
                     <div className='w-full'>
-                        <InputField2 
+                        <InputField2
                             id={1}
                             name={"Wedding Date"}
                             placeholder={"yyyy/mm/dd"}
@@ -63,17 +64,17 @@ function PlanBudgetForm() {
                         />
                     </div>
                     <div className='w-full'>
-                        <SelectField 
-                            id="select-input" 
-                            name="City" 
+                        <SelectField
+                            id="select-input"
+                            name="City"
                             options={[
-                                { value: 'Budget1', label: 'Budget 1' },
-                                { value: 'Budget2', label: 'Budget 2' }
-                            ]} 
+                                { value: 'Colombo', label: 'Colombo' },
+                                { value: 'Matara', label: 'Matara' }
+                            ]}
                         />
                     </div>
                     <div className='w-full'>
-                        <InputField2 
+                        <InputField2
                             id={1}
                             name={"Participant count"}
                             placeholder={"Input"}
@@ -81,9 +82,9 @@ function PlanBudgetForm() {
                         />
                     </div>
                 </div>
-                <div className="w-full p-3 px-5 relative">
-                    <h1 className="relative bg-[#FFF8F5] text-black font-bold text-[0.75rem] top-[0.5rem] ml-[7px] px-[3px] w-fit">Services</h1>
-                    <div className='flex flex-row flex-wrap items-center justify-start gap-10 p-10 border-2 border-black w-full bg-[#FFF8F5] rounded-lg'>
+                <div className="relative w-full p-3 px-5">
+                    <h1 className="relative bg-[#FFF8F5] text-black font-medium text-[1rem] top-[0.5rem] ml-[7px] px-[3px] w-fit">Services</h1>
+                    <div className='flex flex-row flex-wrap items-center justify-start gap-10 p-10 border-[1px] border-black w-full bg-[#FFF8F5] rounded-lg'>
                         <CheckboxField
                             id="photographers"
                             label="Photographers"
@@ -114,17 +115,77 @@ function PlanBudgetForm() {
                             checked={checkboxes.cakes}
                             onChange={handleCheckboxChange('cakes')}
                         />
+                        <CheckboxField
+                            id="dj"
+                            label="Dj"
+                            checked={checkboxes.cakes}
+                            onChange={handleCheckboxChange('dj')}
+                        />
+                        <CheckboxField
+                            id="ashtaka"
+                            label="Ashtaka"
+                            checked={checkboxes.cakes}
+                            onChange={handleCheckboxChange('ashtaka')}
+                        />
+                        <CheckboxField
+                            id="salon"
+                            label="Salon"
+                            checked={checkboxes.cakes}
+                            onChange={handleCheckboxChange('salon')}
+                        />
+                        <CheckboxField
+                            id="salon"
+                            label="Invitation Cards"
+                            checked={checkboxes.cakes}
+                            onChange={handleCheckboxChange('salon')}
+                        />
+                        <CheckboxField
+                            id="salon"
+                            label="Dancing Groups"
+                            checked={checkboxes.cakes}
+                            onChange={handleCheckboxChange('salon')}
+                        />
+                        <CheckboxField
+                            id="salon"
+                            label="Poruwa"
+                            checked={checkboxes.cakes}
+                            onChange={handleCheckboxChange('salon')}
+                        />
+                        <CheckboxField
+                            id="salon"
+                            label="Catering"
+                            checked={checkboxes.cakes}
+                            onChange={handleCheckboxChange('salon')}
+                        />
+                        <CheckboxField
+                            id="salon"
+                            label="Honeymoon Hotels"
+                            checked={checkboxes.cakes}
+                            onChange={handleCheckboxChange('salon')}
+                        />
+                        <CheckboxField
+                            id="salon"
+                            label="Dressers"
+                            checked={checkboxes.cakes}
+                            onChange={handleCheckboxChange('salon')}
+                        />
+                        <CheckboxField
+                            id="salon"
+                            label="Jewellery"
+                            checked={checkboxes.cakes}
+                            onChange={handleCheckboxChange('salon')}
+                        />
                     </div>
                 </div>
-                <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 p-3 px-5'>
-                    <PrimaryNoneFillButton 
-                    text={"Reset"} 
-                    link={"/planbudget"}
+                <div className='flex flex-wrap items-center justify-end gap-2 p-3 px-5 sm:gap-5'>
+                    <PrimaryNoneFillButton
+                        text={"Reset"}
+                        link={"/planbudget"}
                     />
 
-                    <PrimaryButton 
-                    text={"Save Changes"} 
-                    link={"/"}
+                    <PrimaryButton
+                        text={"Save Changes"}
+                        link={"/"}
                     />
                 </div>
             </form>

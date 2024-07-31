@@ -7,16 +7,16 @@ import ServiceDescriptionCard from "../components/common/ServiceDescriptionCard"
 import VendorDescription from "../components/VendorDescription";
 
 const items = [
-    { img: 'src/assets/Images/Images/01.png' },
-    { img: 'src/assets/Images/Images/02.png' },
-    { img: 'src/assets/Images/Images/03.png' },
-    { img: 'src/assets/Images/Images/04.png' },
-    { img: 'src/assets/Images/Images/05.png' },
-    { img: 'src/assets/Images/Images/06.png' },
-    { img: 'src/assets/Images/Images/07.png' },
-    { img: 'src/assets/Images/Images/00.png' },
-    { img: 'src/assets/Images/Images/img1.png' },
-    { img: 'src/assets/Images/Images/000.png' },
+    { img: 'src/assets/Images/Images/dressing1.jpg' },
+    { img: 'src/assets/Images/Images/dressing3.jpg' },
+    { img: 'src/assets/Images/Images/dressing4.jpg' },
+    { img: 'src/assets/Images/Images/dressing5.jpg' },
+    { img: 'src/assets/Images/Images/dressing6.jpg' },
+    { img: 'src/assets/Images/Images/dressing7.jpg' },
+    { img: 'src/assets/Images/Images/dressing8.jpg' },
+    { img: 'src/assets/Images/Images/dressing1.jpg' },
+    { img: 'src/assets/Images/Images/dressing2.jpg' },
+    { img: 'src/assets/Images/Images/dressing3.jpg' },
 
 ];
 

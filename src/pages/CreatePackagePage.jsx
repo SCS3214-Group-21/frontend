@@ -4,13 +4,13 @@ import VendorSidebar from "../components/VendorSidebar";
 import Breadcrumb from '../components/ui/Breadcrumb';
 import CreatePackageForm from '../components/CreatePackageForm'
 
-function CreatePackagePage(){
+function CreatePackagePage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
-        { label: 'Vendors', href: '/' },
-        { label: 'Hotels' },
+        { label: 'Dashboard', href: '/vendordashboard' },
+        { label: 'Packages', href: '/vendorpackages' },
+        { label: 'Create Package' },
     ];
-    return(
+    return (
         <div>
             <RegisterHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
@@ -22,7 +22,7 @@ function CreatePackagePage(){
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-custom-primary font-bold text-4xl'>Create Package</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>Create Package</h1>
                     </div>
                     <div className="pb-5">
                         <CreatePackageForm />

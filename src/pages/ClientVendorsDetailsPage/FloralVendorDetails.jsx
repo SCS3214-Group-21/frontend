@@ -21,12 +21,12 @@ function FloralVendorDetails() {
     images: {
       'Venetian Pink': {
         main: 'floral.png',
-        small: ['floral.png', 'floral.png', 'floral.png'],
+        small: ['floral1.jpg', 'floral2.jpg', 'floral3.jpg'],
         price: 20000
       },
       'Venetian Blue': {
-        main: 'cars.png',
-        small: ['cars.png', 'cars.png', 'cars.png'],
+        main: 'floral2.jpg',
+        small: ['floral4.jpg', 'floral1.jpg', 'floral.png'],
         price: 25000
       },
       // Add more color options here
@@ -47,8 +47,8 @@ function FloralVendorDetails() {
       'Venetian Gray'
     ],
     description: 'One garland embedded with collection blooms of your choice. Garland length is 81"',
-    rentalTerms: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta dignissimos id repellat architecto eligendi a dolorem eos neque aperiam eum. Vero aspernatur vel voluptatem soluta! Similique quis sed dolorem unde?',
-    paymentTerms: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid, ducimus. Reprehenderit aut laborum fuga soluta temporibus, animi itaque blanditiis ut voluptates delectus nihil neque est iusto minus incidunt hic tempora.',
+    rentalTerms: 'Rentals are available for a minimum of 24 hours. Extended rental periods are subject to availability and additional charges.All rental items must be returned in their original condition. Any damage or excessive wear will result in additional fees.',
+    paymentTerms: 'Delivery and setup are included for orders over $500. For orders under $500, a delivery fee of $50 will apply.Setup must be scheduled at least 48 hours in advance. Changes to the setup schedule are subject to availability and may incur additional charges.',
     basePrice: 20000
   };
 

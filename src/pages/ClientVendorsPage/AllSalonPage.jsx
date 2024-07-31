@@ -22,7 +22,7 @@ const AllSalonPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/salon.jpeg",
+            img: "../src/assets/images/Images/salon1.jpg",
             alt: "Elegance Beauty Salon",
             name: "Elegance Beauty Salon",
             description: "Elegance Beauty Salon specializes in bridal makeup and hair styling, ensuring a perfect look for your special day.",
@@ -30,7 +30,7 @@ const AllSalonPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/salon.jpeg",
+            img: "../src/assets/images/Images/salon2.jpg",
             alt: "Urban Chic",
             name: "Urban Chic",
             description: "Urban Chic is known for its trendy haircuts and modern styling, offering a fresh and stylish experience.",
@@ -38,7 +38,7 @@ const AllSalonPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/salon.jpeg",
+            img: "../src/assets/images/Images/salon3.jpg",
             alt: "Serenity Spa & Salon",
             name: "Serenity Spa & Salon",
             description: "Serenity Spa & Salon provides a relaxing environment with a range of beauty treatments to rejuvenate your senses.",
@@ -46,7 +46,7 @@ const AllSalonPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/salon.jpeg",
+            img: "../src/assets/images/Images/salon4.jpg",
             alt: "Bliss Beauty",
             name: "Bliss Beauty",
             description: "Bliss Beauty offers excellent hair and skincare services, focusing on enhancing natural beauty.",
@@ -54,7 +54,7 @@ const AllSalonPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/salon.jpeg",
+            img: "../src/assets/images/Images/salon5.jpg",
             alt: "The Beauty Lounge",
             name: "The Beauty Lounge",
             description: "The Beauty Lounge provides a wide range of beauty services, from haircuts to manicures, in a chic setting.",
@@ -70,7 +70,7 @@ const AllSalonPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/salon.jpeg",
+            img: "../src/assets/images/Images/salon1.jpg",
             alt: "Elegance Hair & Beauty",
             name: "Elegance Hair & Beauty",
             description: "Elegance Hair & Beauty offers exceptional services in hair styling and beauty treatments, tailored to individual needs.",
@@ -78,7 +78,7 @@ const AllSalonPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/salon.jpeg",
+            img: "../src/assets/images/Images/salon2.jpg",
             alt: "Radiance Salon",
             name: "Radiance Salon",
             description: "Radiance Salon specializes in creating stunning hairstyles and providing top-tier beauty services.",
@@ -86,7 +86,7 @@ const AllSalonPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/salon.jpeg",
+            img: "../src/assets/images/Images/salon3.jpg",
             alt: "Glam Up",
             name: "Glam Up",
             description: "Glam Up offers a range of beauty services including makeup, hairstyling, and skincare, for a complete makeover.",
@@ -94,7 +94,7 @@ const AllSalonPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/salon.jpeg",
+            img: "../src/assets/images/Images/salon4.jpg",
             alt: "La Bella Beauty Salon",
             name: "La Bella Beauty Salon",
             description: "La Bella Beauty Salon provides personalized beauty services in a comfortable and welcoming environment.",
@@ -102,7 +102,7 @@ const AllSalonPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/salon.jpeg",
+            img: "../src/assets/images/Images/salon5.jpg",
             alt: "Pure Beauty Salon",
             name: "Pure Beauty Salon",
             description: "Pure Beauty Salon offers a holistic approach to beauty, combining modern techniques with traditional care.",

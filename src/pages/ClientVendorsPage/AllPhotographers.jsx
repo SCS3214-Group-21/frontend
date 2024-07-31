@@ -14,7 +14,7 @@ const AllPhotographers = () => {
     const photographyData = [
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/services/photography.jpg",
             alt: "DarkRoom",
             name: "Dark Room",
             price: "27,000 LKR",
@@ -23,7 +23,7 @@ const AllPhotographers = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/06.png",
             alt: "MRC",
             name: "MRC photos",
             price: "27,000 LKR",

@@ -7,21 +7,21 @@ import ServiceDescriptionCard from "../components/common/ServiceDescriptionCard"
 import VendorDescription from "../components/VendorDescription";
 
 const items1 = [
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/salon.jpeg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/salon1.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/salon2.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/salon3.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/salon7.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
     { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
     { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
 ];
 
 const items2 = [
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/02.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/03.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/04.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/05.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/salon5.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/salon4.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/salon3.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/salon2.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/salon1.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
     { img: 'src/assets/Images/Images/06.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
     { img: 'src/assets/Images/Images/07.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
 ];

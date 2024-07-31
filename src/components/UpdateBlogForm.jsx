@@ -13,9 +13,9 @@ function UpdateBlogForm() {
     return (
         <div>
             <form className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 pb-5'>
-            <div className='flex flex-col md:flex-row gap-5 lg:gap-20 w-full p-3 px-5 md:px-[5%]'>
+                <div className='flex flex-col md:flex-row gap-5 lg:gap-20 w-full p-3 px-5 md:px-[5%]'>
                     <div className='w-full'>
-                        <InputField2 
+                        <InputField2
                             id={1}
                             name={"Title "}
                             placeholder={"Input"}
@@ -26,7 +26,7 @@ function UpdateBlogForm() {
                 </div>
                 <div className='flex flex-col md:flex-row gap-5 lg:gap-20 w-full p-3 px-5 md:px-[5%]'>
                     <div className='w-full'>
-                        <InputField2 
+                        <InputField2
                             id={1}
                             name={"Bride's Name "}
                             placeholder={"Input"}
@@ -35,7 +35,7 @@ function UpdateBlogForm() {
                         />
                     </div>
                     <div className='w-full'>
-                        <InputField2 
+                        <InputField2
                             id={1}
                             name={"Groom's Name "}
                             placeholder={"Input"}
@@ -44,7 +44,7 @@ function UpdateBlogForm() {
                         />
                     </div>
                     <div className='w-full'>
-                        <InputField2 
+                        <InputField2
                             id={1}
                             name={"Wedding Date"}
                             placeholder={"yyyy/mm/dd"}
@@ -54,7 +54,7 @@ function UpdateBlogForm() {
                 </div>
                 <div className='flex flex-col md:flex-row gap-5 lg:gap-20 w-full p-3 px-5 md:px-[5%]'>
                     <div className='w-full'>
-                        <InputField2 
+                        <InputField2
                             id={1}
                             name={"Wedding Location "}
                             placeholder={"Input"}
@@ -63,7 +63,7 @@ function UpdateBlogForm() {
                         />
                     </div>
                     <div className='w-full'>
-                        <InputField2 
+                        <InputField2
                             id={1}
                             name={"Wedding Theme "}
                             placeholder={"Input"}
@@ -107,16 +107,16 @@ function UpdateBlogForm() {
                         value=" On October 22, 2020, Neville arrived at a house gathering, and Chelsie opened the door for him. Instantly he thought, “Man, this girl’s beautiful. She’s amazing.” They talked a little at the gathering, but nothing came of it that night. A few days later, Neville reached out to Chelsie, and they got the chance to bond over their love for music and sports. It felt like they had known each other forever. After about a month, they were officially a couple. A year and a half later, Neville asked Chelsie to become his wife. This fun-loving couple tied the knot in an elegant, black-and-white wedding ceremony, followed by a reception that went viral! See all of the details of this wedding featured in the spring 2024 issue of Black Bride Magazine, and captured by Jamaal McKenzie and Paul McFall IV of Capital Films DC."
                     />
                 </div>
-                
+
                 <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 p-3 px-5 md:px-[5%]'>
-                    <PrimaryNoneFillButton 
-                    text={"Reset"} 
-                    link={"/planbudget"}
+                    <PrimaryNoneFillButton
+                        text={"Reset"}
+                        link={"/viewmyblog"}
                     />
 
-                    <PrimaryButton 
-                    text={"Save Changes"} 
-                    link={"/"}
+                    <PrimaryButton
+                        text={"Save Changes"}
+                        link={"/viewmyblog"}
                     />
                 </div>
             </form>

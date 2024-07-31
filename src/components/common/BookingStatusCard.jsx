@@ -24,7 +24,7 @@ function BookingStatusCard(props) {
                 <div className="w-20 ml-2 rounded-full lg:w-10">
                     <img
                         alt="Avatar"
-                        src="../../src/assets/images/Images/Profile.png"
+                        src="../../src/assets/images/Images/avatar.png"
                     />
                 </div>
                 <div className='mx-6 text-2xl'>

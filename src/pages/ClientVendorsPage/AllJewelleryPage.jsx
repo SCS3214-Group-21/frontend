@@ -22,7 +22,7 @@ const AllJewelleryPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/jewellery.jpeg",
+            img: "../src/assets/images/Images/jewellery1.jpg",
             alt: "Diamond Delight",
             name: "Diamond Delight",
             description: "Diamond Delight is known for their exceptional service and stunning diamond jewelry, creating a sparkling addition to any outfit.",
@@ -30,7 +30,7 @@ const AllJewelleryPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/jewellery.jpeg",
+            img: "../src/assets/images/Images/jewellery2.jpg",
             alt: "Silver Shine",
             name: "Silver Shine",
             description: "Silver Shine offers beautiful silver jewelry, perfect for those looking for elegant and timeless pieces.",
@@ -38,7 +38,7 @@ const AllJewelleryPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/jewellery.jpeg",
+            img: "../src/assets/images/Images/jewellery3.jpg",
             alt: "Pearl Paradise",
             name: "Pearl Paradise",
             description: "Pearl Paradise provides exquisite pearl jewelry that adds a touch of sophistication and grace to any look.",
@@ -46,7 +46,7 @@ const AllJewelleryPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/jewellery.jpeg",
+            img: "../src/assets/images/Images/jewellery4.jpg",
             alt: "Ruby Royale",
             name: "Ruby Royale",
             description: "Ruby Royale specializes in stunning ruby jewelry, perfect for those looking to make a bold and luxurious statement.",
@@ -54,7 +54,7 @@ const AllJewelleryPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/jewellery.jpeg",
+            img: "../src/assets/images/Images/jewellery5.jpg",
             alt: "Emerald Elegance",
             name: "Emerald Elegance",
             description: "Emerald Elegance offers beautiful emerald jewelry, adding a vibrant and elegant touch to any occasion.",
@@ -62,7 +62,7 @@ const AllJewelleryPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/jewellery.jpeg",
+            img: "../src/assets/images/Images/jewellery6.jpg",
             alt: "Sapphire Splendor",
             name: "Sapphire Splendor",
             description: "Sapphire Splendor is known for their exquisite sapphire jewelry, perfect for adding a regal touch to any ensemble.",
@@ -70,7 +70,7 @@ const AllJewelleryPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/jewellery.jpeg",
+            img: "../src/assets/images/Images/jewellery7.jpg",
             alt: "Opal Oasis",
             name: "Opal Oasis",
             description: "Opal Oasis provides stunning opal jewelry, offering a unique and mesmerizing addition to any jewelry collection.",
@@ -86,7 +86,7 @@ const AllJewelleryPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/jewellery.jpeg",
+            img: "../src/assets/images/Images/jewellery1.jpg",
             alt: "Jade Jewelers",
             name: "Jade Jewelers",
             description: "Jade Jewelers specializes in exquisite jade jewelry, offering pieces that are both elegant and culturally significant.",
@@ -94,7 +94,7 @@ const AllJewelleryPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/jewellery.jpeg",
+            img: "../src/assets/images/Images/jewellery2.jpg",
             alt: "Topaz Touch",
             name: "Topaz Touch",
             description: "Topaz Touch offers stunning topaz jewelry, perfect for those looking for a unique and beautiful addition to their collection.",

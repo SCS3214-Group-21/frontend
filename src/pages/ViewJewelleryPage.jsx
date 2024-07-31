@@ -7,21 +7,21 @@ import ServiceDescriptionCard from "../components/common/ServiceDescriptionCard"
 import VendorDescription from "../components/VendorDescription";
 
 const items1 = [
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/jewellery1.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/jewellery2.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/jewellery3.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/jewellery4.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/jewellery5.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
     { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
     { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
 ];
 
 const items2 = [
-    { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/02.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/03.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/04.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
-    { img: 'src/assets/Images/Images/05.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/jewellery7.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/jewellery6.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/jewellery5.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/jewellery4.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
+    { img: 'src/assets/Images/Images/jewellery1.jpg', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
     { img: 'src/assets/Images/Images/06.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
     { img: 'src/assets/Images/Images/07.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },
 ];
@@ -94,8 +94,8 @@ function ViewJewelleryPage() {
                             email={"nilanthibridals@gmail.com"}
                             starCount={4}
                             showStars={true}
-                            img={"./src/assets/Images/Images/img1.png"}
-                            v_name={"Dhanushi Premarathne"}
+                            img={"./src/assets/Images/Images/jewellery1.jpg"}
+                            // v_name={"Dhanushi Premarathne"}
                             text={"We offer a comprehensive range of beauty treatments designed to meet all your needs and exceed your expectations. Our expert team, is dedicated to providing you with an exceptional experience, using the latest techniques and top-quality products. Whether you're looking for a refreshing new look or a relaxing retreat, we have the perfect solution to enhance your natural beauty and boost your confidence. Experience the epitome of beauty at Liyo Salon, where your satisfaction is our top priority. Discover the finest selection of beauty products at Liyo Salon, carefully curated to ensure you achieve salon-quality results at home. Our range includes top-tier brands and exclusive items that cater to all your hair, skin, and beauty needs. Each product is chosen for its superior quality and effectiveness, helping you maintain and enhance your natural beauty between visits.."}
                             link={"/"}
                             button={"Book Now"}

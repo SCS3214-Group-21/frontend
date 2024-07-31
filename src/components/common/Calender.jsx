@@ -9,7 +9,9 @@ function Calender() {
 
     const appointments = [
         { date: '2024-07-15', title: 'Doctor Appointment', start: '10:00 AM', end: '11:00 AM' },
-        { date: '2024-07-20', title: 'Meeting with Client', start: '10:00 AM', end: '11:00 AM' }
+        { date: '2024-07-20', title: 'Meeting with Client', start: '10:00 AM', end: '11:00 AM' },
+        { date: '2024-08-15', title: 'Dressing Appointment', start: '10:00 AM', end: '11:00 AM' },
+        { date: '2024-08-05', title: 'Salon Appointment', start: '10:00 AM', end: '11:00 AM' }
     ];
 
     useEffect(() => {
@@ -17,18 +19,18 @@ function Calender() {
         function generateCalendar(year, month) {
             const calendarElement = calendarRef.current;
             const currentMonthElement = currentMonthRef.current;
-            
+
             // Create a date object for the first day of the specified month
             const firstDayOfMonth = new Date(year, month, 1);
             const daysInMonth = new Date(year, month + 1, 0).getDate();
-            
+
             // Clear the calendar
             calendarElement.innerHTML = '';
 
             // Set the current month text
             const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             currentMonthElement.innerText = `${monthNames[month]} ${year}`;
-            
+
             // Calculate the day of the week for the first day of the month (0 - Sunday, 1 - Monday, ..., 6 - Saturday)
             const firstDayOfWeek = firstDayOfMonth.getDay();
 
@@ -36,7 +38,7 @@ function Calender() {
             const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
             daysOfWeek.forEach(day => {
                 const dayElement = document.createElement('div');
-                dayElement.className = 'text-center font-semibold';
+                dayElement.className = 'font-semibold text-center';
                 dayElement.innerText = day;
                 calendarElement.appendChild(dayElement);
             });
@@ -50,7 +52,7 @@ function Calender() {
             // Create boxes for each day of the month
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayElement = document.createElement('div');
-                dayElement.className = 'text-center py-2 border';
+                dayElement.className = 'py-2 text-center border';
                 dayElement.innerText = day;
 
                 // Check if this date is the current date
@@ -60,11 +62,11 @@ function Calender() {
                 }
 
                 // Check if this date has an appointment
-        const appointmentDate = new Date(year, month, day).toISOString().split('T')[0];
-        const appointment = appointments.find(app => app.date === appointmentDate);
-        if (appointment) {
-            dayElement.classList.add('bg-custom-secondary', 'text-white'); // Highlight the day with an appointment
-        }
+                const appointmentDate = new Date(year, month, day).toISOString().split('T')[0];
+                const appointment = appointments.find(app => app.date === appointmentDate);
+                if (appointment) {
+                    dayElement.classList.add('bg-custom-secondary', 'text-white'); // Highlight the day with an appointment
+                }
 
                 calendarElement.appendChild(dayElement);
             }
@@ -97,9 +99,9 @@ function Calender() {
 
     return (
         <div className="flex items-center justify-center">
-            {/* <div className="lg:w-7/12 md:w-9/12 sm:w-10/12 mx-auto p-4"> */}
-            <div className="w-full mx-auto p-4">
-                <div className="bg-white h- shadow-lg rounded-lg overflow-hidden">
+            {/* <div className="p-4 mx-auto lg:w-7/12 md:w-9/12 sm:w-10/12"> */}
+            <div className="w-full p-4 mx-auto">
+                <div className="overflow-hidden bg-white rounded-lg shadow-lg h-">
                     <div className="flex items-center justify-between px-6 py-3 bg-custom-primary">
                         <button onClick={handlePrevMonth} className="text-white">Previous</button>
                         <h2 id="currentMonth" className="text-white" ref={currentMonthRef}></h2>
