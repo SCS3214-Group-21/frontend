@@ -7,7 +7,7 @@ import SecondaryButton from "../components/ui/SecondaryButton";
 function VendorRegister02() {
   return (
     <div>
-      <LandingHeader />
+      {/* <LandingHeader /> */}
       <div
         className="bg-[#FFF8F5] min-h-screen w-full bg-no-repeat bg-cover flex-row justify-center items-center relative pb-5"
         style={{ backgroundImage: "url('./src/assets/images/Images/007.png')" }}
@@ -79,10 +79,10 @@ function VendorRegister02() {
           info
         </h1>
         <div className="flex flex-row justify-end pt-5 pr-10 sm:pr-20">
-            <SecondaryButton 
+            {/* <SecondaryButton 
                 link={'/vendorregister3'}
                 text={"Next >>"}
-            />
+            /> */}
         </div>  
         <div className="flex flex-col rounded-xl gap-3 items-center justify-center w-full pt-5 px-10 sm:px-20 text-center text-black">
           <RegisterProgress precentage={20} />

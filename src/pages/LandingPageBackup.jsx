@@ -46,7 +46,7 @@ function LandingPage(){
 
             {/* services section */}
             <section
-                className="bg-[#FFF8F5] h-screen w-full flex flex-col items-center pt-20"
+                className="bg-[#FFF8F5] min-h-screen w-full flex flex-col items-center pt-20"
             >
                 <h1 className="text-custom-primary font-sans font-normal text-4xl sm:text-5xl text-center pb-10">
                     Services <span className="text-black">you may find here </span>

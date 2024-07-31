@@ -1,13 +1,14 @@
 import React from "react";
 import { useState } from "react";
+import CustomButton from "../ui/CustomPinkButton"
 
-function LoginHeader() {
+function RegistrationHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
     { id: 1, label: "Home", link: "/" },
     { id: 4, label: "About", link: "/about" },
-    { id: 5, label: "Register", link: "/register" },
+    { id: 5, label: "Login", link: "/login" },
   ];
 
   const toggleMenu = () => {
@@ -69,7 +70,12 @@ function LoginHeader() {
         </div>
 
         <div>
-          <ul className="hidden md:flex flex-row gap-10 cursor-pointer text-lg flex-wrap text-custom-primary">
+          <ul className="hidden md:flex flex-row gap-10 cursor-pointer text-lg flex-wrap text-custom-primary items-center">
+            <CustomButton 
+                link={'/register'}
+                bgColor={"bg-black"}
+                text={"Client >>"}
+            />
             {menuItems.map((item) => (
               <li key={item.id} className="relative group">
                 <a href={item.link} className="hover-underline">
@@ -112,4 +118,4 @@ function LoginHeader() {
   );
 }
 
-export default LoginHeader;
+export default RegistrationHeader;

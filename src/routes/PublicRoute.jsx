@@ -52,6 +52,7 @@ import AllJewelleryPage from "../pages/ClientVendorsPage/AllJewelleryPage";
 import AllSalonPage from "../pages/ClientVendorsPage/AllSalonPage";
 import AllDressersPage from "../pages/ClientVendorsPage/AllDressersPage";
 import NotificationPage from "../pages/NotificationPage";
+import VendorRegister from "../pages/VendorRegister.jsx";
 
 
 function PublicRoute() {
@@ -63,12 +64,13 @@ function PublicRoute() {
                     <Route path="/" element={<LandingPageBackup />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                     <Route path="/register" element={<ClientRegisterPage />}></Route>
+                    <Route path="/vendorregister" element={<VendorRegister />}></Route>
                     <Route path="/vendorregister1" element={<VendorRegister01 />}></Route>
-                    <Route path="/vendorregister2" element={<VendorRegister02 />}></Route>
+                    {/* <Route path="/vendorregister2" element={<VendorRegister02 />}></Route>
                     <Route path="/vendorregister3" element={<VendorRegister03 />}></Route>
                     <Route path="/vendorregister4" element={<VendorRegister04 />}></Route>
                     <Route path="/vendorregister5" element={<VendorRegister05 />}></Route>
-                    <Route path="/vendorregister6" element={<VendorRegister06 />}></Route>
+                    <Route path="/vendorregister6" element={<VendorRegister06 />}></Route> */}
                     <Route path="/allvendors" element={<ClientAllVendors />}></Route>
                     <Route path="/allhotels" element={<AllHotelsPage />}></Route>
                     <Route path="/allphotographers" element={<AllPhotographers />}></Route>

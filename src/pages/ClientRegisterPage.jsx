@@ -8,12 +8,13 @@ import facebook from "../assets/images/Icons/FbIcon.png";
 import x from "../assets/images/Icons/XIcon.png";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import LoginHeader from "../components/common/LoginHeader";
+import ClientRegistrationHeader from "../components/common/ClientRegistrationHeader";
 
 export default function ClientRegisterPage() {
     return (
         <div className="bg-[#FFF8F5]">
 
-            <LoginHeader />
+            <ClientRegistrationHeader />
 
             <div
                 className="flex items-center justify-center text-black h-screen bg-center bg-no-repeat bg-cover "
