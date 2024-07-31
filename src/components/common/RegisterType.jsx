@@ -20,7 +20,7 @@ function RegisterType({ onClose }) {
                     </ul>
                     <PrimaryButton 
                         text={"Register"}
-                        link={"register"}
+                        link={"/register"}
                     />
                 </div>
                 <div className='w-full md:w-1/2 flex flex-col items-center justify-center gap-5 border-t-2 md:border-t-0 md:border-l-2 p-10'>
@@ -32,7 +32,7 @@ function RegisterType({ onClose }) {
                     </ul>
                     <PrimaryButton 
                         text={"Register"}
-                        link={"vendorregister1"}
+                        link={"/vendorregister1"}
                     />
                 </div>
             </div>

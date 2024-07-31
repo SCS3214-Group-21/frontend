@@ -7,9 +7,9 @@ import CustomPinkButton from "../components/ui/CustomPinkButton";
 function VendorRegister06() {
   return (
     <div>
-  <LandingHeader />
+  {/* <LandingHeader /> */}
   <div
-    className="bg-[#FFF8F5] h-[44rem] w-full bg-no-repeat bg-cover flex-row justify-center items-center relative pb-5"
+    className="bg-[#FFF8F5] min-h-screen w-full bg-no-repeat bg-cover flex-row justify-center items-center relative pb-5"
     style={{ backgroundImage: "url('./src/assets/images/Images/007.png')" }}
   >
     <div className="h-[36rem] flex justify-center flex-col text-center px-5">
