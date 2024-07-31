@@ -10,12 +10,12 @@ export default function ClientSidebar() {
         setDrawerOpen(!isDrawerOpen);
     };
 
-    const isMyWeddingPage = location.pathname === '/';
-    const isVendorsPage = location.pathname === '/allvendors' || location.pathname === '/allhotels' || location.pathname === '/allphotographers' || location.pathname === '/allflorals';
+    const isMyWeddingPage = location.pathname === '/mywedding';
+    const isVendorsPage = location.pathname === '/allvendors' || location.pathname === '/allhotels' || location.pathname === '/hoteldetails' || location.pathname === '/alljewellery' || location.pathname === '/alldressers' || location.pathname === '/viewdressing' || location.pathname === '/allphotographers' || location.pathname === '/viewjewellery' || location.pathname === '/floraldetails' || location.pathname === '/allflorals';
     const isBudgetPage = location.pathname === '/budget' || location.pathname === '/planbudget';//rename actual path
-    const isNotificationPage = location.pathname === '/';//rename actual path
+    const isNotificationPage = location.pathname === '/notification';//rename actual path
     const isMessagesPage = location.pathname === '/allchats' || location.pathname === '/chat2';//rename actual path
-    const isCalendarPage = location.pathname === '/';//rename actual path
+    const isCalendarPage = location.pathname === '/calender';//rename actual path
     const isBookingsPage = location.pathname === '/bookings' || location.pathname === '/bookingdetails';//rename actual path
     const isBlogsPage = location.pathname === '/blog';//rename actual path
     //const isLogoutPage = location.pathname === '/';//rename actual path
@@ -28,7 +28,7 @@ export default function ClientSidebar() {
             {/* menu icon for small screens */}
             <button
                 onClick={toggleDrawer}
-                className="fixed z-50 block p-2 sm:hidden top-18 left-3"
+                className="fixed z-50 block p-2 sm:hidden top-12 left-3"
             >
                 {/*<img src={menuIcon} alt="Menu Icon" className="w-6 h-6" />*/}
 
@@ -47,7 +47,7 @@ export default function ClientSidebar() {
                 <div className="py-2 my-2 mt-24 overflow-y-auto">
                     <ul className="space-y-3 font-medium">
                         <SidebarButton
-                            href="#"
+                            href="/mywedding"
                             iconPath="M4 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5Zm16 14a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2ZM4 13a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6Zm16-2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6Z"
                             label="My Wedding"
                             isOpen={isDrawerOpen}
@@ -69,7 +69,7 @@ export default function ClientSidebar() {
                             isActive={isBudgetPage}
                         />
                         <SidebarButton
-                            href="#"
+                            href="/notification"
                             iconPath="m10.827 5.465-.435-2.324m.435 2.324a5.338 5.338 0 0 1 6.033 4.333l.331 1.769c.44 2.345 2.383 2.588 2.6 3.761.11.586.22 1.171-.31 1.271l-12.7 2.377c-.529.099-.639-.488-.749-1.074C5.813 16.73 7.538 15.8 7.1 13.455c-.219-1.169.218 1.162-.33-1.769a5.338 5.338 0 0 1 4.058-6.221Zm-7.046 4.41c.143-1.877.822-3.461 2.086-4.856m2.646 13.633a3.472 3.472 0 0 0 6.728-.777l.09-.5-6.818 1.277Z"
                             label="Notifications"
                             isOpen={isDrawerOpen}
@@ -84,7 +84,7 @@ export default function ClientSidebar() {
                             messagesCount="4"
                         />
                         <SidebarButton
-                            href="#"
+                            href="/calender"
                             iconPath="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"
                             label="Calendar"
                             isOpen={isDrawerOpen}

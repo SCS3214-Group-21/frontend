@@ -3,9 +3,10 @@ import VendorCategory from '../../components/VendorCategory';
 import RegisterHeader from '../../components/common/RegisterHeader';
 import ClientSidebar from '../../components/ClientSidebar';
 import Breadcrumb from '../../components/ui/Breadcrumb';
+import VendorCategoryFloral from '../../components/VendorCategoryFloral';
 const AllFloralsPage = () => {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
+        { label: 'My Wedding', href: '/mywedding' },
         { label: 'Vendors', href: '/allvendors' },
         { label: 'Floral' },
     ];
@@ -190,7 +191,7 @@ const AllFloralsPage = () => {
                     <div className="pb-5">
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
-                    <VendorCategory
+                    <VendorCategoryFloral
                         title="Florals"
 
                         vendorData={floralData}

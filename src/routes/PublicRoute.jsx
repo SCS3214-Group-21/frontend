@@ -36,6 +36,7 @@ import LandingPageBackup from "../pages/LandingPageBackup.jsx";
 
 import ClientAllBookings from "../pages/ClientBookingPage/ClientAllBookings";
 import ClientBookingDetailsPage from "../pages/ClientBookingPage/ClientBookingDetailsPage";
+import ClientDashboardPage from "../pages/ClientDashboardPage";
 
 import ViewBlogPage from "../pages/ViewBlogPage";
 import ViewMyBlogPage from "../pages/ViewMyBlogPage";
@@ -43,6 +44,14 @@ import ViewSaloonPage from "../pages/ViewSaloonPage";
 import ViewJewelleryPage from "../pages/ViewJewelleryPage";
 import ViewDressingPage from "../pages/ViewDressingPage";
 import CalenderPage from "../pages/CalenderPage";
+import AdminDashboardPage from "../pages/AdminDashboardPage";
+import AdminManageUsersPage from "../pages/AdminManageUsersPage";
+import AdminBlogPage from "../pages/AdminBlogPage";
+import AdminCreateBlogPage from "../pages/AdminCreateBlogPage";
+import AllJewelleryPage from "../pages/ClientVendorsPage/AllJewelleryPage";
+import AllSalonPage from "../pages/ClientVendorsPage/AllSalonPage";
+import AllDressersPage from "../pages/ClientVendorsPage/AllDressersPage";
+import NotificationPage from "../pages/NotificationPage";
 
 
 function PublicRoute() {
@@ -66,6 +75,9 @@ function PublicRoute() {
                     <Route path="/allflorals" element={<AllFloralsPage />}></Route>
                     <Route path="/allcakes" element={<AllCakesPage />}></Route>
                     <Route path="/allcars" element={<AllCarsPage />}></Route>
+                    <Route path="/alljewellery" element={<AllJewelleryPage />}></Route>
+                    <Route path="/allsalons" element={<AllSalonPage />}></Route>
+                    <Route path="/alldressers" element={<AllDressersPage />}></Route>
                     <Route path="/hoteldetails" element={<HotelVendorDetails />}></Route>
                     <Route path="/floraldetails" element={<FloralVendorDetails />}></Route>
                     <Route path="/cakesdetails" element={<CakesVendorDetails />}></Route>
@@ -88,13 +100,19 @@ function PublicRoute() {
 
                     <Route path="/bookings" element={<ClientAllBookings />}></Route>
                     <Route path="/bookingdetails" element={<ClientBookingDetailsPage />}></Route>
-
+                    <Route path="/mywedding" element={<ClientDashboardPage />}></Route>
                     <Route path="viewblog" element={<ViewBlogPage />}></Route>
                     <Route path="viewmyblog" element={<ViewMyBlogPage />}></Route>
                     <Route path="viewsaloons" element={<ViewSaloonPage />}></Route>
                     <Route path="viewjewellery" element={<ViewJewelleryPage />}></Route>
                     <Route path="viewdressing" element={<ViewDressingPage />}></Route>
                     <Route path="calender" element={<CalenderPage />}></Route>
+                    <Route path="/admindashboard" element={<AdminDashboardPage />}></Route>
+                    <Route path="/manageusers" element={<AdminManageUsersPage />}></Route>
+                    <Route path="/adminblogs" element={<AdminBlogPage />}></Route>
+                    <Route path="/admincreateblog" element={<AdminCreateBlogPage />}></Route>
+                    <Route path="/notification" element={<NotificationPage />}></Route>
+
 
                 </Routes>
             </BrowserRouter>
