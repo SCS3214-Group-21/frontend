@@ -15,7 +15,7 @@ function PackageCard(props) {
             <div className="absolute top-2 right-2">
                 <label className="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" checked={isDisabled} onChange={toggleDisabled} className="sr-only peer" />
-                    <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-red-500 peer-checked:after:translate-x-full peer-checked:after:bg-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-green-500 after:border after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+                    <div className="w-11 h-6 bg-custom-primary rounded-full peer peer-checked:bg-red-500 peer-checked:after:translate-x-full peer-checked:after:bg-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
                 </label>
             </div>
 

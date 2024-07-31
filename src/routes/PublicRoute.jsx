@@ -57,8 +57,14 @@ import AdminBlogAcceptPage from "../pages/AdminBlogAcceptPage";
 
 
 import VendorRegister from "../pages/VendorRegister.jsx";
-import PrivateRoute from "./PrivateRoute.jsx";
 
+import PrivateRoute from "./PrivateRoute.jsx";
+import VendorBlogPage from "../pages/VendorBlogPage.jsx";
+import VendorCreateBlogPage from "../pages/VendorCreateBlogPage.jsx";
+import VendorAllChatsPage from "../pages/VendorAllChatsPage.jsx";
+import VendorChatPage from "../pages/VendorChatPage.jsx";
+import VendorSchedulePage from "../pages/VendorSchedulePage.jsx";
+import VendorNotificationPage from "../pages/VendorNotificationPage.jsx";
 
 
 function PublicRoute() {
@@ -101,16 +107,17 @@ function PublicRoute() {
                     <Route path="/budget" element={<BudgetPage />}></Route>
                     <Route path="/planbudget" element={<PlanBudgetPage />}></Route>
                     <Route path="/createblog" element={<CreateBlogPage />}></Route>
-                    <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
-                    <Route path="/blog" element={<BlogPage />}></Route>
-
+                    <Route path="/updateblog/:id" element={<UpdateBlogPage />}></Route>
+                    <Route path="/blogs" element={<BlogPage />}></Route>
+                    <Route path="/vendorblog" element={<VendorBlogPage />}></Route>
+                    <Route path="/vendorcreateblog" element={<VendorCreateBlogPage />}></Route>
 
 
                     <Route path="/bookings" element={<ClientAllBookings />}></Route>
                     <Route path="/bookingdetails" element={<ClientBookingDetailsPage />}></Route>
                     <Route path="/mywedding" element={<ClientDashboardPage />}></Route>
-                    <Route path="viewblog" element={<ViewBlogPage />}></Route>
-                    <Route path="viewmyblog" element={<ViewMyBlogPage />}></Route>
+                    <Route path="viewblog/:id" element={<ViewBlogPage />}></Route>
+                    <Route path="viewmyblog/:id" element={<ViewMyBlogPage />}></Route>
                     <Route path="viewsaloons" element={<ViewSaloonPage />}></Route>
                     <Route path="viewjewellery" element={<ViewJewelleryPage />}></Route>
                     <Route path="viewdressing" element={<ViewDressingPage />}></Route>
@@ -121,10 +128,14 @@ function PublicRoute() {
                     <Route path="/admincreateblog" element={<AdminCreateBlogPage />}></Route>
                     <Route path="/notification" element={<NotificationPage />}></Route>
                     <Route path="/acceptblogs" element={<AdminBlogAcceptPage />}></Route>
+                    <Route path="/vendorallchats" element={<VendorAllChatsPage />}></Route>
+                    <Route path="/vendorchat" element={<VendorChatPage />}></Route>
+                    <Route path="/vendorschedule" element={<VendorSchedulePage />}></Route>
+                    <Route path="/vendornotification" element={<VendorNotificationPage />}></Route>
 
-                    <PrivateRoute path="/allvendors" element={<ClientAllVendors />} roleRequired="client" />
+                    {/* <PrivateRoute path="/allvendors" element={<ClientAllVendors />} roleRequired="client" />
                 <PrivateRoute path="/vendorprofile" element={<VendorProfilePage />} roleRequired="serviceprovider" />
-                <PrivateRoute path="/vendordashboard" element={<VendorDashboardPage />} roleRequired="admin" />
+                <PrivateRoute path="/vendordashboard" element={<VendorDashboardPage />} roleRequired="admin" /> */}
 
                 </Routes>
             </Router>

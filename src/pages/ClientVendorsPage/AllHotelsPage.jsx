@@ -14,16 +14,16 @@ const AllHotelsPage = () => {
     const hotelData = [
         {
             href: "/hoteldetails",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel2.jpg",
             alt: "Shangrila",
             name: "Shangrila",
             price: "50,000 LKR",
             description: "Well known hotel located in Colombo with highly recommended facilities.",
-            starCount: 4
+            starCount: 5
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel1.jpeg",
             alt: "Cinnamon Grand",
             name: "Cinnamon Grand",
             price: "45,000 LKR",
@@ -32,7 +32,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel9.jpeg",
             alt: "The Kingsbury",
             name: "The Kingsbury",
             price: "40,000 LKR",
@@ -41,7 +41,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel3.jpg",
             alt: "Galle Face Hotel",
             name: "Galle Face Hotel",
             price: "35,000 LKR",
@@ -50,7 +50,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel4.jpg",
             alt: "Taj Samudra",
             name: "Taj Samudra",
             price: "38,000 LKR",
@@ -59,7 +59,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel5.jpg",
             alt: "Hilton Colombo",
             name: "Hilton Colombo",
             price: "42,000 LKR",
@@ -68,7 +68,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel6.jpeg",
             alt: "Cinnamon Lakeside",
             name: "Cinnamon Lakeside",
             price: "40,000 LKR",
@@ -77,7 +77,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel7.jpeg",
             alt: "Jetwing Colombo Seven",
             name: "Jetwing Colombo Seven",
             price: "37,000 LKR",
@@ -86,7 +86,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel8.jpeg",
             alt: "Marino Beach",
             name: "Marino Beach",
             price: "32,000 LKR",
@@ -95,7 +95,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel.png",
             alt: "Movenpick Hotel Colombo",
             name: "Movenpick Hotel Colombo",
             price: "41,000 LKR",
@@ -104,7 +104,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel1.jpeg",
             alt: "OZO Colombo",
             name: "OZO Colombo",
             price: "30,000 LKR",
@@ -113,7 +113,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel2.jpg",
             alt: "Mandarina Colombo",
             name: "Mandarina Colombo",
             price: "29,000 LKR",
@@ -122,7 +122,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel.png",
             alt: "Marino Beach Hotel",
             name: "Marino Beach Hotel",
             price: "35,000 LKR",
@@ -131,7 +131,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel4.jpg",
             alt: "Galadari Hotel",
             name: "Galadari Hotel",
             price: "28,000 LKR",
@@ -140,7 +140,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel8.jpeg",
             alt: "Renuka City Hotel",
             name: "Renuka City Hotel",
             price: "25,000 LKR",
@@ -149,7 +149,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel6.jpeg",
             alt: "Hotel Janaki",
             name: "Hotel Janaki",
             price: "20,000 LKR",
@@ -158,7 +158,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel4.jpg",
             alt: "Pegasus Reef Hotel",
             name: "Pegasus Reef Hotel",
             price: "22,000 LKR",
@@ -167,7 +167,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel8.jpeg",
             alt: "The Steuart by Citrus",
             name: "The Steuart by Citrus",
             price: "27,000 LKR",
@@ -176,7 +176,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel7.jpeg",
             alt: "Fairway Colombo",
             name: "Fairway Colombo",
             price: "26,000 LKR",
@@ -185,7 +185,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel4.jpg",
             alt: "Earl's Regent Hotel",
             name: "Earl's Regent Hotel",
             price: "23,000 LKR",
@@ -194,7 +194,7 @@ const AllHotelsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/03.png",
+            img: "../src/assets/images/Images/hotel9.jpeg",
             alt: "Grand Navro Hotel",
             name: "Grand Navro Hotel",
             price: "21,000 LKR",

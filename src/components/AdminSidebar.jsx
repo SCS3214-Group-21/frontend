@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom'; // Import useLocation hook
+import { useLocation, useNavigate } from 'react-router-dom'; // Import useLocation hook
 import SidebarButton from './ui/SidebarButton';
+import Swal from 'sweetalert2';
 
 export default function AdminSidebar() {
     const [isDrawerOpen, setDrawerOpen] = useState(false);
-    //const location = useLocation(); // Use useLocation to get the current path
+    const location = useLocation(); // Use useLocation to get the current path
+    const navigate = useNavigate();
 
     const toggleDrawer = () => {
         setDrawerOpen(!isDrawerOpen);
@@ -20,6 +22,31 @@ export default function AdminSidebar() {
 
     //const isLogoutPage = location.pathname === '/';//rename actual path
 
+    function handleLogout() {
+        // Show confirmation dialog
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you really want to logout?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, logout',
+            cancelButtonText: 'No, stay'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Clear authentication data from localStorage, sessionStorage, or cookies
+                localStorage.removeItem('authToken');
+                sessionStorage.removeItem('authToken');
+
+                // You can also clear cookies if you're using them
+                // document.cookie = "authToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+
+                // Redirect to the login page
+                navigate('/');
+            }
+        });
+    }
 
 
 
@@ -64,7 +91,7 @@ export default function AdminSidebar() {
                         />
 
                         <SidebarButton
-                            href="/"
+                            href="#"
                             iconPath="M13.6 16.733c.234.269.548.456.895.534a1.4 1.4 0 0 0 1.75-.762c.172-.615-.446-1.287-1.242-1.481-.796-.194-1.41-.861-1.241-1.481a1.4 1.4 0 0 1 1.75-.762c.343.077.654.26.888.524m-1.358 4.017v.617m0-5.939v.725M4 15v4m3-6v6M6 8.5 10.5 5 14 7.5 18 4m0 0h-3.5M18 4v3m2 8a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"
                             label="Transactions"
                             isOpen={isDrawerOpen}
@@ -104,10 +131,11 @@ export default function AdminSidebar() {
 
                         />
                         <SidebarButton
-                            href="/"
+                            href="#"
                             iconPath="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"
                             label="Logout"
                             isOpen={isDrawerOpen}
+                            onClick={handleLogout}
 
 
                         />

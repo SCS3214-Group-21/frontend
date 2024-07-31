@@ -29,11 +29,11 @@ export default function LoginPage() {
                 confirmButtonText: "OK",
             }).then(() => {
                 if (role === "client") {
-                    navigate("/allvendors");
+                    navigate("/mywedding");
                 } else if (role === "serviceprovider") {
-                    navigate("/vendorprofile");
-                } else {
                     navigate("/vendordashboard");
+                } else {
+                    navigate("/admindashboard");
                 }
             });
         } catch (err) {

@@ -22,7 +22,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/services/floral.png",
             alt: "Lily Paradise",
             name: "Lily Paradise",
             description: "Lily Paradise provides outstanding service, with beautiful lily decorations that bring a touch of elegance to any wedding.",
@@ -30,7 +30,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/floral1.jpg",
             alt: "Orchid Haven",
             name: "Orchid Haven",
             description: "Orchid Haven is known for their excellent service and stunning orchid displays, perfect for a tropical wedding theme.",
@@ -38,7 +38,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/floral2.jpg",
             alt: "Jasmine Grove",
             name: "Jasmine Grove",
             description: "Jasmine Grove offers great service with fragrant jasmine flowers that add a delightful scent to the wedding ambiance.",
@@ -46,7 +46,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/floral3.jpg",
             alt: "Daisy Fields",
             name: "Daisy Fields",
             description: "Daisy Fields provides charming service, with endless fields of daisies creating a whimsical and joyful wedding setting.",
@@ -54,7 +54,7 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/floral4.jpg",
             alt: "Tulip Terrace",
             name: "Tulip Terrace",
             description: "Tulip Terrace offers top-notch service with a terrace overlooking a valley of tulips, making it a picturesque wedding venue.",
@@ -70,68 +70,13 @@ const AllFloralsPage = () => {
         },
         {
             href: "#",
-            img: "../src/assets/images/Images/floral.png",
+            img: "../src/assets/images/Images/floral1.jpg",
             alt: "Sunflower Spot",
             name: "Sunflower Spot",
             description: "Sunflower Spot is known for their friendly service and vibrant sunflower arrangements, adding a bright and cheerful touch to weddings.",
             starCount: 4
         },
-        {
-            href: "#",
-            img: "../src/assets/images/Images/floral.png",
-            alt: "Peony Place",
-            name: "Peony Place",
-            description: "Peony Place offers excellent service with lush peony decorations, creating a luxurious and elegant wedding atmosphere.",
-            starCount: 5
-        },
-        {
-            href: "#",
-            img: "../src/assets/images/Images/floral.png",
-            alt: "Marigold Meadow",
-            name: "Marigold Meadow",
-            description: "Marigold Meadow provides wonderful service, with bright marigold flowers that bring a festive and vibrant feel to weddings.",
-            starCount: 3
-        },
-        {
-            href: "#",
-            img: "../src/assets/images/Images/floral.png",
-            alt: "Cherry Blossom Corner",
-            name: "Cherry Blossom Corner",
-            description: "Cherry Blossom Corner offers exceptional service with delicate cherry blossom arrangements, perfect for a spring wedding theme.",
-            starCount: 5
-        },
-        {
-            href: "#",
-            img: "../src/assets/images/Images/floral.png",
-            alt: "Gardenia Grove",
-            name: "Gardenia Grove",
-            description: "Gardenia Grove provides great service, with fragrant gardenia flowers adding a touch of elegance to the wedding decor.",
-            starCount: 4
-        },
-        {
-            href: "#",
-            img: "../src/assets/images/Images/floral.png",
-            alt: "Hydrangea Haven",
-            name: "Hydrangea Haven",
-            description: "Hydrangea Haven offers top-quality service with beautiful hydrangea arrangements, creating a stunning visual impact for weddings.",
-            starCount: 4
-        },
-        {
-            href: "#",
-            img: "../src/assets/images/Images/floral.png",
-            alt: "Violet Valley",
-            name: "Violet Valley",
-            description: "Violet Valley is known for their excellent service and lovely violet flower decorations, perfect for a charming wedding setting.",
-            starCount: 3
-        },
-        {
-            href: "#",
-            img: "../src/assets/images/Images/floral.png",
-            alt: "Camellia Court",
-            name: "Camellia Court",
-            description: "Camellia Court provides exceptional service with elegant camellia flower arrangements, adding a touch of sophistication to weddings.",
-            starCount: 5
-        }
+
     ];
 
 

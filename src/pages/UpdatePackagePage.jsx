@@ -4,13 +4,14 @@ import VendorSidebar from "../components/VendorSidebar";
 import Breadcrumb from '../components/ui/Breadcrumb';
 import UpdatePackageForm from '../components/UpdatePackageForm'
 
-function UpdatePackagePage(){
+function UpdatePackagePage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
-        { label: 'Vendors', href: '/' },
-        { label: 'Hotels' },
+        { label: 'Dashboard', href: '/' },
+        { label: 'Packages', href: '/vendorpackages' },
+        { label: 'View Package', href: '/viewpackage' },
+        { label: 'Update Package' },
     ];
-    return(
+    return (
         <div>
             <RegisterHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
@@ -22,7 +23,7 @@ function UpdatePackagePage(){
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-custom-primary font-bold text-4xl'>Update Package</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>Update Package</h1>
                     </div>
                     <div className="pb-5">
                         <UpdatePackageForm />
