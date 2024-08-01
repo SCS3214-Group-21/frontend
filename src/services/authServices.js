@@ -5,14 +5,14 @@ const API_URL = 'http://localhost:4000'
 const authService = {
     login: async (email, password) => {
         try {
-            const response = await axios.post(`${API_URL}/auth`, { email, password });
-            const { accessToken, user } = response.data
-            localStorage.setItem('user', JSON.stringify(user))
+            const response = await axios.post(`${API_URL}/auth`, { email, password })
+            const { accessToken } = response.data
             localStorage.setItem('token', accessToken)
-            return { user, error: null }
+            return { token: accessToken, error: null }
         } catch (error) {
+            console.error('Login error:', error.response || error.message)
             const errorMessage = error.response?.data?.message || 'Login failed'
-            return { user: null, error: errorMessage }
+            return { token: null, error: errorMessage }
         }
     },
 
@@ -40,8 +40,8 @@ const authService = {
     // },
 
     logout: async () => {
-        localStorage.removeItem('user')
         localStorage.removeItem('token')
+        localStorage.removeItem('user')
     },
 
     getCurrentUser: () => {
