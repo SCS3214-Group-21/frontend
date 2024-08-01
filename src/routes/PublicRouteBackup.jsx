@@ -21,7 +21,7 @@ import CarsVendorDetails from "../pages/ClientVendorsDetailsPage/CarsVendorDetai
 import ClientChatPage from "../pages/ClientChatPage/ClientChatPage";
 import ClientAllChats from "../pages/ClientChatPage/ClientAllChats";
 import VendorProfilePage from "../pages/VendorViewPage/VendorProfilePage.jsx"
-import VendorPackagesPage from "../pages/VendorViewPage/VendorPackagesPage.jsx";
+import VendorPackagesPage from "../pages/VendorPackagePage/VendorPackagesPage.jsx";
 import CreatePackagePage from "../pages/VendorPackagePage/CreatePackagePage.jsx";
 import UpdatePackagePage from "../pages/VendorPackagePage/UpdatePackagePage.jsx";
 import ViewPackagePage from "../pages/ClientViewPage/ViewPackagePage.jsx";
@@ -30,7 +30,7 @@ import BudgetPage from "../pages/ClientViewPage/BudgetPage.jsx";
 import PlanBudgetPage from "../pages/ClientBudgetPage/PlanBudgetPage.jsx";
 import CreateBlogPage from "../pages/BlogPage/CreateBlogPage.jsx";
 import UpdateBlogPage from "../pages/BlogPage/UpdateBlogPage.jsx";
-import BlogPage from "../pages/BlogPage/BlogsPage.jsx";
+import BlogPage from "../pages/BlogPage/BlogPage.jsx";
 
 import LandingPageBackup from "../pages/PublicPage/LandingPageBackup.jsx";
 
