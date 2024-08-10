@@ -9,12 +9,16 @@ import CustomPinkButton from '../../components/ui/CustomPinkButton.jsx';
 
 function LandingPage(){
     return(
-        <div>
+        <>
+
             <LandingHeader />
+
             <div
                 className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/00.png')" }}
             >
+
+                {/*Hero section*/}
                 <div className='absolute bottom-10 left-6 text-left'>
                     <StatusCard 
                         title = {"Discover, Plan,"}
@@ -25,6 +29,8 @@ function LandingPage(){
                     />
                 </div>
             </div>
+
+            {/*Couple Section*/}
             <div
                 className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/000.png')" }}
@@ -39,6 +45,8 @@ function LandingPage(){
                     />
                 </div>
             </div>
+
+            {/*Services section*/}
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-col items-center pt-20">
                 <h1 className="text-custom-primary font-sans font-normal text-4xl sm:text-5xl text-center pb-10">
                     Services <span className="text-black">you may find here </span>
@@ -49,6 +57,8 @@ function LandingPage(){
                 </h1>
                 <PartnerBadges />
             </div>
+
+            {/*register section*/}
             <div
                 className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/001.png')" }}
@@ -63,6 +73,8 @@ function LandingPage(){
                     />
                 </div>
             </div>
+
+            {/*Review section*/}
             <div
                 className="bg-[#FFF8F5] min-h-screen w-full flex flex-col items-center pt-20"
                 style={{ backgroundImage: "url('./src/assets/images/Images/002.png')" }}
@@ -89,6 +101,8 @@ function LandingPage(){
                     </div>
                 </div>
             </div>
+
+            {/*Boost section*/}
             <div
                 className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/003.png')" }}
@@ -103,6 +117,8 @@ function LandingPage(){
                     />
                 </div>
             </div>
+
+            {/*bolg section*/}
             <div
                 className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/004.png')" }}
@@ -117,6 +133,8 @@ function LandingPage(){
                     />
                 </div>
             </div>
+
+            {/*feedback section*/}
             <div
                 className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/005.png')" }}
@@ -130,13 +148,15 @@ function LandingPage(){
                     />
                 </div>
             </div>
+
+            {/* bottom sect */}
             <div
                 className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/Images/006.png')" }}
             >
                 <LandingFooter/>
             </div>
-        </div>
+        </>
     )
 }
 

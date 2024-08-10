@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 
 // import PublicPages
 import ClientRegisterPage from '../pages/PublicPage/ClientRegisterPage.jsx'
-import LandingPage from '../pages/PublicPage/LandingPage.jsx'
+import LandingPage from '../pages/PublicPage/LandingPageBackup.jsx'
 import LoginPage from '../pages/PublicPage/LoginPage.jsx'
 import VendorRegister from '../pages/PublicPage/VendorRegister.jsx'
 

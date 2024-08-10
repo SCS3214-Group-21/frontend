@@ -20,7 +20,7 @@ export default {
         'custom-pink': '#CE427B',
       },
       textColor: {
-        'custom-primary': '#A57E17',
+        'custom-primary': '#CA8A04',
         'custom-secondary': '#006972',
         'custom-gray': '#ECF2F3',
         'custom-pink': '#CE427B',

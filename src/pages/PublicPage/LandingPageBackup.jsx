@@ -9,16 +9,16 @@ import CustomPinkButton from '../../components/ui/CustomPinkButton.jsx';
 
 function LandingPage(){
     return(
-        <div>
+        <div className="bg-[#FFF8F5]">
             <LandingHeader />
 
             {/*hero section*/}
             <section
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
+                className="h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/landing/p1.png')" }}
             >
                 <div className='absolute bottom-10 left-6 text-left'>
-                    <StatusCard 
+                    <StatusCard
                         title = {"Discover, Plan,"}
                         subtitle = {"Celebrate"}
                         paragraph = {"From finding the perfect venue to choosing the right vendors, our platform makes wedding planning a breeze. Start your journey with us and create unforgettable memories."}
@@ -30,7 +30,7 @@ function LandingPage(){
 
             {/* couples section */}
             <section
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
+                className="h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/landing/p2.png')" }}
             >
                 <div className='absolute bottom-10 right-6 text-right'>
@@ -46,21 +46,21 @@ function LandingPage(){
 
             {/* services section */}
             <section
-                className="bg-[#FFF8F5] min-h-screen w-full flex flex-col items-center pt-20"
+                className="h-screen w-full flex flex-col items-center pt-5 mt-20"
             >
-                <h1 className="text-custom-primary font-sans font-normal text-4xl sm:text-5xl text-center pb-10">
+                <h5 className="text-custom-primary font-sans font-normal text-4xl sm:text-4xl text-center pb-10">
                     Services <span className="text-black">you may find here </span>
-                </h1>
+                </h5>
                 <ServicesCarousel />
-                <h1 className="text-black font-sans font-normal text-4xl sm:text-5xl text-center pt-20 pb-10">
+                <h5 className="text-black font-sans font-normal text-2xl sm:text-1xl text-center pt-14 pb-5">
                     Our Partners
-                </h1>
+                </h5>
                 <PartnerBadges />
             </section>
 
             {/* vendors section */}
             <section
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
+                className="h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/landing/p3.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
@@ -76,7 +76,7 @@ function LandingPage(){
 
             {/* reviews section */}
             <section
-                className="bg-[#FFF8F5] h-screen w-full flex flex-col items-center pt-20"
+                className="h-screen w-full flex flex-col items-center pt-20"
                 style={{ backgroundImage: "url('./src/assets/images/landing/p4.png')" }}
             >
                 <h1 className="text-black font-sans font-normal text-4xl sm:text-5xl text-center pb-10">
@@ -104,7 +104,7 @@ function LandingPage(){
 
             {/* boosting section */}
             <section
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
+                className="h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/landing/p5.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
@@ -120,7 +120,7 @@ function LandingPage(){
 
             {/*blogging section*/}
             <section
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
+                className="h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/landing/p6.png')" }}
             >
                 <div className='absolute  bottom-10 right-6 text-right'>
@@ -136,7 +136,7 @@ function LandingPage(){
 
             {/*feedback section*/}
             <section
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
+                className="h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/landing/p7.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
@@ -151,7 +151,7 @@ function LandingPage(){
 
             {/*bottom section*/}
             <section
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
+                className="h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/landing/p8.png')" }}
             >
                 <LandingFooter/>
