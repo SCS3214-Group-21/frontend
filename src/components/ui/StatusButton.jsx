@@ -12,7 +12,7 @@ function StatusButton(props) {
             text: 'Pending',
         },
         Accepted: {
-            bgColor: 'bg-custom-secondary', // Use custom-secondary color for accepted status
+            bgColor: 'bg-green-700', // Use custom-secondary color for accepted status
             textColor: 'text-white',
             text: 'Accepted',
         },

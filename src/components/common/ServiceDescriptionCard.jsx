@@ -4,7 +4,7 @@ function ServiceDescriptionCard(props) {
     const { href, img, alt, name, price, description, starCount, showStars } = props;
 
     return (
-        <div className={`w-[264px] h-full max-w-sm bg-[#FFFBEB] border border-gray-200 rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl ${showStars ? '' : 'hide-stars'}`}>
+        <div className={`w-[264px]  max-w-sm bg-[#FFFBEB] border border-gray-200 rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl ${showStars ? '' : 'hide-stars'}`}>
             <a href={href} className="block">
                 <div className="p-4">
                     <img className="object-cover w-full h-40 rounded-lg" src={img} alt={alt} />

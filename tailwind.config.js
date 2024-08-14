@@ -20,7 +20,7 @@ export default {
         'custom-pink': '#CE427B',
       },
       textColor: {
-        'custom-primary': '#A57E17',
+        'custom-primary': '#CA8A04',
         'custom-secondary': '#006972',
         'custom-gray': '#ECF2F3',
         'custom-pink': '#CE427B',
@@ -37,6 +37,9 @@ export default {
         'custom-blue-light': '#00BFFF', // light blue
         'custom-blue-dark': '#005f6b',  // dark teal blue
         'custom-pink': '#CE427B',
+      },
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
       },
     },
   },

@@ -32,12 +32,12 @@ function ClientChatPage() {
                                     <div className="w-10 rounded-full">
                                         <img
                                             alt="Avatar"
-                                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                                            src="src/assets/Images/Images/avatar.png"
                                         />
                                     </div>
                                 </div>
                                 <div className="chat-bubble text-black bg-[#FFDBC8]">
-                                    It was said that you would destroy the Sith, not join them.
+                                    We will provide you a adittional setup with this.
                                     <div>
                                         <time className="text-xs opacity-50">12:43</time>
                                     </div>
@@ -48,12 +48,12 @@ function ClientChatPage() {
                                     <div className="w-10 rounded-full">
                                         <img
                                             alt="Avatar"
-                                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                                            src="src/assets/Images/Images/avatar.png"
                                         />
                                     </div>
                                 </div>
                                 <div className="chat-bubble text-black bg-[#FFDBC8]">
-                                    It was you who would bring balance to the Force
+                                    You can take this for your event.
                                     <div>
                                         <time className="text-xs opacity-50">12:43</time>
                                     </div>
@@ -69,7 +69,7 @@ function ClientChatPage() {
                                     </div>
                                 </div>
                                 <div className="chat-bubble text-black bg-[#F0DFD7]">
-                                    Not leave it in Darkness
+                                    Okay thank you.
                                     <div>
                                         <time className="text-xs opacity-50">12:43</time>
                                     </div>
