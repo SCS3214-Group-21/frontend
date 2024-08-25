@@ -68,7 +68,7 @@ const ClientRoutes = () => {
             />
 
             <Route
-                path="/blog"
+                path="/blogs"
                 element={currentUser && currentUser.roles.includes('client') ? <BlogPage /> : <Navigate to="/login" />}
             />
             <Route

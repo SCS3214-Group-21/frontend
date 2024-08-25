@@ -46,7 +46,7 @@ function CreatePackageForm() {
     return (
         <div>
             <form className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 pb-5'>
-                <div className='flex flex-col md:flex-row gap-5 lg:gap-20 w-full p-3 px-5'>
+                <div className='flex flex-col md:flex-row gap-5 lg:gap-14 w-full p-3 px-5'>
                     <div className='w-full'>
                         <InputField2 
                             id={1}

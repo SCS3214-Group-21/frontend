@@ -7,21 +7,21 @@ import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 
 function ClientAllVendors() {
     const cardData = [
-        { img: "../src/assets/images/Images/03.png", alt: "hotels", type: "Hotels", href: "./allhotels" },
-        { img: "../src/assets/images/Images/03.png", alt: "Dressers", type: "Dressers", href: "/alldressers" },
-        { img: "../src/assets/images/Images/03.png", alt: "Photography", type: "Photography", href: "/allphotographers" },
-        { img: "../src/assets/images/Images/03.png", alt: "Floral", type: "Floral", href: "/allflorals" },
-        { img: "../src/assets/images/Images/03.png", alt: "Jewellery", type: "Jewellery", href: "/alljewellery" },
-        { img: "../src/assets/images/Images/03.png", alt: "Dancing Groups", type: "Dancing Groups", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "Ashtaka", type: "Ashtaka", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "Salons", type: "Salons", href: "/allsalons" },
-        { img: "../src/assets/images/Images/03.png", alt: "Djs", type: "Djs", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "Honeymoon", type: "Honeymoon", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "Cakes", type: "Cakes", href: "/allcakes" },
-        { img: "../src/assets/images/Images/03.png", alt: "Cars", type: "Cars", href: "/allcars" },
-        { img: "../src/assets/images/Images/03.png", alt: "Invitation Cards", type: "Invitation Cards", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "Poruwa", type: "Poruwa", href: "#" },
-        { img: "../src/assets/images/Images/03.png", alt: "Catering", type: "Catering", href: "#" }
+        { img: "../src/assets/images/services/hotel.png", alt: "hotels", type: "Hotels", href: "./allhotels" },
+        { img: "../src/assets/images/services/dress.png", alt: "Dressers", type: "Dressers", href: "/alldressers" },
+        { img: "../src/assets/images/services/photography.jpg", alt: "Photography", type: "Photography", href: "/allphotographers" },
+        { img: "../src/assets/images/services/floral.png", alt: "Floral", type: "Floral", href: "/allflorals" },
+        { img: "../src/assets/images/services/jewellery.png", alt: "Jewellery", type: "Jewellery", href: "/alljewellery" },
+        { img: "../src/assets/images/services/dancing.png", alt: "Dancing Groups", type: "Dancing Groups", href: "#" },
+        { img: "../src/assets/images/services/ashtaka.jpg", alt: "Ashtaka", type: "Ashtaka", href: "#" },
+        { img: "../src/assets/images/services/hair.jpeg", alt: "Salons", type: "Salons", href: "/allsalons" },
+        { img: "../src/assets/images/services/dj.jpg", alt: "Djs", type: "Djs", href: "#" },
+        { img: "../src/assets/images/services/honeymoon.jpg", alt: "Honeymoon", type: "Honeymoon", href: "#" },
+        { img: "../src/assets/images/services/cake.png", alt: "Cakes", type: "Cakes", href: "/allcakes" },
+        { img: "../src/assets/images/services/car.jpg", alt: "Cars", type: "Cars", href: "/allcars" },
+        { img: "../src/assets/images/services/invitation.jpg", alt: "Invitation Cards", type: "Invitation Cards", href: "#" },
+        { img: "../src/assets/images/services/poruwa.jpg", alt: "Poruwa", type: "Poruwa", href: "#" },
+        { img: "../src/assets/images/services/catering.jpg", alt: "Catering", type: "Catering", href: "#" }
     ];
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/mywedding' },

@@ -59,6 +59,12 @@ import AdminBlogAcceptPage from "../pages/AdminPage/AdminBlogAcceptPage.jsx";
 import VendorRegister from "../pages/PublicPage/VendorRegister.jsx";
 
 
+import VendorNotificationPage from "../pages/VendorViewPage/VendorNotificationPage.jsx";
+import VendorAllChatsPage from "../pages/VendorViewPage/VendorAllChatsPage.jsx"
+import VendorSchedulePage from "../pages/VendorViewPage/VendorSchedulePage.jsx"
+import VendorChatPage from "../pages/VendorViewPage/VendorChatPage.jsx"
+import VendorBlogPage from "../pages/VendorViewPage/VendorBlogPage.jsx"
+
 
 function PublicRoute() {
     return (
@@ -101,7 +107,10 @@ function PublicRoute() {
                     <Route path="/planbudget" element={<PlanBudgetPage />}></Route>
                     <Route path="/createblog" element={<CreateBlogPage />}></Route>
                     <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
-                    <Route path="/blog" element={<BlogPage />}></Route>
+                    
+                    <Route path="/blogs" element={<BlogPage />}></Route>
+                    <Route path="/vendorblog" element={<VendorBlogPage />}></Route>
+                    {/* <Route path="/vendorcreateblog" element={<VendorCreateBlogPage />}></Route> */}
 
 
 
@@ -120,6 +129,11 @@ function PublicRoute() {
                     <Route path="/admincreateblog" element={<AdminCreateBlogPage />}></Route>
                     <Route path="/notification" element={<NotificationPage />}></Route>
                     <Route path="/acceptblogs" element={<AdminBlogAcceptPage />}></Route>
+
+                    <Route path="/vendorallchats" element={<VendorAllChatsPage />}></Route>
+                    <Route path="/vendorchat" element={<VendorChatPage />}></Route>
+                    <Route path="/vendorschedule" element={<VendorSchedulePage />}></Route>
+                    <Route path="/vendornotification" element={<VendorNotificationPage />}></Route>
 
 
                 </Routes>
