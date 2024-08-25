@@ -32,7 +32,7 @@ import CreateBlogPage from "../pages/BlogPage/CreateBlogPage.jsx";
 import UpdateBlogPage from "../pages/BlogPage/UpdateBlogPage.jsx";
 import BlogPage from "../pages/BlogPage/BlogPage.jsx";
 
-import LandingPageBackup from "../pages/PublicPage/LandingPageBackup.jsx";
+// import LandingPageBackup from "../pages/PublicPage/LandingPageBackup.jsx";
 
 import ClientAllBookings from "../pages/ClientBookingPage/ClientAllBookings";
 import ClientBookingDetailsPage from "../pages/ClientBookingPage/ClientBookingDetailsPage";
@@ -66,7 +66,7 @@ function PublicRoute() {
             <BrowserRouter>
                 <Routes>
                     {/*<Route path="/" element={<LandingPage />}></Route>*/}
-                    <Route path="/" element={<LandingPageBackup />}></Route>
+                    <Route path="/" element={<LandingPage />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                     <Route path="/register" element={<ClientRegisterPage />}></Route>
                     <Route path="/vendorregister" element={<VendorRegister />}></Route>
