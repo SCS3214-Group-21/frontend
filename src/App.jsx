@@ -8,6 +8,7 @@ import {useAuth} from './hooks/useAuth.js'
 import PublicRoutes from './routes/PublicRoutes.jsx'
 import ClientRoutes from './routes/ClientRoutes.jsx'
 import VendorRoutes from './routes/VendorRoutes.jsx'
+import AdminRoutes from './routes/AdminRoutes.jsx'
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
                 ) : isVendor ? (
                     <Route path="/*" element={<VendorRoutes />} />
                 ) : (
-                    <Route path="/*" element={<PublicRoutes />} />
+                    <Route path="/*" element={<AdminRoutes />} />
                 )}
             </Routes>
         </BrowserRouter>
