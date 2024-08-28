@@ -21,23 +21,23 @@ function App() {
     const isVendor = currentUser && currentUser.roles && currentUser.roles.includes('vendor');
 
     return (
-        <BrowserRouter>
-            <Routes>
-                {!currentUser ? (
-                    <Route path="/*" element={<PublicRoutes />} />
-                ) : isClient ? (
-                    <Route path="/*" element={<ClientRoutes />} />
-                ) : isVendor ? (
-                    <Route path="/*" element={<VendorRoutes />} />
-                ) : (
-                    <Route path="/*" element={<AdminRoutes />} />
-                )}
-            </Routes>
-        </BrowserRouter>
+        // <BrowserRouter>
+        //     <Routes>
+        //         {!currentUser ? (
+        //             <Route path="/*" element={<PublicRoutes />} />
+        //         ) : isClient ? (
+        //             <Route path="/*" element={<ClientRoutes />} />
+        //         ) : isVendor ? (
+        //             <Route path="/*" element={<VendorRoutes />} />
+        //         ) : (
+        //             <Route path="/*" element={<AdminRoutes />} />
+        //         )}
+        //     </Routes>
+        // </BrowserRouter>
 
-        // <>
-        //     <PublicRoutesBackup />
-        // </>
+        <>
+            <PublicRoutesBackup />
+        </>
     )
 }
 

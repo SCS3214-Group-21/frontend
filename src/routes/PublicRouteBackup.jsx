@@ -66,6 +66,11 @@ import VendorChatPage from "../pages/VendorViewPage/VendorChatPage.jsx"
 import VendorBlogPage from "../pages/VendorViewPage/VendorBlogPage.jsx"
 
 
+import AdminDashboard from '../pages/AdminPage/AdminDashboardPage.jsx';
+import AdminManageUser from '../pages/AdminPage/AdminManageUsersPage.jsx'
+
+
+
 function PublicRoute() {
     return (
         <div>
@@ -135,6 +140,9 @@ function PublicRoute() {
                     <Route path="/vendorschedule" element={<VendorSchedulePage />}></Route>
                     <Route path="/vendornotification" element={<VendorNotificationPage />}></Route>
 
+
+                    <Route path="/admindashboard" element={<AdminDashboard />} />
+                    <Route path="/adminmanageuser" element={<AdminManageUser />} />
 
                 </Routes>
             </BrowserRouter>
