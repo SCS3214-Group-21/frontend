@@ -8,7 +8,10 @@ import {useAuth} from './hooks/useAuth.js'
 import PublicRoutes from './routes/PublicRoutes.jsx'
 import ClientRoutes from './routes/ClientRoutes.jsx'
 import VendorRoutes from './routes/VendorRoutes.jsx'
+
 import AdminRoutes from './routes/AdminRoutes.jsx'
+
+import PublicRoutesBackup from './routes/PublicRouteBackup.jsx'
 
 function App() {
 
@@ -31,6 +34,10 @@ function App() {
                 )}
             </Routes>
         </BrowserRouter>
+
+        // <>
+        //     <PublicRoutesBackup />
+        // </>
     )
 }
 

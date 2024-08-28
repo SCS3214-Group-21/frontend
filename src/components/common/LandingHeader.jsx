@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import RegisterType from "./RegisterType"; // Adjust the import path as needed
+import { Link, animateScroll as scroll } from "react-scroll";
 
 function LandingHeader() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,7 +8,7 @@ function LandingHeader() {
 
     const menuItems = [
         { id: 1, label: "Home", link: "/" },
-        { id: 2, label: "Services", link: "/couples" },
+        { id: 2, label: "Services", link: "services-section" },
         { id: 4, label: "About", link: "/about" },
         { id: 5, label: "Register", link: "#", onClick: () => setIsPopupOpen(true) },
         { id: 6, label: "Login", link: "/login" },
@@ -77,9 +78,25 @@ function LandingHeader() {
                     <ul className="hidden md:flex flex-row gap-10 cursor-pointer text-lg flex-wrap text-custom-primary">
                         {menuItems.map((item) => (
                             <li key={item.id} className="relative group">
-                                <a href={item.link} className="hover-underline" onClick={item.onClick}>
-                                    {item.label}
-                                </a>
+                                {item.link === "#" ? (
+                                    <a href={item.link} className="hover-underline" onClick={item.onClick}>
+                                        {item.label}
+                                    </a>
+                                ) : item.link.startsWith("/") ? (
+                                    <a href={item.link} className="hover-underline">
+                                        {item.label}
+                                    </a>
+                                ) : (
+                                    <Link
+                                        to={item.link}
+                                        smooth={true}
+                                        duration={500}
+                                        className="hover-underline"
+                                        onClick={closeMenu}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                )}
                             </li>
                         ))}
                     </ul>
@@ -101,13 +118,33 @@ function LandingHeader() {
                 >
                     {menuItems.map((item) => (
                         <li key={item.id} className="relative group">
-                            <a
-                                href={item.link}
-                                className="hover-underline"
-                                onClick={() => {item.onClick && item.onClick(); closeMenu();}}
-                            >
-                                {item.label}
-                            </a>
+                            {item.link === "#" ? (
+                                <a
+                                    href={item.link}
+                                    className="hover-underline"
+                                    onClick={() => {item.onClick && item.onClick(); closeMenu();}}
+                                >
+                                    {item.label}
+                                </a>
+                            ) : item.link.startsWith("/") ? (
+                                <a
+                                    href={item.link}
+                                    className="hover-underline"
+                                    onClick={() => closeMenu()}
+                                >
+                                    {item.label}
+                                </a>
+                            ) : (
+                                <Link
+                                    to={item.link}
+                                    smooth={true}
+                                    duration={500}
+                                    className="hover-underline"
+                                    onClick={() => closeMenu()}
+                                >
+                                    {item.label}
+                                </Link>
+                            )}
                         </li>
                     ))}
                 </ul>
