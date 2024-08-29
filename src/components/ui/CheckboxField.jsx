@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function CheckboxField(props) {
-  const { id, label, checked, onChange } = props;
+function CheckboxField({ id, label, checked, onChange }) {
   const [isChecked, setIsChecked] = useState(checked || false);
 
   useEffect(() => {
@@ -18,15 +17,6 @@ function CheckboxField(props) {
 
   return (
     <div className="flex items-center">
-      {/* Hidden Native Checkbox */}
-      <input
-        type="checkbox"
-        id={id}
-        className="hidden"
-        checked={isChecked}
-        onChange={handleCheckboxChange}
-      />
-
       {/* Custom Styled Checkbox */}
       <div
         onClick={handleCheckboxChange}
@@ -51,6 +41,6 @@ function CheckboxField(props) {
       )}
     </div>
   );
-};
+}
 
 export default CheckboxField;

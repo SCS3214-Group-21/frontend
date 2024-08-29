@@ -17,7 +17,7 @@ export default function ClientSidebar() {
     const isMessagesPage = location.pathname === '/allchats' || location.pathname === '/chat2';//rename actual path
     const isCalendarPage = location.pathname === '/calender';//rename actual path
     const isBookingsPage = location.pathname === '/bookings' || location.pathname === '/bookingdetails';//rename actual path
-    const isBlogsPage = location.pathname === '/blog';//rename actual path
+    const isBlogsPage = location.pathname === '/blogs';//rename actual path
     //const isLogoutPage = location.pathname === '/';//rename actual path
 
 
