@@ -3,6 +3,8 @@ import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 import AdminSidebar from '../../components/AdminSidebar.jsx';
 import AdminHeader from '../../components/common/AdminHeader.jsx';
 
+
+
 function AdminBlogAcceptPage() {
 
     const breadcrumbItems = [
@@ -27,22 +29,22 @@ function AdminBlogAcceptPage() {
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row gap-10 sm:gap-5 flex-wrap'>
-                            <table className="w-full border-collapse">
+                            <table className="w-full border-collapse  rounded-xl flex-wrap">
                                 <thead>
                                     <tr>
-                                        <th className="px-4 py-2 border">Blog ID</th>
-                                        <th className="px-4 py-2 border">Blog Title</th>
-                                        <th className="px-4 py-2 border">Description</th>
-                                        <th className="px-4 py-2 border">Action</th>
+                                        <th className="px-4 py-2 border-b">Blog ID</th>
+                                        <th className="px-4 py-2 border-b">Blog Title</th>
+                                        <th className="px-4 py-2 border-b">Description</th>
+                                        <th className="px-4 py-2 border-b">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {/* Replace this with dynamic rows from your data */}
                                     <tr>
-                                        <td className="px-4 py-2 border">1</td>
-                                        <td className="px-4 py-2 border">Sample Blog Title</td>
-                                        <td className="px-4 py-2 border ">This is a sample description of the blog.</td>
-                                        <td className="flex px-4 py-2 space-x-2 border">
+                                        <td className="px-4 py-2 border-b">1</td>
+                                        <td className="px-4 py-2 border-b">Sample Blog Title</td>
+                                        <td className="px-4 py-2 border-b">This is a sample description of the blog.</td>
+                                        <td className=" px-4 py-2 space-x-2 border-b">
                                             <button onClick={() => alert('View blog details')}>
                                                 {/* <FaEye className="text-blue-500" /> */}
                                             </button>
@@ -66,5 +68,4 @@ function AdminBlogAcceptPage() {
         </>
     )
 }
-
 export default AdminBlogAcceptPage
