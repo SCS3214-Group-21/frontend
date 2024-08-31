@@ -6,44 +6,64 @@ import PrimaryButton from './ui/PrimaryButton';
 import CheckboxField from './ui/CheckboxField';
 
 function PlanBudgetForm() {
-    const initialBudget = 400000;
+    const [totalBudget, setTotalBudget] = useState(0); // State for total budget
     const [allocatedPrices, setAllocatedPrices] = useState({
-        hotels:0,
-        dressers:0,
+        hotels: 0,
+        dressers: 0,
         photographers: 0,
-        floral:0,
-        jewellary:0,
-        dancing:0,
-        ashtaka:0,
-        saloons:0,
-        djs:0,
-        honeymoon:0,
+        floral: 0,
+        jewellary: 0,
+        dancing: 0,
+        ashtaka: 0,
+        saloons: 0,
+        djs: 0,
+        honeymoon: 0,
         cakes: 0,
-        cars:0,
-        cards:0,
-        poruwa:0,
-        catering:0,
+        cars: 0,
+        cards: 0,
+        poruwa: 0,
+        catering: 0,
         // add more services as needed
     });
-    const [remainingBudget, setRemainingBudget] = useState(initialBudget);
+    const [remainingBudget, setRemainingBudget] = useState(totalBudget);
     const [checkboxes, setCheckboxes] = useState({
-        hotels:false,
-        dressers:false,
+        hotels: false,
+        dressers: false,
         photographers: false,
-        floral:false,
-        jewellary:false,
-        dancing:false,
-        ashtaka:false,
-        saloons:false,
-        djs:false,
-        honeymoon:false,
+        floral: false,
+        jewellary: false,
+        dancing: false,
+        ashtaka: false,
+        saloons: false,
+        djs: false,
+        honeymoon: false,
         cakes: false,
-        cars:false,
-        cards:false,
-        poruwa:false,
-        catering:false,
+        cars: false,
+        cards: false,
+        poruwa: false,
+        catering: false,
         // add more services as needed
     });
+
+    const handleTotalBudgetChange = (e) => {
+        const newTotalBudget = parseFloat(e.target.value.replace(/[^\d]/g, '')) || 0;
+        const totalAllocated = Object.values(allocatedPrices).reduce((acc, curr) => acc + curr, 0);
+    
+        if (newTotalBudget < totalAllocated) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Total budget cannot be less than the allocated budget!',
+                icon: 'error',
+                confirmButtonText: 'OK',
+            });
+            // Optionally, you might want to reset the input to the previous value or keep the old total budget.
+            return;
+        }
+    
+        setTotalBudget(newTotalBudget);
+        setRemainingBudget(newTotalBudget - totalAllocated);
+    };
+    
 
     const handlePriceChange = (key) => (e) => {
         const value = parseFloat(e.target.value.replace(/[^\d]/g, '')) || 0;
@@ -52,7 +72,7 @@ function PlanBudgetForm() {
             [key]: value,
         }).reduce((acc, curr) => acc + curr, 0);
 
-        if (totalAllocated > initialBudget) {
+        if (totalAllocated > totalBudget) {
             Swal.fire({
                 title: 'Error!',
                 text: 'You cannot allocate more than the remaining budget!',
@@ -63,7 +83,7 @@ function PlanBudgetForm() {
         } else {
             setAllocatedPrices((prev) => {
                 const updatedPrices = { ...prev, [key]: value };
-                setRemainingBudget(initialBudget - totalAllocated);
+                setRemainingBudget(totalBudget - totalAllocated);
                 return updatedPrices;
             });
         }
@@ -142,12 +162,33 @@ function PlanBudgetForm() {
             <form className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-5'>
                 <div className='w-full flex flex-row justify-end items-end gap-5 mb-5'>
                     <div className="d-coolinput">
-                        <label htmlFor="remaining-budget" className="d-text">Remaining Budget</label>
+                        <label htmlFor="total-budget" className="d-text">Total Budget</label>
                         <div className="d-input-wrapper">
-                            <input id="remaining-budget" type="text" value={`Rs ${remainingBudget}/=`} name="remaining-budget" className="d-input" disabled />
+                            <input
+                                id="total-budget"
+                                type="text"
+                                value={totalBudget}
+                                onChange={handleTotalBudgetChange}
+                                name="total-budget"
+                                className="d-input"
+                                placeholder='Enter your total budget'
+                            />
                         </div>
                     </div>
-                    <PrimaryNoneFillButton text={"Change"} link={"/planbudget"} />
+                    <div className="d-coolinput">
+                        <label htmlFor="remaining-budget" className="d-text">Remaining Budget</label>
+                        <div className="d-input-wrapper">
+                            <input
+                                id="remaining-budget"
+                                type="text"
+                                value={`Rs ${remainingBudget}/=`}
+                                name="remaining-budget"
+                                className="d-input"
+                                disabled
+                            />
+                        </div>
+                    </div>
+                    {/* <PrimaryNoneFillButton text={"Change"} onClick={handleChangeButtonClick} /> */}
                 </div>
 
                 {/* Service Sections */}
@@ -416,9 +457,9 @@ function PlanBudgetForm() {
                     </div>
                 </div>
 
-                <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 p-3 px-5'>
+                <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 py-3'>
                     <PrimaryNoneFillButton text={"Reset"} link={"/planbudget"} />
-                    <PrimaryButton text={"Save Changes"} link={"/"} />
+                    <PrimaryButton text={"Next    >>"} link={"/"} />
                 </div>
             </form>
         </div>
