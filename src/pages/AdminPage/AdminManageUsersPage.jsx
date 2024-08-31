@@ -1,30 +1,17 @@
-// src/pages/AdminManageUsersPage.js
-import React from 'react';
+import React from 'react'
+import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 import AdminSidebar from '../../components/AdminSidebar.jsx';
 import AdminHeader from '../../components/common/AdminHeader.jsx';
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import SortingButton from '../../components/ui/SortingButton.jsx';
-import UserTypeBox from '../../components/UserTypeBox.jsx';
+import SecondaryButton from '../../components/ui/SecondaryButton.jsx';
+import ManageUserPopup from '../../components/ManageUserPopup.jsx';
 
-function AdminManageUsersPage() {
+
+
+function AdminManageUserPage() {
+
     const breadcrumbItems = [
         { label: 'Dashboard', href: '/admindashboard' },
-        { label: 'Manage Users' },
-    ];
-
-    const users = [
-        { label: 'All', type: 'type', value: 1 },
-        { label: 'Client', type: 'type', value: 2 },
-        { label: 'Hotels', type: 'type', value: 3 },
-        { label: 'Floral', type: 'type', value: 4 },
-    ];
-
-    const userData = [
-
-        { name: 'Amanda Silva', type: 'Hotel', avatarSrc: 'src/assets/images/Images/avatar2.png' },
-        { name: 'John Doe', type: 'Photographer', avatarSrc: 'src/assets/images/Images/avatar2.png' },
-        { name: 'Kamal Jayaweera', type: 'Client', avatarSrc: 'src/assets/images/Images/Profile.png' },
-        { name: 'Lily White', type: 'Floral', avatarSrc: 'src/assets/images/Images/avatar2.png' },
+        { label: 'Manage User' },
     ];
 
     return (
@@ -42,24 +29,56 @@ function AdminManageUsersPage() {
                         <h1 className='text-4xl font-bold text-custom-primary'>Users</h1>
                     </div>
                     <div className="pb-5">
-                        <div className='w-full bg-white border border-[#FFDBC8] rounded-xl p-6 flex flex-row items-center justify-between'>
-                            <div className='text-lg text-black'>
-                                Select User Type
-                            </div>
-                            <SortingButton iconPath="m19 9-7 7-7-7" title="Type" items={users} />
-                        </div>
-                    </div>
-                    <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row gap-10 sm:gap-5 flex-wrap'>
-                            {userData.map((user, index) => (
-                                <UserTypeBox key={index} {...user} />
-                            ))}
+                            <table className="w-full border-collapse  rounded-xl flex-wrap text-black ">
+                                <thead>
+                                    <tr className='text-black'>
+                                        <th className="px-4 py-2 border-b">User ID</th>
+                                        <th className="px-4 py-2 border-b">User name</th>
+                                        <th className="px-4 py-2 border-b">User Type</th>
+                                        <th className="px-4 py-2 border-b">Reg-Date</th>
+                                        <th className="px-4 py-2 border-b">Location</th>
+                                        <th className="px-4 py-2 border-b">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {/* Replace this with dynamic rows from your data */}
+                                    <tr className='text-center'>
+                                        <td className="px-4 py-2 border-b ">1</td>
+                                        <td className="px-4 py-2 border-b">Lakshani</td>
+                                        <td className="px-4 py-2 border-b">Vendor</td>
+                                        <td className="px-4 py-2 border-b">2024/11/14</td>
+                                        <td className="px-4 py-2 border-b">Galle</td>
+                                        <td className=" px-4 py-2 space-x-2 border-b">
+                                        <SecondaryButton 
+                                                link="./manageUserPopup" 
+                                                text="View" 
+                                            />
+                                            <SecondaryButton 
+                                                link="/deleteUser/1" 
+                                                text="Delete" 
+                                            />
+                                            <button onClick={() => alert('View blog details')}>
+                                                {/* <FaEye className="text-blue-500" /> */}
+                                            </button>
+                                            <button onClick={() => handleAccept(1)}>
+                                                {/* <FaCheck className="text-green-500" /> */}
+                                            </button>
+                                            <button onClick={() => handleReject(1)}>
+                                                {/* <FaTimes className="text-red-500" /> */}
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {/* Add more rows as needed */}
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </>
-    );
-}
 
-export default AdminManageUsersPage;
+        </>
+    )
+}
+export default AdminManageUserPage
