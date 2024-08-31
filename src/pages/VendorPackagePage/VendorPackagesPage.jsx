@@ -7,14 +7,14 @@ import PackageCard from '../../components/common/PackageCard.jsx';
 import Pagination from '../../components/common/Pagination.jsx'
 
 const items = [
-    { img: 'src/assets/Images/Images/01.png', text: 'Package 01', link: '/viewpackage',  },
-    { img: 'src/assets/Images/Images/01.png', text: 'Package 02', link: '/viewpackage',  },
-    { img: 'src/assets/Images/Images/01.png', text: 'Package 03', link: '/viewpackage',  },
-    { img: 'src/assets/Images/Images/01.png', text: 'Package 04', link: '/viewpackage',  },
-    { img: 'src/assets/Images/Images/01.png', text: 'Package 05', link: '/viewpackage',  },
-    { img: 'src/assets/Images/Images/01.png', text: 'Package 06', link: '/viewpackage',  },
-    { img: 'src/assets/Images/Images/01.png', text: 'Package 07', link: '/viewpackage',  },
-    { img: 'src/assets/Images/Images/01.png', text: 'Package 08', link: '/viewpackage',  },
+    { img: 'src/assets/Images/Images/hotel.png', text: 'Package 01', link: '/viewpackage', },
+    { img: 'src/assets/Images/Images/hotel6.jpeg', text: 'Package 02', link: '/viewpackage', },
+    { img: 'src/assets/Images/Images/hotel7.jpeg', text: 'Package 03', link: '/viewpackage', },
+    { img: 'src/assets/Images/Images/03.png', text: 'Package 04', link: '/viewpackage', },
+    { img: 'src/assets/Images/Images/01.png', text: 'Package 05', link: '/viewpackage', },
+    { img: 'src/assets/Images/Images/hotel6.jpeg', text: 'Package 06', link: '/viewpackage', },
+    { img: 'src/assets/Images/Images/hotel7.jpeg', text: 'Package 07', link: '/viewpackage', },
+    { img: 'src/assets/Images/Images/hotel8.jpeg', text: 'Package 08', link: '/viewpackage', },
 ];
 
 const renderItems = (currentItems) => (
@@ -27,7 +27,7 @@ const renderItems = (currentItems) => (
                 />
             </div>
             {currentItems.map((item, index) => (
-                <div key={index} className="flex items-center justify-center h-60 w-52 bg-white p-2">
+                <div key={index} className="flex items-center justify-center p-2 bg-white h-60 w-52">
                 <PackageCard 
                     img={item.img}
                     text={item.text}

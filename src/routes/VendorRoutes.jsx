@@ -21,6 +21,13 @@ import VendorProfilePage from '../pages/VendorViewPage/VendorProfilePage.jsx'
 // import logout
 import Logout from '../components/Logout.jsx'
 
+
+import VendorNotificationPage from "../pages/VendorViewPage/VendorNotificationPage.jsx";
+import VendorAllChatsPage from "../pages/VendorViewPage/VendorAllChatsPage.jsx"
+import VendorSchedulePage from "../pages/VendorViewPage/VendorSchedulePage.jsx"
+import VendorChatPage from "../pages/VendorViewPage/VendorChatPage.jsx"
+import VendorBlogPage from "../pages/VendorViewPage/VendorBlogPage.jsx"
+
 const VendorRoutes = () => {
     const { currentUser } = useAuth()
     console.error('currentUser in ClientRoutes:', currentUser)
@@ -37,8 +44,8 @@ const VendorRoutes = () => {
                 element={<Logout />}
             />
             <Route
-                path="/blog"
-                element={<BlogPage />}
+                path="/vendorblog"
+                element={<VendorBlogPage />}
             />
             <Route
                 path="/createblog"
@@ -75,6 +82,23 @@ const VendorRoutes = () => {
             <Route
                 path="/vendorprofile"
                 element={<VendorProfilePage />}
+            />
+
+            <Route
+                path="/vendorallchats"
+                element={<VendorAllChatsPage />}
+            />
+            <Route
+                path="/vendorchat"
+                element={<VendorChatPage />}
+            />
+            <Route
+                path="/vendorschedule"
+                element={<VendorSchedulePage />}
+            />
+            <Route
+                path="/vendornotification"
+                element={<VendorNotificationPage />}
             />
         </Routes>
     )
