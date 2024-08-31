@@ -1,20 +1,56 @@
-import React from 'react'
+import React from "react";
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import AdminSidebar from '../../components/AdminSidebar.jsx';
-import AdminHeader from '../../components/common/AdminHeader.jsx';
+import AddCard from '../../components/common/AddCard.jsx';
+import BlogCard from "../../components/common/AdminBlogCard.jsx";
+import Pagination from '../../components/common/Pagination.jsx'
+import AdminHeader from "../../components/common/AdminHeader.jsx";
+import AdminSidebar from "../../components/AdminSidebar.jsx";
+import PrimaryNoneFillButton from "../../components/ui/PrimaryNoneFillButton.jsx";
 
+const items = [
+    { label: 'new',img: 'src/assets/Images/Images/01.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
+    { label: 'Accepted',img: 'src/assets/Images/Images/02.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
+    { label: 'rejected',img: 'src/assets/Images/Images/03.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
+    { label: 'Accepted',img: 'src/assets/Images/Images/04.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
+    { label: 'new',img: 'src/assets/Images/Images/05.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
+    { label: 'rejected',img: 'src/assets/Images/Images/06.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
+   
+];
 
+const renderItems = (currentItems) => (
+    // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
+    <div className="flex flex-row flex-wrap items-center justify-center gap-6">
+        
+        {currentItems.map((item, index) => (
+            <div key={index} className='flex items-center justify-center p-2 bg-white h-90 w-72'>
+
+                <BlogCard
+                    label={item.label}
+                    img={item.img}
+                    text={item.text}
+                    date={item.date}
+                    time={item.time}
+                    acceptButtonText="Accept"
+                    rejectButtonText="Reject"
+                    onAccept={() => handleAccept(item.id)}
+                    onReject={() => handleReject(item.id)}
+                    link={"/"}
+                />
+            </div>
+            
+        ))}
+    </div>
+    // </div>
+);
 
 function AdminBlogAcceptPage() {
-
     const breadcrumbItems = [
         { label: 'Dashboard', href: '/admindashboard' },
-        { label: 'Blogs', href: '/adminblogs' },
-        { label: 'Accept Blogs' },
-    ];
+        { label: 'Blogs' },
 
+    ];
     return (
-        <>
+        <div>
             <AdminHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
                 <div className="w-[5%] sm:w-[10%] md:w-[20%]">
@@ -24,48 +60,21 @@ function AdminBlogAcceptPage() {
                     <div className="pb-5">
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
-                    <div className="pb-5">
-                        <h1 className='text-4xl font-bold text-custom-primary'>Users</h1>
+                    <div className="flex justify-between pb-5">
+                        <h1 className='text-4xl font-bold text-custom-primary'>Manage Blogs</h1>
+                        
                     </div>
                     <div className="pb-5">
-                        <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row gap-10 sm:gap-5 flex-wrap'>
-                            <table className="w-full border-collapse  rounded-xl flex-wrap">
-                                <thead>
-                                    <tr>
-                                        <th className="px-4 py-2 border-b">Blog ID</th>
-                                        <th className="px-4 py-2 border-b">Blog Title</th>
-                                        <th className="px-4 py-2 border-b">Description</th>
-                                        <th className="px-4 py-2 border-b">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {/* Replace this with dynamic rows from your data */}
-                                    <tr>
-                                        <td className="px-4 py-2 border-b">1</td>
-                                        <td className="px-4 py-2 border-b">Sample Blog Title</td>
-                                        <td className="px-4 py-2 border-b">This is a sample description of the blog.</td>
-                                        <td className=" px-4 py-2 space-x-2 border-b">
-                                            <button onClick={() => alert('View blog details')}>
-                                                {/* <FaEye className="text-blue-500" /> */}
-                                            </button>
-                                            <button onClick={() => handleAccept(1)}>
-                                                {/* <FaCheck className="text-green-500" /> */}
-                                            </button>
-                                            <button onClick={() => handleReject(1)}>
-                                                {/* <FaTimes className="text-red-500" /> */}
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    {/* Add more rows as needed */}
-                                </tbody>
-                            </table>
+                        <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
 
+                            <Pagination items={items} itemsPerPage={8} renderItems={renderItems} />
                         </div>
                     </div>
                 </div>
             </div>
-
-        </>
+        </div>
     )
 }
+
 export default AdminBlogAcceptPage
+
