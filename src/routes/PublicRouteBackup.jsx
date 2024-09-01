@@ -65,6 +65,8 @@ import VendorSchedulePage from "../pages/VendorViewPage/VendorSchedulePage.jsx"
 import VendorChatPage from "../pages/VendorViewPage/VendorChatPage.jsx"
 import VendorBlogPage from "../pages/VendorViewPage/VendorBlogPage.jsx"
 
+import PlanBudgetPage2 from "../pages/ClientBudgetPage/PlanBudgetPage2.jsx";
+
 
 function PublicRoute() {
     return (
@@ -134,6 +136,8 @@ function PublicRoute() {
                     <Route path="/vendorchat" element={<VendorChatPage />}></Route>
                     <Route path="/vendorschedule" element={<VendorSchedulePage />}></Route>
                     <Route path="/vendornotification" element={<VendorNotificationPage />}></Route>
+
+                    <Route path="/planbudget2" element={<PlanBudgetPage2 />}></Route>
 
 
                 </Routes>

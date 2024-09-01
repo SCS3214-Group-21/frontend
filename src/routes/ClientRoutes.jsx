@@ -15,6 +15,7 @@ import ClientBookingDetailsPage from '../pages/ClientBookingPage/ClientBookingDe
 
 // import ClientBudgetPages
 import PlanBudgetPage from '../pages/ClientBudgetPage/PlanBudgetPage.jsx'
+import PlanBudgetPage2 from '../pages/ClientBudgetPage/PlanBudgetPage2.jsx'
 
 // import ClientChatPages
 import ClientAllChats from '../pages/ClientChatPage/ClientAllChats.jsx'
@@ -98,6 +99,10 @@ const ClientRoutes = () => {
             <Route
                 path="/planbudget"
                 element={currentUser && currentUser.roles.includes('client') ? <PlanBudgetPage /> : <Navigate to="/login" />}
+            />
+            <Route
+                path="/planbudget2"
+                element={currentUser && currentUser.roles.includes('client') ? <PlanBudgetPage2 /> : <Navigate to="/login" />}
             />
             <Route
                 path="/allchats"
