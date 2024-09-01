@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ServiceSection({ serviceKey, serviceName, minPrice, avgPrice, imageSrc, allocatedPrice, handlePriceChange, checkboxChecked, handleCheckboxChange }) {
+function ServiceSection({ serviceKey, serviceName, minPrice, avgPrice, imageSrc, allocatedPrice, handlePriceChange, checked, onCheckboxChange }) {
     return (
         <div className='w-[85%] flex flex-col gap-3 border-2 border-black p-3'>
             <h1 className='text-black text-xl'>{serviceName}</h1>
@@ -27,8 +27,9 @@ function ServiceSection({ serviceKey, serviceName, minPrice, avgPrice, imageSrc,
                             placeholder="Enter value"
                             name={`${serviceKey}-allocated-price`}
                             className="d-input-2"
-                            value={allocatedPrice}
+                            value={checked ? allocatedPrice : ''}
                             onChange={handlePriceChange(serviceKey)}
+                            disabled={!checked} // Disable the input if checkbox is not checked
                         />
                     </div>
                 </div>

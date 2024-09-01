@@ -4,9 +4,10 @@ import ServiceSection from './ServiceSection';
 import PrimaryNoneFillButton from './ui/PrimaryNoneFillButton';
 import PrimaryButton from './ui/PrimaryButton';
 import CheckboxField from './ui/CheckboxField';
+import ChangeBudget from './common/ChangeBudget';
 
 function PlanBudgetForm() {
-    const [totalBudget, setTotalBudget] = useState(0); // State for total budget
+    const [totalBudget, setTotalBudget] = useState(0);
     const [allocatedPrices, setAllocatedPrices] = useState({
         hotels: 0,
         dressers: 0,
@@ -23,7 +24,6 @@ function PlanBudgetForm() {
         cards: 0,
         poruwa: 0,
         catering: 0,
-        // add more services as needed
     });
     const [remainingBudget, setRemainingBudget] = useState(totalBudget);
     const [checkboxes, setCheckboxes] = useState({
@@ -42,13 +42,29 @@ function PlanBudgetForm() {
         cards: false,
         poruwa: false,
         catering: false,
-        // add more services as needed
     });
+
+    const serviceData = [
+        { key: 'hotels', name: 'Hotels', minPrice: 100000, avgPrice: 350000, imageSrc: '../src/assets/images/services/hotel.png' },
+        { key: 'dressers', name: 'Dressers', minPrice: 100000, avgPrice: 350000, imageSrc: '../src/assets/images/services/dress.png' },
+        { key: 'photographers', name: 'Photography', minPrice: 100000, avgPrice: 350000, imageSrc: '../src/assets/images/services/photography.jpg' },
+        { key: 'floral', name: 'Floral', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/floral.png' },
+        { key: 'jewellary', name: 'Jewellary', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/jewellery.png' },
+        { key: 'dancing', name: 'Dancing Groups', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/dancing.png' },
+        { key: 'ashtaka', name: 'Ashtaka', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/ashtaka.jpg' },
+        { key: 'saloons', name: 'Salons', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/hair.jpeg' },
+        { key: 'djs', name: 'DJs', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/dj.jpg' },
+        { key: 'honeymoon', name: 'Honeymoon', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/honeymoon.jpg' },
+        { key: 'cars', name: 'Cars', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/car.jpg' },
+        { key: 'cards', name: 'Invitation Cards', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/invitation.jpg' },
+        { key: 'poruwa', name: 'Poruwa', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/poruwa.jpg' },
+        { key: 'catering', name: 'Catering', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/catering.jpg' }
+    ];    
 
     const handleTotalBudgetChange = (e) => {
         const newTotalBudget = parseFloat(e.target.value.replace(/[^\d]/g, '')) || 0;
         const totalAllocated = Object.values(allocatedPrices).reduce((acc, curr) => acc + curr, 0);
-    
+
         if (newTotalBudget < totalAllocated) {
             Swal.fire({
                 title: 'Error!',
@@ -56,14 +72,12 @@ function PlanBudgetForm() {
                 icon: 'error',
                 confirmButtonText: 'OK',
             });
-            // Optionally, you might want to reset the input to the previous value or keep the old total budget.
             return;
         }
-    
+
         setTotalBudget(newTotalBudget);
         setRemainingBudget(newTotalBudget - totalAllocated);
     };
-    
 
     const handlePriceChange = (key) => (e) => {
         const value = parseFloat(e.target.value.replace(/[^\d]/g, '')) || 0;
@@ -89,11 +103,23 @@ function PlanBudgetForm() {
         }
     };
 
-    const handleCheckboxChange = (key) => (newCheckedState) => {
-        setCheckboxes((prev) => ({
-            ...prev,
-            [key]: newCheckedState,
-        }));
+    const handleCheckboxChange = (key) => (checked) => {
+        if (checked) {
+            setCheckboxes((prev) => ({
+                ...prev,
+                [key]: true,
+            }));
+        } else {
+            setCheckboxes((prev) => ({
+                ...prev,
+                [key]: false,
+            }));
+            setAllocatedPrices((prev) => {
+                const updatedPrices = { ...prev, [key]: 0 };
+                setRemainingBudget(totalBudget - Object.values(updatedPrices).reduce((acc, curr) => acc + curr, 0));
+                return updatedPrices;
+            });
+        }
     };
 
     return (
@@ -191,275 +217,34 @@ function PlanBudgetForm() {
                     {/* <PrimaryNoneFillButton text={"Change"} onClick={handleChangeButtonClick} /> */}
                 </div>
 
+
                 {/* Service Sections */}
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="hotels"
-                        serviceName="Hotels"
-                        minPrice={100000}
-                        avgPrice={350000}
-                        imageSrc="../src/assets/images/services/hotel.png"
-                        allocatedPrice={allocatedPrices.hotels}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="hotels"
-                            checked={checkboxes.hotels}
-                            onChange={handleCheckboxChange('hotels')}
+                {serviceData.map((service) => (
+                    <div key={service.key} className='flex flex-row min-h-8 mb-5'>
+                        <ServiceSection
+                            serviceKey={service.key}
+                            serviceName={service.name}
+                            minPrice={service.minPrice}
+                            avgPrice={service.avgPrice}
+                            imageSrc={service.imageSrc}
+                            allocatedPrice={allocatedPrices[service.key]}
+                            handlePriceChange={handlePriceChange}
+                            checked={checkboxes[service.key]}
+                            onCheckboxChange={handleCheckboxChange(service.key)}
                         />
+                        <div className='flex justify-center w-[15%] border-2 border-black'>
+                            <CheckboxField
+                                id={service.key}
+                                checked={checkboxes[service.key]}
+                                onChange={handleCheckboxChange(service.key)}
+                            />
+                        </div>
                     </div>
-                </div>
-
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="dressers"
-                        serviceName="Dressers"
-                        minPrice={100000}
-                        avgPrice={350000}
-                        imageSrc="../src/assets/images/services/dress.png"
-                        allocatedPrice={allocatedPrices.dressers}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="dressers"
-                            checked={checkboxes.dressers}
-                            onChange={handleCheckboxChange('dressers')}
-                        />
-                    </div>
-                </div>
-                
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="photographers"
-                        serviceName="Photography"
-                        minPrice={100000}
-                        avgPrice={350000}
-                        imageSrc="../src/assets/images/services/photography.jpg"
-                        allocatedPrice={allocatedPrices.photographers}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="photographers"
-                            checked={checkboxes.photographers}
-                            onChange={handleCheckboxChange('photographers')}
-                        />
-                    </div>
-                </div>
-
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="floral"
-                        serviceName="Floral"
-                        minPrice={50000}
-                        avgPrice={150000}
-                        imageSrc="../src/assets/images/services/floral.png"
-                        allocatedPrice={allocatedPrices.floral}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="floral"
-                            checked={checkboxes.floral}
-                            onChange={handleCheckboxChange('floral')}
-                        />
-                    </div>
-                </div>
-
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="jewellery"
-                        serviceName="Jewellery"
-                        minPrice={50000}
-                        avgPrice={150000}
-                        imageSrc="../src/assets/images/services/jewellery.png"
-                        allocatedPrice={allocatedPrices.jewellery}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="jewellery"
-                            checked={checkboxes.jewellery}
-                            onChange={handleCheckboxChange('jewellery')}
-                        />
-                    </div>
-                </div>
-
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="dancing"
-                        serviceName="Dancing Groups"
-                        minPrice={50000}
-                        avgPrice={150000}
-                        imageSrc="../src/assets/images/services/dancing.png"
-                        allocatedPrice={allocatedPrices.dancing}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="dancing"
-                            checked={checkboxes.dancing}
-                            onChange={handleCheckboxChange('dancing')}
-                        />
-                    </div>
-                </div>
-
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="ashtaka"
-                        serviceName="Ashtaka"
-                        minPrice={50000}
-                        avgPrice={150000}
-                        imageSrc="../src/assets/images/services/ashtaka.jpg"
-                        allocatedPrice={allocatedPrices.ashtaka}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="ashtaka"
-                            checked={checkboxes.ashtaka}
-                            onChange={handleCheckboxChange('ashtaka')}
-                        />
-                    </div>
-                </div>
-
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="saloons"
-                        serviceName="Salons"
-                        minPrice={50000}
-                        avgPrice={150000}
-                        imageSrc="../src/assets/images/services/hair.jpeg"
-                        allocatedPrice={allocatedPrices.saloons}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="saloons"
-                            checked={checkboxes.saloons}
-                            onChange={handleCheckboxChange('saloons')}
-                        />
-                    </div>
-                </div>
-
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="djs"
-                        serviceName="DJs"
-                        minPrice={50000}
-                        avgPrice={150000}
-                        imageSrc="../src/assets/images/services/dj.jpg"
-                        allocatedPrice={allocatedPrices.djs}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="djs"
-                            checked={checkboxes.djs}
-                            onChange={handleCheckboxChange('djs')}
-                        />
-                    </div>
-                </div>
-
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="honeymoon"
-                        serviceName="Honeymoon"
-                        minPrice={50000}
-                        avgPrice={150000}
-                        imageSrc="../src/assets/images/services/honeymoon.jpg"
-                        allocatedPrice={allocatedPrices.honeymoon}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="honeymoon"
-                            checked={checkboxes.honeymoon}
-                            onChange={handleCheckboxChange('honeymoon')}
-                        />
-                    </div>
-                </div>
-
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="cars"
-                        serviceName="Cars"
-                        minPrice={50000}
-                        avgPrice={150000}
-                        imageSrc="../src/assets/images/services/car.jpg"
-                        allocatedPrice={allocatedPrices.cars}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="cars"
-                            checked={checkboxes.cars}
-                            onChange={handleCheckboxChange('cars')}
-                        />
-                    </div>
-                </div>
-
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="cards"
-                        serviceName="Invitation Cards"
-                        minPrice={50000}
-                        avgPrice={150000}
-                        imageSrc="../src/assets/images/services/invitation.jpg"
-                        allocatedPrice={allocatedPrices.cards}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="cards"
-                            checked={checkboxes.cards}
-                            onChange={handleCheckboxChange('cards')}
-                        />
-                    </div>
-                </div>
-
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="poruwa"
-                        serviceName="Poruwa"
-                        minPrice={50000}
-                        avgPrice={150000}
-                        imageSrc="../src/assets/images/services/poruwa.jpg"
-                        allocatedPrice={allocatedPrices.poruwa}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="poruwa"
-                            checked={checkboxes.poruwa}
-                            onChange={handleCheckboxChange('poruwa')}
-                        />
-                    </div>
-                </div>
-                <div className='flex flex-row min-h-8 mb-5'>
-                    <ServiceSection
-                        serviceKey="catering"
-                        serviceName="Catering"
-                        minPrice={50000}
-                        avgPrice={150000}
-                        imageSrc="../src/assets/images/services/catering.jpg"
-                        allocatedPrice={allocatedPrices.catering}
-                        handlePriceChange={handlePriceChange}
-                    />
-                    <div className='flex justify-center w-[15%] border-2 border-black'>
-                        <CheckboxField
-                            id="catering"
-                            checked={checkboxes.catering}
-                            onChange={handleCheckboxChange('catering')}
-                        />
-                    </div>
-                </div>
+                ))}
 
                 <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 py-3'>
                     <PrimaryNoneFillButton text={"Reset"} link={"/planbudget"} />
-                    <PrimaryButton text={"Next    >>"} link={"/"} />
+                    <PrimaryButton text={"Next    >>"} link={"/planbudget2"} />
                 </div>
             </form>
         </div>
