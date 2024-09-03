@@ -168,11 +168,11 @@ function CreateBlogForm() {
                     </div>
                 </div>
                 <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 p-3 px-5 md:px-[5%]'>
-                    <PrimaryNoneFillButton 
+                    <PrimaryNoneFillButton
                         text="Reset"
                         onClick={handleReset}
                     />
-                    <PrimaryButton 
+                    <PrimaryButton
                         text="Post Blog"
                         type="submit"
                     />

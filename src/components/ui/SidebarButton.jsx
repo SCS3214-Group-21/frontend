@@ -1,8 +1,13 @@
 import React from 'react';
 
-
-export default function SidebarButton(props) {
-    const { href, iconPath, label, messagesCount, isOpen, isActive } = props
+export default function SidebarButton({
+    href,
+    iconPath,
+    label,
+    messagesCount = undefined,
+    isOpen,
+    isActive = false,
+}) {
     return (
         <li>
             <a
@@ -14,7 +19,7 @@ export default function SidebarButton(props) {
                 </svg>
                 <span className={`ms-3 ${isOpen ? 'block' : 'hidden'} md:block`}>{label}</span>
                 {messagesCount !== undefined && messagesCount > 0 && (
-                    <span className={`inline-flex items-center justify-center ms-12  text-sm font-medium ${isActive ? 'bg-pink-400' : 'bg-blue-100'} rounded-full w-6 h-6 ${isOpen ? 'flex' : 'hidden'} md:flex`}>
+                    <span className={`inline-flex items-center justify-center ms-12 text-sm font-medium ${isActive ? 'bg-pink-400' : 'bg-blue-100'} rounded-full w-6 h-6 ${isOpen ? 'flex' : 'hidden'} md:flex`}>
                         {messagesCount}
                     </span>
                 )}
@@ -22,10 +27,3 @@ export default function SidebarButton(props) {
         </li>
     );
 }
-
-
-
-SidebarButton.defaultProps = {
-    messagesCount: undefined,
-    isActive: false,
-};

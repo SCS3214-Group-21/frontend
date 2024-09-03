@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navigate, Route, Routes} from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
 // import BlogPage
@@ -8,6 +8,7 @@ import CreateBlogPage from '../pages/BlogPage/CreateBlogPage.jsx'
 import UpdateBlogPage from '../pages/BlogPage/UpdateBlogPage.jsx'
 import ViewBlogPage from '../pages/BlogPage/ViewBlogPage.jsx'
 import ViewMyBlogPage from '../pages/BlogPage/ViewMyBlogPage.jsx'
+import ClientCreateBlogPage from '../pages/BlogPage/ClientCreateBlogPage.jsx'
 
 // import ClientBookingPages
 import ClientAllBookings from '../pages/ClientBookingPage/ClientAllBookings.jsx'
@@ -68,6 +69,10 @@ const ClientRoutes = () => {
             />
 
             <Route
+                path="/blog"
+                element={currentUser && currentUser.roles.includes('client') ? <ClientCreateBlogPage /> : <Navigate to="/login" />}
+            />
+            <Route
                 path="/blogs"
                 element={currentUser && currentUser.roles.includes('client') ? <BlogPage /> : <Navigate to="/login" />}
             />
@@ -76,11 +81,11 @@ const ClientRoutes = () => {
                 element={currentUser && currentUser.roles.includes('client') ? <CreateBlogPage /> : <Navigate to="/login" />}
             />
             <Route
-                path="updateblog"
+                path="updateblog/:blog_id"
                 element={currentUser && currentUser.roles.includes('client') ? <UpdateBlogPage /> : <Navigate to="/login" />}
             />
             <Route
-                path="/viewblog"
+                path="/viewblog/:blog_id"
                 element={currentUser && currentUser.roles.includes('client') ? <ViewBlogPage /> : <Navigate to="/login" />}
             />
             <Route
