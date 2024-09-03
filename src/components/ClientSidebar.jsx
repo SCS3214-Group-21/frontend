@@ -32,8 +32,8 @@ export default function ClientSidebar() {
             >
                 {/*<img src={menuIcon} alt="Menu Icon" className="w-6 h-6" />*/}
 
-                <svg class="w-6 h-6 text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10" />
+                <svg className="w-6 h-6 text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h10" />
                 </svg>
 
             </button>
@@ -100,7 +100,7 @@ export default function ClientSidebar() {
 
                         />
                         <SidebarButton
-                            href="/blog"
+                            href="/blogs"
                             iconPath="M11 9h6m-6 3h6m-6 3h6M6.996 9h.01m-.01 3h.01m-.01 3h.01M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
                             label="Blogs"
                             isOpen={isDrawerOpen}

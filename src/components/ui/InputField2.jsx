@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { FaCalendarAlt, FaClock } from 'react-icons/fa';
 
 function InputField2(props) {
-    const { id, type, placeholder, name, value } = props;
+    const { id, type, placeholder, name, value, onChange } = props;
     const [startDate, setStartDate] = useState(null);
     const [startTime, setStartTime] = useState(null);
 
@@ -209,7 +209,9 @@ function InputField2(props) {
                             <FaClock className="icon" />
                         </React.Fragment>
                     ) : (
-                        <input id={id} type={type} placeholder={placeholder} value={value} name="input" className="input" />
+                        <input id={id} type={type} placeholder={placeholder} value={value} name="input" className="input"
+                            onChange={onChange} // Add this line
+                        />
                     )}
                 </div>
             </div>

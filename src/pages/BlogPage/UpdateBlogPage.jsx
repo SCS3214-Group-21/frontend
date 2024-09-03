@@ -3,14 +3,15 @@ import RegisterHeader from "../../components/common/RegisterHeader.jsx";
 import ClientSidebar from "../../components/ClientSidebar.jsx";
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 import UpdateBlogForm from "../../components/UpdateBlogForm.jsx";
+import ClientUpdateBlogForm from "../../components/ClientUpdateBlogForm.jsx";
 
-function UpdateBlogPage(){
+function UpdateBlogPage() {
     const breadcrumbItems = [
         { label: 'My Wedding', href: '/' },
         { label: 'Vendors', href: '/' },
         { label: 'Hotels' },
     ];
-    return(
+    return (
         <div>
             <RegisterHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
@@ -22,10 +23,11 @@ function UpdateBlogPage(){
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-custom-primary font-bold text-4xl'>Edit Your Blog</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>Edit Your Blog</h1>
                     </div>
                     <div className="pb-5">
-                        <UpdateBlogForm />
+                        {/* <UpdateBlogForm /> */}
+                        <ClientUpdateBlogForm />
                     </div>
                 </div>
             </div>

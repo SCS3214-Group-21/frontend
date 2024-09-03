@@ -14,11 +14,13 @@ function PrimaryButton({ text, link, onClick }) {
 
     return (
         <button
+
             onClick={handleClick}
             type="button"
             className="border-0 rounded-full px-8 h-10 bg-custom-primary text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:text-custom-secondary hover:border-2 hover:border-custom-secondary"
         >
             {text}
+
         </button>
     );
 }
