@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom'
 import ClientRegisterPage from '../pages/PublicPage/ClientRegisterPage.jsx'
 import LandingPage from '../pages/PublicPage/LandingPageBackup.jsx'
 import LoginPage from '../pages/PublicPage/LoginPage.jsx'
-import VendorRegister from '../pages/PublicPage/VendorRegister.jsx'
+import VendorRegisterPage from '../pages/PublicPage/VendorRegisterPage.jsx'
 
 function PublicRoutes() {
     return (
@@ -24,7 +24,7 @@ function PublicRoutes() {
             />
             <Route
                 path="/vendorregister"
-                element={<VendorRegister />}
+                element={<VendorRegisterPage />}
             />
         </Routes>
     )

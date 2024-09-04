@@ -56,7 +56,7 @@ import NotificationPage from "../pages/ClientViewPage/NotificationPage.jsx";
 import AdminBlogAcceptPage from "../pages/AdminPage/AdminBlogAcceptPage.jsx";
 
 
-import VendorRegister from "../pages/PublicPage/VendorRegister.jsx";
+import VendorRegisterPage from "../pages/PublicPage/VendorRegisterPage.jsx";
 
 
 
@@ -69,7 +69,7 @@ function PublicRoute() {
                     <Route path="/" element={<LandingPageBackup />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                     <Route path="/register" element={<ClientRegisterPage />}></Route>
-                    <Route path="/vendorregister" element={<VendorRegister />}></Route>
+                    <Route path="/vendorregister" element={<VendorRegisterPage />}></Route>
                     <Route path="/vendorregister1" element={<VendorRegister01 />}></Route>
                     {/* <Route path="/vendorregister2" element={<VendorRegister02 />}></Route>
                     <Route path="/vendorregister3" element={<VendorRegister03 />}></Route>

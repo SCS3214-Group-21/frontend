@@ -6,7 +6,7 @@ import VendorRegister05 from "./VendorRegister05.jsx";
 import VendorRegister06 from "./VendorRegister06.jsx";
 import RegistrationHeader from "../../components/common/RegistrationHeader.jsx"
 
-function VendorRegister() {
+function VendorRegisterPage() {
     return(
         <form>
             <RegistrationHeader />
@@ -29,4 +29,4 @@ function VendorRegister() {
     )
 }
 
-export default VendorRegister;
+export default VendorRegisterPage;

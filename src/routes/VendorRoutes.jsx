@@ -1,6 +1,5 @@
 import React from 'react'
 import {Navigate, Route, Routes} from 'react-router-dom'
-import { useAuth } from '../hooks/useAuth'
 
 // import BlogPage
 import BlogPage from '../pages/BlogPage/BlogPage.jsx'
@@ -22,16 +21,9 @@ import VendorProfilePage from '../pages/VendorViewPage/VendorProfilePage.jsx'
 import Logout from '../components/Logout.jsx'
 
 const VendorRoutes = () => {
-    const { currentUser } = useAuth()
-    console.error('currentUser in ClientRoutes:', currentUser)
-
-    // set spinner to user loading
-    if (!currentUser) {
-        return <div>Loading...</div>
-    }
 
     return (
-        <Routes>
+        <Route>
             <Route
                 path="/logout"
                 element={<Logout />}
@@ -76,7 +68,7 @@ const VendorRoutes = () => {
                 path="/vendorprofile"
                 element={<VendorProfilePage />}
             />
-        </Routes>
+        </Route>
     )
 }
 
