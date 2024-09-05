@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navigate, Route, Routes} from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 // import BlogPage
 import BlogPage from '../pages/BlogPage/BlogPage.jsx'
@@ -53,7 +53,7 @@ import Logout from '../components/Logout.jsx'
 const ClientRoutes = () => {
 
     return (
-        <>
+        <Routes>
             <Route
                 path="/logout"
                 element={<Logout />}
@@ -160,7 +160,7 @@ const ClientRoutes = () => {
                 element={<ClientAllVendors />}
             />
             <Route
-                path="/mywedding"
+                path="mywedding"
                 element={<ClientDashboardPage />}
             />
             <Route
@@ -187,7 +187,7 @@ const ClientRoutes = () => {
                 path="/viewsaloons"
                 element={<ViewSaloonPage />}
             />
-        </>
+        </Routes>
     )
 }
 
