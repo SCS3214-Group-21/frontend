@@ -4,6 +4,7 @@ import AdminSidebar from '../../components/AdminSidebar.jsx';
 import AdminHeader from '../../components/common/AdminHeader.jsx';
 import SecondaryButton from '../../components/ui/SecondaryButton.jsx';
 import ManageUserPopup from '../../components/ManageUserPopup.jsx';
+import DeleteButton from '../../components/ui/DeleteButton.jsx';
 
 
 
@@ -28,8 +29,20 @@ function AdminManageUserPage() {
                     <div className="pb-5">
                         <h1 className='text-4xl font-bold text-custom-primary'>Users</h1>
                     </div>
+                    
+            
+                
+            
+           
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row gap-10 sm:gap-5 flex-wrap'>
+                <div className="w-2/5 ml-auto flex items-center gap-2">
+                    <input
+                        type="text"
+                        className="w-full border border-[#FFDBC8] rounded-lg px-2 py-1 bg-[#FFF8F5] text-black"
+                        placeholder="Search Here"
+                    />
+                </div>
                             <table className="w-full border-collapse  rounded-xl flex-wrap text-black ">
                                 <thead>
                                     <tr className='text-black'>
@@ -54,9 +67,9 @@ function AdminManageUserPage() {
                                                 link="./manageUserPopup" 
                                                 text="View" 
                                             />
-                                            <SecondaryButton 
+                                            <DeleteButton 
                                                 link="/deleteUser/1" 
-                                                text="Delete" 
+                                                text="Remove" 
                                             />
                                             <button onClick={() => alert('View blog details')}>
                                                 {/* <FaEye className="text-blue-500" /> */}
