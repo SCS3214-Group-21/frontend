@@ -68,6 +68,8 @@ import VendorBlogPage from "../pages/VendorViewPage/VendorBlogPage.jsx"
 
 import AdminDashboard from '../pages/AdminPage/AdminDashboardPage.jsx';
 import AdminManageUser from '../pages/AdminPage/AdminManageUsersPage.jsx'
+import AdminFeedbackPage from "../pages/AdminPage/AdminFeedbackPage.jsx";
+// import AdminBlogPage from '../pages/AdminPage/AdminBlogPage.jsx'
 
 
 
@@ -131,9 +133,8 @@ function PublicRoute() {
                     <Route path="/admindashboard" element={<AdminDashboardPage />}></Route>
                     <Route path="/manageusers" element={<AdminManageUsersPage />}></Route>
                     <Route path="/adminblogs" element={<AdminBlogPage />}></Route>
-                    <Route path="/admincreateblog" element={<AdminCreateBlogPage />}></Route>
                     <Route path="/notification" element={<NotificationPage />}></Route>
-                    <Route path="/acceptblogs" element={<AdminBlogAcceptPage />}></Route>
+                    <Route path="/admincreateblog" element={<AdminCreateBlogPage />}></Route>
 
                     <Route path="/vendorallchats" element={<VendorAllChatsPage />}></Route>
                     <Route path="/vendorchat" element={<VendorChatPage />}></Route>
@@ -143,6 +144,9 @@ function PublicRoute() {
 
                     <Route path="/admindashboard" element={<AdminDashboard />} />
                     <Route path="/adminmanageuser" element={<AdminManageUser />} />
+                    <Route path="/acceptblogs" element={<AdminBlogAcceptPage />}/>
+                    <Route path="/adminfeedback" element={<AdminFeedbackPage />} />
+                    {/* <Route path="/adminblog" element={<AdminBlogPage />} /> */}
 
                 </Routes>
             </BrowserRouter>
