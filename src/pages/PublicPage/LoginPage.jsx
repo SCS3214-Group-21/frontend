@@ -24,7 +24,7 @@ export default function LoginPage() {
         e.preventDefault()
         try {
             const { userInfo, error } = await login(formData.email, formData.password)
-            console.log('Login successful: ', userInfo)
+            console.log('LoginPage successful: ', userInfo)
             navigate('/mywedding')
         }
         catch (error) {
