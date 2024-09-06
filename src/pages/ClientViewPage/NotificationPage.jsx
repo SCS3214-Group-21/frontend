@@ -1,7 +1,7 @@
 import React from 'react'
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import ClientSidebar from '../../components/ClientSidebar.jsx';
-import RegisterHeader from '../../components/common/RegisterHeader.jsx';
+import Breadcrumb from '../../components_depr/ui/Breadcrumb.jsx';
+import ClientSidebar from '../../components_depr/ClientSidebar.jsx';
+import RegisterHeader from '../../components_depr/common/RegisterHeader.jsx';
 
 
 function NotificationPage() {

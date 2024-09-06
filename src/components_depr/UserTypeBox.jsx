@@ -1,4 +1,4 @@
-// src/components/UserTypeBox.js
+// src/components_depr/UserTypeBox.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 

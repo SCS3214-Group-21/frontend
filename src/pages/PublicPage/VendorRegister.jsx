@@ -4,7 +4,7 @@ import VendorRegister03 from "./VendorRegister03.jsx";
 import VendorRegister04 from "./VendorRegister04.jsx";
 import VendorRegister05 from "./VendorRegister05.jsx";
 import VendorRegister06 from "./VendorRegister06.jsx";
-import RegistrationHeader from "../../components/common/RegistrationHeader.jsx"
+import RegistrationHeader from "../../components_depr/common/RegistrationHeader.jsx"
 
 function VendorRegister() {
     return(

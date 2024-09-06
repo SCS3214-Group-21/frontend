@@ -1,8 +1,8 @@
 import React from 'react';
-import VendorCategory from '../../components/VendorCategory';
-import ClientSidebar from '../../components/ClientSidebar';
-import RegisterHeader from '../../components/common/RegisterHeader';
-import Breadcrumb from '../../components/ui/Breadcrumb';
+import VendorCategory from '../../components_depr/VendorCategory';
+import ClientSidebar from '../../components_depr/ClientSidebar';
+import RegisterHeader from '../../components_depr/common/RegisterHeader';
+import Breadcrumb from '../../components_depr/ui/Breadcrumb';
 
 const AllPhotographers = () => {
     const breadcrumbItems = [

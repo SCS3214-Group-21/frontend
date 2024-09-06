@@ -1,8 +1,8 @@
 import React from "react";
-import VenderRegisterCarousel from "../../components/VenderRegisterCarousel.jsx";
-import LandingHeader from '../../components/common/LandingHeader.jsx';
-import CustomButton from '../../components/ui/CustomPinkButton.jsx';
-import RegistrationHeader from "../../components/common/RegistrationHeader.jsx"
+import VenderRegisterCarousel from "../../components_depr/VenderRegisterCarousel.jsx";
+import LandingHeader from '../../components_depr/common/LandingHeader.jsx';
+import CustomButton from '../../components_depr/ui/CustomPinkButton.jsx';
+import RegistrationHeader from "../../components_depr/common/RegistrationHeader.jsx"
 
 function VendorRegister01() {
     return(

@@ -1,11 +1,11 @@
 import React from 'react'
-import RegisterHeader from '../../components/common/RegisterHeader'
-import ClientSidebar from '../../components/ClientSidebar'
-import Breadcrumb from '../../components/ui/Breadcrumb'
-import BookingDetailsTable from '../../components/BookingDetailsTable';
+import RegisterHeader from '../../components_depr/common/RegisterHeader'
+import ClientSidebar from '../../components_depr/ClientSidebar'
+import Breadcrumb from '../../components_depr/ui/Breadcrumb'
+import BookingDetailsTable from '../../components_depr/BookingDetailsTable';
 import { useLocation } from 'react-router-dom';
-import PrimaryNoneFillButton from '../../components/ui/PrimaryNoneFillButton';
-import SecondaryButton from '../../components/ui/SecondaryButton';
+import PrimaryNoneFillButton from '../../components_depr/ui/PrimaryNoneFillButton';
+import SecondaryButton from '../../components_depr/ui/SecondaryButton';
 
 function ClientBookingDetailsPage(props) {
     //after create db this location hook can remove

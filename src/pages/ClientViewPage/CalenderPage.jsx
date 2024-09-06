@@ -1,10 +1,10 @@
 import React from "react";
-import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import ClientSidebar from "../../components/ClientSidebar.jsx";
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import Calendar from '../../components/common/Calender.jsx';
-import ReminderCard from "../../components/common/ReminderCard.jsx";
-import BookingSchedule from "../../components/common/BookingSchedule.jsx";
+import RegisterHeader from "../../components_depr/common/RegisterHeader.jsx";
+import ClientSidebar from "../../components_depr/ClientSidebar.jsx";
+import Breadcrumb from '../../components_depr/ui/Breadcrumb.jsx';
+import Calendar from '../../components_depr/common/Calender.jsx';
+import ReminderCard from "../../components_depr/common/ReminderCard.jsx";
+import BookingSchedule from "../../components_depr/common/BookingSchedule.jsx";
 
 function CalenderPage() {
     const breadcrumbItems = [

@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth.js'
 
-// import components
-import InputField from '../../components/ui/InputField.jsx'
-import SocialButton from '../../components/ui/SocialButton.jsx'
-import LoginHeader from '../../components/common/LoginHeader.jsx'
+// import components_depr
+import InputField from '../../components_depr/ui/InputField.jsx'
+import SocialButton from '../../components_depr/ui/SocialButton.jsx'
+import LoginHeader from '../../components_depr/common/LoginHeader.jsx'
 
 // import asset
 import backgroundImage from '../../assets/images/login/l1.png'

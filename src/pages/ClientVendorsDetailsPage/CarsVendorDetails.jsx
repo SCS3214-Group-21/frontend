@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Breadcrumb from '../../components/ui/Breadcrumb';
-import RegisterHeader from '../../components/common/RegisterHeader';
-import ClientSidebar from '../../components/ClientSidebar';
-import StarRating from '../../components/ui/StarRating';
-import SecondaryButton from '../../components/ui/SecondaryButton';
-import SelectField from '../../components/ui/SelectField';
+import Breadcrumb from '../../components_depr/ui/Breadcrumb';
+import RegisterHeader from '../../components_depr/common/RegisterHeader';
+import ClientSidebar from '../../components_depr/ClientSidebar';
+import StarRating from '../../components_depr/ui/StarRating';
+import SecondaryButton from '../../components_depr/ui/SecondaryButton';
+import SelectField from '../../components_depr/ui/SelectField';
 
 const CarsVendorDetails = () => {
     const breadcrumbItems = [

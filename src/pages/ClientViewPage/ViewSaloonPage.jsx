@@ -1,10 +1,10 @@
 import React from "react";
-import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import ClientSidebar from "../../components/ClientSidebar.jsx";
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import Pagination from '../../components/common/Pagination.jsx'
-import ServiceDescriptionCard from "../../components/common/ServiceDescriptionCard.jsx";
-import VendorDescription from "../../components/VendorDescription.jsx";
+import RegisterHeader from "../../components_depr/common/RegisterHeader.jsx";
+import ClientSidebar from "../../components_depr/ClientSidebar.jsx";
+import Breadcrumb from '../../components_depr/ui/Breadcrumb.jsx';
+import Pagination from '../../components_depr/common/Pagination.jsx'
+import ServiceDescriptionCard from "../../components_depr/common/ServiceDescriptionCard.jsx";
+import VendorDescription from "../../components_depr/VendorDescription.jsx";
 
 const items1 = [
     { img: 'src/assets/Images/Images/01.png', name: 'Make Up (Mac)', price: '$300', text: 'BMW super luxury racing car. High speed and maximum horsepower', },

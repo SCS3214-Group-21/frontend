@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import ClientSidebar from "../../components/ClientSidebar.jsx";
-import LandingFooter from "../../components/common/LandingFooter.jsx";
-import ServiceDescriptionCard from "../../components/common/ServiceDescriptionCard.jsx";
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import SortingButton from '../../components/ui/SortingButton.jsx';
-import Pagination from '../../components/common/Pagination.jsx';
+import RegisterHeader from "../../components_depr/common/RegisterHeader.jsx";
+import ClientSidebar from "../../components_depr/ClientSidebar.jsx";
+import LandingFooter from "../../components_depr/common/LandingFooter.jsx";
+import ServiceDescriptionCard from "../../components_depr/common/ServiceDescriptionCard.jsx";
+import Breadcrumb from '../../components_depr/ui/Breadcrumb.jsx';
+import SortingButton from '../../components_depr/ui/SortingButton.jsx';
+import Pagination from '../../components_depr/common/Pagination.jsx';
 
 function ClientVendorCategory() {
     const breadcrumbItems = [

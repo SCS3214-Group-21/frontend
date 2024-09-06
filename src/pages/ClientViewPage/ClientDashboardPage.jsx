@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import ClientSidebar from '../../components/ClientSidebar.jsx';
-import RegisterHeader from '../../components/common/RegisterHeader.jsx';
+import ClientSidebar from '../../components_depr/ClientSidebar.jsx';
+import RegisterHeader from '../../components_depr/common/RegisterHeader.jsx';
 import { AiOutlineEdit } from 'react-icons/ai';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import CheckboxField from '../../components/ui/CheckboxField.jsx';
-import PrimaryNoneFillButton from '../../components/ui/PrimaryNoneFillButton.jsx';
+import CheckboxField from '../../components_depr/ui/CheckboxField.jsx';
+import PrimaryNoneFillButton from '../../components_depr/ui/PrimaryNoneFillButton.jsx';
 
 function ClientDashboardPage() {
     const [selectedImage, setSelectedImage] = useState(null);

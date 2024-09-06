@@ -1,8 +1,8 @@
 import React from "react";
-import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import VendorSidebar from "../../components/VendorSidebar.jsx";
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import CreatePackageForm from '../../components/CreatePackageForm.jsx'
+import RegisterHeader from "../../components_depr/common/RegisterHeader.jsx";
+import VendorSidebar from "../../components_depr/VendorSidebar.jsx";
+import Breadcrumb from '../../components_depr/ui/Breadcrumb.jsx';
+import CreatePackageForm from '../../components_depr/CreatePackageForm.jsx'
 
 function CreatePackagePage(){
     const breadcrumbItems = [

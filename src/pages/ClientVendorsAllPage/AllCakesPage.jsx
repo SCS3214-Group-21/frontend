@@ -1,8 +1,8 @@
 import React from 'react';
-import VendorCategory from '../../components/VendorCategory';
-import RegisterHeader from '../../components/common/RegisterHeader';
-import ClientSidebar from '../../components/ClientSidebar';
-import Breadcrumb from '../../components/ui/Breadcrumb';
+import VendorCategory from '../../components_depr/VendorCategory';
+import RegisterHeader from '../../components_depr/common/RegisterHeader';
+import ClientSidebar from '../../components_depr/ClientSidebar';
+import Breadcrumb from '../../components_depr/ui/Breadcrumb';
 
 const AllCakesPage = () => {
     const breadcrumbItems = [

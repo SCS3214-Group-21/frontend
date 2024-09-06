@@ -1,11 +1,11 @@
 import React from 'react';
-import LandingHeader from '../../components/common/LandingHeader.jsx';
-import StatusCard from '../../components/common/StatusCard.jsx';
-import ServicesCarousel from '../../components/ServicesCarousel.jsx';
-import PartnerBadges from '../../components/common/PartnerBadges.jsx';
-import ReviewCarousel from '../../components/ReviewCarousel.jsx';
-import LandingFooter from '../../components/common/LandingFooter.jsx';
-import CustomPinkButton from '../../components/ui/CustomPinkButton.jsx';
+import LandingHeader from '../../components_depr/common/LandingHeader.jsx';
+import StatusCard from '../../components_depr/common/StatusCard.jsx';
+import ServicesCarousel from '../../components_depr/ServicesCarousel.jsx';
+import PartnerBadges from '../../components_depr/common/PartnerBadges.jsx';
+import ReviewCarousel from '../../components_depr/ReviewCarousel.jsx';
+import LandingFooter from '../../components_depr/common/LandingFooter.jsx';
+import CustomPinkButton from '../../components_depr/ui/CustomPinkButton.jsx';
 
 function LandingPage(){
     return(

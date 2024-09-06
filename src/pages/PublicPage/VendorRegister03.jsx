@@ -1,9 +1,9 @@
 import React from "react";
-import LandingHeader from "../../components/common/LandingHeader.jsx";
-import RegisterProgress from "../../components/ui/RegisterProgress.jsx";
-import SecondaryButton from "../../components/ui/SecondaryButton.jsx";
-import PersonalDetailsForm from "../../components/PersonalDetailsForm.jsx";
-import TermsConditions from "../../components/TermsConditions.jsx";
+import LandingHeader from "../../components_depr/common/LandingHeader.jsx";
+import RegisterProgress from "../../components_depr/ui/RegisterProgress.jsx";
+import SecondaryButton from "../../components_depr/ui/SecondaryButton.jsx";
+import PersonalDetailsForm from "../../components_depr/PersonalDetailsForm.jsx";
+import TermsConditions from "../../components_depr/TermsConditions.jsx";
 
 function VendorRegister03() {
   return (

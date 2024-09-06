@@ -1,10 +1,10 @@
 import React from "react";
-import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import VendorSidebar from "../../components/VendorSidebar.jsx";
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import AddCard from '../../components/common/AddCard.jsx';
-import PackageCard from '../../components/common/PackageCard.jsx';
-import Pagination from '../../components/common/Pagination.jsx'
+import RegisterHeader from "../../components_depr/common/RegisterHeader.jsx";
+import VendorSidebar from "../../components_depr/VendorSidebar.jsx";
+import Breadcrumb from '../../components_depr/ui/Breadcrumb.jsx';
+import AddCard from '../../components_depr/common/AddCard.jsx';
+import PackageCard from '../../components_depr/common/PackageCard.jsx';
+import Pagination from '../../components_depr/common/Pagination.jsx'
 
 const items = [
     { img: 'src/assets/Images/Images/01.png', text: 'Package 01', link: '/viewpackage',  },

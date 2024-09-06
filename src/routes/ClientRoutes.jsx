@@ -49,7 +49,7 @@ import ViewPackagePage from '../pages/ClientViewPage/ViewPackagePage.jsx'
 import ViewSaloonPage from '../pages/ClientViewPage/ViewSaloonPage.jsx'
 
 // import Logout Component
-import Logout from '../components/Logout.jsx'
+import Logout from '../components_depr/Logout.jsx'
 
 const ClientRoutes = () => {
     const { currentUser } = useAuth()

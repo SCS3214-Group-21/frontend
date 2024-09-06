@@ -1,11 +1,11 @@
 import React from "react";
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import AddCard from '../../components/common/AddCard.jsx';
-import BlogCard from "../../components/common/BlogCard.jsx";
-import Pagination from '../../components/common/Pagination.jsx'
-import AdminHeader from "../../components/common/AdminHeader.jsx";
-import AdminSidebar from "../../components/AdminSidebar.jsx";
-import PrimaryNoneFillButton from "../../components/ui/PrimaryNoneFillButton.jsx";
+import Breadcrumb from '../../components_depr/ui/Breadcrumb.jsx';
+import AddCard from '../../components_depr/common/AddCard.jsx';
+import BlogCard from "../../components_depr/common/BlogCard.jsx";
+import Pagination from '../../components_depr/common/Pagination.jsx'
+import AdminHeader from "../../components_depr/common/AdminHeader.jsx";
+import AdminSidebar from "../../components_depr/AdminSidebar.jsx";
+import PrimaryNoneFillButton from "../../components_depr/ui/PrimaryNoneFillButton.jsx";
 
 const items = [
     { img: 'src/assets/Images/Images/01.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },

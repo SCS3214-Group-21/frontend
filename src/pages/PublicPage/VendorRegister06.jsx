@@ -1,8 +1,8 @@
 import React from "react";
-import LandingHeader from "../../components/common/LandingHeader.jsx";
-import RegisterProgress from "../../components/ui/RegisterProgress.jsx";
-import SecondaryButton from "../../components/ui/SecondaryButton.jsx";
-import CustomPinkButton from "../../components/ui/CustomPinkButton.jsx";
+import LandingHeader from "../../components_depr/common/LandingHeader.jsx";
+import RegisterProgress from "../../components_depr/ui/RegisterProgress.jsx";
+import SecondaryButton from "../../components_depr/ui/SecondaryButton.jsx";
+import CustomPinkButton from "../../components_depr/ui/CustomPinkButton.jsx";
 
 function VendorRegister06() {
   return (

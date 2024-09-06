@@ -1,9 +1,9 @@
 import React from "react";
-import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import ClientSidebar from "../../components/ClientSidebar.jsx";
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import AddCard from '../../components/common/AddCard.jsx';
-import PlanBudgetForm from "../../components/PlanBudgetForm.jsx";
+import RegisterHeader from "../../components_depr/common/RegisterHeader.jsx";
+import ClientSidebar from "../../components_depr/ClientSidebar.jsx";
+import Breadcrumb from '../../components_depr/ui/Breadcrumb.jsx';
+import AddCard from '../../components_depr/common/AddCard.jsx';
+import PlanBudgetForm from "../../components_depr/PlanBudgetForm.jsx";
 
 function PlanBudgetPage() {
     const breadcrumbItems = [

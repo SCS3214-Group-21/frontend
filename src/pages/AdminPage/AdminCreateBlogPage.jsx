@@ -1,10 +1,10 @@
 import React from "react";
-import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import ClientSidebar from "../../components/ClientSidebar.jsx";
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import CreateBlogForm from "../../components/CreateBlogForm.jsx";
-import AdminHeader from "../../components/common/AdminHeader.jsx";
-import AdminSidebar from "../../components/AdminSidebar.jsx";
+import RegisterHeader from "../../components_depr/common/RegisterHeader.jsx";
+import ClientSidebar from "../../components_depr/ClientSidebar.jsx";
+import Breadcrumb from '../../components_depr/ui/Breadcrumb.jsx';
+import CreateBlogForm from "../../components_depr/CreateBlogForm.jsx";
+import AdminHeader from "../../components_depr/common/AdminHeader.jsx";
+import AdminSidebar from "../../components_depr/AdminSidebar.jsx";
 
 function AdminCreateBlogPage() {
     const breadcrumbItems = [

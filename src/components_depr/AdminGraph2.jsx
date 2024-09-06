@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-// Register components
+// Register components_depr
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -15,20 +15,20 @@ ChartJS.register(
     ChartDataLabels
 );
 
-function AdminGraph1() {
-    // Dummy data for subscription income
-    const annualData = [15000, 23000, 35000, 40000, 45000, 50000, 55000, 60000, 62000, 67000, 72000, 78000];
-    const weeklyData = [15000, 17000, 20000, 22000, 21000, 23000, 24000, 25000, 26000, 27000, 28000, 29000];
-    const dailyData = [5000, 5200, 5400, 5600, 5800, 6000, 6200, 6400, 6600, 6800, 7000, 7200, 7400, 7600, 7800, 8000, 8200, 8400, 8600, 8800, 9000, 9200, 9400, 9600, 9800, 10000, 10200, 10400, 10600, 10800];
+function AdminGraph2() {
+    // Dummy data for the number of weddings
+    const annualData = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75];
+    const weeklyData = [5, 8, 6, 9, 7, 8, 10];
+    const dailyData = [1, 2, 1, 3, 2, 2, 1];
 
     const [graphData, setGraphData] = useState({
         labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
         datasets: [
             {
-                label: 'Subscription Income',
+                label: 'Weddings',
                 data: annualData,
-                borderColor: '#FFC107',
-                backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                borderColor: 'red',
+                backgroundColor: 'rgba(255, 0, 0, 0.2)',
                 fill: true,
                 tension: 0.4,
             },
@@ -42,13 +42,13 @@ function AdminGraph1() {
         switch (newTimeframe) {
             case 'Daily':
                 setGraphData({
-                    labels: Array.from({ length: dailyData.length }, (_, i) => `Day ${i + 1}`),
+                    labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
                     datasets: [
                         {
-                            label: 'Subscription Income',
+                            label: 'Weddings',
                             data: dailyData,
-                            borderColor: '#FFC107',
-                            backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                            borderColor: 'red',
+                            backgroundColor: 'rgba(255, 0, 0, 0.2)',
                             fill: true,
                             tension: 0.4,
                         },
@@ -57,13 +57,13 @@ function AdminGraph1() {
                 break;
             case 'Weekly':
                 setGraphData({
-                    labels: Array.from({ length: weeklyData.length }, (_, i) => `Week ${i + 1}`),
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
                     datasets: [
                         {
-                            label: 'Subscription Income',
+                            label: 'Weddings',
                             data: weeklyData,
-                            borderColor: '#FFC107',
-                            backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                            borderColor: 'red',
+                            backgroundColor: 'rgba(255, 0, 0, 0.2)',
                             fill: true,
                             tension: 0.4,
                         },
@@ -75,10 +75,10 @@ function AdminGraph1() {
                     labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
                     datasets: [
                         {
-                            label: 'Subscription Income',
+                            label: 'Weddings',
                             data: annualData,
-                            borderColor: '#FFC107',
-                            backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                            borderColor: 'red',
+                            backgroundColor: 'rgba(255, 0, 0, 0.2)',
                             fill: true,
                             tension: 0.4,
                         },
@@ -100,7 +100,7 @@ function AdminGraph1() {
             tooltip: {
                 callbacks: {
                     label: function (tooltipItem) {
-                        return ` ${tooltipItem.raw} USD`;
+                        return ` ${tooltipItem.raw} weddings`;
                     },
                 },
             },
@@ -141,9 +141,9 @@ function AdminGraph1() {
         <div className="w-full h-full p-4 bg-white shadow-md rounded-xl">
             <div className="flex items-center justify-between mb-4">
                 <div>
-                    <h2 className="text-2xl font-bold">Subscription Income 2024</h2>
-                    <h2 className="text-2xl font-bold text-custom-secondary">240,000LKR</h2>
-                    <p className="text-sm text-green-500">+1.3% VS LAST YEAR</p>
+                    <h2 className="text-2xl font-bold">Weddings 2024</h2>
+                    <h2 className="text-2xl font-bold text-custom-secondary">Total Weddings: {annualData.reduce((a, b) => a + b, 0)}</h2>
+                    <p className="text-sm text-green-500">+15% increase from 2023</p>
                 </div>
                 <div className="flex flex-row flex-wrap items-center justify-center gap-2">
                     {["Daily", "Weekly", "Annually"].map((item) => (
@@ -167,4 +167,4 @@ function AdminGraph1() {
     );
 }
 
-export default AdminGraph1;
+export default AdminGraph2;

@@ -1,7 +1,7 @@
 import React from 'react'
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import AdminSidebar from '../../components/AdminSidebar.jsx';
-import AdminHeader from '../../components/common/AdminHeader.jsx';
+import Breadcrumb from '../../components_depr/ui/Breadcrumb.jsx';
+import AdminSidebar from '../../components_depr/AdminSidebar.jsx';
+import AdminHeader from '../../components_depr/common/AdminHeader.jsx';
 
 function AdminBlogAcceptPage() {
 

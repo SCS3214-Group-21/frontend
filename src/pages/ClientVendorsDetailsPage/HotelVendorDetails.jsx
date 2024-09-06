@@ -1,8 +1,8 @@
 import React from 'react';
-import RegisterHeader from '../../components/common/RegisterHeader';
-import ClientSidebar from '../../components/ClientSidebar';
-import Breadcrumb from '../../components/ui/Breadcrumb';
-import ClientVendorDetails from '../../components/ClientVendorDetails';
+import RegisterHeader from '../../components_depr/common/RegisterHeader';
+import ClientSidebar from '../../components_depr/ClientSidebar';
+import Breadcrumb from '../../components_depr/ui/Breadcrumb';
+import ClientVendorDetails from '../../components_depr/ClientVendorDetails';
 
 function HotelVendorDetails() {
     const breadcrumbItems = [

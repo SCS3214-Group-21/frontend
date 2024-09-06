@@ -19,7 +19,7 @@ import VendorDashboardPage from '../pages/VendorViewPage/VendorDashboardPage.jsx
 import VendorProfilePage from '../pages/VendorViewPage/VendorProfilePage.jsx'
 
 // import logout
-import Logout from '../components/Logout.jsx'
+import Logout from '../components_depr/Logout.jsx'
 
 const VendorRoutes = () => {
     const { currentUser } = useAuth()
