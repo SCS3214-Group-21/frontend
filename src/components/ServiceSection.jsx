@@ -5,7 +5,7 @@ function ServiceSection({ serviceKey, serviceName, minPrice, avgPrice, imageSrc,
         <div className='w-[85%] flex flex-col gap-3 border-2 border-black p-3'>
             <h1 className='text-black text-xl'>{serviceName}</h1>
             <div className='flex flex-row gap-10 justify-between'>
-                <div className='w-60 h-48'>
+                <div className='hidden sm:block w-60 h-48'>
                     <img src={imageSrc} className='h-full w-full object-cover rounded-xl' alt={serviceName} />
                 </div>
                 <div className="d-coolinput flex flex-row justify-center">

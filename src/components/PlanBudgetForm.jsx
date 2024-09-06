@@ -4,7 +4,7 @@ import ServiceSection from './ServiceSection';
 import PrimaryNoneFillButton from './ui/PrimaryNoneFillButton';
 import PrimaryButton from './ui/PrimaryButton';
 import CheckboxField from './ui/CheckboxField';
-import ChangeBudget from './common/ChangeBudget';
+// import ChangeBudget from './common/ChangeBudget';
 
 function PlanBudgetForm() {
     const [totalBudget, setTotalBudget] = useState(0);
@@ -121,6 +121,64 @@ function PlanBudgetForm() {
             });
         }
     };
+
+    const handleReset = () => {
+        setTotalBudget(0);
+        setAllocatedPrices({
+            hotels: 0,
+            dressers: 0,
+            photographers: 0,
+            floral: 0,
+            jewellary: 0,
+            dancing: 0,
+            ashtaka: 0,
+            saloons: 0,
+            djs: 0,
+            honeymoon: 0,
+            cakes: 0,
+            cars: 0,
+            cards: 0,
+            poruwa: 0,
+            catering: 0,
+        });
+        setRemainingBudget(0);
+        setCheckboxes({
+            hotels: false,
+            dressers: false,
+            photographers: false,
+            floral: false,
+            jewellary: false,
+            dancing: false,
+            ashtaka: false,
+            saloons: false,
+            djs: false,
+            honeymoon: false,
+            cakes: false,
+            cars: false,
+            cards: false,
+            poruwa: false,
+            catering: false,
+        });
+    };
+
+    const handleNext = () => {
+        const isAnyServiceSelected = Object.values(checkboxes).some((isChecked) => isChecked);
+    
+        if (!isAnyServiceSelected) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please select at least one service before proceeding!',
+                icon: 'error',
+                confirmButtonText: 'OK',
+            });
+            return;
+        }
+    
+        // Navigate to the next page if at least one service is selected
+        window.location.href = "/planbudget2"; // You can also use React Router's navigate
+    };
+    
+    
 
     return (
         <div>
@@ -243,8 +301,8 @@ function PlanBudgetForm() {
                 ))}
 
                 <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 py-3'>
-                    <PrimaryNoneFillButton text={"Reset"} link={"/planbudget"} />
-                    <PrimaryButton text={"Next    >>"} link={"/planbudget2"} />
+                    <PrimaryNoneFillButton text={"Reset"} onClick={handleReset} />
+                    <PrimaryButton text={"Next    >>"} onClick={handleNext} />
                 </div>
             </form>
         </div>

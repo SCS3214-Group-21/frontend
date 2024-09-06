@@ -10,10 +10,7 @@ function UpdatePackageForm() {
     const [items, setItems] = useState([
         { id: 1, name: "Item 1" }, 
         { id: 2, name: "Item 2" }, 
-        { id: 3, name: "Item 3" }, 
-        { id: 4, name: "Item 4" }, 
-        { id: 5, name: "Item 5" }, 
-        { id: 6, name: "Item 6" }
+        { id: 3, name: "Item 3" },
     ]);
 
     const addItem = () => {
@@ -46,7 +43,7 @@ function UpdatePackageForm() {
     return (
         <div>
             <form className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 pb-5'>
-                <div className='flex flex-col md:flex-row gap-5 lg:gap-20 w-full p-3 px-5'>
+                <div className='flex flex-col md:flex-row gap-5 lg:gap-14 w-full p-3 px-5'>
                     <div className='w-full'>
                         <InputField2 
                             id={1}
@@ -56,21 +53,22 @@ function UpdatePackageForm() {
                         />
                     </div>
                     <div className='w-full'>
-                        <SelectField 
-                            id="select-input" 
-                            name="Package Category" 
-                            options={[
-                                { value: 'Budget1', label: 'Budget 1' },
-                                { value: 'Budget2', label: 'Budget 2' }
-                            ]} 
-                        />
-                    </div>
-                    <div className='w-full'>
                         <InputField2 
                             id={1}
                             name={"Package Amount(Rs.)"}
                             placeholder={"Input"}
                             type={"text"}
+                        />
+                    </div>
+                    <div className='w-full'>
+                        <SelectField 
+                            id="select-input" 
+                            name="Amount Type" 
+                            options={[
+                                { value: 'Per Person', label: 'Per Person' },
+                                { value: 'Per Hour', label: 'Per Hour' },
+                                { value: 'Other', label: 'Other'}
+                            ]} 
                         />
                     </div>
                 </div>
