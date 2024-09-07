@@ -1,35 +1,54 @@
-import React from 'react'
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import RequireAuth from './components/auth/RequireAuth.jsx'
 
-import {AuthProvider} from './context/AuthProvider.jsx'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import {useAuth} from './hooks/useAuth.js'
+// import layout
+import Layout from './components/Layout.jsx'
 
-import PublicRoutes from './routes/PublicRoutes.jsx'
-import ClientRoutes from './routes/ClientRoutes.jsx'
-import VendorRoutes from './routes/VendorRoutes.jsx'
+// public pages
+import LoginPage from './components/auth/login/LoginPage.jsx'
+import RegisterPage from './components/auth/register/RegisterPage.jsx'
+import LandingPage from './pages/PublicPage/LandingPage.jsx'
+
+// client pages
+
+// vendor pages
+
+// error pages
+import Missing from './components/error/Missing.jsx'
+import Unauthorized from './components/error/Unauthorized.jsx'
+
+const ROLES = {
+    'Client': 2001,
+    'Vendor': 1984,
+    'Admin': 5150
+}
 
 function App() {
 
-    const { currentUser } = useAuth()
-
-    const isClient = currentUser && currentUser.roles && currentUser.roles.includes('client');
-    const isVendor = currentUser && currentUser.roles && currentUser.roles.includes('vendor');
-
     return (
-        <BrowserRouter>
-            <Routes>
-                {!currentUser ? (
-                    <Route path="/*" element={<PublicRoutes />} />
-                ) : isClient ? (
-                    <Route path="/*" element={<ClientRoutes />} />
-                ) : isVendor ? (
-                    <Route path="/*" element={<VendorRoutes />} />
-                ) : (
-                    <Route path="/*" element={<PublicRoutes />} />
-                )}
-            </Routes>
-        </BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Layout />}>
+
+                {/* public routes */}
+                <Route path="login" element={<LoginPage />} />
+                <Route path="register" element={<RegisterPage />} />
+                <Route path="/" element={<LandingPage />} />
+                <Route path="unauthorized" element={<Unauthorized />} />
+
+                {/* protected routes */}
+
+                {/* client routes */}
+                {/*<Route element={<RequireAuth allowedRoles={[ROLES.Client]} />}>*/}
+                {/*    <Route path="/" element={< />} />*/}
+                {/*</Route>*/}
+
+                {/* vendor routes */}
+                {/* admin routes */}
+
+                {/* catch all */}
+                <Route path="*" element={<Missing />} />
+            </Route>
+        </Routes>
     )
 }
 
