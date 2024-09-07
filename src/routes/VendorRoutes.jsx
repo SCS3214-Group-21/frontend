@@ -2,7 +2,7 @@ import React from 'react'
 import {Navigate, Route, Routes} from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
-// import BlogPage
+// import blogPage
 import BlogPage from '../pages/BlogPage/BlogPage.jsx'
 import CreateBlogPage from '../pages/BlogPage/CreateBlogPage.jsx'
 import UpdateBlogPage from '../pages/BlogPage/UpdateBlogPage.jsx'
