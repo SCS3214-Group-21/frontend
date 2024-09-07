@@ -7,7 +7,7 @@ import axios from '../../../api/axios.js'
 // import components
 import InputField from './InputField.jsx'
 import SocialButton from './SocialButton.jsx'
-import LoginHeader from '../headers/LoginHeader.jsx'
+import LoginHeader from '../../headers/LoginHeader.jsx'
 
 // import assets
 import backgroundImage from '../../../assets/images/login/l1.png'

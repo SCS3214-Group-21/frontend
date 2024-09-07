@@ -67,7 +67,7 @@ function LandingPage(){
                     <StatusCard 
                         title = {"For"}
                         subtitle = {"Service Provider"}
-                        paragraph = {"Register now and showcase your talents to thousands of couples. No fees until your first booking!"}
+                        paragraph = {"RegisterPage now and showcase your talents to thousands of couples. No fees until your first booking!"}
                         button = {"Register"}
                         link = {"/vendorregister1"}
                     />
