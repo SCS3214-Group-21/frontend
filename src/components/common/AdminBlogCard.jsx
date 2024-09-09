@@ -1,8 +1,11 @@
 import React from 'react';
 import PrimaryNoneFillButton from '../ui/PrimaryNoneFillButton';
+import DeleteButton from '../ui/DeleteButton';
+import SecondaryButton from '../ui/SecondaryButton';
+
 
 function AdminBlogCard(props) {
-    const { label, img, text, date, time, acceptButtonText, rejectButtonText, link } = props;
+    const { label, img, text, date, time, acceptButtonText, rejectButtonText, removeButtonText, link } = props;
 
     // Determine the color class based on the label
     const labelColorClass = label => {
@@ -41,15 +44,25 @@ function AdminBlogCard(props) {
                     <h1 className="text-gray-500 text-xs">{time}</h1>
                 </div>
             </div>
-            <div className='p-1 flex gap-2 '>
-                <PrimaryNoneFillButton 
-                    link = {link}
-                    text={acceptButtonText} 
-                />
-                 <PrimaryNoneFillButton 
-                    link = {link}
-                    text={rejectButtonText} 
-                />
+            <div className='p-1 flex gap-2 justify-end w-full'>
+                {label === 'New' && (
+                    <>
+                        <SecondaryButton 
+                            link={link}
+                            text={acceptButtonText}
+                        />
+                        <DeleteButton 
+                            link={link}
+                            text={rejectButtonText}
+                        />
+                    </>
+                )}
+                {(label === 'Accepted' || label === 'Rejected') && (
+                    <DeleteButton  
+                        link={link}
+                        text={removeButtonText}
+                    />
+                )}
             </div>
             
         </div>

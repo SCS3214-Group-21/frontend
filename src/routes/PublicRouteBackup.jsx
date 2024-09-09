@@ -69,6 +69,7 @@ import VendorBlogPage from "../pages/VendorViewPage/VendorBlogPage.jsx"
 import AdminDashboard from '../pages/AdminPage/AdminDashboardPage.jsx';
 import AdminManageUser from '../pages/AdminPage/AdminManageUsersPage.jsx'
 import AdminFeedbackPage from "../pages/AdminPage/AdminFeedbackPage.jsx";
+import AdminTransactions from "../pages/AdminPage/AdminTransactions.jsx";
 // import AdminBlogPage from '../pages/AdminPage/AdminBlogPage.jsx'
 
 
@@ -146,6 +147,7 @@ function PublicRoute() {
                     <Route path="/adminmanageuser" element={<AdminManageUser />} />
                     <Route path="/acceptblogs" element={<AdminBlogAcceptPage />}/>
                     <Route path="/adminfeedback" element={<AdminFeedbackPage />} />
+                    <Route path="/AdminTransactions" element={<AdminTransactions />} />
                     {/* <Route path="/adminblog" element={<AdminBlogPage />} /> */}
 
                 </Routes>
