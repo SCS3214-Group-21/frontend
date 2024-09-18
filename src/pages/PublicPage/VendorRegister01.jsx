@@ -1,20 +1,20 @@
 import React from "react";
-import VenderRegisterCarousel from "../../components/VenderRegisterCarousel.jsx";
+import VenderRegisterCarousel from "../../components/vendor/VenderRegisterCarousel.jsx";
 import LandingHeader from '../../components/common/LandingHeader.jsx';
 import CustomButton from '../../components/ui/CustomPinkButton.jsx';
 import RegistrationHeader from "../../components/common/RegistrationHeader.jsx"
 
 function VendorRegister01() {
-    return(
+    return (
         <div>
             <RegistrationHeader />
             <div className="relative">
                 <VenderRegisterCarousel />
-                <div className="flex justify-center items-center min-h-screen relative z-10">
-                    <div className="bg-white flex flex-col rounded-xl gap-3 items-center justify-center w-fit p-4 bg-opacity-50 text-center text-black">
+                <div className="relative z-10 flex items-center justify-center min-h-screen">
+                    <div className="flex flex-col items-center justify-center gap-3 p-4 text-center text-black bg-white bg-opacity-50 rounded-xl w-fit">
                         <p>Register now and showcase your talents to thousands of couples.</p>
                         <p>No fees until your first booking..!</p>
-                        <CustomButton 
+                        <CustomButton
                             link={'/vendorregister'}
                             bgColor={"bg-black"}
                             text={"Get Started"}

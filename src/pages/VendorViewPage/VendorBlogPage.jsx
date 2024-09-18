@@ -1,6 +1,6 @@
 import React from "react";
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import VendorSidebar from '../../components/VendorSidebar';
+import VendorSidebar from '../../components/vendor/VendorSidebar.jsx';
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 import AddCard from '../../components/common/AddCard.jsx';
 import BlogCard from "../../components/common/BlogCard.jsx";
@@ -22,7 +22,7 @@ const renderItems = (currentItems) => (
         <div className="flex items-center justify-center p-2 bg-white h-72 w-60">
             <AddCard
                 text={"Create Blog"}
-                link={"/createblog"}
+                link={"/vendor/blog/createblog"}
             />
         </div>
         {currentItems.map((item, index) => (
@@ -33,7 +33,7 @@ const renderItems = (currentItems) => (
                     date={item.date}
                     time={item.time}
                     button={"Read Blog"}
-                    link={"/viewmyblog"}
+                    link={"/vendor/blog/viewmyblog"}
                 />
             </div>
         ))}
@@ -43,7 +43,7 @@ const renderItems = (currentItems) => (
 
 function BlogPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/mywedding' },
+        { label: 'Dashboard', href: '/vendor/dashboard' },
         { label: 'Blogs' },
 
     ];

@@ -1,13 +1,13 @@
 import React from "react";
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import ClientSidebar from "../../components/ClientSidebar.jsx";
+import ClientSidebar from "../../components/client/ClientSidebar.jsx";
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import PlanBudgetForm2 from "../../components/PlanBudgetForm2.jsx";
+import PlanBudgetForm2 from "../../components/client/PlanBudgetForm2.jsx";
 
 function PlanBudgetPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/mywedding' },
-        { label: 'Budget', href: '/budget' },
+        { label: 'My Wedding', href: './mywedding' },
+        { label: 'Budget', href: './budget' },
         { label: 'Plan Budget' },
     ];
     return (

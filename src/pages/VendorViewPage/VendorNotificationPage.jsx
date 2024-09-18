@@ -1,11 +1,11 @@
 import React from 'react';
 import Breadcrumb from '../../components/ui/Breadcrumb';
-import VendorSidebar from '../../components/VendorSidebar';
+import VendorSidebar from '../../components/vendor/VendorSidebar';
 import RegisterHeader from '../../components/common/RegisterHeader';
 
 function VendorNotificationPage() {
     const breadcrumbItems = [
-        { label: 'Dashboard', href: '/dashboard' },
+        { label: 'Dashboard', href: '/vendor/dashboard' },
         { label: 'Notifications' },
     ];
 

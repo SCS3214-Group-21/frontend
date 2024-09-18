@@ -1,18 +1,18 @@
 import React from 'react'
-import {Navigate, Route, Routes} from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
 // import BlogPage
 import BlogPage from '../pages/BlogPage/BlogPage.jsx'
 import CreateBlogPage from '../pages/BlogPage/CreateBlogPage.jsx'
 import UpdateBlogPage from '../pages/BlogPage/UpdateBlogPage.jsx'
-import ViewBlogPage from '../pages/BlogPage/ViewBlogPage.jsx'
 import ViewMyBlogPage from '../pages/BlogPage/ViewMyBlogPage.jsx'
 
 // import VendorPackagePage
 import VendorPackagesPage from '../pages/VendorPackagePage/VendorPackagesPage.jsx'
 import UpdatePackagePage from '../pages/VendorPackagePage/UpdatePackagePage.jsx'
 import CreatePackagePage from '../pages/VendorPackagePage/CreatePackagePage.jsx'
+import ViewPackagePage from '../pages/VendorPackagePage/ViewPackagePage.jsx'
 
 // import VendorViewPage
 import VendorDashboardPage from '../pages/VendorViewPage/VendorDashboardPage.jsx'
@@ -43,63 +43,76 @@ const VendorRoutes = () => {
                 path="/logout"
                 element={<Logout />}
             />
+
             <Route
-                path="/vendorblog"
-                element={<VendorBlogPage />}
-            />
-            <Route
-                path="/createblog"
-                element={<CreateBlogPage />}
-            />
-            <Route
-                path="/updateblog"
-                element={<UpdateBlogPage />}
-            />
-            <Route
-                path="/viewblog"
-                element={<ViewBlogPage />}
-            />
-            <Route
-                path="/viewmyblog"
-                element={<ViewMyBlogPage />}
-            />
-            <Route
-                path="/createpackage"
-                element={<CreatePackagePage />}
-            />
-            <Route
-                path="/updatepackage"
-                element={<UpdatePackagePage />}
-            />
-            <Route
-                path="/vendorpackages"
-                element={<VendorPackagesPage />}
-            />
-            <Route
-                path="/vendordashboard"
+                path="/dashboard"
                 element={<VendorDashboardPage />}
-            />
-            <Route
-                path="/vendorprofile"
-                element={<VendorProfilePage />}
             />
 
             <Route
-                path="/vendorallchats"
+                path="/profile"
+                element={<VendorProfilePage />}
+            />
+
+            {/* packages */}
+
+            <Route
+                path="/packages"
+                element={<VendorPackagesPage />}
+            />
+
+            <Route
+                path="/packages/createpackage"
+                element={<CreatePackagePage />}
+            />
+
+            <Route
+                path="/packages/viewpackage"
+                element={<ViewPackagePage />}
+            />
+
+            <Route
+                path="/packages/updatepackage"
+                element={<UpdatePackagePage />}
+            />
+
+            <Route
+                path="/notification"
+                element={<VendorNotificationPage />}
+            />
+
+            <Route
+                path="/messages"
                 element={<VendorAllChatsPage />}
             />
             <Route
-                path="/vendorchat"
+                path="/messages/chat"
                 element={<VendorChatPage />}
             />
+
             <Route
-                path="/vendorschedule"
+                path="/schedule"
                 element={<VendorSchedulePage />}
             />
+
             <Route
-                path="/vendornotification"
-                element={<VendorNotificationPage />}
+                path="/blog"
+                element={<VendorBlogPage />}
             />
+            <Route
+                path="/blog/createblog"
+                element={<CreateBlogPage />}
+            />
+            <Route
+                path="/blog/updateblog"
+                element={<UpdateBlogPage />}
+            />
+
+            <Route
+                path="/blog/viewmyblog"
+                element={<ViewMyBlogPage />}
+            />
+
         </Routes>
     )
 }

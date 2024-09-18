@@ -1,8 +1,8 @@
 import React from "react";
 import AdminHeader from "../../components/common/AdminHeader.jsx";
-import AdminSidebar from "../../components/AdminSidebar.jsx";
-import AdminGraph1 from "../../components/AdminGraph1.jsx";
-import AdminGraph2 from "../../components/AdminGraph2.jsx";
+import AdminSidebar from "../../components/admin/AdminSidebar.jsx";
+import AdminGraph1 from "../../components/admin/AdminGraph1.jsx";
+import AdminGraph2 from "../../components/admin/AdminGraph2.jsx";
 
 function AdminDashboardPage() {
     return (

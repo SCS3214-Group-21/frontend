@@ -1,14 +1,14 @@
 import React from "react";
 import CommentSection from "../../components/common/CommentSection.jsx"
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import ClientSidebar from "../../components/ClientSidebar.jsx";
+import ClientSidebar from "../../components/client/ClientSidebar.jsx";
 import Breadcrumb from "../../components/ui/Breadcrumb.jsx";
 
 function ViewMyBlogPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
-        { label: 'Vendors', href: '/' },
-        { label: 'Hotels' },
+        { label: 'Dashboard', href: '/vendor/dashboard' },
+        { label: 'Blogs', href: '/vendor/blog' },
+        { label: 'ViewMyBlog' },
     ];
     return (
         <div>

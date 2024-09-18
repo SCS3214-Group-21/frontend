@@ -2,8 +2,8 @@ import React from "react";
 import LandingHeader from "../../components/common/LandingHeader.jsx";
 import RegisterProgress from "../../components/ui/RegisterProgress.jsx";
 import SecondaryButton from "../../components/ui/SecondaryButton.jsx";
-import PersonalDetailsForm from "../../components/PersonalDetailsForm.jsx";
-import TermsConditions from "../../components/TermsConditions.jsx";
+import PersonalDetailsForm from "../../components/vendor/PersonalDetailsForm.jsx";
+import TermsConditions from "../../components/vendor/TermsConditions.jsx";
 
 function VendorRegister03() {
   return (
@@ -14,22 +14,22 @@ function VendorRegister03() {
         style={{ backgroundImage: "url('./src/assets/images/Images/007.png')" }}
       >
         <div className="flex flex-col items-center justify-center md:flex-row">
-            <div className="w-full md:w-1/2 flex flex-col items-center py-10">
+          <div className="flex flex-col items-center w-full py-10 md:w-1/2">
             <PersonalDetailsForm />
-            </div>
-            <div className="w-full md:w-1/2 flex flex-col items-center py-10">
+          </div>
+          <div className="flex flex-col items-center w-full py-10 md:w-1/2">
             <TermsConditions />
-            </div>
+          </div>
         </div>
         <div className="flex flex-row justify-end pt-5 pr-10 sm:pr-20">
-            {/* <SecondaryButton 
+          {/* <SecondaryButton 
                 link={'/vendorregister4'}
                 text={"Next >>"}
             /> */}
-        </div>  
-        <div className="flex flex-col rounded-xl gap-3 items-center justify-center w-full pt-5 px-10 sm:px-20 text-center text-black">
+        </div>
+        <div className="flex flex-col items-center justify-center w-full gap-3 px-10 pt-5 text-center text-black rounded-xl sm:px-20">
           <RegisterProgress precentage={40} />
-        </div> 
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ClientSidebar from '../../components/ClientSidebar.jsx';
+import ClientSidebar from '../../components/client/ClientSidebar.jsx';
 import RegisterHeader from '../../components/common/RegisterHeader.jsx';
 import { AiOutlineEdit } from 'react-icons/ai';
 import DatePicker from 'react-datepicker';
@@ -26,7 +26,7 @@ function ClientDashboardPage() {
     const [newTaskLabel, setNewTaskLabel] = useState('');
     const [guestCount, setGuestCount] = useState(2); // State for guest count
 
-    const sampleImage = "src/assets/Images/Images/01.png";
+    const sampleImage = "../src/assets/Images/Images/01.png";
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
