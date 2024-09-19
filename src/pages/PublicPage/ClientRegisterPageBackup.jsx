@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 // import components
 import InputField from '../../components/ui/InputField.jsx'
@@ -10,7 +10,7 @@ import ClientRegistrationHeader from "../../components/common/ClientRegistration
 
 // import asset
 import backgroundImage from '../../assets/images/login/l1.png'
-import {useAuth} from "../../hooks/useAuth.js";
+import { useAuth } from "../../hooks/useAuth.js";
 
 export default function ClientRegisterPage() {
     const [formData, setFormData] = React.useState({ email: '', password: '' })
@@ -26,7 +26,7 @@ export default function ClientRegisterPage() {
         e.preventDefault()
 
         try {
-            const {error} = await signup(formData.email, formData.password)
+            const { error } = await signup(formData.email, formData.password)
             if (!error) {
                 setError(error)
                 console.log('Registration Successful')
@@ -45,17 +45,17 @@ export default function ClientRegisterPage() {
             <ClientRegistrationHeader />
 
             <div
-                className="flex items-center justify-center text-black h-screen bg-center bg-no-repeat bg-cover "
+                className="flex items-center justify-center h-screen text-black bg-center bg-no-repeat bg-cover "
                 style={{ backgroundImage: `url(${backgroundImage})` }}
             >
                 <div className="relative flex items-center justify-center w-auto h-auto sm:w-96 sm:h-[380px]">
                     <div className="absolute w-full h-full rounded-lg opacity-90"></div>
 
                     <div
-                        className="relative z-20 flex flex-col items-center w-full h-auto px-4 rounded-lg outline py-8 m-2">
+                        className="relative z-20 flex flex-col items-center w-full h-auto px-4 py-8 m-2 rounded-lg outline">
 
                         <h4 className="mb-6 text-3xl font-[#121212] sm:text-4xl">Register</h4>
-                        <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
+                        <form onSubmit={handleSubmit} className="flex flex-col items-center w-full">
 
                             <InputField
                                 id="email"
@@ -96,7 +96,7 @@ export default function ClientRegisterPage() {
                         </div>
 
                         <div className="flex justify-between mt-3">
-                            <SocialButton text="Sign up with Google"/>
+                            <SocialButton text="Sign up with Google" />
                         </div>
 
                         <div className="w-4/5 mt-2 mb-2 text-[12px] text-center">
@@ -110,5 +110,5 @@ export default function ClientRegisterPage() {
                 </div>
             </div>
         </div>
-);
+    );
 }

@@ -29,13 +29,13 @@ import VendorChatPage from "../pages/VendorViewPage/VendorChatPage.jsx"
 import VendorBlogPage from "../pages/VendorViewPage/VendorBlogPage.jsx"
 
 const VendorRoutes = () => {
-    const { currentUser } = useAuth()
-    console.error('currentUser in ClientRoutes:', currentUser)
+    // const { currentUser } = useAuth()
+    // console.error('currentUser in ClientRoutes:', currentUser)
 
     // set spinner to user loading
-    if (!currentUser) {
-        return <div>Loading...</div>
-    }
+    // if (!currentUser) {
+    //     return <div>Loading...</div>
+    // }
 
     return (
         <Routes>
