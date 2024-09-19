@@ -1,56 +1,26 @@
-import axios from 'axios'
+import api from '../api';
 
-const API_URL = 'http://localhost:4000'
+export const loginUser = async (email, password) => {
+  try {
+    const response = await api.post('/api/login', { email, password });
+    const { token, user } = response.data;
 
-const authService = {
-    login: async (email, password) => {
-        try {
-            const response = await axios.post(`${API_URL}/auth`, { email, password })
-            const { accessToken } = response.data
-            localStorage.setItem('token', accessToken)
-            return { token: accessToken, error: null }
-        } catch (error) {
-            console.error('Login error:', error.response || error.message)
-            const errorMessage = error.response?.data?.message || 'Login failed'
-            return { token: null, error: errorMessage }
-        }
-    },
+    // Store token and user info in localStorage
+    // localStorage.setItem('token', token);
+    // localStorage.setItem('user', JSON.stringify(user));
 
-    signup: async (email, password) => {
-        try {
-            await axios.post(`${API_URL}/auth/register`, { email, password })
-            return { error: null }
-        } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Signup failed'
-            return { error: errorMessage }
-        }
-    },
-
-    // verifyOtp: async (email, otp) => {
-    //     try {
-    //         const response = await axios.post(`${API_URL}/auth/verify-otp`, { email, otp })
-    //         const { accessToken, user } = response.data
-    //         localStorage.setItem('user', JSON.stringify(user))
-    //         localStorage.setItem('token', accessToken)
-    //         return { user, error: null }
-    //     } catch (error) {
-    //         const errorMessage = error.response?.data?.message || 'OTP verification failed'
-    //         return { user: null, error: errorMessage }
-    //     }
-    // },
-
-    logout: async () => {
-        localStorage.removeItem('token')
-        localStorage.removeItem('user')
-    },
-
-    getCurrentUser: () => {
-        return JSON.parse(localStorage.getItem('user'))
-    },
-
-    getToken: () => {
-        return localStorage.getItem('token')
-    }
+    // Return token and user
+    return { token, user };
+  } catch (error) {
+    throw new Error('Login failed. Please check your credentials.');
+  }
 };
 
-export default authService
+export const registerUser = async (data) => {
+  try {
+    const response = await api.post('/api/register', data);
+    return response.data;
+  } catch (error) {
+    throw new Error('Registration failed.');
+  }
+};

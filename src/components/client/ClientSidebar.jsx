@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation hook
 import SidebarButton from '../ui/SidebarButton';
+import { useNavigate } from 'react-router-dom';
+// import { AuthContext } from '../../context/AuthContext';
 
 export default function ClientSidebar() {
     const [isDrawerOpen, setDrawerOpen] = useState(false);
-    //const location = useLocation(); // Use useLocation to get the current path
+    const location = useLocation(); // Use useLocation to get the current path
 
     const toggleDrawer = () => {
         setDrawerOpen(!isDrawerOpen);
@@ -18,7 +20,7 @@ export default function ClientSidebar() {
     const isCalendarPage = location.pathname === '/client/calendar';//rename actual path
     const isBookingsPage = location.pathname === '/client/bookings' || location.pathname === '/client/bookings/bookingdetails';//rename actual path
     const isBlogsPage = location.pathname === '/client/blogs' || location.pathname === '/client/blogs/viewblog';//rename actual path
-    //const isLogoutPage = location.pathname === '/';//rename actual path
+    const isLogoutPage = location.pathname === '/client/logout';//rename actual path
 
 
 
@@ -120,8 +122,7 @@ export default function ClientSidebar() {
                             iconPath="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"
                             label="Logout"
                             isOpen={isDrawerOpen}
-
-
+                            isActive={isLogoutPage}
                         />
 
                     </ul>

@@ -1,43 +1,40 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-// import components
-import InputField from '../../components/ui/InputField.jsx'
-import SocialButton from '../../components/ui/SocialButton.jsx'
-import LoginHeader from '../../components/common/LoginHeader.jsx'
+// Import components
+import InputField from '../../components/ui/InputField.jsx';
+import SocialButton from '../../components/ui/SocialButton.jsx';
 import ClientRegistrationHeader from "../../components/common/ClientRegistrationHeader.jsx";
 
-// import asset
-import backgroundImage from '../../assets/images/login/l1.png'
-import { useAuth } from "../../hooks/useAuth.js";
+// Import asset
+import backgroundImage from '../../assets/images/login/l1.png';
+import { registerUser } from '../../services/authServices.js';
 
 export default function ClientRegisterPage() {
-    const [formData, setFormData] = React.useState({ email: '', password: '' })
-    const [error, setError] = useState()
-    const navigate = useNavigate()
-    const { signup } = useAuth()
+    const [formData, setFormData] = useState({ email: '', password: '', confirmPassword: '' });
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-    }
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        if (formData.password !== formData.confirmPassword) {
+            setError('Passwords do not match!');
+            return;
+        }
 
         try {
-            const { error } = await signup(formData.email, formData.password)
-            if (!error) {
-                setError(error)
-                console.log('Registration Successful')
-                navigate('/login')
-            }
+            const response = await registerUser({ email: formData.email, password: formData.password, role: 'client' });
+            alert(response.msg);  // Success message from the server
+            navigate('/login');   // Redirect to login after successful registration
+        } catch (error) {
+            console.error("Registration failed: ", error);
+            setError('Registration failed!');
         }
-        catch (error) {
-            console.error("Error sign up: ", error)
-            setError(error)
-        }
-    }
+    };
 
     return (
         <div className="bg-[#FFF8F5]">
@@ -52,7 +49,8 @@ export default function ClientRegisterPage() {
                     <div className="absolute w-full h-full rounded-lg opacity-90"></div>
 
                     <div
-                        className="relative z-20 flex flex-col items-center w-full h-auto px-4 py-8 m-2 rounded-lg outline">
+                        className="relative z-20 flex flex-col items-center w-full h-auto px-4 py-8 m-2 rounded-lg outline"
+                    >
 
                         <h4 className="mb-6 text-3xl font-[#121212] sm:text-4xl">Register</h4>
                         <form onSubmit={handleSubmit} className="flex flex-col items-center w-full">
@@ -60,26 +58,34 @@ export default function ClientRegisterPage() {
                             <InputField
                                 id="email"
                                 type="email"
-                                placeholder=" Email"
+                                placeholder="Email"
                                 name="email"
+                                value={formData.email}
                                 onChange={handleChange}
+                                required
                             />
 
                             <InputField
                                 id="password"
                                 type="password"
-                                placeholder=" Password"
+                                placeholder="Password"
                                 name="password"
+                                value={formData.password}
                                 onChange={handleChange}
+                                required
                             />
 
                             <InputField
                                 id="confirmPassword"
                                 type="password"
-                                placeholder=" Confirm Password"
-                                name="password"
+                                placeholder="Confirm Password"
+                                name="confirmPassword"
+                                value={formData.confirmPassword}
                                 onChange={handleChange}
+                                required
                             />
+
+                            {error && <div className="text-red-500 mb-4">{error}</div>}
 
                             <button
                                 type="submit"

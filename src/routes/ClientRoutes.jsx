@@ -1,213 +1,140 @@
-import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
-import { useAuth } from '../hooks/useAuth'
+import React from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { getToken, getUserRole } from '../utils/auth';
 
 // import ClientViewPage
-import CalenderPage from '../pages/ClientViewPage/CalenderPage.jsx'
-import ClientAllVendors from '../pages/ClientVendorsPage/ClientAllVendors.jsx'
-import ClientDashboardPage from '../pages/ClientViewPage/ClientDashboardPage.jsx'
-import NotificationPage from '../pages/ClientViewPage/NotificationPage.jsx'
+import CalenderPage from '../pages/ClientViewPage/CalenderPage.jsx';
+import ClientAllVendors from '../pages/ClientVendorsPage/ClientAllVendors.jsx';
+import ClientDashboardPage from '../pages/ClientViewPage/ClientDashboardPage.jsx';
+import NotificationPage from '../pages/ClientViewPage/NotificationPage.jsx';
 
 // import BlogPage
-import BlogPage from '../pages/BlogPage/BlogPage.jsx'
-import ViewBlogPage from '../pages/BlogPage/ViewBlogPage.jsx'
+import BlogPage from '../pages/BlogPage/BlogPage.jsx';
+import ViewBlogPage from '../pages/BlogPage/ViewBlogPage.jsx';
 
 // import ClientBookingPages
-import ClientAllBookings from '../pages/ClientBookingPage/ClientAllBookings.jsx'
-import ClientBookingDetailsPage from '../pages/ClientBookingPage/ClientBookingDetailsPage.jsx'
+import ClientAllBookings from '../pages/ClientBookingPage/ClientAllBookings.jsx';
+import ClientBookingDetailsPage from '../pages/ClientBookingPage/ClientBookingDetailsPage.jsx';
 
 // import ClientBudgetPages
-import BudgetPage from '../pages/ClientBudgetPage/BudgetPage.jsx'
-import PlanBudgetPage from '../pages/ClientBudgetPage/PlanBudgetPage.jsx'
-import PlanBudgetPage2 from '../pages/ClientBudgetPage/PlanBudgetPage2.jsx'
+import BudgetPage from '../pages/ClientBudgetPage/BudgetPage.jsx';
+import PlanBudgetPage from '../pages/ClientBudgetPage/PlanBudgetPage.jsx';
+import PlanBudgetPage2 from '../pages/ClientBudgetPage/PlanBudgetPage2.jsx';
 
 // import ClientChatPages
-import ClientAllChats from '../pages/ClientChatPage/ClientAllChats.jsx'
-import ClientChatPage from '../pages/ClientChatPage/ClientChatPage.jsx'
+import ClientAllChats from '../pages/ClientChatPage/ClientAllChats.jsx';
+import ClientChatPage from '../pages/ClientChatPage/ClientChatPage.jsx';
 
 // import ClientVendorsAllPage
-import AllCakesPage from '../pages/ClientVendorsPage/AllCakesPage.jsx'
-import AllCarsPage from '../pages/ClientVendorsPage/AllCarsPage.jsx'
-import AllDressersPage from '../pages/ClientVendorsPage/AllDressersPage.jsx'
-import AllFloralsPage from '../pages/ClientVendorsPage/AllFloralsPage.jsx'
-import AllHotelsPage from '../pages/ClientVendorsPage/AllHotelsPage.jsx'
-import AllJewelleryPage from '../pages/ClientVendorsPage/AllJewelleryPage.jsx'
-import AllPhotographers from '../pages/ClientVendorsPage/AllPhotographers.jsx'
-import AllSalonPage from '../pages/ClientVendorsPage/AllSalonPage.jsx'
+import AllCakesPage from '../pages/ClientVendorsPage/AllCakesPage.jsx';
+import AllCarsPage from '../pages/ClientVendorsPage/AllCarsPage.jsx';
+import AllDressersPage from '../pages/ClientVendorsPage/AllDressersPage.jsx';
+import AllFloralsPage from '../pages/ClientVendorsPage/AllFloralsPage.jsx';
+import AllHotelsPage from '../pages/ClientVendorsPage/AllHotelsPage.jsx';
+import AllJewelleryPage from '../pages/ClientVendorsPage/AllJewelleryPage.jsx';
+import AllPhotographers from '../pages/ClientVendorsPage/AllPhotographers.jsx';
+import AllSalonPage from '../pages/ClientVendorsPage/AllSalonPage.jsx';
 
 // import ClientVendorsDetailsPage
-import CakesVendorDetails from '../pages/ClientVendorsPage/CakesVendorDetails.jsx'
-import CarsVendorDetails from '../pages/ClientVendorsPage/CarsVendorDetails.jsx'
-import FloralVendorDetails from '../pages/ClientVendorsPage/FloralVendorDetails.jsx'
-import HotelVendorDetails from '../pages/ClientVendorsPage/HotelVendorDetails.jsx'
-import ViewDressingPage from '../pages/ClientVendorsPage/ViewDressingPage.jsx'
-import ViewJewelleryPage from '../pages/ClientVendorsPage/ViewJewelleryPage.jsx'
-import ViewPackagePage from '../pages/VendorPackagePage/ViewPackagePage.jsx'
-import ViewSaloonPage from '../pages/ClientVendorsPage/ViewSaloonPage.jsx'
+import CakesVendorDetails from '../pages/ClientVendorsPage/CakesVendorDetails.jsx';
+import CarsVendorDetails from '../pages/ClientVendorsPage/CarsVendorDetails.jsx';
+import FloralVendorDetails from '../pages/ClientVendorsPage/FloralVendorDetails.jsx';
+import HotelVendorDetails from '../pages/ClientVendorsPage/HotelVendorDetails.jsx';
+import ViewDressingPage from '../pages/ClientVendorsPage/ViewDressingPage.jsx';
+import ViewJewelleryPage from '../pages/ClientVendorsPage/ViewJewelleryPage.jsx';
+import ViewPackagePage from '../pages/VendorPackagePage/ViewPackagePage.jsx';
+import ViewSaloonPage from '../pages/ClientVendorsPage/ViewSaloonPage.jsx';
 
 // import Logout Component
-import Logout from '../components/Logout.jsx'
+import Logout from '../components/Logout.jsx';
 
 const ClientRoutes = () => {
-    // const { currentUser } = useAuth()
-    // console.error('currentUser in ClientRoutes:', currentUser)
+  const token = getToken(); // Get the token from storage
+  const userRole = getUserRole(); // Get the user role from storage
 
-    // set spinner to user loading
-    // if (!currentUser) {
-    //     return <div>Loading...</div>
-    // }
+  // Check if the user is authenticated and has the 'client' role
+  const isAuthenticatedClient = token && userRole === 'client';
 
-    return (
-        <Routes>
-            <Route
-                path="/logout"
-                element={<Logout />}
-            />
+  return (
+    <Routes>
+      <Route path="/logout" element={<Logout />} />
 
-            <Route
-                path="/mywedding"
-                element={<ClientDashboardPage />}
-            />
+      <Route
+        path="/mywedding"
+        element={isAuthenticatedClient ? <ClientDashboardPage /> : <Navigate to="/login" />}
+      />
 
+      {/* Vendors */}
+      <Route
+        path="/vendors"
+        element={isAuthenticatedClient ? <ClientAllVendors /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/vendors/hotels"
+        element={isAuthenticatedClient ? <AllHotelsPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="vendors/hoteldetails"
+        element={isAuthenticatedClient ? <HotelVendorDetails /> : <Navigate to="/login" />}
+      />
 
-            {/* vendors */}
-            <Route
-                path="/vendors"
-                element={<ClientAllVendors />}
-            />
+      {/* Budget */}
+      <Route
+        path="/budget"
+        element={isAuthenticatedClient ? <BudgetPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/planbudget"
+        element={isAuthenticatedClient ? <PlanBudgetPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/viewbudget"
+        element={isAuthenticatedClient ? <PlanBudgetPage2 /> : <Navigate to="/login" />}
+      />
 
-            <Route
-                path="/vendors/hotels"
-                element={<AllHotelsPage />}
-            />
+      {/* Notifications */}
+      <Route
+        path="/notification"
+        element={isAuthenticatedClient ? <NotificationPage /> : <Navigate to="/login" />}
+      />
 
-            <Route
-                path="vendors/hoteldetails"
-                element={<HotelVendorDetails />}
-            />
+      {/* Chat */}
+      <Route
+        path="/messages"
+        element={isAuthenticatedClient ? <ClientAllChats /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/messages/chat"
+        element={isAuthenticatedClient ? <ClientChatPage /> : <Navigate to="/login" />}
+      />
 
-            {/* <Route
-                path="/allcakes"
-                element={currentUser && currentUser.roles.includes('client') ? <AllCakesPage /> : <Navigate to="/login" />}
-            />
-            <Route
-                path="/allcars"
-                element={currentUser && currentUser.roles.includes('client') ? <AllCarsPage /> : <Navigate to="/login" />}
-            />
-            <Route
-                path="/alldressers"
-                element={currentUser && currentUser.roles.includes('client') ? <AllDressersPage /> : <Navigate to="/login" />}
-            />
-            <Route
-                path="/allflorals"
-                element={currentUser && currentUser.roles.includes('client') ? <AllFloralsPage /> : <Navigate to="/login" />}
-            />
+      {/* Calendar */}
+      <Route
+        path="/calendar"
+        element={isAuthenticatedClient ? <CalenderPage /> : <Navigate to="/login" />}
+      />
 
-            <Route
-                path="/alljewellery"
-                element={currentUser && currentUser.roles.includes('client') ? <AllJewelleryPage /> : <Navigate to="/login" />}
-            />
-            <Route
-                path="/allphotographers"
-                element={currentUser && currentUser.roles.includes('client') ? <AllPhotographers /> : <Navigate to="/login" />}
-            />
-            <Route
-                path="/allsalons"
-                element={currentUser && currentUser.roles.includes('client') ? <AllSalonPage /> : <Navigate to="/login" />}
-            />
-            <Route
-                path="/cakesdetails"
-                element={currentUser && currentUser.roles.includes('client') ? <CakesVendorDetails /> : <Navigate to="/login" />}
-            />
-            <Route
-                path="/carsdetails"
-                element={currentUser && currentUser.roles.includes('client') ? <CarsVendorDetails /> : <Navigate to="/login" />}
-            />
-            <Route
-                path="/floraldetails"
-                element={currentUser && currentUser.roles.includes('client') ? <FloralVendorDetails /> : <Navigate to="/login" />}
-            />
+      {/* Bookings */}
+      <Route
+        path="/bookings"
+        element={isAuthenticatedClient ? <ClientAllBookings /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="bookings/bookingdetails"
+        element={isAuthenticatedClient ? <ClientBookingDetailsPage /> : <Navigate to="/login" />}
+      />
 
-            <Route
-                path="/viewdressing"
-                element={currentUser && currentUser.roles.includes('client') ? <ViewDressingPage /> : <Navigate to="/login" />}
-            />
-            <Route
-                path="/viewjewellery"
-                element={currentUser && currentUser.roles.includes('client') ? <ViewJewelleryPage /> : <Navigate to="/login" />}
-            />
+      {/* Blogs */}
+      <Route
+        path="/blogs"
+        element={isAuthenticatedClient ? <BlogPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/blogs/viewblog"
+        element={isAuthenticatedClient ? <ViewBlogPage /> : <Navigate to="/login" />}
+      />
+    </Routes>
+  );
+};
 
-            <Route
-                path="/viewsaloons"
-                element={currentUser && currentUser.roles.includes('client') ? <ViewSaloonPage /> : <Navigate to="/login" />}
-            /> */}
-
-            {/* budget */}
-
-            <Route
-                path="/budget"
-                element={<BudgetPage />}
-            />
-
-            <Route
-                path="/planbudget"
-                element={<PlanBudgetPage />}
-            />
-            <Route
-                path="/viewbudget"
-                element={<PlanBudgetPage2 />}
-            />
-
-            {/* notifications */}
-
-            <Route
-                path="/notification"
-                element={<NotificationPage />}
-            />
-
-            {/* chat */}
-
-            <Route
-                path="/messages"
-                element={<ClientAllChats />}
-            />
-            <Route
-                path="/messages/chat"
-                element={<ClientChatPage />}
-            />
-
-            {/* calender */}
-
-            <Route
-                path="/calendar"
-                element={<CalenderPage />}
-            />
-
-            {/* bookings */}
-
-            <Route
-                path="/bookings"
-                element={<ClientAllBookings />}
-            />
-            <Route
-                path="bookings/bookingdetails"
-                element={<ClientBookingDetailsPage />}
-            />
-
-            {/* blogs */}
-
-            <Route
-                path="/blogs"
-                element={<BlogPage />}
-            />
-
-            <Route
-                path="/blogs/viewblog"
-                element={<ViewBlogPage />}
-            />
-
-        </Routes>
-    )
-}
-
-export default ClientRoutes
+export default ClientRoutes;

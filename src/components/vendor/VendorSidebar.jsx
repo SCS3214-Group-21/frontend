@@ -21,7 +21,7 @@ export default function VendorSidebar() {
     const isHistoryPage = location.pathname === '/';//rename actual path
     const isBlogsPage = location.pathname === '/vendor/blog' || location.pathname === '/vendor/blog/viewmyblog' || location.pathname === '/vendor/blog/createblog';//rename actual path
     const isReviewsPage = location.pathname === '/';//rename actual path
-    const isLogoutPage = location.pathname === '/';//rename actual path
+    const isLogoutPage = location.pathname === 'vendor/logout';//rename actual path
 
 
     return (
@@ -137,7 +137,7 @@ export default function VendorSidebar() {
                         />
 
                         <SidebarButton
-                            href="/login"
+                            href="/vendor/logout"
                             iconPath="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"
                             label="Logout"
                             isOpen={isDrawerOpen}
