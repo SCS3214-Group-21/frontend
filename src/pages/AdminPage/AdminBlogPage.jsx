@@ -4,7 +4,7 @@ import AddCard from '../../components/common/AddCard.jsx';
 import BlogCard from "../../components/common/BlogCard.jsx";
 import Pagination from '../../components/common/Pagination.jsx'
 import AdminHeader from "../../components/common/AdminHeader.jsx";
-import AdminSidebar from "../../components/AdminSidebar.jsx";
+import AdminSidebar from "../../components/admin/AdminSidebar.jsx";
 import PrimaryNoneFillButton from "../../components/ui/PrimaryNoneFillButton.jsx";
 
 const items = [

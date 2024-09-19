@@ -1,6 +1,6 @@
 import React from "react";
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import ClientSidebar from "../../components/ClientSidebar.jsx";
+import ClientSidebar from "../../components/client/ClientSidebar.jsx";
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 import Calendar from '../../components/common/Calender.jsx';
 import ReminderCard from "../../components/common/ReminderCard.jsx";
@@ -8,8 +8,8 @@ import BookingSchedule from "../../components/common/BookingSchedule.jsx";
 
 function CalenderPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/mywedding' },
-        { label: 'Calender' },
+        { label: 'My Wedding', href: './mywedding' },
+        { label: 'Calendar' },
 
     ];
 
@@ -25,12 +25,12 @@ function CalenderPage() {
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-4xl font-bold text-custom-primary'>Calender</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>Calendar</h1>
                     </div>
                     <div className='flex flex-row h-screen'>
                         <div className="flex flex-col w-[65%]">
                             <div className="p-5">
-                                <div className="bg-[#FFF8F5] bg-no-repeat bg-cover flex flex-row w-full h-52 rounded-3xl p-5 items-center justify-between" style={{ backgroundImage: "url('./src/assets/images/Images/08.png')" }}>
+                                <div className="bg-[#FFF8F5] bg-no-repeat bg-cover flex flex-row w-full h-52 rounded-3xl p-5 items-center justify-between" style={{ backgroundImage: "url('../src/assets/images/Images/08.png')" }}>
                                     <ReminderCard
                                         text={"Make the payment for Floral"}
                                         start={"10:00 AM"}

@@ -1,14 +1,14 @@
 import React from 'react';
 import LandingHeader from '../../components/common/LandingHeader.jsx';
 import StatusCard from '../../components/common/StatusCard.jsx';
-import ServicesCarousel from '../../components/ServicesCarousel.jsx';
+import ServicesCarousel from '../../components/landing/ServicesCarousel.jsx';
 import PartnerBadges from '../../components/common/PartnerBadges.jsx';
-import ReviewCarousel from '../../components/ReviewCarousel.jsx';
+import ReviewCarousel from '../../components/landing/ReviewCarousel.jsx';
 import LandingFooter from '../../components/common/LandingFooter.jsx';
 import CustomPinkButton from '../../components/ui/CustomPinkButton.jsx';
 
-function LandingPage(){
-    return(
+function LandingPage() {
+    return (
         <div className="bg-[#FFF8F5]">
             <LandingHeader />
 
@@ -19,11 +19,11 @@ function LandingPage(){
             >
                 <div className='absolute bottom-10 left-6 text-left'>
                     <StatusCard
-                        title = {"Discover, Plan,"}
-                        subtitle = {"Celebrate"}
-                        paragraph = {"From finding the perfect venue to choosing the right vendors, our platform makes wedding planning a breeze. Start your journey with us and create unforgettable memories."}
-                        button = {"Get Started"}
-                        link = {"/login"}
+                        title={"Discover, Plan,"}
+                        subtitle={"Celebrate"}
+                        paragraph={"From finding the perfect venue to choosing the right vendors, our platform makes wedding planning a breeze. Start your journey with us and create unforgettable memories."}
+                        button={"Get Started"}
+                        link={"/login"}
                     />
                 </div>
             </section>
@@ -34,12 +34,12 @@ function LandingPage(){
                 style={{ backgroundImage: "url('./src/assets/images/landing/p2.png')" }}
             >
                 <div className='absolute bottom-10 right-6 text-right'>
-                    <StatusCard 
-                        title = {"For"}
-                        subtitle = {"Couples"}
-                        paragraph = {"Create your free account today and start exploring top-notch services to bring your vision to life."}
-                        button = {"Register"}
-                        link = {"/register"}
+                    <StatusCard
+                        title={"For"}
+                        subtitle={"Couples"}
+                        paragraph={"Create your free account today and start exploring top-notch services to bring your vision to life."}
+                        button={"Register"}
+                        link={"/register"}
                     />
                 </div>
             </section>
@@ -64,12 +64,12 @@ function LandingPage(){
                 style={{ backgroundImage: "url('./src/assets/images/landing/p3.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
-                    <StatusCard 
-                        title = {"For"}
-                        subtitle = {"Service Provider"}
-                        paragraph = {"Register now and showcase your talents to thousands of couples. No fees until your first booking!"}
-                        button = {"Register"}
-                        link = {"/vendorregister1"}
+                    <StatusCard
+                        title={"For"}
+                        subtitle={"Service Provider"}
+                        paragraph={"Register now and showcase your talents to thousands of couples. No fees until your first booking!"}
+                        button={"Register"}
+                        link={"/vendorregister1"}
                     />
                 </div>
             </section>
@@ -89,12 +89,12 @@ function LandingPage(){
                         <h1 className="text-black font-sans font-normal text-3xl sm:text-4xl text-center">Our Newsletter is worth something</h1>
                     </div>
                     <div className='flex flex-col w-1/2 gap-4 items-center justify-center'>
-                    <input
-              type="email"
-              placeholder="email"
-              className="input input-bordered w-full bg-white"
-            />
-                        <CustomPinkButton 
+                        <input
+                            type="email"
+                            placeholder="email"
+                            className="input input-bordered w-full bg-white"
+                        />
+                        <CustomPinkButton
                             text={"Subscribe"}
                             link={"/"}
                         />
@@ -108,12 +108,12 @@ function LandingPage(){
                 style={{ backgroundImage: "url('./src/assets/images/landing/p5.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
-                    <StatusCard 
-                        title = {"Business not going as Planned Need a"}
-                        subtitle = {"Boost..?"}
-                        paragraph = {"Get Idea about our boosting service, ideally make for improving your business"}
-                        button2 = {"Details"}
-                        link2 = {"/"}
+                    <StatusCard
+                        title={"Business not going as Planned Need a"}
+                        subtitle={"Boost..?"}
+                        paragraph={"Get Idea about our boosting service, ideally make for improving your business"}
+                        button2={"Details"}
+                        link2={"/"}
                     />
                 </div>
             </section>
@@ -124,12 +124,12 @@ function LandingPage(){
                 style={{ backgroundImage: "url('./src/assets/images/landing/p6.png')" }}
             >
                 <div className='absolute  bottom-10 right-6 text-right'>
-                    <StatusCard 
-                        title = {"Planning a Wedding Don’t have any"}
-                        subtitle = {"idea..?"}
-                        paragraph = {"Read our excellent blogs and get idea about every simple steps easily. No Fee, Totally Free"}
-                        button2 = {"Details"}
-                        link2 = {"/"}
+                    <StatusCard
+                        title={"Planning a Wedding Don’t have any"}
+                        subtitle={"idea..?"}
+                        paragraph={"Read our excellent blogs and get idea about every simple steps easily. No Fee, Totally Free"}
+                        button2={"Details"}
+                        link2={"/"}
                     />
                 </div>
             </section>
@@ -140,11 +140,11 @@ function LandingPage(){
                 style={{ backgroundImage: "url('./src/assets/images/landing/p7.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
-                    <StatusCard 
-                        title = {"Feedback"}
-                        paragraph = {"We value your thoughts! Share your thought with us... "}
-                        button3 = {"Contact Us"}
-                        link3 = {"/"}
+                    <StatusCard
+                        title={"Feedback"}
+                        paragraph={"We value your thoughts! Share your thought with us... "}
+                        button3={"Contact Us"}
+                        link3={"/"}
                     />
                 </div>
             </section>
@@ -154,7 +154,7 @@ function LandingPage(){
                 className="h-screen w-full bg-no-repeat bg-cover relative"
                 style={{ backgroundImage: "url('./src/assets/images/landing/p8.png')" }}
             >
-                <LandingFooter/>
+                <LandingFooter />
             </section>
         </div>
     )

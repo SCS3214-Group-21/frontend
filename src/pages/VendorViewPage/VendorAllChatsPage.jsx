@@ -2,11 +2,11 @@ import React from 'react';
 import RegisterHeader from '../../components/common/RegisterHeader';
 import Chatbox from '../../components/common/Chatbox';
 import Breadcrumb from '../../components/ui/Breadcrumb';
-import VendorSidebar from '../../components/VendorSidebar';
+import VendorSidebar from '../../components/vendor/VendorSidebar';
 
 function VendorAllChatsPage() {
     const breadcrumbItems = [
-        { label: 'Dashboard', href: '/vendordashboard' },
+        { label: 'Dashboard', href: '/vendor/dashboard' },
         { label: 'Messages' },
     ];
 
@@ -31,14 +31,14 @@ function VendorAllChatsPage() {
                                 Status="Recieved"
                                 Message="This is suit to my wedding"
                                 Time="12:34"
-                                Path="/vendorchat"
+                                Path="/vendor/messages/chat"
                             />
                             <Chatbox
                                 Name="Devid"
                                 Status="Recieved"
                                 Message="Okay thank you!"
                                 Time="10:20"
-                                Path="/vendorchat"
+                                Path="/vendor/messages/chat"
                             />
                         </div>
                     </div>

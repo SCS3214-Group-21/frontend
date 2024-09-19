@@ -1,13 +1,13 @@
 import React from "react";
 import RegisterHeader from "../../components/common/RegisterHeader";
-import VendorSidebar from "../../components/VendorSidebar";
+import VendorSidebar from "../../components/vendor/VendorSidebar";
 import Breadcrumb from '../../components/ui/Breadcrumb';
-import CreateBlogForm from "../../components/CreateBlogForm";
+import CreateBlogForm from "../../components/blog/CreateBlogForm";
 
 function VendorCreateBlogPage() {
     const breadcrumbItems = [
-        { label: 'Dashboard', href: '/vendordashboard' },
-        { label: 'Blogs', href: '/vendorblog' },
+        { label: 'Dashboard', href: '/vendor/dashboard' },
+        { label: 'Blogs', href: '/vendor/blog' },
         { label: 'Create Blog' },
     ];
     return (

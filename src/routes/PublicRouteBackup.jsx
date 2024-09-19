@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LandingPage from "../pages/PublicPage/LandingPage.jsx";
 import LoginPage from "../pages/PublicPage/LoginPage.jsx";
 import ClientRegisterPage from "../pages/PublicPage/ClientRegisterPage.jsx"
 import VendorRegister01 from "../pages/PublicPage/VendorRegister01.jsx";
@@ -8,25 +7,25 @@ import VendorRegister03 from "../pages/PublicPage/VendorRegister03.jsx";
 import VendorRegister04 from "../pages/PublicPage/VendorRegister04.jsx";
 import VendorRegister05 from "../pages/PublicPage/VendorRegister05.jsx";
 import VendorRegister06 from "../pages/PublicPage/VendorRegister06.jsx";
-import ClientAllVendors from "../pages/ClientViewPage/ClientAllVendors.jsx";
-import AllHotelsPage from "../pages/ClientVendorsAllPage/AllHotelsPage";
-import AllPhotographers from "../pages/ClientVendorsAllPage/AllPhotographers";
-import AllFloralsPage from "../pages/ClientVendorsAllPage/AllFloralsPage";
-import AllCakesPage from "../pages/ClientVendorsAllPage/AllCakesPage";
-import AllCarsPage from "../pages/ClientVendorsAllPage/AllCarsPage";
-import HotelVendorDetails from "../pages/ClientVendorsDetailsPage/HotelVendorDetails";
-import FloralVendorDetails from "../pages/ClientVendorsDetailsPage/FloralVendorDetails";
-import CakesVendorDetails from "../pages/ClientVendorsDetailsPage/CakesVendorDetails";
-import CarsVendorDetails from "../pages/ClientVendorsDetailsPage/CarsVendorDetails";
+import ClientAllVendors from "../pages/ClientVendorsPage/ClientAllVendors.jsx";
+import AllHotelsPage from "../pages/ClientVendorsPage/AllHotelsPage.jsx";
+import AllPhotographers from "../pages/ClientVendorsPage/AllPhotographers.jsx";
+import AllFloralsPage from "../pages/ClientVendorsPage/AllFloralsPage.jsx";
+import AllCakesPage from "../pages/ClientVendorsPage/AllCakesPage.jsx";
+import AllCarsPage from "../pages/ClientVendorsPage/AllCarsPage.jsx";
+import HotelVendorDetails from "../pages/ClientVendorsPage/HotelVendorDetails.jsx";
+import FloralVendorDetails from "../pages/ClientVendorsPage/FloralVendorDetails.jsx";
+import CakesVendorDetails from "../pages/ClientVendorsPage/CakesVendorDetails.jsx";
+import CarsVendorDetails from "../pages/ClientVendorsPage/CarsVendorDetails.jsx";
 import ClientChatPage from "../pages/ClientChatPage/ClientChatPage";
 import ClientAllChats from "../pages/ClientChatPage/ClientAllChats";
 import VendorProfilePage from "../pages/VendorViewPage/VendorProfilePage.jsx"
 import VendorPackagesPage from "../pages/VendorPackagePage/VendorPackagesPage.jsx";
 import CreatePackagePage from "../pages/VendorPackagePage/CreatePackagePage.jsx";
 import UpdatePackagePage from "../pages/VendorPackagePage/UpdatePackagePage.jsx";
-import ViewPackagePage from "../pages/ClientViewPage/ViewPackagePage.jsx";
+import ViewPackagePage from "../pages/VendorPackagePage/ViewPackagePage.jsx";
 import VendorDashboardPage from "../pages/VendorViewPage/VendorDashboardPage.jsx";
-import BudgetPage from "../pages/ClientViewPage/BudgetPage.jsx";
+import BudgetPage from "../pages/ClientBudgetPage/BudgetPage.jsx";
 import PlanBudgetPage from "../pages/ClientBudgetPage/PlanBudgetPage.jsx";
 import CreateBlogPage from "../pages/BlogPage/CreateBlogPage.jsx";
 import UpdateBlogPage from "../pages/BlogPage/UpdateBlogPage.jsx";
@@ -40,17 +39,17 @@ import ClientDashboardPage from "../pages/ClientViewPage/ClientDashboardPage.jsx
 
 import ViewBlogPage from "../pages/BlogPage/ViewBlogPage.jsx";
 import ViewMyBlogPage from "../pages/BlogPage/ViewMyBlogPage.jsx";
-import ViewSaloonPage from "../pages/ClientViewPage/ViewSaloonPage.jsx";
-import ViewJewelleryPage from "../pages/ClientViewPage/ViewJewelleryPage.jsx";
-import ViewDressingPage from "../pages/ClientViewPage/ViewDressingPage.jsx";
+import ViewSaloonPage from "../pages/ClientVendorsPage/ViewSaloonPage.jsx";
+import ViewJewelleryPage from "../pages/ClientVendorsPage/ViewJewelleryPage.jsx";
+import ViewDressingPage from "../pages/ClientVendorsPage/ViewDressingPage.jsx";
 import CalenderPage from "../pages/ClientViewPage/CalenderPage.jsx";
 import AdminDashboardPage from "../pages/AdminPage/AdminDashboardPage.jsx";
 import AdminManageUsersPage from "../pages/AdminPage/AdminManageUsersPage.jsx";
 import AdminBlogPage from "../pages/AdminPage/AdminBlogPage.jsx";
 import AdminCreateBlogPage from "../pages/AdminPage/AdminCreateBlogPage.jsx";
-import AllJewelleryPage from "../pages/ClientVendorsAllPage/AllJewelleryPage";
-import AllSalonPage from "../pages/ClientVendorsAllPage/AllSalonPage";
-import AllDressersPage from "../pages/ClientVendorsAllPage/AllDressersPage";
+import AllJewelleryPage from "../pages/ClientVendorsPage/AllJewelleryPage.jsx";
+import AllSalonPage from "../pages/ClientVendorsPage/AllSalonPage.jsx";
+import AllDressersPage from "../pages/ClientVendorsPage/AllDressersPage.jsx";
 import NotificationPage from "../pages/ClientViewPage/NotificationPage.jsx";
 
 import AdminBlogAcceptPage from "../pages/AdminPage/AdminBlogAcceptPage.jsx";
@@ -109,7 +108,7 @@ function PublicRoute() {
                     <Route path="/planbudget" element={<PlanBudgetPage />}></Route>
                     <Route path="/createblog" element={<CreateBlogPage />}></Route>
                     <Route path="/updateblog" element={<UpdateBlogPage />}></Route>
-                    
+
                     <Route path="/blogs" element={<BlogPage />}></Route>
                     <Route path="/vendorblog" element={<VendorBlogPage />}></Route>
                     {/* <Route path="/vendorcreateblog" element={<VendorCreateBlogPage />}></Route> */}
