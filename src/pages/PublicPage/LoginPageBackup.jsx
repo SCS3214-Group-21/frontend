@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth.js'
 
 // import components
 import InputField from '../../components/ui/InputField.jsx'
@@ -8,7 +10,28 @@ import LoginHeader from '../../components/common/LoginHeader.jsx'
 // import asset
 import backgroundImage from '../../assets/images/login/l1.png'
 
-export default function LoginPage() {
+export default function LoginPageBackup() {
+    const [formData, setFormData] = React.useState({ email: '', password: '' })
+    const [error, setError] = useState('')
+    const navigate = useNavigate()
+    const { login } = useAuth()
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const { userInfo, error } = await login(formData.email, formData.password)
+            console.log('Login successful: ', userInfo)
+            navigate('/client/mywedding')
+        }
+        catch (error) {
+            console.error("Error logging in: ", error)
+            setError(error)
+        }
+    }
 
     return (
         <div className="bg-[#FFF8F5]">
@@ -25,23 +48,23 @@ export default function LoginPage() {
                         className="relative z-20 flex flex-col items-center w-full h-auto px-4 py-8 m-2 rounded-lg outline">
 
                         <h4 className="mb-6 text-3xl font-[#121212] sm:text-4xl">Sign in</h4>
-                        <form className="flex flex-col items-center w-full">
+                        <form onSubmit={handleSubmit} className="flex flex-col items-center w-full">
 
                             <InputField
                                 id="email"
                                 type="email"
                                 placeholder="Email"
-                                // value={formData.email}
+                                value={formData.email}
                                 name="email"
-                            // onChange={handleChange}
+                                onChange={handleChange}
                             />
                             <InputField
                                 id="password"
                                 type="password"
                                 placeholder="Password"
-                                // value={formData.password}
+                                value={formData.password}
                                 name="password"
-                            // onChange={handleChange}
+                                onChange={handleChange}
                             />
 
                             <a href="/forgot" className=" w-4/5 text-[12px] text-[#1f1f1f] text-right mb-3">

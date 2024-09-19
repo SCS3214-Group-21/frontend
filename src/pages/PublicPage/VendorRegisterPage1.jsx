@@ -4,7 +4,7 @@ import LandingHeader from '../../components/common/LandingHeader.jsx';
 import CustomButton from '../../components/ui/CustomPinkButton.jsx';
 import RegistrationHeader from "../../components/common/RegistrationHeader.jsx"
 
-function VendorRegister01() {
+function VendorRegisterPage1() {
     return (
         <div>
             <RegistrationHeader />
@@ -15,7 +15,7 @@ function VendorRegister01() {
                         <p>Register now and showcase your talents to thousands of couples.</p>
                         <p>No fees until your first booking..!</p>
                         <CustomButton
-                            link={'/vendorregister'}
+                            link={'/vendorregister2'}
                             bgColor={"bg-black"}
                             text={"Get Started"}
                         />
@@ -26,4 +26,4 @@ function VendorRegister01() {
     )
 }
 
-export default VendorRegister01;
+export default VendorRegisterPage1;

@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LoginPage from "../pages/PublicPage/LoginPage.jsx";
-import ClientRegisterPage from "../pages/PublicPage/ClientRegisterPage.jsx"
-import VendorRegister01 from "../pages/PublicPage/VendorRegister01.jsx";
+import LoginPage from "../pages/PublicPage/LoginPageBackup.jsx";
+import ClientRegisterPage from "../pages/PublicPage/ClientRegisterPageBackup.jsx"
+import VendorRegister01 from "../pages/PublicPage/VendorRegisterPage1.jsx";
 import VendorRegister02 from "../pages/PublicPage/VendorRegister02.jsx";
 import VendorRegister03 from "../pages/PublicPage/VendorRegister03.jsx";
 import VendorRegister04 from "../pages/PublicPage/VendorRegister04.jsx";
