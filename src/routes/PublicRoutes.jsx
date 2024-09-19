@@ -2,10 +2,11 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 // import PublicPages
-import ClientRegisterPage from '../pages/PublicPage/ClientRegisterPage.jsx'
-import LandingPage from '../pages/PublicPage/LandingPageBackup.jsx'
-import LoginPage from '../pages/PublicPage/LoginPage.jsx'
-import VendorRegister from '../pages/PublicPage/VendorRegister.jsx'
+import ClientRegisterPage from '../pages/PublicPage/ClientRegisterPageBackup.jsx'
+import LandingPage from '../pages/PublicPage/LandingPage.jsx'
+import LoginPage from '../pages/PublicPage/LoginPageBackup.jsx'
+import VendorRegisterPage1 from '../pages/PublicPage/VendorRegisterPage1.jsx'
+import VendorRegisterPage2 from '../pages/PublicPage/VendorRegisterPage2.jsx'
 
 function PublicRoutes() {
     return (
@@ -24,8 +25,13 @@ function PublicRoutes() {
             />
             <Route
                 path="/vendorregister"
-                element={<VendorRegister />}
+                element={<VendorRegisterPage1 />}
             />
+            <Route
+                path="/vendorregister2"
+                element={<VendorRegisterPage2 />}
+            />
+
         </Routes>
     )
 }
