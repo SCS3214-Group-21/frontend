@@ -49,13 +49,13 @@ import ViewSaloonPage from '../pages/ClientVendorsPage/ViewSaloonPage.jsx'
 import Logout from '../components/Logout.jsx'
 
 const ClientRoutes = () => {
-    const { currentUser } = useAuth()
-    console.error('currentUser in ClientRoutes:', currentUser)
+    // const { currentUser } = useAuth()
+    // console.error('currentUser in ClientRoutes:', currentUser)
 
     // set spinner to user loading
-    if (!currentUser) {
-        return <div>Loading...</div>
-    }
+    // if (!currentUser) {
+    //     return <div>Loading...</div>
+    // }
 
     return (
         <Routes>
@@ -66,24 +66,24 @@ const ClientRoutes = () => {
 
             <Route
                 path="/mywedding"
-                element={currentUser && currentUser.roles.includes('client') ? <ClientDashboardPage /> : <Navigate to="/login" />}
+                element={<ClientDashboardPage />}
             />
 
 
             {/* vendors */}
             <Route
                 path="/vendors"
-                element={currentUser && currentUser.roles.includes('client') ? <ClientAllVendors /> : <Navigate to="/login" />}
+                element={<ClientAllVendors />}
             />
 
             <Route
                 path="/vendors/hotels"
-                element={currentUser && currentUser.roles.includes('client') ? <AllHotelsPage /> : <Navigate to="/login" />}
+                element={<AllHotelsPage />}
             />
 
             <Route
                 path="vendors/hoteldetails"
-                element={currentUser && currentUser.roles.includes('client') ? <HotelVendorDetails /> : <Navigate to="/login" />}
+                element={<HotelVendorDetails />}
             />
 
             {/* <Route
@@ -146,64 +146,64 @@ const ClientRoutes = () => {
 
             <Route
                 path="/budget"
-                element={currentUser && currentUser.roles.includes('client') ? <BudgetPage /> : <Navigate to="/login" />}
+                element={<BudgetPage />}
             />
 
             <Route
                 path="/planbudget"
-                element={currentUser && currentUser.roles.includes('client') ? <PlanBudgetPage /> : <Navigate to="/login" />}
+                element={<PlanBudgetPage />}
             />
             <Route
                 path="/viewbudget"
-                element={currentUser && currentUser.roles.includes('client') ? <PlanBudgetPage2 /> : <Navigate to="/login" />}
+                element={<PlanBudgetPage2 />}
             />
 
             {/* notifications */}
 
             <Route
                 path="/notification"
-                element={currentUser && currentUser.roles.includes('client') ? <NotificationPage /> : <Navigate to="/login" />}
+                element={<NotificationPage />}
             />
 
             {/* chat */}
 
             <Route
                 path="/messages"
-                element={currentUser && currentUser.roles.includes('client') ? <ClientAllChats /> : <Navigate to="/login" />}
+                element={<ClientAllChats />}
             />
             <Route
                 path="/messages/chat"
-                element={currentUser && currentUser.roles.includes('client') ? <ClientChatPage /> : <Navigate to="/login" />}
+                element={<ClientChatPage />}
             />
 
             {/* calender */}
 
             <Route
                 path="/calendar"
-                element={currentUser && currentUser.roles.includes('client') ? <CalenderPage /> : <Navigate to="/login" />}
+                element={<CalenderPage />}
             />
 
             {/* bookings */}
 
             <Route
                 path="/bookings"
-                element={currentUser && currentUser.roles.includes('client') ? <ClientAllBookings /> : <Navigate to="/login" />}
+                element={<ClientAllBookings />}
             />
             <Route
                 path="bookings/bookingdetails"
-                element={currentUser && currentUser.roles.includes('client') ? <ClientBookingDetailsPage /> : <Navigate to="/login" />}
+                element={<ClientBookingDetailsPage />}
             />
 
             {/* blogs */}
 
             <Route
                 path="/blogs"
-                element={currentUser && currentUser.roles.includes('client') ? <BlogPage /> : <Navigate to="/login" />}
+                element={<BlogPage />}
             />
 
             <Route
                 path="/blogs/viewblog"
-                element={currentUser && currentUser.roles.includes('client') ? <ViewBlogPage /> : <Navigate to="/login" />}
+                element={<ViewBlogPage />}
             />
 
         </Routes>

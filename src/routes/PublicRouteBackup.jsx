@@ -2,11 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "../pages/PublicPage/LoginPageBackup.jsx";
 import ClientRegisterPage from "../pages/PublicPage/ClientRegisterPageBackup.jsx"
 import VendorRegister01 from "../pages/PublicPage/VendorRegisterPage1.jsx";
-import VendorRegister02 from "../pages/PublicPage/VendorRegister02.jsx";
-import VendorRegister03 from "../pages/PublicPage/VendorRegister03.jsx";
-import VendorRegister04 from "../pages/PublicPage/VendorRegister04.jsx";
-import VendorRegister05 from "../pages/PublicPage/VendorRegister05.jsx";
-import VendorRegister06 from "../pages/PublicPage/VendorRegister06.jsx";
+
 import ClientAllVendors from "../pages/ClientVendorsPage/ClientAllVendors.jsx";
 import AllHotelsPage from "../pages/ClientVendorsPage/AllHotelsPage.jsx";
 import AllPhotographers from "../pages/ClientVendorsPage/AllPhotographers.jsx";
@@ -55,7 +51,7 @@ import NotificationPage from "../pages/ClientViewPage/NotificationPage.jsx";
 import AdminBlogAcceptPage from "../pages/AdminPage/AdminBlogAcceptPage.jsx";
 
 
-import VendorRegister from "../pages/PublicPage/VendorRegister.jsx";
+// import VendorRegister from "../pages/PublicPage/VendorRegister.jsx";
 
 
 import VendorNotificationPage from "../pages/VendorViewPage/VendorNotificationPage.jsx";

@@ -28,12 +28,12 @@ function ClientDashboardPage() {
 
     const sampleImage = "../src/assets/Images/Images/01.png";
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            setSelectedImage(URL.createObjectURL(file));
-        }
-    };
+    // const handleImageChange = (event) => {
+    //     const file = event.target.files[0];
+    //     if (file) {
+    //         setSelectedImage(URL.createObjectURL(file));
+    //     }
+    // };
 
     const handleFirstNameChange = (event) => {
         setBrideName(event.target.value);
@@ -90,26 +90,26 @@ function ClientDashboardPage() {
         }
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log(brideName, partnerName, weddingDate, location)
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     console.log(brideName, partnerName, weddingDate, location)
 
-        // const formData = {
-        //     bride_name: brideName,
-        //     groom_name: partnerName,
-        //     wed_date: weddingDate,
-        //     location
-        // };
+    // const formData = {
+    //     bride_name: brideName,
+    //     groom_name: partnerName,
+    //     wed_date: weddingDate,
+    //     location
+    // };
 
-        // try {
-        //     const response = await axios.post('/api/profile/create', formData); // Replace with your API endpoint
-        //     console.log('Profile creation successful:', response.data);
-        //     navigate('/mywedding'); // Redirect to the wedding page or another page
-        // } catch (error) {
-        //     console.error('Error creating profile:', error);
-        //     setError(error.response ? error.response.data.message : 'An error occurred');
-        // }
-    };
+    // try {
+    //     const response = await axios.post('/api/profile/create', formData); // Replace with your API endpoint
+    //     console.log('Profile creation successful:', response.data);
+    //     navigate('/mywedding'); // Redirect to the wedding page or another page
+    // } catch (error) {
+    //     console.error('Error creating profile:', error);
+    //     setError(error.response ? error.response.data.message : 'An error occurred');
+    // }
+    // };
 
     return (
         <>
@@ -123,7 +123,7 @@ function ClientDashboardPage() {
                         <h1 className='text-4xl font-bold text-custom-primary'>My Wedding</h1>
                     </div>
                     <div className="pb-5">
-                        <form onSubmit={handleSubmit} className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col md:flex-row gap-5'>
+                        <form className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col md:flex-row gap-5'>
 
                             {/* Left Part: Image Upload */}
                             <div className="flex flex-col items-center w-full md:w-1/3">
@@ -142,7 +142,7 @@ function ClientDashboardPage() {
                                         type="file"
                                         accept="image/*"
                                         className="absolute inset-0 opacity-0 cursor-pointer"
-                                        onChange={handleImageChange}
+                                    // onChange={handleImageChange}
                                     />
                                 </div>
                             </div>
