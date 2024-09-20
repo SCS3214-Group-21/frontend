@@ -3,15 +3,13 @@ import React from "react";
 function LandingFooter() {
   const menuItems = [
     { id: 1, label: "Home", link: "/" },
-    { id: 2, label: "Services", link: "/couples" },
-    { id: 3, label: "Blogs", link: "/vendors" },
-    { id: 4, label: "Login", link: "/about" },
-    { id: 5, label: "Register", link: "/reviews" },
-    { id: 6, label: "About", link: "/contact" },
+    { id: 2, label: "Login", link: "/login" },
+    { id: 3, label: "Register", link: "/register" },
+
   ];
   return (
-<div className="flex flex-col items-center justify-center gap-5 bg-[#FFB68B] bg-opacity-20 backdrop-blur-sm absolute bottom-0 w-full pt-5 pb-5 rounded-t-3xl">
-    <style jsx>{`
+    <div className="flex flex-col items-center justify-center gap-5 bg-[#FFB68B] bg-opacity-20 backdrop-blur-sm absolute bottom-0 w-full pt-5 pb-5 rounded-t-3xl">
+      <style jsx>{`
     .group-footer {
     position: relative;
   }
@@ -43,11 +41,11 @@ function LandingFooter() {
         <img
           src="../src/assets/images/Images/logo1.png"
           alt="logo"
-          className="block w-80 h-24"
+          className="block h-24 w-80"
         />
       </div>
       <div>
-        <ul className="flex flex-row gap-10 cursor-pointer font-medium text-lg flex-wrap items-center justify-center text-black px-5">
+        <ul className="flex flex-row flex-wrap items-center justify-center gap-10 px-5 text-lg font-medium text-black cursor-pointer">
           {menuItems.map((item) => (
             <li key={item.id} className="relative group-footer">
               <a href={item.link} className="hover-underline-footer">

@@ -47,6 +47,7 @@ import ViewSaloonPage from '../pages/ClientVendorsPage/ViewSaloonPage.jsx';
 
 // import Logout Component
 import Logout from '../components/Logout.jsx';
+import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
 
 const ClientRoutes = () => {
   const token = getToken(); // Get the token from storage
@@ -132,6 +133,10 @@ const ClientRoutes = () => {
       <Route
         path="/blogs/viewblog"
         element={isAuthenticatedClient ? <ViewBlogPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/*"
+        element={isAuthenticatedClient ? <NotFoundPage text="Back to Dashboard" link="/client/mywedding" /> : <Navigate to="/login" />}
       />
     </Routes>
   );

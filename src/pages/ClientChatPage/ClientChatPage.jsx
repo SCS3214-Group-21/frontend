@@ -5,8 +5,8 @@ import Breadcrumb from '../../components/ui/Breadcrumb';
 
 function ClientChatPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: './mywedding' },
-        { label: 'Messages', href: './messages' },
+        { label: 'My Wedding', href: './../mywedding' },
+        { label: 'Messages', href: '../messages' },
         { label: 'Vendor 1 Chat' },
     ];
 

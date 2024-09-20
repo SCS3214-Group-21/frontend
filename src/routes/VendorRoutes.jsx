@@ -27,6 +27,7 @@ import VendorAllChatsPage from "../pages/VendorViewPage/VendorAllChatsPage.jsx";
 import VendorSchedulePage from "../pages/VendorViewPage/VendorSchedulePage.jsx";
 import VendorChatPage from "../pages/VendorViewPage/VendorChatPage.jsx";
 import VendorBlogPage from "../pages/VendorViewPage/VendorBlogPage.jsx";
+import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
 
 const VendorRoutes = () => {
   const token = getToken(); // Retrieve the token from storage
@@ -111,6 +112,10 @@ const VendorRoutes = () => {
       <Route
         path="/blog/viewmyblog"
         element={isAuthenticatedVendor ? <ViewMyBlogPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/*"
+        element={isAuthenticatedVendor ? <NotFoundPage text="Back to Dashboard" link="/vendor/dashboard" /> : <Navigate to="/login" />}
       />
     </Routes>
   );

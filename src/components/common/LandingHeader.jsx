@@ -50,32 +50,32 @@ function LandingHeader() {
             <div className="flex flex-row items-center justify-between w-full h-20 bg-[#FFF8F5] px-5 flex-wrap z-50">
                 <div className="md:hidden">
                     <button
-                        className="text-custom-primary focus:outline-none text-4xl"
+                        className="text-4xl text-custom-primary focus:outline-none"
                         onClick={toggleMenu}
                     >
                         {isMenuOpen ? "✕" : "☰"}
                     </button>
                 </div>
 
-                <div className="flex flex-row gap-5 items-center justify-between flex-wrap">
+                <div className="flex flex-row flex-wrap items-center justify-between gap-5">
                     <img
                         src="../src/assets/images/Images/logo2.png"
                         alt="logo"
-                        className="hidden md:block w-12 h-12"
+                        className="hidden w-12 h-12 md:block"
                     />
                     <img
                         src="../src/assets/images/Images/logo1.png"
                         alt="logo"
-                        className="hidden md:block w-56 h-14"
+                        className="hidden w-56 md:block h-14"
                     />
                 </div>
 
-                <div className="md:hidden flex flex-row gap-5 items-center justify-between flex-wrap">
+                <div className="flex flex-row flex-wrap items-center justify-between gap-5 md:hidden">
                     <img src="../src/assets/images/Images/logo1.png" alt="logo" className="w-40 sm:w-60 h-14" />
                 </div>
 
                 <div>
-                    <ul className="hidden md:flex flex-row gap-10 cursor-pointer text-lg flex-wrap text-custom-primary">
+                    <ul className="flex-row flex-wrap hidden gap-10 text-lg cursor-pointer md:flex text-custom-primary">
                         {menuItems.map((item) => (
                             <li key={item.id} className="relative group">
                                 {item.link === "#" ? (
@@ -102,15 +102,14 @@ function LandingHeader() {
                     </ul>
                 </div>
 
-                <h1 className="block md:hidden cursor-pointer text-lg flex-wrap text-custom-primary">Login</h1>
+                <h1 className="flex-wrap block text-lg cursor-pointer md:hidden text-custom-primary">Login</h1>
             </div>
 
             {/* Mobile Menu */}
-            <div className="w-full bg-slate-400 top-20 z-50 bg-opacity-50 backdrop-blur-sm fixed">
+            <div className="fixed z-50 w-full bg-opacity-50 bg-slate-400 top-20 backdrop-blur-sm">
                 <ul
-                    className={`md:hidden flex flex-col gap-10 items-center justify-center cursor-pointer text-lg flex-wrap m-5 text-custom-primary ${
-                        isMenuOpen ? "block" : "hidden"
-                    }`}
+                    className={`md:hidden flex flex-col gap-10 items-center justify-center cursor-pointer text-lg flex-wrap m-5 text-custom-primary ${isMenuOpen ? "block" : "hidden"
+                        }`}
                     style={{
                         transition: "top 0.5s ease-in-out",
                         top: isMenuOpen ? "60px" : "-100%",
@@ -122,7 +121,7 @@ function LandingHeader() {
                                 <a
                                     href={item.link}
                                     className="hover-underline"
-                                    onClick={() => {item.onClick && item.onClick(); closeMenu();}}
+                                    onClick={() => { item.onClick && item.onClick(); closeMenu(); }}
                                 >
                                     {item.label}
                                 </a>

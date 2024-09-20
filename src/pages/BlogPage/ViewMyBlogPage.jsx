@@ -3,6 +3,7 @@ import CommentSection from "../../components/common/CommentSection.jsx"
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
 import ClientSidebar from "../../components/client/ClientSidebar.jsx";
 import Breadcrumb from "../../components/ui/Breadcrumb.jsx";
+import VendorSidebar from "../../components/vendor/VendorSidebar.jsx";
 
 function ViewMyBlogPage() {
     const breadcrumbItems = [
@@ -15,7 +16,7 @@ function ViewMyBlogPage() {
             <RegisterHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
                 <div className="w-[5%] sm:w-[10%] md:w-[20%]">
-                    <ClientSidebar />
+                    <VendorSidebar />
                 </div>
                 <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
                     <div className="pb-5">

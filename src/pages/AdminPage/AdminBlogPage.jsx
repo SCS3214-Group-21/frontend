@@ -23,7 +23,7 @@ const renderItems = (currentItems) => (
         <div className="flex items-center justify-center p-2 bg-white h-72 w-60">
             <AddCard
                 text={"Create Blog"}
-                link={"/admincreateblog"}
+                link={"/admin/blogs/createblog"}
             />
         </div>
         {currentItems.map((item, index) => (

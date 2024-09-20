@@ -8,8 +8,8 @@ import AdminSidebar from "../../components/admin/AdminSidebar.jsx";
 
 function AdminCreateBlogPage() {
     const breadcrumbItems = [
-        { label: 'Dashboard', href: '/admindashboard' },
-        { label: 'Blogs', href: '/adminblogs' },
+        { label: 'Dashboard', href: '/admin/dashboard' },
+        { label: 'Blogs', href: '/admin/blogs' },
         { label: 'Create Blog' },
     ];
     return (

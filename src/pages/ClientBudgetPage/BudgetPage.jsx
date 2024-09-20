@@ -7,7 +7,7 @@ import PackageCard from '../../components/common/PackageCard.jsx';
 import Pagination from '../../components/common/Pagination.jsx'
 
 const items = [
-    { img: 'src/assets/Images/Images/hotel.png', text: 'Budget 01', link: '/planbudget2', },
+    { img: 'src/assets/Images/Images/hotel.png', text: 'Budget 01', link: '/client/viewbudget', },
     { img: 'src/assets/Images/Images/hotel6.jpeg', text: 'Budget 02', link: '/viewpackage', },
     { img: 'src/assets/Images/Images/hotel7.jpeg', text: 'Budget 03', link: '/viewpackage', },
     { img: 'src/assets/Images/Images/03.png', text: 'Budget 04', link: '/viewpackage', },
@@ -19,27 +19,27 @@ const items = [
 
 const renderItems = (currentItems) => (
     // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-        <div className="flex flex-row flex-wrap gap-10 items-center justify-center">
-            <div className="flex items-center justify-center h-60 w-52 bg-white p-2">
-                <AddCard 
-                    text={"Plan Budget"}
-                    link={"/planbudget"}
-                />
-            </div>
-            {currentItems.map((item, index) => (
-                <div key={index} className="flex items-center justify-center p-2 bg-white h-60 w-52">
-                <PackageCard 
+    <div className="flex flex-row flex-wrap items-center justify-center gap-10">
+        <div className="flex items-center justify-center p-2 bg-white h-60 w-52">
+            <AddCard
+                text={"Plan Budget"}
+                link={"/client/planbudget"}
+            />
+        </div>
+        {currentItems.map((item, index) => (
+            <div key={index} className="flex items-center justify-center p-2 bg-white h-60 w-52">
+                <PackageCard
                     img={item.img}
                     text={item.text}
                     button={"See more"}
                     link={item.link}
                     showToggle={false}
                 />
-                </div>
-            ))}
-        </div>
+            </div>
+        ))}
+    </div>
     // </div>
-  );
+);
 
 function BudgetPage() {
     const breadcrumbItems = [
