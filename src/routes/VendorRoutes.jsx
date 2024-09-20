@@ -106,11 +106,11 @@ const VendorRoutes = () => {
         element={isAuthenticatedVendor ? <CreateBlogPage /> : <Navigate to="/login" />}
       />
       <Route
-        path="/blog/updateblog"
+        path="/blog/updateblog/:id"
         element={isAuthenticatedVendor ? <UpdateBlogPage /> : <Navigate to="/login" />}
       />
       <Route
-        path="/blog/viewmyblog"
+        path="/blog/viewmyblog/:id"
         element={isAuthenticatedVendor ? <ViewMyBlogPage /> : <Navigate to="/login" />}
       />
       <Route

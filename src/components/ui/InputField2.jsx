@@ -186,7 +186,10 @@ function InputField2(props) {
                         <React.Fragment>
                             <DatePicker
                                 selected={startDate}
-                                onChange={(date) => setStartDate(date)}
+                                onChange={(date) => {
+                                    setStartDate(date);
+                                    onChange(date); // Update parent component's state
+                                }}
                                 className="input"
                                 placeholderText={placeholder}
                                 dateFormat="yyyy/MM/dd"
@@ -197,7 +200,10 @@ function InputField2(props) {
                         <React.Fragment>
                             <DatePicker
                                 selected={startTime}
-                                onChange={(time) => setStartTime(time)}
+                                onChange={(time) => {
+                                    setStartTime(time);
+                                    onChange(time); // Update parent component's state
+                                }}
                                 showTimeSelect
                                 showTimeSelectOnly
                                 timeIntervals={1}
@@ -209,8 +215,14 @@ function InputField2(props) {
                             <FaClock className="icon" />
                         </React.Fragment>
                     ) : (
-                        <input id={id} type={type} placeholder={placeholder} value={value} name="input" className="input"
-                            onChange={onChange} // Add this line
+                        <input 
+                            id={id} 
+                            type={type} 
+                            placeholder={placeholder} 
+                            value={value} 
+                            name={name} 
+                            className="input"
+                            onChange={onChange} // Ensure this is linked to parent's state
                         />
                     )}
                 </div>

@@ -19,7 +19,7 @@ export default function VendorSidebar() {
     const isSchedulePage = location.pathname === '/vendor/schedule';//rename actual path
     const isOrdersPage = location.pathname === '/';//rename actual path
     const isHistoryPage = location.pathname === '/';//rename actual path
-    const isBlogsPage = location.pathname === '/vendor/blog' || location.pathname === '/vendor/blog/viewmyblog' || location.pathname === '/vendor/blog/createblog';//rename actual path
+    const isBlogsPage = location.pathname === '/vendor/blog' || location.pathname === '/vendor/blog/viewmyblog' || location.pathname === '/vendor/blog/createblog' || location.pathname === '/vendor/blog/updateblog';//rename actual path
     const isReviewsPage = location.pathname === '/';//rename actual path
     const isLogoutPage = location.pathname === 'vendor/logout';//rename actual path
 
