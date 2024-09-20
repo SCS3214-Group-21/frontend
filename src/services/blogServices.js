@@ -1,110 +1,116 @@
-import axios from 'axios';
+import api from '../api';
 
-const API_URL = 'http://localhost:4000'; // Update this URL to match your backend server's address
+// Create a new blog
+export const createBlog = async (title, image, description) => {
+    try {
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('img', image); // Add the image to FormData
+        formData.append('description', description);
 
-const blogService = {
-    getAllBlogs: async () => {
-        try {
-            const token = localStorage.getItem('token'); // Retrieve token from local storage
-           // console.log(`Token is ${token}` );
-            const response = await axios.get(`${API_URL}/client/blogs`, {
-                headers: {
-                    'Authorization': `Bearer ${token}` // Include token in the request header
-                }
-            });
-            return { blogs: response.data.blogs, error: null };
-        } catch (error) {
-            console.error('Error fetching blogs:', error.response || error.message);
-            const errorMessage = error.response?.data?.message || 'Failed to fetch blogs';
-            return { blogs: [], error: errorMessage };
+        // Log formData entries for debugging
+        for (const pair of formData.entries()) {
+            console.log(`${pair[0]}: ${pair[1]}`);
         }
-    },
 
-    
-    // createBlog: async ({ title, description, img }) => {
-    //     try {
-    //         const token = localStorage.getItem('token');
-    //         const response = await axios.post(`${API_URL}/client/blog`, {
-    //             title,
-    //             description,
-    //             img
-    //         }, {
-    //             headers: {
-    //                 'Authorization': `Bearer ${token}` // Include token in the request header
-    //             }
-    //         });
-    //         return { blog: response.data, error: null };
-    //     } catch (error) {
-    //         console.error('Error creating blog:', error.response || error.message);
-    //         const errorMessage = error.response?.data?.message || 'Failed to create blog';
-    //         return { blog: null, error: errorMessage };
-    //     }
-    // },
-    
-    
-
-    getBlogById: async(blog_id) =>{
-
-        try {
-            const token = localStorage.getItem('token');
-            console.log('Token retrieved for fetching a blog');
-
-            const response = await axios.get(`${API_URL}/client/blog/${blog_id}`,{
-                headers: {
-                    'Authorization': `Bearer ${token}` // Include token in the request header
-                }
-
-            });
-
-            return {blog:response.data.blog , error: null};
-
-            
-        } catch (error) {
-            console.error('Error fetching blog by ID:', error.response || error.message);
-            const errorMessage = error.response?.data?.message || 'Failed to fetch blog';  // Handle errors
-            return { blog: null, error: errorMessage };  // Return an error message if the request fails
+        const response = await api.post('/blog/create', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,  // Add token from localStorage
+            }
+        });
         
-        }
-    },
-
-    updateBlog: async (blog_id, formData) => {
-        try {
-            const token = localStorage.getItem('token');
-            console.log('Token retrieved for fetching a blog');
-
-            const response = await axios.patch(`${API_URL}/client/update/${blog_id}`, formData, {
-                headers: {
-                    'Authorization': `Bearer ${token}`,  // Include token in the request header
-                    'Content-Type': 'multipart/form-data'  // Set the Content-Type to multipart/form-data
-                }
-            });
-
-            return { blog: response.data.blog, error: null };
-        } catch (error) {
-            console.error('Error updating blog by ID:', error.response || error.message);
-            const errorMessage = error.response?.data?.message || 'Failed to update blog';
-            return { blog: null, error: errorMessage };
-        }
-    },
-
-    deleteBlog: async (blog_id) => {
-        try {
-            const token = localStorage.getItem('token');
-            console.log('Token retrieved for deleting a blog');
-
-            const response = await axios.delete(`${API_URL}/client/blog/${blog_id}`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`  // Include token in the request header
-                }
-            });
-
-            return { success: true, message: response.data.message };
-        } catch (error) {
-            console.error('Error deleting blog:', error.response || error.message);
-            const errorMessage = error.response?.data?.message || 'Failed to delete blog';
-            return { success: false, error: errorMessage };
-        }
+        return response.data; // Return the response data
+    } catch (error) {
+        throw new Error('Blog Creation failed!');
     }
 };
 
-export default blogService;
+// Fetch all blogs
+export const fetchAllBlogs = async () => {
+    try {
+        const response = await api.get('/blog/get-all', {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,  // Add token from localStorage
+            }
+        });
+        return response.data;  // Return the array of blogs
+    } catch (error) {
+        throw new Error('Failed to fetch blogs!');
+    }
+};
+
+
+// Fetch all blogs
+export const fetchMyBlogs = async () => {
+    try {
+        const response = await api.get('/blog/my-blogs', {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,  // Add token from localStorage
+            }
+        });
+        return response.data;  // Return the array of blogs
+    } catch (error) {
+        throw new Error('Failed to fetch blogs!');
+    }
+};
+
+// Fetch a single blog by ID
+export const fetchBlogById = async (id) => {
+    try {
+        const response = await api.get(`/blog/blog/${id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,  // Add token from localStorage
+            }
+        });
+        return response.data;  // Return the blog data
+    } catch (error) {
+        throw new Error('Failed to fetch blog!');
+    }
+};
+
+// services/blogServices.js
+
+// Update a blog by ID
+export const updateBlog = async (id, updatedBlog, image) => {
+    try {
+        let formData;
+
+        if (image) {
+            formData = new FormData();
+            formData.append('title', updatedBlog.title);
+            formData.append('description', updatedBlog.description);
+            formData.append('img', image); // Append image only if it's updated
+        } else {
+            formData = JSON.stringify(updatedBlog); // Send JSON if no image update
+        }
+
+        const response = await api.put(`/blog/blog/${id}`, formData, {
+            headers: {
+                'Content-Type': image ? 'multipart/form-data' : 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,  // Add token from localStorage
+            }
+        });
+        return response.data;  // Return the updated blog data
+    } catch (error) {
+        throw new Error('Failed to update blog!');
+    }
+};
+
+// Delete a blog by ID
+export const deleteBlog = async (id) => {
+    try {
+        const response = await api.delete(`/blog/blog/${id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,  // Add token from localStorage
+            }
+        });
+        return response.data;  // Return the actual API response (if available)
+    } catch (error) {
+        // Include the error message from the server if available
+        throw new Error(error.response?.data?.message || 'Failed to delete blog!');
+    }
+};

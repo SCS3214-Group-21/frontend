@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import InputField2 from '../ui/InputField2';
 import PrimaryNoneFillButton from '../ui/PrimaryNoneFillButton';
 import PrimaryButton from '../ui/PrimaryButton';
+import { useNavigate } from 'react-router-dom';
 import FileInputField from '../ui/FileInputField';
 import TextAreaField from '../ui/TextAreaField';
+import { createBlog } from '../../services/blogServices';
 
 function CreateBlogForm() {
     const [formData, setFormData] = useState({
@@ -11,21 +13,16 @@ function CreateBlogForm() {
         image: null,
         description: ''
     });
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value
-        }));
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
-        setFormData((prevData) => ({
-            ...prevData,
-            image: file
-        }));
+        setFormData((prevData) => ({ ...prevData, image: file })); // Correctly set the file in state
     };
 
     const handleReset = () => {
@@ -34,13 +31,25 @@ function CreateBlogForm() {
             image: null,
             description: ''
         });
+        document.getElementById('file-upload').value = ''; // Clear file input
     };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Logic for submitting the form
-        console.log("Form submitted:", formData);
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError(''); // Clear previous errors
+    
+        try {
+            // Call the createBlog service with form data
+            const response = await createBlog(formData.title, formData.description);
+            
+            alert('Blog created successfully!');
+            navigate('/vendor/blog');   // Redirect after successful creation
+        } catch (error) {
+            console.error("Blog Creation failed: ", error);
+            setError('Blog Creation failed: ' + error.message); // Show error message
+        }
     };
+    
 
     return (
         <div>
@@ -172,10 +181,16 @@ function CreateBlogForm() {
                         text="Reset"
                         onClick={handleReset}
                     />
-                    <PrimaryButton
+                    {/* <PrimaryButton
                         text="Post Blog"
                         type="submit"
-                    />
+                    /> */}
+                    <button
+                                type="submit"
+                                className="border-0 rounded-full px-8 h-10 bg-custom-primary text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:text-custom-secondary hover:border-2 hover:border-custom-secondary"
+                            >
+                                Register
+                            </button>
                 </div>
             </form>
         </div>

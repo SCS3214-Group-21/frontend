@@ -5,8 +5,8 @@ import CommentSection from "../../components/common/CommentSection.jsx"
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
 import ClientSidebar from "../../components/client/ClientSidebar.jsx";
 import Breadcrumb from "../../components/ui/Breadcrumb.jsx";
-import useFetchBlogs from "../../hooks/useFetchBlogs.js";
-import blogService from "../../services/blogServices.js";
+// import useFetchBlogs from "../../hooks/useFetchBlogs.js";
+// import blogService from "../../services/blogServices.js";
 
 function ViewBlogPage() {
 
