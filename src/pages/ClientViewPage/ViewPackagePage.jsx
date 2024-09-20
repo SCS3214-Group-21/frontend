@@ -56,7 +56,7 @@ function ViewPackagePage(){
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-5 flex flex-col lg:flex-row items-start lg:items-center justify-center lg:justify-start gap-2 lg:gap-5'>
                             <h1 className='text-black text-2xl'>Package 01</h1>
                             <div className="flex flex-col">
-                                <h1 className="text-black text-sm"><span className="italic">Category</span> : Budget&emsp;|&emsp;<span className="italic">Amount</span> : Rs. 12 000&emsp;|&emsp;<span className="italic">Date</span> : 1/07/2024   </h1>
+                                <h1 className="text-black text-sm"><span className="italic">Time</span> : 05.00 PM&emsp;|&emsp;<span className="italic">Date</span> : 1/07/2024   </h1>
                             </div>
                             <div className="flex flex-row gap-2">
                                 <Link to={"/updatepackage"}>
@@ -74,9 +74,15 @@ function ViewPackagePage(){
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col items-start gap-5'>
-                            <h1 className="text-black text-xl">Category :&ensp; <span className="italic text-sm">Category 1</span></h1>
-                            <h1 className="text-black text-xl">Price :&ensp; <span className="italic text-sm">10,000</span></h1>
-                            <h1 className="text-black text-xl">Description :&ensp; <span className="italic text-sm">Category 1</span></h1>
+                            <h1 className="text-black text-xl">Items :<br />
+                                <ul className="list-disc italic text-sm ml-10">
+                                    <li>Item 01</li>
+                                    <li>Item 01</li>
+                                    <li>Item 01</li>
+                                </ul>
+                            </h1>
+                            <h1 className="text-black text-xl">Price :&ensp; <span className="italic text-sm">10,000 LKR per person</span></h1>
+                            <h1 className="text-black text-xl">Description :&ensp; <br /><span className="italic text-sm">This is package more details in paragraph. I want to show how this works and this is give more better idea about the package. This is package more details in paragraph. I want to show how this works and this is give more better idea about the package. This is package more details in paragraph. I want to show how this works and this is give more better idea about the package. This is package more details in paragraph. I want to show how this works and this is give more better idea about the package. This is package more details in paragraph. I want to show how this works and this is give more better idea about the package. This is package more details in paragraph. I want to show how this works and this is give more better idea about the package. This is package more details in paragraph. I want to show how this works and this is give more better idea about the package. This is package more details in paragraph. I want to show how this works and this is give more better idea about the package.</span></h1>
                         </div>
                     </div>
                 </div>
@@ -86,3 +92,4 @@ function ViewPackagePage(){
 }
 
 export default ViewPackagePage
+

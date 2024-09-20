@@ -1,12 +1,12 @@
 import React from 'react';
 import RegisterHeader from '../../components/common/RegisterHeader';
-import ClientSidebar from '../../components/ClientSidebar';
+import ClientSidebar from '../../components/client/ClientSidebar';
 import Chatbox from '../../components/common/Chatbox';
 import Breadcrumb from '../../components/ui/Breadcrumb';
 
 function ClientAllChats() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/mywedding' },
+        { label: 'My Wedding', href: './mywedding' },
         { label: 'Messages' },
     ];
 
@@ -31,14 +31,14 @@ function ClientAllChats() {
                                 Status="Sent"
                                 Message="This is suit to my wedding"
                                 Time="12:34"
-                                Path="/chat2"
+                                Path="./messages/chat"
                             />
                             <Chatbox
                                 Name="Vendor2"
                                 Status="Delivered"
                                 Message="Okay thank you!"
                                 Time="10:20"
-                                Path="/chat2"
+                                Path="./messages/chat"
                             />
                         </div>
                     </div>

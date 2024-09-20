@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ClientSidebar from '../../components/ClientSidebar.jsx';
+import ClientSidebar from '../../components/client/ClientSidebar.jsx';
 import RegisterHeader from '../../components/common/RegisterHeader.jsx';
 import { AiOutlineEdit } from 'react-icons/ai';
 import DatePicker from 'react-datepicker';
@@ -9,7 +9,7 @@ import PrimaryNoneFillButton from '../../components/ui/PrimaryNoneFillButton.jsx
 
 function ClientDashboardPage() {
     const [selectedImage, setSelectedImage] = useState(null);
-    const [firstName, setFirstName] = useState('Anna');
+    const [brideName, setBrideName] = useState('Anna');
     const [partnerName, setPartnerName] = useState('Devid');
     const [editingNames, setEditingNames] = useState(false);
     const [weddingDate, setWeddingDate] = useState(null);
@@ -26,17 +26,17 @@ function ClientDashboardPage() {
     const [newTaskLabel, setNewTaskLabel] = useState('');
     const [guestCount, setGuestCount] = useState(2); // State for guest count
 
-    const sampleImage = "src/assets/Images/Images/01.png";
+    const sampleImage = "../src/assets/Images/Images/01.png";
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            setSelectedImage(URL.createObjectURL(file));
-        }
-    };
+    // const handleImageChange = (event) => {
+    //     const file = event.target.files[0];
+    //     if (file) {
+    //         setSelectedImage(URL.createObjectURL(file));
+    //     }
+    // };
 
     const handleFirstNameChange = (event) => {
-        setFirstName(event.target.value);
+        setBrideName(event.target.value);
     };
 
     const handlePartnerNameChange = (event) => {
@@ -90,6 +90,27 @@ function ClientDashboardPage() {
         }
     };
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     console.log(brideName, partnerName, weddingDate, location)
+
+    // const formData = {
+    //     bride_name: brideName,
+    //     groom_name: partnerName,
+    //     wed_date: weddingDate,
+    //     location
+    // };
+
+    // try {
+    //     const response = await axios.post('/api/profile/create', formData); // Replace with your API endpoint
+    //     console.log('Profile creation successful:', response.data);
+    //     navigate('/mywedding'); // Redirect to the wedding page or another page
+    // } catch (error) {
+    //     console.error('Error creating profile:', error);
+    //     setError(error.response ? error.response.data.message : 'An error occurred');
+    // }
+    // };
+
     return (
         <>
             <RegisterHeader />
@@ -102,7 +123,8 @@ function ClientDashboardPage() {
                         <h1 className='text-4xl font-bold text-custom-primary'>My Wedding</h1>
                     </div>
                     <div className="pb-5">
-                        <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col md:flex-row gap-5'>
+                        <form className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col md:flex-row gap-5'>
+
                             {/* Left Part: Image Upload */}
                             <div className="flex flex-col items-center w-full md:w-1/3">
                                 <div className="relative flex items-center justify-center w-full bg-gray-100 border-2 border-gray-600 border-dashed h-60">
@@ -120,7 +142,7 @@ function ClientDashboardPage() {
                                         type="file"
                                         accept="image/*"
                                         className="absolute inset-0 opacity-0 cursor-pointer"
-                                        onChange={handleImageChange}
+                                    // onChange={handleImageChange}
                                     />
                                 </div>
                             </div>
@@ -131,11 +153,11 @@ function ClientDashboardPage() {
                                         <>
                                             <input
                                                 type="text"
-                                                value={firstName}
+                                                value={brideName}
                                                 onChange={handleFirstNameChange}
                                                 onBlur={() => setEditingNames(false)}
                                                 className="w-full text-4xl font-semibold bg-transparent border-b-2 border-dotted md:w-1/2 md:text-5xl"
-                                                style={{ color: firstName === 'Anna' ? 'gray' : 'black' }}
+                                                style={{ color: brideName === 'Anna' ? 'gray' : 'black' }}
                                             />
                                             <span className="mx-2 text-4xl font-semibold md:text-6xl">&</span>
                                             <input
@@ -149,8 +171,8 @@ function ClientDashboardPage() {
                                         </>
                                     ) : (
                                         <>
-                                            <h2 className="text-4xl font-semibold md:text-5xl" style={{ color: (firstName === 'Anna' && partnerName === 'Devid') ? 'gray' : 'black' }}>
-                                                {firstName} & {partnerName}
+                                            <h2 className="text-4xl font-semibold md:text-5xl" style={{ color: (brideName === 'Anna' && partnerName === 'Devid') ? 'gray' : 'black' }}>
+                                                {brideName} & {partnerName}
                                             </h2>
                                             <AiOutlineEdit
                                                 className="mt-2 ml-3 cursor-pointer md:mt-8"
@@ -201,7 +223,9 @@ function ClientDashboardPage() {
                                     )}
                                 </div>
                             </div>
-                        </div>
+                            <button type="submit">Save</button>
+
+                        </form>
                     </div>
                     <div className='flex flex-col w-full gap-5 text-black md:flex-row'>
                         <div className='w-full md:w-1/2 bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col gap-5'>

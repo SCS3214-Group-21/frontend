@@ -1,15 +1,15 @@
 import React from "react";
 import RegisterHeader from "../../components/common/RegisterHeader";
-import ClientSidebar from "../../components/ClientSidebar";
+import ClientSidebar from "../../components/client/ClientSidebar";
 import Breadcrumb from '../../components/ui/Breadcrumb';
 import Calendar from '../../components/common/Calender';
 import ReminderCard from "../../components/common/ReminderCard";
 import BookingSchedule from "../../components/common/BookingSchedule";
-import VendorSidebar from "../../components/VendorSidebar";
+import VendorSidebar from "../../components/vendor/VendorSidebar";
 
 function VendorSchedulePage() {
     const breadcrumbItems = [
-        { label: 'Dashboard', href: '/vendordashboard' },
+        { label: 'Dashboard', href: '/vendor/dashboard' },
         { label: 'Schedules' },
 
     ];

@@ -4,7 +4,7 @@ import AddCard from '../../components/common/AddCard.jsx';
 import BlogCard from "../../components/common/BlogCard.jsx";
 import Pagination from '../../components/common/Pagination.jsx'
 import AdminHeader from "../../components/common/AdminHeader.jsx";
-import AdminSidebar from "../../components/AdminSidebar.jsx";
+import AdminSidebar from "../../components/admin/AdminSidebar.jsx";
 import PrimaryNoneFillButton from "../../components/ui/PrimaryNoneFillButton.jsx";
 
 const items = [
@@ -23,7 +23,7 @@ const renderItems = (currentItems) => (
         <div className="flex items-center justify-center p-2 bg-white h-72 w-60">
             <AddCard
                 text={"Create Blog"}
-                link={"/admincreateblog"}
+                link={"/admin/blogs/createblog"}
             />
         </div>
         {currentItems.map((item, index) => (
