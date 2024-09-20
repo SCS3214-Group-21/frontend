@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import LogoutImg from '../assets/images/Images/logout.png'
 
 const Logout = () => {
     const { logoutUser } = React.useContext(AuthContext); // Accessing the logout function from context
@@ -18,20 +19,34 @@ const Logout = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-            <h1 className="text-2xl font-semibold text-black mb-4">Do you want to logout?</h1>
-            <div>
-                <button 
-                    className="px-4 py-2 mr-4 bg-red-500 text-white rounded hover:bg-red-600"
+        <div className="flex flex-col items-center justify-center min-h-screen bg-[#FFF8F5]">
+            {/* Image */}
+            <div className="mb-6">
+                <img
+                    src={LogoutImg}
+                    alt="Logout"
+                    className="object-contain w-48 h-48"
+                />
+            </div>
+
+            {/* Sentence */}
+            <h1 className="mb-4 text-3xl font-semibold text-gray-800">
+                Oh no! You're leaving...<br></br>Are you sure?
+            </h1>
+
+            {/* Buttons */}
+            <div className="flex space-x-4">
+                <button
+                    className="px-6 py-2 text-black transition-colors border-2 rounded-md shadow-md border-custom-primary hover:bg-custom-yellow-dark"
                     onClick={handleConfirmLogout} // Logout action
                 >
-                    Yes
+                    Yes,Log me out
                 </button>
-                <button 
-                    className="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
+                <button
+                    className="px-6 py-2 text-white transition-colors rounded-md shadow-md bg-custom-primary hover:bg-custom-yellow-dark"
                     onClick={handleCancelLogout} // Navigate back action
                 >
-                    No
+                    Naah,Just Kidding
                 </button>
             </div>
         </div>

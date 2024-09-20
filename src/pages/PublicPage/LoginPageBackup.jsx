@@ -74,8 +74,8 @@ export default function LoginPage() {
               />
 
               <a
-                href="/forgot"
-                className="w-4/5 text-[12px] text-[#1f1f1f] text-right mb-3"
+                href="/forgotpassword"
+                className="w-4/5 text-[12px] text-custom-secondary underline text-right mb-3"
               >
                 Forgot password?
               </a>

@@ -14,7 +14,7 @@ function ClientBookingDetailsPage(props) {
 
 
     const breadcrumbItems = [
-        { label: 'My Wedding', href: './mywedding' },
+        { label: 'My Wedding', href: './../mywedding' },
         { label: 'Bookings', href: '../bookings' },
         { label: 'Booking Details' },
     ];

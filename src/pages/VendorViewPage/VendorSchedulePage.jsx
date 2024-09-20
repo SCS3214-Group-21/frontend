@@ -9,7 +9,7 @@ import VendorSidebar from "../../components/vendor/VendorSidebar";
 
 function VendorSchedulePage() {
     const breadcrumbItems = [
-        { label: 'Dashboard', href: '/vendordashboard' },
+        { label: 'Dashboard', href: '/vendor/dashboard' },
         { label: 'Schedules' },
 
     ];

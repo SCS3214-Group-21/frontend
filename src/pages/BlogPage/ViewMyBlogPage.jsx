@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { fetchBlogById, updateBlog, deleteBlog } from '../../services/blogServices'; // Updated import
 import CommentSection from '../../components/common/CommentSection.jsx';
 import RegisterHeader from '../../components/common/RegisterHeader.jsx';
-import ClientSidebar from '../../components/client/ClientSidebar.jsx';
+import VendorSidebar from '../../components/vendor/VendorSidebar.jsx';
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 
 const ViewMyBlogPage = () => {
@@ -14,19 +14,19 @@ const ViewMyBlogPage = () => {
     const navigate = useNavigate(); // Hook to navigate programmatically
 
     useEffect(() => {
-    const fetchBlog = async () => {
-        try {
-            const { blog } = await fetchBlogById(id); // Fetch blog details using the service method and destructure the blog object
-            setBlog(blog); // Set the blog details in state
-        } catch (error) {
-            setError(error.message); // Set error message if any
-        } finally {
-            setLoading(false); // Stop loading
-        }
-    };
+        const fetchBlog = async () => {
+            try {
+                const { blog } = await fetchBlogById(id); // Fetch blog details using the service method and destructure the blog object
+                setBlog(blog); // Set the blog details in state
+            } catch (error) {
+                setError(error.message); // Set error message if any
+            } finally {
+                setLoading(false); // Stop loading
+            }
+        };
 
-    fetchBlog();
-}, [id]); // Refetch if id changes
+        fetchBlog();
+    }, [id]); // Refetch if id changes
 
 
     const handleUpdate = async () => {
@@ -60,7 +60,7 @@ const ViewMyBlogPage = () => {
             <RegisterHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
                 <div className="w-[5%] sm:w-[10%] md:w-[20%]">
-                    <ClientSidebar />
+                    <VendorSidebar />
                 </div>
                 <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
                     <div className="pb-5">

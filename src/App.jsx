@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import PublicRoutes from './routes/PublicRoutes.jsx'
 import ClientRoutes from './routes/ClientRoutes.jsx'
 import VendorRoutes from './routes/VendorRoutes.jsx'
+import AdminRoutes from './routes/AdminRoutes.jsx'
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/*" element={<PublicRoutes />} />
                 <Route path="/client/*" element={<ClientRoutes />} />
                 <Route path="/vendor/*" element={<VendorRoutes />} />
+                <Route path="/admin/*" element={<AdminRoutes />} />
             </Routes>
         </BrowserRouter>
     )

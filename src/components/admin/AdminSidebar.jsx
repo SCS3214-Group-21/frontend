@@ -10,12 +10,12 @@ export default function AdminSidebar() {
         setDrawerOpen(!isDrawerOpen);
     };
 
-    const isDashboardPage = location.pathname === '/admindashboard';
+    const isDashboardPage = location.pathname === '/admin/dashboard';
     const isTransactionsPage = location.pathname === '/' || location.pathname === '/' || location.pathname === '/';
-    const isManagePage = location.pathname === '/manageusers' || location.pathname === '/';//rename actual path
+    const isManagePage = location.pathname === '/admin/manageusers' || location.pathname === '/';//rename actual path
     const isNotificationPage = location.pathname === '/';//rename actual path
     const isMessagesPage = location.pathname === '/' || location.pathname === '/';//rename actual path
-    const isBlogsPage = location.pathname === '/admincreateblog' || location.pathname === '/adminblogs';//rename actual path
+    const isBlogsPage = location.pathname === '/admin/blogs/createblog' || location.pathname === '/admin/blogs' || location.pathname === '/admin/blogs/acceptblogs';//rename actual path
     const isFeedbacksPage = location.pathname === '/' || location.pathname === '/';//rename actual path
 
     //const isLogoutPage = location.pathname === '/';//rename actual path
@@ -47,7 +47,7 @@ export default function AdminSidebar() {
                 <div className="py-2 my-2 mt-24 overflow-y-auto">
                     <ul className="space-y-3 font-medium">
                         <SidebarButton
-                            href="/admindashboard"
+                            href="/admin/dashboard"
                             iconPath="M4 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5Zm16 14a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2ZM4 13a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6Zm16-2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6Z"
                             label="Dashboard"
                             isOpen={isDrawerOpen}
@@ -56,7 +56,7 @@ export default function AdminSidebar() {
                         />
 
                         <SidebarButton
-                            href="/manageusers"
+                            href="/admin/manageusers"
                             iconPath="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"
                             label="Manage Users"
                             isOpen={isDrawerOpen}
@@ -88,7 +88,7 @@ export default function AdminSidebar() {
                         /> */}
 
                         <SidebarButton
-                            href="/adminblogs"
+                            href="/admin/blogs"
                             iconPath="M11 9h6m-6 3h6m-6 3h6M6.996 9h.01m-.01 3h.01m-.01 3h.01M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
                             label="Blogs"
                             isOpen={isDrawerOpen}
@@ -104,7 +104,7 @@ export default function AdminSidebar() {
 
                         />
                         <SidebarButton
-                            href="/"
+                            href="/admin/logout"
                             iconPath="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"
                             label="Logout"
                             isOpen={isDrawerOpen}

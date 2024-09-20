@@ -6,8 +6,8 @@ import RegisterHeader from '../../components/common/RegisterHeader.jsx';
 
 function NotificationPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/mywedding' },
-        { label: 'Budget' },
+        { label: 'My Wedding', href: './mywedding' },
+        { label: 'Notification' },
     ];
 
     const notifications = [
