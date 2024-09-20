@@ -1,16 +1,16 @@
 import React from "react";
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
-import VendorSidebar from "../../components/VendorSidebar.jsx";
+import VendorSidebar from "../../components/vendor/VendorSidebar.jsx";
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import UpdatePackageForm from '../../components/UpdatePackageForm.jsx'
+import UpdatePackageForm from '../../components/vendor/UpdatePackageForm.jsx'
 
-function UpdatePackagePage(){
+function UpdatePackagePage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
-        { label: 'Vendors', href: '/' },
-        { label: 'Hotels' },
+        { label: 'Dashboard', href: '/vendor/dashboard' },
+        { label: 'Packages', href: '/vendor/packages' },
+        { label: 'UpdatePackage' },
     ];
-    return(
+    return (
         <div>
             <RegisterHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
@@ -22,7 +22,7 @@ function UpdatePackagePage(){
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-custom-primary font-bold text-4xl'>Update Package</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>Update Package</h1>
                     </div>
                     <div className="pb-5">
                         <UpdatePackageForm />

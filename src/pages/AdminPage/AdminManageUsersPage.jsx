@@ -1,10 +1,10 @@
 // src/pages/AdminManageUsersPage.js
 import React from 'react';
-import AdminSidebar from '../../components/AdminSidebar.jsx';
+import AdminSidebar from '../../components/admin/AdminSidebar.jsx';
 import AdminHeader from '../../components/common/AdminHeader.jsx';
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 import SortingButton from '../../components/ui/SortingButton.jsx';
-import UserTypeBox from '../../components/UserTypeBox.jsx';
+import UserTypeBox from '../../components/admin/UserTypeBox.jsx';
 
 function AdminManageUsersPage() {
     const breadcrumbItems = [

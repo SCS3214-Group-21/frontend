@@ -1,14 +1,14 @@
 import React from 'react';
 import Breadcrumb from '../../components/ui/Breadcrumb';
 import RegisterHeader from '../../components/common/RegisterHeader';
-import ClientSidebar from '../../components/ClientSidebar';
+import ClientSidebar from '../../components/client/ClientSidebar';
 import SortingButton from '../../components/ui/SortingButton';
 import BookingStatusCard from '../../components/common/BookingStatusCard';
 
 function ClientAllBookings() {
 
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
+        { label: 'My Wedding', href: './mywedding' },
         { label: 'Bookings' },
     ];
 

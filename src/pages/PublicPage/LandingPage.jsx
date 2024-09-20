@@ -1,83 +1,83 @@
 import React from 'react';
 import LandingHeader from '../../components/common/LandingHeader.jsx';
 import StatusCard from '../../components/common/StatusCard.jsx';
-import ServicesCarousel from '../../components/ServicesCarousel.jsx';
+import ServicesCarousel from '../../components/landing/ServicesCarousel.jsx';
 import PartnerBadges from '../../components/common/PartnerBadges.jsx';
-import ReviewCarousel from '../../components/ReviewCarousel.jsx';
+import ReviewCarousel from '../../components/landing/ReviewCarousel.jsx';
 import LandingFooter from '../../components/common/LandingFooter.jsx';
 import CustomPinkButton from '../../components/ui/CustomPinkButton.jsx';
 
-function LandingPage(){
-    return(
-        <>
-
+function LandingPage() {
+    return (
+        <div className="bg-[#FFF8F5]">
             <LandingHeader />
 
-            <div
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
-                style={{ backgroundImage: "url('./src/assets/images/Images/00.png')" }}
+            {/*hero section*/}
+            <section
+                className="h-screen w-full bg-no-repeat bg-cover relative"
+                style={{ backgroundImage: "url('./src/assets/images/landing/p1.png')" }}
             >
-
-                {/*Hero section*/}
                 <div className='absolute bottom-10 left-6 text-left'>
-                    <StatusCard 
-                        title = {"Discover, Plan,"}
-                        subtitle = {"Celebrate"}
-                        paragraph = {"From finding the perfect venue to choosing the right vendors, our platform makes wedding planning a breeze. Start your journey with us and create unforgettable memories."}
-                        button = {"Login"}
-                        link = {"/login"}
+                    <StatusCard
+                        title={"Discover, Plan,"}
+                        subtitle={"Celebrate"}
+                        paragraph={"From finding the perfect venue to choosing the right vendors, our platform makes wedding planning a breeze. Start your journey with us and create unforgettable memories."}
+                        button={"Get Started"}
+                        link={"/login"}
                     />
                 </div>
-            </div>
+            </section>
 
-            {/*Couple Section*/}
-            <div
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
-                style={{ backgroundImage: "url('./src/assets/images/Images/000.png')" }}
+            {/* couples section */}
+            <section
+                className="h-screen w-full bg-no-repeat bg-cover relative"
+                style={{ backgroundImage: "url('./src/assets/images/landing/p2.png')" }}
             >
                 <div className='absolute bottom-10 right-6 text-right'>
-                    <StatusCard 
-                        title = {"For"}
-                        subtitle = {"Couples"}
-                        paragraph = {"Create your free account today and start exploring top-notch services to bring your vision to life."}
-                        button = {"Register"}
-                        link = {"/register"}
+                    <StatusCard
+                        title={"For"}
+                        subtitle={"Couples"}
+                        paragraph={"Create your free account today and start exploring top-notch services to bring your vision to life."}
+                        button={"Register"}
+                        link={"/register"}
                     />
                 </div>
-            </div>
+            </section>
 
-            {/*Services section*/}
-            <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-col items-center pt-20">
-                <h1 className="text-custom-primary font-sans font-normal text-4xl sm:text-5xl text-center pb-10">
+            {/* services section */}
+            <section
+                className="h-screen w-full flex flex-col items-center pt-5 mt-20"
+            >
+                <h5 className="text-custom-primary font-sans font-normal text-4xl sm:text-4xl text-center pb-10">
                     Services <span className="text-black">you may find here </span>
-                </h1>
+                </h5>
                 <ServicesCarousel />
-                <h1 className="text-black font-sans font-normal text-4xl sm:text-5xl text-center pt-20 pb-10">
+                <h5 className="text-black font-sans font-normal text-2xl sm:text-1xl text-center pt-14 pb-5">
                     Our Partners
-                </h1>
+                </h5>
                 <PartnerBadges />
-            </div>
+            </section>
 
-            {/*register section*/}
-            <div
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
-                style={{ backgroundImage: "url('./src/assets/images/Images/001.png')" }}
+            {/* vendors section */}
+            <section
+                className="h-screen w-full bg-no-repeat bg-cover relative"
+                style={{ backgroundImage: "url('./src/assets/images/landing/p3.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
-                    <StatusCard 
-                        title = {"For"}
-                        subtitle = {"Service Provider"}
-                        paragraph = {"Register now and showcase your talents to thousands of couples. No fees until your first booking!"}
-                        button = {"Register"}
-                        link = {"/vendorregister1"}
+                    <StatusCard
+                        title={"For"}
+                        subtitle={"Service Provider"}
+                        paragraph={"Register now and showcase your talents to thousands of couples. No fees until your first booking!"}
+                        button={"Register"}
+                        link={"/vendorregister1"}
                     />
                 </div>
-            </div>
+            </section>
 
-            {/*Review section*/}
-            <div
-                className="bg-[#FFF8F5] min-h-screen w-full flex flex-col items-center pt-20"
-                style={{ backgroundImage: "url('./src/assets/images/Images/002.png')" }}
+            {/* reviews section */}
+            <section
+                className="h-screen w-full flex flex-col items-center pt-20"
+                style={{ backgroundImage: "url('./src/assets/images/landing/p4.png')" }}
             >
                 <h1 className="text-black font-sans font-normal text-4xl sm:text-5xl text-center pb-10">
                     Community Reviews
@@ -89,74 +89,74 @@ function LandingPage(){
                         <h1 className="text-black font-sans font-normal text-3xl sm:text-4xl text-center">Our Newsletter is worth something</h1>
                     </div>
                     <div className='flex flex-col w-1/2 gap-4 items-center justify-center'>
-                    <input
-              type="email"
-              placeholder="email"
-              className="input input-bordered w-full bg-white"
-            />
-                        <CustomPinkButton 
+                        <input
+                            type="email"
+                            placeholder="email"
+                            className="input input-bordered w-full bg-white"
+                        />
+                        <CustomPinkButton
                             text={"Subscribe"}
                             link={"/"}
                         />
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/*Boost section*/}
-            <div
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
-                style={{ backgroundImage: "url('./src/assets/images/Images/003.png')" }}
+            {/* boosting section */}
+            <section
+                className="h-screen w-full bg-no-repeat bg-cover relative"
+                style={{ backgroundImage: "url('./src/assets/images/landing/p5.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
-                    <StatusCard 
-                        title = {"Business not going as Planned Need a"}
-                        subtitle = {"Boost..?"}
-                        paragraph = {"Get Idea about our boosting service, ideally make for improving your business"}
-                        button2 = {"Details"}
-                        link2 = {"/"}
+                    <StatusCard
+                        title={"Business not going as Planned Need a"}
+                        subtitle={"Boost..?"}
+                        paragraph={"Get Idea about our boosting service, ideally make for improving your business"}
+                        button2={"Details"}
+                        link2={"/"}
                     />
                 </div>
-            </div>
+            </section>
 
-            {/*bolg section*/}
-            <div
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
-                style={{ backgroundImage: "url('./src/assets/images/Images/004.png')" }}
+            {/*blogging section*/}
+            <section
+                className="h-screen w-full bg-no-repeat bg-cover relative"
+                style={{ backgroundImage: "url('./src/assets/images/landing/p6.png')" }}
             >
                 <div className='absolute  bottom-10 right-6 text-right'>
-                    <StatusCard 
-                        title = {"Planning a Wedding Don’t have any"}
-                        subtitle = {"idea..?"}
-                        paragraph = {"Read our excellent blogs and get idea about every simple steps easily. No Fee, Totally Free"}
-                        button2 = {"Details"}
-                        link2 = {"/"}
+                    <StatusCard
+                        title={"Planning a Wedding Don’t have any"}
+                        subtitle={"idea..?"}
+                        paragraph={"Read our excellent blogs and get idea about every simple steps easily. No Fee, Totally Free"}
+                        button2={"Details"}
+                        link2={"/"}
                     />
                 </div>
-            </div>
+            </section>
 
             {/*feedback section*/}
-            <div
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
-                style={{ backgroundImage: "url('./src/assets/images/Images/005.png')" }}
+            <section
+                className="h-screen w-full bg-no-repeat bg-cover relative"
+                style={{ backgroundImage: "url('./src/assets/images/landing/p7.png')" }}
             >
                 <div className='absolute  bottom-10 left-6 text-left'>
-                    <StatusCard 
-                        title = {"Feedback"}
-                        paragraph = {"We value your thoughts! Share your thought with us... "}
-                        button3 = {"Contact Us"}
-                        link3 = {"/"}
+                    <StatusCard
+                        title={"Feedback"}
+                        paragraph={"We value your thoughts! Share your thought with us... "}
+                        button3={"Contact Us"}
+                        link3={"/"}
                     />
                 </div>
-            </div>
+            </section>
 
-            {/* bottom sect */}
-            <div
-                className="bg-[#FFF8F5] h-screen w-full bg-no-repeat bg-cover relative"
-                style={{ backgroundImage: "url('./src/assets/images/Images/006.png')" }}
+            {/*bottom section*/}
+            <section
+                className="h-screen w-full bg-no-repeat bg-cover relative"
+                style={{ backgroundImage: "url('./src/assets/images/landing/p8.png')" }}
             >
-                <LandingFooter/>
-            </div>
-        </>
+                <LandingFooter />
+            </section>
+        </div>
     )
 }
 

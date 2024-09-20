@@ -1,12 +1,12 @@
 import React from 'react';
 import RegisterHeader from '../../components/common/RegisterHeader';
-import ClientSidebar from '../../components/ClientSidebar';
+import ClientSidebar from '../../components/client/ClientSidebar';
 import Breadcrumb from '../../components/ui/Breadcrumb';
 
 function ClientChatPage() {
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
-        { label: 'Messages', href: '/allchats' },
+        { label: 'My Wedding', href: './mywedding' },
+        { label: 'Messages', href: './messages' },
         { label: 'Vendor 1 Chat' },
     ];
 
@@ -32,7 +32,7 @@ function ClientChatPage() {
                                     <div className="w-10 rounded-full">
                                         <img
                                             alt="Avatar"
-                                            src="src/assets/Images/Images/avatar.png"
+                                            src="../../src/assets/Images/Images/avatar.png"
                                         />
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@ function ClientChatPage() {
                                     <div className="w-10 rounded-full">
                                         <img
                                             alt="Avatar"
-                                            src="src/assets/Images/Images/avatar.png"
+                                            src="../../src/assets/Images/Images/avatar.png"
                                         />
                                     </div>
                                 </div>

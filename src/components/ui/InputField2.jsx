@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { FaCalendarAlt, FaClock } from 'react-icons/fa';
 
 function InputField2(props) {
-    const { id, type, placeholder, name, value } = props;
+    const { id, type, placeholder, name, value, onChange } = props;
     const [startDate, setStartDate] = useState(null);
     const [startTime, setStartTime] = useState(null);
 
@@ -19,9 +19,9 @@ function InputField2(props) {
                 }
 
                 .coolinput label.text {
-                    font-size: 0.75rem;
+                    font-size: 1rem;
                     color: #000000;
-                    font-weight: 700;
+                    font-weight: 500;
                     position: relative;
                     top: 0.5rem;
                     margin: 0 0 0 7px;
@@ -39,8 +39,8 @@ function InputField2(props) {
                 .coolinput .input {
                     width: 100%;
                     padding: 11px 10px;
-                    font-size: 0.75rem;
-                    border: 2px #000000 solid;
+                    font-size: 1rem;
+                    border: 1px #000000 solid;
                     border-radius: 5px;
                     background: #FFF8F5;
                     height: 100%;
@@ -186,7 +186,10 @@ function InputField2(props) {
                         <React.Fragment>
                             <DatePicker
                                 selected={startDate}
-                                onChange={(date) => setStartDate(date)}
+                                onChange={(date) => {
+                                    setStartDate(date);
+                                    onChange(date); // Update parent component's state
+                                }}
                                 className="input"
                                 placeholderText={placeholder}
                                 dateFormat="yyyy/MM/dd"
@@ -197,7 +200,10 @@ function InputField2(props) {
                         <React.Fragment>
                             <DatePicker
                                 selected={startTime}
-                                onChange={(time) => setStartTime(time)}
+                                onChange={(time) => {
+                                    setStartTime(time);
+                                    onChange(time); // Update parent component's state
+                                }}
                                 showTimeSelect
                                 showTimeSelectOnly
                                 timeIntervals={1}
@@ -209,7 +215,15 @@ function InputField2(props) {
                             <FaClock className="icon" />
                         </React.Fragment>
                     ) : (
-                        <input id={id} type={type} placeholder={placeholder} value={value} name="input" className="input" />
+                        <input 
+                            id={id} 
+                            type={type} 
+                            placeholder={placeholder} 
+                            value={value} 
+                            name={name} 
+                            className="input"
+                            onChange={onChange} // Ensure this is linked to parent's state
+                        />
                     )}
                 </div>
             </div>
