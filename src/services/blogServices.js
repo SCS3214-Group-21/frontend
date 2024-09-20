@@ -77,23 +77,24 @@ export const fetchBlogById = async (id) => {
 // Update a blog by ID
 export const updateBlog = async (id, updatedBlog, image) => {
     try {
-        let formData;
+        const formData = new FormData();
+
+        // Append the necessary fields to FormData, even if there's no image
+        formData.append('title', updatedBlog.title);
+        formData.append('description', updatedBlog.description);
 
         if (image) {
-            formData = new FormData();
-            formData.append('title', updatedBlog.title);
-            formData.append('description', updatedBlog.description);
-            formData.append('img', image); // Append image only if it's updated
-        } else {
-            formData = JSON.stringify(updatedBlog); // Send JSON if no image update
+            formData.append('img', image); // Append image if provided
         }
 
+        // Send FormData for both cases, ensuring the backend can parse it
         const response = await api.put(`/blog/blog/${id}`, formData, {
             headers: {
-                'Content-Type': image ? 'multipart/form-data' : 'application/json',
+                'Content-Type': 'multipart/form-data',
                 Authorization: `Bearer ${localStorage.getItem('token')}`,  // Add token from localStorage
             }
         });
+
         return response.data;  // Return the updated blog data
     } catch (error) {
         throw new Error('Failed to update blog!');

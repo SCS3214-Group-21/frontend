@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchBlogById, updateBlog, deleteBlog } from '../../services/blogServices'; // Updated import
+import { fetchBlogById, deleteBlog } from '../../services/blogServices'; // Updated import
 import CommentSection from '../../components/common/CommentSection.jsx';
 import RegisterHeader from '../../components/common/RegisterHeader.jsx';
 import VendorSidebar from '../../components/vendor/VendorSidebar.jsx';
@@ -71,7 +71,7 @@ const ViewMyBlogPage = () => {
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col'>
-                            <h1 className='text-2xl font-semibold text-center text-black'>{blog.subtitle || 'Blog Subtitle'}</h1>
+                            <h1 className='text-2xl font-semibold text-center text-black'>{blog.title || 'Blog Title'}</h1>
                             <div className="flex flex-row items-end justify-end gap-2">
                                 <button onClick={handleUpdate} className="p-1 text-black rounded-full hover:bg-custom-secondary hover:text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
