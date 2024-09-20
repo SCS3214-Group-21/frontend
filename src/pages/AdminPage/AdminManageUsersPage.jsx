@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 import AdminSidebar from '../../components/AdminSidebar.jsx';
 import AdminHeader from '../../components/common/AdminHeader.jsx';
@@ -6,14 +6,30 @@ import SecondaryButton from '../../components/ui/SecondaryButton.jsx';
 import ManageUserPopup from '../../components/ManageUserPopup.jsx';
 import DeleteButton from '../../components/ui/DeleteButton.jsx';
 
-
-
 function AdminManageUserPage() {
+    const [isPopupOpen, setIsPopupOpen] = useState(false); // Control popup visibility
+    const [selectedUser, setSelectedUser] = useState(null); // Hold user data
 
     const breadcrumbItems = [
         { label: 'Dashboard', href: '/admindashboard' },
         { label: 'Manage User' },
     ];
+
+    const users = [
+        { id: 1, name: 'Lakshani', type: 'Vendor', regDate: '2024/11/14', location: 'Galle' },
+        { id: 2, name: 'John Doe', type: 'Admin', regDate: '2024/10/01', location: 'Colombo' },
+    ];
+
+    const handleViewUser = (user) => {
+        console.log('User data:', user); // Debugging log
+        setSelectedUser(user);
+        setIsPopupOpen(true); // Trigger popup display
+    };
+
+    const handleClosePopup = () => {
+        setIsPopupOpen(false); // Close the popup
+        setSelectedUser(null); // Clear selected user
+    };
 
     return (
         <>
@@ -29,25 +45,14 @@ function AdminManageUserPage() {
                     <div className="pb-5">
                         <h1 className='text-4xl font-bold text-custom-primary'>Users</h1>
                     </div>
-                    
-            
-                
-            
-           
+
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row gap-10 sm:gap-5 flex-wrap'>
-                <div className="w-2/5 ml-auto flex items-center gap-2">
-                    <input
-                        type="text"
-                        className="w-full border border-[#FFDBC8] rounded-lg px-2 py-1 bg-[#FFF8F5] text-black"
-                        placeholder="Search Here"
-                    />
-                </div>
-                            <table className="w-full border-collapse  rounded-xl flex-wrap text-black ">
+                            <table className="w-full border-collapse rounded-xl flex-wrap text-black">
                                 <thead>
                                     <tr className='text-black'>
                                         <th className="px-4 py-2 border-b">User ID</th>
-                                        <th className="px-4 py-2 border-b">User name</th>
+                                        <th className="px-4 py-2 border-b">User Name</th>
                                         <th className="px-4 py-2 border-b">User Type</th>
                                         <th className="px-4 py-2 border-b">Reg-Date</th>
                                         <th className="px-4 py-2 border-b">Location</th>
@@ -55,43 +60,35 @@ function AdminManageUserPage() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* Replace this with dynamic rows from your data */}
-                                    <tr className='text-center'>
-                                        <td className="px-4 py-2 border-b ">1</td>
-                                        <td className="px-4 py-2 border-b">Lakshani</td>
-                                        <td className="px-4 py-2 border-b">Vendor</td>
-                                        <td className="px-4 py-2 border-b">2024/11/14</td>
-                                        <td className="px-4 py-2 border-b">Galle</td>
-                                        <td className=" px-4 py-2 space-x-2 border-b">
-                                        <SecondaryButton 
-                                                link="./manageUserPopup" 
-                                                text="View" 
-                                            />
-                                            <DeleteButton 
-                                                link="/deleteUser/1" 
-                                                text="Remove" 
-                                            />
-                                            <button onClick={() => alert('View blog details')}>
-                                                {/* <FaEye className="text-blue-500" /> */}
-                                            </button>
-                                            <button onClick={() => handleAccept(1)}>
-                                                {/* <FaCheck className="text-green-500" /> */}
-                                            </button>
-                                            <button onClick={() => handleReject(1)}>
-                                                {/* <FaTimes className="text-red-500" /> */}
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    {/* Add more rows as needed */}
+                                    {users.map((user) => (
+                                        <tr key={user.id} className='text-center'>
+                                            <td className="px-4 py-2 border-b">{user.id}</td>
+                                            <td className="px-4 py-2 border-b">{user.name}</td>
+                                            <td className="px-4 py-2 border-b">{user.type}</td>
+                                            <td className="px-4 py-2 border-b">{user.regDate}</td>
+                                            <td className="px-4 py-2 border-b">{user.location}</td>
+                                            <td className="px-4 py-2 space-x-2 border-b">
+                                                <SecondaryButton
+                                                    onClick={() => handleViewUser(user)} // Call the function with user data
+                                                    text="View"
+                                                />
+                                                <DeleteButton link="/deleteUser/1" text="Remove" />
+                                            </td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
             </div>
 
+            {/* Popup */}
+            {isPopupOpen && selectedUser && (
+                <ManageUserPopup user={selectedUser} onClose={handleClosePopup} />
+            )}
         </>
-    )
+    );
 }
-export default AdminManageUserPage
+
+export default AdminManageUserPage;
