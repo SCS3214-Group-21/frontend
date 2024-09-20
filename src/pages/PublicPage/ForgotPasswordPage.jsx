@@ -2,8 +2,47 @@ import React, { useState } from 'react';
 import ForgotPasswordImg from "../../assets/images/Images/forgot.png"
 import LoginHeader from '../../components/common/LoginHeader';
 import InputField from '../../components/ui/InputField';
+import { useNavigate } from 'react-router-dom';
+import { forgetPassword } from '../../services/authServices.js';
+import Swal from 'sweetalert2';  // Import SweetAlert2
 
 function ForgotPasswordPage() {
+    const [email, setEmail] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setErrorMessage('');  // Clear previous error messages
+        try {
+            // Attempt to send the password reset link
+            await forgetPassword(email);
+
+            // If successful, show a success alert
+            Swal.fire({
+                icon: 'success',
+                title: 'Reset Link Sent!',
+                text: 'A reset link has been sent to your email.',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#3085d6',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Navigate to login page after clicking 'OK'
+                    navigate('/login');
+                }
+            });
+        } catch (error) {
+            // Display error message and a SweetAlert2 error popup
+            setErrorMessage('Error. Failed to send the reset link.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong! Please try again later.',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#d33',
+            });
+        }
+    };
 
     return (
         <div className="bg-[#FFF8F5] min-h-screen flex flex-col">
@@ -31,7 +70,10 @@ function ForgotPasswordPage() {
                         No worries! Enter your email address and we will send you a reset link to recover your password.
                     </p>
 
-                    <form className="w-full" >
+                    {errorMessage && (
+                        <p className="mb-4 text-sm text-red-600">{errorMessage}</p>
+                    )}
+                    <form className="w-full" onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label htmlFor="email" className="block mb-2 font-medium text-gray-700">
                                 Email Address
@@ -40,9 +82,9 @@ function ForgotPasswordPage() {
                                 id="email"
                                 type="email"
                                 placeholder="Email"
-
+                                value={email}
                                 name="email"
-
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <button

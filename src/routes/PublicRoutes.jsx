@@ -9,9 +9,9 @@ import VendorRegisterPage1 from '../pages/PublicPage/VendorRegisterPage1.jsx';
 import VendorRegisterPage2 from '../pages/PublicPage/VendorRegisterPage2.jsx';
 import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
 import AboutUsPage from '../pages/PublicPage/AboutUsPage.jsx';
+import ForgotPasswordPage from '../pages/PublicPage/ForgotPasswordPage.jsx';
 
 import { getToken, getUserRole } from '../utils/auth'; // Import token and role retrieval functions
-import ForgotPasswordPage from '../pages/PublicPage/ForgotPasswordPage.jsx';
 
 function PublicRoutes() {
   const token = getToken(); // Get the token from storage (auth)
