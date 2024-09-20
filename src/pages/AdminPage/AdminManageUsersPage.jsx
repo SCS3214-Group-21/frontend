@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 import AdminSidebar from '../../components/AdminSidebar.jsx';
@@ -10,15 +9,6 @@ import DeleteButton from '../../components/ui/DeleteButton.jsx';
 function AdminManageUserPage() {
     const [isPopupOpen, setIsPopupOpen] = useState(false); // Control popup visibility
     const [selectedUser, setSelectedUser] = useState(null); // Hold user data
-=======
-// src/pages/AdminManageUsersPage.js
-import React from 'react';
-import AdminSidebar from '../../components/admin/AdminSidebar.jsx';
-import AdminHeader from '../../components/common/AdminHeader.jsx';
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import SortingButton from '../../components/ui/SortingButton.jsx';
-import UserTypeBox from '../../components/admin/UserTypeBox.jsx';
->>>>>>> 97cfa8c3362a78f148cf41d94b8695489cdc93ac
 
     const breadcrumbItems = [
         { label: 'Dashboard', href: '/admindashboard' },
