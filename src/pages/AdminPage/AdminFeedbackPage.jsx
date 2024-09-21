@@ -33,6 +33,7 @@ function AdminManageUserPage() {
                     <select
                         className="w-full border border-[#FFDBC8] rounded-lg px-2 py-1 bg-[#FFF8F5] text-black"
                         name="userType"
+                        
                     >
                         <option value="vendor">Feedbacks</option>
                         <option value="customer">Complaints</option>
