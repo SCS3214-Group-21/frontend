@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import AdminSidebar from '../../components/AdminSidebar.jsx';
+import AdminSidebar from '../../components/admin/AdminSidebar.jsx';
 import AdminHeader from '../../components/common/AdminHeader.jsx';
 import SecondaryButton from '../../components/ui/SecondaryButton.jsx';
 import DatePicker from 'react-datepicker';

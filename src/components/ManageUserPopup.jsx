@@ -1,46 +1,24 @@
-import React from 'react'
-import SecondaryButton from './ui/SecondaryButton'
-import CheckboxField from './ui/CheckboxField'
-import InputField2 from './ui/InputField2'
+import React from 'react';
 
-function ManageUserPopup({ closePopup, pkg, pkgItems }) {
+function ManageUserPopup({ user, onClose }) {
     return (
-        <>
-            <div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50'>
-                <div className='relative flex flex-col w-11/12 text-black bg-white md:w-2/3 lg:w-1/3 rounded-xl border border-[#FFDBC8] border-b-8 pb-5'>
-                    <button
-                        className="absolute btn btn-sm btn-circle btn-ghost right-2 top-2"
-                        onClick={closePopup}
-                    >
-                        ✕
-                    </button>
-
-                    <h2 className='w-full mt-5 text-4xl font-bold text-center'>User Details</h2>
-                    <div className="grid grid-cols-2 gap-2 px-8 py-8 form-control">
-                        {pkgItems[pkg.value]?.map((item, index) => (
-
-                            <CheckboxField id={index} label={item.label} checked={true} />
-
-                        ))}
-                    </div>
-                    <div className='px-8 py-4'>
-                        <InputField2 id={1}
-                            type={"text"}
-                            name={"Additional Details "}
-                            placeholder={"..."} />
-                    </div>
-                    <div className='flex flex-col items-center w-full mt-10'>
-
-
-                        <div className='mt-6 mb-4'>
-                            <SecondaryButton text="Request Quotation" />
-                        </div>
-
-                    </div>
-                </div>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+                <h2 className="text-2xl font-bold mb-4">User Details</h2>
+                <p><strong>ID:</strong> {user.id}</p>
+                <p><strong>Name:</strong> {user.name}</p>
+                <p><strong>Type:</strong> {user.type}</p>
+                <p><strong>Registration Date:</strong> {user.regDate}</p>
+                <p><strong>Location:</strong> {user.location}</p>
+                <button
+                    onClick={onClose}
+                    className="mt-5 px-4 py-2 bg-red-500 text-white rounded"
+                >
+                    Close
+                </button>
             </div>
-        </>
-    )
+        </div>
+    );
 }
 
-export default ManageUserPopup
+export default ManageUserPopup;

@@ -1,8 +1,8 @@
 import React from 'react'
 import RegisterHeader from '../../components/common/RegisterHeader'
-import ClientSidebar from '../../components/ClientSidebar'
+import ClientSidebar from '../../components/client/ClientSidebar'
 import Breadcrumb from '../../components/ui/Breadcrumb'
-import BookingDetailsTable from '../../components/BookingDetailsTable';
+import BookingDetailsTable from '../../components/client/BookingDetailsTable';
 import { useLocation } from 'react-router-dom';
 import PrimaryNoneFillButton from '../../components/ui/PrimaryNoneFillButton';
 import SecondaryButton from '../../components/ui/SecondaryButton';
@@ -14,8 +14,8 @@ function ClientBookingDetailsPage(props) {
 
 
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '/' },
-        { label: 'Bookings', href: '/bookings' },
+        { label: 'My Wedding', href: './../mywedding' },
+        { label: 'Bookings', href: '../bookings' },
         { label: 'Booking Details' },
     ];
     return (
@@ -39,8 +39,8 @@ function ClientBookingDetailsPage(props) {
                             </div>
                             <BookingDetailsTable vendorname={vendorname} vendortype={vendortype} packagename={packagename} bookingdate={date} price={price} guestcount={guestcount} totalamount={totalamount} />
                             <div className='absolute flex gap-4 px-2 py-1 text-sm right-8 bottom-4'>
-                                <PrimaryNoneFillButton text="Cancel" link="/bookings" />
-                                <SecondaryButton text="Pay Now" link="/" />
+                                <PrimaryNoneFillButton text="Cancel" link="/client/bookings" />
+                                <SecondaryButton text="Pay Now" link="#" />
                             </div>
                         </div>
                     </div>

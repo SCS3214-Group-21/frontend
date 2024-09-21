@@ -1,12 +1,12 @@
 import React from 'react';
 import RegisterHeader from '../../components/common/RegisterHeader';
 import Breadcrumb from '../../components/ui/Breadcrumb';
-import VendorSidebar from '../../components/VendorSidebar';
+import VendorSidebar from '../../components/vendor/VendorSidebar';
 
 function VendorChatPage() {
     const breadcrumbItems = [
-        { label: 'Dashboard', href: '/vendordashboard' },
-        { label: 'Messages', href: '/vendorallchats' },
+        { label: 'Dashboard', href: '/vendor/dashboard' },
+        { label: 'Messages', href: '/vendor/messages' },
         { label: 'Client 1 Chat' },
     ];
 
@@ -32,7 +32,7 @@ function VendorChatPage() {
                                     <div className="w-10 rounded-full">
                                         <img
                                             alt="Avatar"
-                                            src="src/assets/Images/Images/Profile.png"
+                                            src="../../src/assets/Images/Images/Profile.png"
                                         />
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@ function VendorChatPage() {
                                     <div className="w-10 rounded-full">
                                         <img
                                             alt="Avatar"
-                                            src="src/assets/Images/Images/Profile.png"
+                                            src="../../src/assets/Images/Images/Profile.png"
                                         />
                                     </div>
                                 </div>

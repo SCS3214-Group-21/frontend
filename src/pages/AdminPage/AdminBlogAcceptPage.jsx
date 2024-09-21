@@ -3,7 +3,7 @@ import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 import BlogCard from "../../components/common/AdminBlogCard.jsx";
 import Pagination from '../../components/common/Pagination.jsx'
 import AdminHeader from "../../components/common/AdminHeader.jsx";
-import AdminSidebar from "../../components/AdminSidebar.jsx";
+import AdminSidebar from "../../components/admin/AdminSidebar.jsx";
 
 const items = [
     { label: 'New', img: 'src/assets/Images/Images/01.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
