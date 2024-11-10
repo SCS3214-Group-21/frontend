@@ -131,7 +131,7 @@ const ClientRoutes = () => {
         element={isAuthenticatedClient ? <BlogPage /> : <Navigate to="/login" />}
       />
       <Route
-        path="/blogs/viewblog"
+        path="/blogs/viewblog/:id"
         element={isAuthenticatedClient ? <ViewBlogPage /> : <Navigate to="/login" />}
       />
       <Route
