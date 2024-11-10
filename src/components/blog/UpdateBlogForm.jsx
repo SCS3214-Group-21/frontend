@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import InputField2 from '../ui/InputField2';
 import PrimaryNoneFillButton from '../ui/PrimaryNoneFillButton';
-import PrimaryButton from '../ui/PrimaryButton';
-import FileInputField from '../ui/FileInputField';
-import TextAreaField from '../ui/TextAreaField';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchBlogById, updateBlog } from '../../services/blogServices';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 function UpdateBlogForm() {
     const { id } = useParams(); // Get the blog id from the URL
@@ -23,7 +21,7 @@ function UpdateBlogForm() {
         const fetchBlog = async () => {
             try {
                 const { blog } = await fetchBlogById(id); // Fetch blog and destructure it from the response object
-    
+
                 setFormData({
                     title: blog.title || '', // Use blog.title from the nested "blog" key
                     description: blog.description || '', // Same for description
@@ -35,10 +33,9 @@ function UpdateBlogForm() {
                 setLoading(false); // Stop loading
             }
         };
-    
+
         fetchBlog();
     }, [id]);
-     // Refetch if id changes
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -62,24 +59,57 @@ function UpdateBlogForm() {
         e.preventDefault();
         setError(''); // Clear previous errors
     
+        // Validate the required fields
+        if (!formData.title || !formData.description) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please fill all the required fields (Title and Description).',
+                confirmButtonText: 'OK',
+                background: '#FFF8F5',
+                color: '#000000',
+                confirmButtonColor: '#A57E17',
+            });
+            return;
+        }
+    
         try {
-            // Call the createBlog service with form data
+            // Call the updateBlog service with form data
             const response = await updateBlog(id, { title: formData.title, description: formData.description }, formData.image);
-            
-            alert('Blog updated successfully!');
-            navigate('/vendor/blog');   // Redirect after successful creation
+    
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Blog updated successfully!',
+                confirmButtonText: 'OK',
+                background: '#FFF8F5',
+                color: '#000000',
+                confirmButtonColor: '#A57E17', // Custom button color
+            });
+    
+            navigate('/vendor/blog'); // Redirect after successful update
         } catch (error) {
             console.error("Blog Updating failed: ", error);
             setError('Blog Updating failed: ' + error.message); // Show error message
+    
+            Swal.fire({
+                icon: 'error',
+                title: 'Update Failed',
+                text: `Blog Updating failed: ${error.message}`,
+                confirmButtonText: 'OK',
+                background: '#FFF8F5',
+                color: '#000000',
+                confirmButtonColor: '#A57E17', // Custom button color for retry
+            });
         }
     };
+    
 
     return (
         <div>
             <form className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 pb-5' onSubmit={handleSubmit}>
                 <div className='flex flex-col md:flex-row gap-5 lg:gap-20 w-full p-3 px-5 md:px-[5%]'>
                     <div className='w-full'>
-
                         <InputField2
                             id="title"
                             name="title"
@@ -91,7 +121,6 @@ function UpdateBlogForm() {
                     </div>
 
                     <div className='w-full'>
-
                         <div>
                             <style jsx>{`
                                 .file-input-container {
@@ -208,11 +237,6 @@ function UpdateBlogForm() {
                         text="Reset"
                         onClick={handleReset}
                     />
-
-                    {/* <PrimaryButton
-                        text={"Save Changes"}
-                        link={"/"}
-                    /> */}
                     <button
                         type="submit"
                         className="border-0 rounded-full px-8 h-10 bg-custom-primary text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:text-custom-secondary hover:border-2 hover:border-custom-secondary"
