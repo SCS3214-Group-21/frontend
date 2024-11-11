@@ -45,7 +45,7 @@ function BlogPage() {
             {currentItems.map((item, index) => (
                 <div key={index} className='flex items-center justify-center p-2 bg-white h-72 w-60'>
                     <BlogCard
-                        // Use the baseURL from the api instance to construct the image URL dynamically
+                        // Use api.defaults.baseURL to construct the image URL dynamically
                         img={item.img ? `${api.defaults.baseURL}/uploads/${item.img}` : 'src/assets/Images/Images/01.png'}  
                         text={item.title || 'No Title'}  // If title is empty, display 'No Title'
                         date={item.date}

@@ -9,9 +9,9 @@ export const createBlog = async (title, image, description) => {
         formData.append('description', description);
 
         // Log formData entries for debugging
-        for (const pair of formData.entries()) {
-            console.log(`${pair[0]}: ${pair[1]}`);
-        }
+        // for (const pair of formData.entries()) {
+        //     console.log(`${pair[0]}: ${pair[1]}`);
+        // }
 
         const response = await api.post('/blog/create', formData, {
             headers: {

@@ -4,7 +4,7 @@ import PrimaryNoneFillButton from '../ui/PrimaryNoneFillButton';
 
 function BlogCard(props) {
     const { img, text, date, time, button, link } = props;
-
+    console.log("Image Path:", img);
     return (
         <div className=" bg-[#FFFBEB] rounded-lg shadow-md flex flex-col gap-1 items-center justify-center border border-custom-primary p-2">
             <div>
