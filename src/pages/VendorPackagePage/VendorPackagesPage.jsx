@@ -1,4 +1,7 @@
-import React from "react";
+import React,{ useEffect, useState } from "react";
+import { fetchMyPackages } from "../../services/packageService.js";
+import api from "../../api.jsx";
+
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
 import VendorSidebar from "../../components/vendor/VendorSidebar.jsx";
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
@@ -6,41 +9,62 @@ import AddCard from '../../components/common/AddCard.jsx';
 import PackageCard from '../../components/common/PackageCard.jsx';
 import Pagination from '../../components/common/Pagination.jsx'
 
-const items = [
-    { img: 'src/assets/Images/Images/hotel.png', text: 'Package 01', link: '/vendor/packages/viewpackage', },
-    { img: 'src/assets/Images/Images/hotel6.jpeg', text: 'Package 02', link: '/vendor/packages/viewpackage', },
-    { img: 'src/assets/Images/Images/hotel7.jpeg', text: 'Package 03', link: '/vendor/packages/viewpackage', },
-    { img: 'src/assets/Images/Images/03.png', text: 'Package 04', link: '/vendor/packages/viewpackage', },
-    { img: 'src/assets/Images/Images/01.png', text: 'Package 05', link: '/vendor/packages/viewpackage', },
-    { img: 'src/assets/Images/Images/hotel6.jpeg', text: 'Package 06', link: '/vendor/packages/viewpackage', },
-    { img: 'src/assets/Images/Images/hotel7.jpeg', text: 'Package 07', link: '/vendor/packages/viewpackage', },
-    { img: 'src/assets/Images/Images/hotel8.jpeg', text: 'Package 08', link: '/vendor/packages/viewpackage', },
-];
-
-const renderItems = (currentItems) => (
-    // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-    <div className="flex flex-row flex-wrap items-center justify-center gap-10">
-        <div className="flex items-center justify-center p-2 bg-white h-60 w-52">
-            <AddCard
-                text={"Create Package"}
-                link={"/vendor/packages/createpackage"}
-            />
-        </div>
-        {currentItems.map((item, index) => (
-            <div key={index} className="flex items-center justify-center p-2 bg-white h-60 w-52">
-                <PackageCard
-                    img={item.img}
-                    text={item.text}
-                    button={"See more"}
-                    link={item.link}
-                />
-            </div>
-        ))}
-    </div>
-    // </div>
-);
+// const items = [
+//     { img: 'src/assets/Images/Images/hotel.png', text: 'Package 11', link: '/vendor/packages/viewpackage', },
+//     { img: 'src/assets/Images/Images/hotel6.jpeg', text: 'Package 02', link: '/vendor/packages/viewpackage', },
+//     { img: 'src/assets/Images/Images/hotel7.jpeg', text: 'Package 03', link: '/vendor/packages/viewpackage', },
+//     { img: 'src/assets/Images/Images/03.png', text: 'Package 04', link: '/vendor/packages/viewpackage', },
+//     { img: 'src/assets/Images/Images/01.png', text: 'Package 05', link: '/vendor/packages/viewpackage', },
+//     { img: 'src/assets/Images/Images/hotel6.jpeg', text: 'Package 06', link: '/vendor/packages/viewpackage', },
+//     { img: 'src/assets/Images/Images/hotel7.jpeg', text: 'Package 07', link: '/vendor/packages/viewpackage', },
+//     { img: 'src/assets/Images/Images/hotel8.jpeg', text: 'Package 08', link: '/vendor/packages/viewpackage', },
+// ];
 
 function VendorPackagesPage() {
+    const [packages, setPackages] = useState([]);  // State to store blogs
+    const [loading, setLoading] = useState(true); // State to track loading
+    const [error, setError] = useState(null); // State to track errors
+
+    useEffect(() => {
+        const fetchPackageData = async () => {
+            try {
+                const data = await fetchMyPackages();  // Call the service
+                setPackages(data.packages || []);  // Use the correct key
+                setLoading(false);
+            } catch (error) {
+                setError(error.message);
+                setLoading(false);
+            }
+        };
+    
+        fetchPackageData();
+    }, []);    
+    const renderItems = (currentItems) => (
+        // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
+        <div className="flex flex-row flex-wrap items-center justify-center gap-10">
+            <div className="flex items-center justify-center p-2 bg-white h-60 w-52">
+                <AddCard
+                    text={"Create Package"}
+                    link={"/vendor/packages/createpackage"}
+                />
+            </div>
+            {currentItems.map((item, index) => (
+                <div key={index} className="flex items-center justify-center p-2 bg-white h-60 w-52">
+                    <PackageCard
+                        img={item.img ? `${api.defaults.baseURL}/uploads/${item.img}` : 'src/assets/Images/Images/01.png'}
+                        text={item.name}
+                        button={"See more"}
+                        link={'/vendor/packages/viewpackage'}
+                    />
+                </div>
+            ))}
+        </div>
+        // </div>
+    );
+
+    if (loading) return <div>Loading...</div>;  // Display loading state
+        if (error) return <div>Error: {error}</div>;  // Display error state
+
     const breadcrumbItems = [
         { label: 'Dashboard', href: '/vendor/dashboard' },
         { label: 'Packages' }
@@ -62,7 +86,7 @@ function VendorPackagesPage() {
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-                            <Pagination items={items} itemsPerPage={5} renderItems={renderItems} />
+                            <Pagination items={packages} itemsPerPage={5} renderItems={renderItems} />
                         </div>
                     </div>
                 </div>

@@ -45,14 +45,20 @@ export const fetchAllPackages = async () => {
 
 export const fetchMyPackages = async () => {
     try {
-        const response = await api.get('/blog/my-packages', {
+        const token = localStorage.getItem('token');
+        console.log('Authorization token:', token);  // Debugging token
+        
+        const response = await api.get('/package/my-packages', {
             headers: {
                 'Content-Type': 'multipart/form-data',
-                Authorization: `Bearer ${localStorage.getItem('token')}`,
-            }
+                Authorization: `Bearer ${token}`,
+            },
         });
+
+        console.log('Fetched packages:', response.data); // Log the response
         return response.data;
     } catch (error) {
+        console.error('Error fetching packages:', error?.response || error);  // Log detailed error
         throw new Error('Failed to fetch packages!');
     }
 };

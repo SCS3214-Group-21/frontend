@@ -22,7 +22,9 @@ function PackageCard(props) {
             )}
 
             <div className='p-1'>
-                <img src={img} className='rounded-lg'/>
+            <a href={`${img}`} target="_blank" rel="noopener noreferrer">
+                <img src={img} className='rounded-lg w-40 h-28'/>
+            </a>
             </div>
             <div className="text-black text-sm font-medium">{text}</div>
             <div className='p-1'>
