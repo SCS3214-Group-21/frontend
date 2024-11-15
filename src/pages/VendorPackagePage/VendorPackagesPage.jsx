@@ -21,7 +21,7 @@ import Pagination from '../../components/common/Pagination.jsx'
 // ];
 
 function VendorPackagesPage() {
-    const [packages, setPackages] = useState([]);  // State to store blogs
+    const [packages, setPackages] = useState([]);  // State to store packages
     const [loading, setLoading] = useState(true); // State to track loading
     const [error, setError] = useState(null); // State to track errors
 

@@ -1,41 +1,75 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { fetchPackageById, deletePackage } from "../../services/packageService.js";
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
 import VendorSidebar from "../../components/vendor/VendorSidebar.jsx";
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import api from "../../api";
 
 function ViewPackagePage() {
+    const { id } = useParams();
+    const [packages, setPackages] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const breadcrumbItems = [
-        { label: 'Dashboard', href: '/vendor/dashboard' },
-        { label: 'Packages', href: '/vendor/packages' },
-        { label: 'ViewPackage' },
-    ];
+    useEffect(() => {
+        const fetchPackage = async () => {
+            try {
+                const packageData = await fetchPackageById(id); // Adjusted for API response
+                setPackages(packageData);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    const handleDeleteClick = () => {
-        Swal.fire({
+        fetchPackage();
+    }, [id]);
+
+    const breadcrumbItems = packages
+        ? [
+            { label: 'Dashboard', href: '/vendor/dashboard' },
+            { label: 'Packages', href: '/vendor/packages' },
+            { label: packages.packageItem.name },
+        ]
+        : [];
+
+    if (loading) return <div>Loading...</div>; // Display loading state
+    if (error) return <div>Error: {error}</div>; // Display error state
+
+    if (!packages) return <div>No packages found</div>; // Display if no packages found
+
+    console.log(packages)
+
+    const handleDeleteClick = async () => {
+        const result = await Swal.fire({
             title: 'Are you sure?',
-            text: "Do you want to delete Package 1?",
+            text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
             confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel!',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                navigate('/vendorpackages');
-            } else {
-                Swal.fire({
-                    title: 'Cancelled',
-                    text: "Package 1 is safe!",
-                    icon: 'error',
-                    confirmButtonColor: '#3085d6',
-                });
-            }
         });
+    
+        if (result.isConfirmed) {
+            try {
+                await deletePackage(id); // Call deletePackage API
+                Swal.fire('Deleted!', 'Your package has been deleted.', 'success');
+                navigate('/vendor/packages'); // Redirect to package list
+            } catch (error) {
+                Swal.fire('Error!', error.message, 'error'); // Show error message
+            }
+        } else {
+            Swal.fire('Cancelled', 'Your package is safe.', 'info'); // Cancel feedback
+        }
+    };
+
+    const handleUpdate = () => {
+        navigate(`/vendor/packages/updatepackages/${id}`);
     };
 
     return (
@@ -50,16 +84,24 @@ function ViewPackagePage() {
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-4xl font-bold text-custom-primary'>View Package</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>
+                            {packages.packageItem.name || "Unnamed Package"}
+                        </h1>
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-5 flex flex-col lg:flex-row items-start lg:items-center justify-center lg:justify-start gap-2 lg:gap-5'>
-                            <h1 className='text-2xl text-black'>Package 01</h1>
+                            <h1 className='text-2xl text-black'>
+                                {packages.packageItem.name || "Unnamed Package"}
+                            </h1>
                             <div className="flex flex-col">
-                                <h1 className="text-sm text-black"><span className="italic">Category</span> : Budget&emsp;|&emsp;<span className="italic">Amount</span> : Rs. 12 000&emsp;|&emsp;<span className="italic">Date</span> : 1/07/2024   </h1>
+                                <h1 className="text-sm text-black">
+                                    {/* <span className="italic">Category</span>: {packages.category || "Unknown"} &emsp;|&emsp; */}
+                                    <span className="italic">Amount</span>: {packages.packageItem.amount ? `Rs. ${packages.packageItem.amount.toLocaleString()}` : "N/A"} &emsp;|&emsp;
+                                    {/* <span className="italic">Date</span>: {packages.date ? new Date(packages.date).toLocaleDateString() : "N/A"} */}
+                                </h1>
                             </div>
                             <div className="flex flex-row gap-2">
-                                <Link to={"/vendor/packages/updatepackage"}>
+                                <Link to={`/vendor/packages/updatepackage/${id}`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="text-black size-6">
                                         <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" />
                                     </svg>
@@ -74,15 +116,21 @@ function ViewPackagePage() {
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col items-start gap-5'>
-                            <h1 className="text-xl text-black">Category :&ensp; <span className="text-sm italic">Category 1</span></h1>
-                            <h1 className="text-xl text-black">Price :&ensp; <span className="text-sm italic">10,000</span></h1>
-                            <h1 className="text-xl text-black">Description :&ensp; <span className="text-sm italic">Category 1</span></h1>
+                            {/* <h1 className="text-xl text-black">Category: <span className="text-sm italic">{packages.category || "N/A"}</span></h1> */}
+                            <h1 className="text-xl text-black">Price: <span className="text-sm italic">{packages.packageItem.amount ? `Rs. ${packages.packageItem.amount.toLocaleString()}` : "N/A"}</span></h1>
+                            <h1 className="text-xl text-black">Description: <br /><span className="text-sm italic block text-justify">{packages.packageItem.description || "N/A"}</span></h1>
+                            <h1 className="text-xl text-black">Items: <br /><span className="text-sm italic">{packages.packageItem.items || "N/A"}</span></h1>
+                            <div className='p-1'>
+                                <a href={`${api.defaults.baseURL}/uploads/${packages.packageItem.img}`} target="_blank" rel="noopener noreferrer">
+                                    <img src={`${api.defaults.baseURL}/uploads/${packages.packageItem.img}`} className='rounded-lg'/>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default ViewPackagePage
+export default ViewPackagePage;

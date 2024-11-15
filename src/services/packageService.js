@@ -71,6 +71,7 @@ export const fetchPackageById = async (id) => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             }
         });
+        console.log('Fetched package:', response.data);
         return response.data;
     } catch (error) {
         throw new Error('Failed to fetch package!');
@@ -99,13 +100,13 @@ export const updatePackage = async (id, updatedPackage, image) => {
             }
         });
 
-        return response.data;  // Return the updated blog data
+        return response.data;  // Return the updated package data
     } catch (error) {
         throw new Error('Failed to update package!');
     }
 };
 
-// Delete a blog by ID
+// Delete a package by ID
 export const deletePackage = async (id) => {
     try {
         const response = await api.delete(`/package/package/${id}`, {
@@ -116,6 +117,6 @@ export const deletePackage = async (id) => {
         return response.data;  // Return the actual API response (if available)
     } catch (error) {
         // Include the error message from the server if available
-        throw new Error(error.response?.data?.message || 'Failed to delete blog!');
+        throw new Error(error.response?.data?.message || 'Failed to delete package!');
     }
 };
