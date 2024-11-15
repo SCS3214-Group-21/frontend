@@ -1,12 +1,18 @@
 import api from '../api';
 
-export const createPackage = async (name, amount, items, description) => {
+export const createPackage = async (name, amount, items, description, image) => {
     try {
         const formData = new FormData();
         formData.append('name', name);
         formData.append('amount', amount);
-        formData.append('items', items);
+        formData.append('items', JSON.stringify(items)); // Serialize items
         formData.append('description', description);
+        formData.append('img', image);
+
+        // Log the FormData entries
+        for (const pair of formData.entries()) {
+            console.log(`${pair[0]}: ${pair[1]}`);
+        }
 
         const response = await api.post('/package/create', formData, {
             headers: {
@@ -14,12 +20,14 @@ export const createPackage = async (name, amount, items, description) => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             }
         });
-        
+
         return response.data;
     } catch (error) {
-        throw new Error('Package Creation failed!');
+        console.error('Package creation failed:', error.response?.data || error.message);
+        throw new Error(error.response?.data?.message || 'Package creation failed!');
     }
 };
+
 
 export const fetchAllPackages = async () => {
     try {
@@ -63,7 +71,7 @@ export const fetchPackageById = async (id) => {
     }
 };
 
-export const updatePackage = async (id, updatedPackage) => {
+export const updatePackage = async (id, updatedPackage, image) => {
     try {
         const formData = new FormData();
 
