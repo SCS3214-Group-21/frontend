@@ -120,3 +120,25 @@ export const deletePackage = async (id) => {
         throw new Error(error.response?.data?.message || 'Failed to delete package!');
     }
 };
+
+export const ChangeStatus = async (id) => {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error('No token found in localStorage.');
+
+        const response = await api.put(
+            `/package/package-status/${id}`, 
+            {}, // Pass an empty object if no payload is required
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Correctly include the Authorization header
+                },
+            }
+        );
+
+        return response.data;
+    } catch (error) {
+        console.error('Error toggling package status:', error.response?.data || error.message);
+        throw error; // Re-throw the error for handling in the caller
+    }
+};
