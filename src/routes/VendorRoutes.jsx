@@ -70,7 +70,7 @@ const VendorRoutes = () => {
         element={isAuthenticatedVendor ? <ViewPackagePage /> : <Navigate to="/login" />}
       />
       <Route
-        path="/packages/updatepackage"
+        path="/packages/updatepackage/:id"
         element={isAuthenticatedVendor ? <UpdatePackagePage /> : <Navigate to="/login" />}
       />
 

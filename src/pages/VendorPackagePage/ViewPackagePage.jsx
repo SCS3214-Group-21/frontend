@@ -119,7 +119,19 @@ function ViewPackagePage() {
                             {/* <h1 className="text-xl text-black">Category: <span className="text-sm italic">{packages.category || "N/A"}</span></h1> */}
                             <h1 className="text-xl text-black">Price: <span className="text-sm italic">{packages.packageItem.amount ? `Rs. ${packages.packageItem.amount.toLocaleString()}` : "N/A"}</span></h1>
                             <h1 className="text-xl text-black">Description: <br /><span className="text-sm italic block text-justify">{packages.packageItem.description || "N/A"}</span></h1>
-                            <h1 className="text-xl text-black">Items: <br /><span className="text-sm italic">{packages.packageItem.items || "N/A"}</span></h1>
+                            <h1 className="text-xl text-black">
+                                Items:
+                                <br />
+                                <ul className="text-sm italic list-disc list-inside">
+                                    {Array.isArray(packages.packageItem.items) && packages.packageItem.items.length > 0
+                                        ? packages.packageItem.items.map((item, index) => (
+                                            <li key={index}>{item}</li>
+                                        ))
+                                        : packages.packageItem.items 
+                                        ? packages.packageItem.items.split(",").map((item, index) => <li key={index}>{item.trim()}</li>)
+                                        : "N/A"}
+                                </ul>
+                            </h1>
                             <div className='p-1'>
                                 <a href={`${api.defaults.baseURL}/uploads/${packages.packageItem.img}`} target="_blank" rel="noopener noreferrer">
                                     <img src={`${api.defaults.baseURL}/uploads/${packages.packageItem.img}`} className='rounded-lg'/>

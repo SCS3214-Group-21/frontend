@@ -54,7 +54,7 @@ function VendorPackagesPage() {
                         img={item.img ? `${api.defaults.baseURL}/uploads/${item.img}` : 'src/assets/Images/Images/01.png'}
                         text={item.name}
                         button={"See more"}
-                        link={'/vendor/packages/viewpackage'}
+                        link={`./viewpackage/${item.package_id}`}
                     />
                 </div>
             ))}

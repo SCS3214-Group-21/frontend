@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import InputField2 from '../ui/InputField2';
 import PrimaryNoneFillButton from '../ui/PrimaryNoneFillButton';
-import PrimaryButton from '../ui/PrimaryButton';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { createPackage } from '../../services/packageService';
 
@@ -14,6 +14,8 @@ function CreatePackageForm() {
         image: null
     })
     
+    const navigate = useNavigate();
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -92,7 +94,7 @@ function CreatePackageForm() {
                 confirmButtonColor: '#A57E17',
             });
 
-            handleReset();
+            navigate('/vendor/packages');
         } catch (error) {
             Swal.fire({
                 icon: 'error',
