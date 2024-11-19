@@ -7,14 +7,14 @@ import PackageCard from '../../components/common/PackageCard.jsx';
 import Pagination from '../../components/common/Pagination.jsx'
 
 const items = [
-    { img: 'src/assets/Images/Images/hotel.png', text: 'Budget 01', link: '/client/viewbudget', },
-    { img: 'src/assets/Images/Images/hotel6.jpeg', text: 'Budget 02', link: '/viewpackage', },
-    { img: 'src/assets/Images/Images/hotel7.jpeg', text: 'Budget 03', link: '/viewpackage', },
-    { img: 'src/assets/Images/Images/03.png', text: 'Budget 04', link: '/viewpackage', },
-    { img: 'src/assets/Images/Images/01.png', text: 'Budget 05', link: '/viewpackage', },
-    { img: 'src/assets/Images/Images/hotel6.jpeg', text: 'Budget 06', link: '/viewpackage', },
-    { img: 'src/assets/Images/Images/hotel7.jpeg', text: 'Budget 07', link: '/viewpackage', },
-    { img: 'src/assets/Images/Images/hotel8.jpeg', text: 'Budget 08', link: '/viewpackage', },
+    { img: '../src/assets/images/Images/hotel.png', text: 'Budget 01', link: '/client/viewbudget', },
+    { img: '../src/assets/Images/Images/hotel6.jpeg', text: 'Budget 02', link: '/viewpackage', },
+    { img: '../src/assets/Images/Images/hotel7.jpeg', text: 'Budget 03', link: '/viewpackage', },
+    { img: '../src/assets/Images/Images/03.png', text: 'Budget 04', link: '/viewpackage', },
+    { img: '../src/assets/Images/Images/01.png', text: 'Budget 05', link: '/viewpackage', },
+    { img: '../src/assets/Images/Images/hotel6.jpeg', text: 'Budget 06', link: '/viewpackage', },
+    { img: '../src/assets/Images/Images/hotel7.jpeg', text: 'Budget 07', link: '/viewpackage', },
+    { img: '../src/assets/Images/Images/hotel8.jpeg', text: 'Budget 08', link: '/viewpackage', },
 ];
 
 const renderItems = (currentItems) => (
