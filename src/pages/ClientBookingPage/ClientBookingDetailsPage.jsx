@@ -21,9 +21,9 @@ function ClientBookingDetailsPage(props) {
         { label: 'Booking Details' },
     ];
 
-    const makePayment= async(req,res)=>{
-        //const stripe = await loadStripe('pk_test_51QMkG6Kt5ygtiLn42cdRHWwll1JzXghV4ErkCQyg4D4qnoCXeIPedgmhLajkEdZoXF2FwR9exiNxC7S0Cs4Qz7OM00GHOy17MB');
-    }
+    // const makePayment= async(req,res)=>{
+    //     //const stripe = await loadStripe('pk_test_51QMkG6Kt5ygtiLn42cdRHWwll1JzXghV4ErkCQyg4D4qnoCXeIPedgmhLajkEdZoXF2FwR9exiNxC7S0Cs4Qz7OM00GHOy17MB');
+    // }
 
     return (
         <>
@@ -48,10 +48,10 @@ function ClientBookingDetailsPage(props) {
                             <div className='absolute flex gap-4 px-2 py-1 text-sm right-8 bottom-4'>
                                 <PrimaryNoneFillButton text="Cancel" link="/client/bookings" />
                                 {/* <SecondaryButton text="Pay Now" link="#" /> */}
-                                <button onClick={makePayment}
+                                {/* <button onClick={makePayment}
                                  className='border-0 rounded-full px-8 h-10 bg-custom-secondary text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:from-custom-gray hover:via-custom-gray hover:to-custom-gray hover:text-custom-primary hover:border-2 hover:border-custom-primary'>
                                    Pay Now!
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                     </div>
