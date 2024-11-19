@@ -1,52 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
 import ClientSidebar from "../../components/client/ClientSidebar.jsx";
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import AddCard from '../../components/common/AddCard.jsx';
 import BlogCard from "../../components/common/BlogCard.jsx";
 import Pagination from '../../components/common/Pagination.jsx'
-
-const items = [
-    { img: '../src/assets/Images/Images/01.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: '../src/assets/Images/Images/02.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: '../src/assets/Images/Images/03.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: '../src/assets/Images/Images/04.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: '../src/assets/Images/Images/05.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: '../src/assets/Images/Images/06.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-    { img: '../src/assets/Images/Images/07.png', text: 'Love in Full Blooms - Navigating the Delicate Petals of Romance', date: '13 Nov, 2023', time: '05.00 PM', },
-];
-
-const renderItems = (currentItems) => (
-    // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-    <div className="flex flex-row flex-wrap items-center justify-center gap-6">
-        {/* <div className="flex items-center justify-center p-2 bg-white h-72 w-60">
-            <AddCard
-                text={"Create Blog"}
-                link={"/createblog"}
-            />
-        </div>  */}
-        {currentItems.map((item, index) => (
-            <div key={index} className='flex items-center justify-center p-2 bg-white h-72 w-60'>
-                <BlogCard
-                    img={item.img}
-                    text={item.text}
-                    date={item.date}
-                    time={item.time}
-                    button={"Read Blog"}
-                    link={"./viewblog"}
-                />
-            </div>
-        ))}
-    </div>
-    // </div>
-);
+import { fetchAllBlogs } from "../../services/blogServices.js";
+import api from "../../api.jsx";
 
 function BlogPage() {
+    const [blogs, setBlogs] = useState([]);  // State to store blogs
+    const [loading, setLoading] = useState(true); // State to track loading
+    const [error, setError] = useState(null); // State to track errors
+
+    useEffect(() => {
+        // Fetch blogs from the backend when the component mounts
+        const fetchBlogData = async () => {
+            try {
+                const data = await fetchAllBlogs();  // Call the service to fetch blogs
+                setBlogs(data.blogs);  // Set the blogs in state, assuming 'blogs' array is returned in 'data'
+                setLoading(false);  // Stop loading
+            } catch (error) {
+                setError(error.message);  // Set error message
+                setLoading(false);  // Stop loading
+            }
+        };
+
+        fetchBlogData();
+    }, []);  // Empty dependency array means it runs only on mount
+
+    const renderItems = (currentItems) => (
+        // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
+        <div className="flex flex-row flex-wrap items-center justify-center gap-6">
+            {/* <div className="flex items-center justify-center p-2 bg-white h-72 w-60">
+                <AddCard
+                    text={"Create Blog"}
+                    link={"/createblog"}
+                />
+            </div>  */}
+            {currentItems.map((item, index) => (
+                <div key={index} className='flex items-center justify-center p-2 bg-white h-72 w-60'>
+                    <BlogCard
+                        img={item.img ? `${api.defaults.baseURL}/uploads/${item.img}` : 'src/assets/Images/Images/01.png'}
+                        text={item.title || 'No Title'}
+                        date={item.date}
+                        time={item.time}
+                        button={"Read Blog"}
+                        link={`./viewblog/${item.blog_id}`}
+                    />
+                </div>
+            ))}
+        </div>
+        // </div>
+    );
+
+    if (loading) return <div>Loading...</div>;  // Display loading state
+        if (error) return <div>Error: {error}</div>;  // Display error state
+
+
     const breadcrumbItems = [
         { label: 'My Wedding', href: './mywedding' },
         { label: 'Blogs' },
 
     ];
+    
     return (
         <div>
             <RegisterHeader />
@@ -63,7 +79,7 @@ function BlogPage() {
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-                            <Pagination items={items} itemsPerPage={8} renderItems={renderItems} />
+                            <Pagination items={blogs} itemsPerPage={8} renderItems={renderItems} />
                         </div>
                     </div>
                 </div>

@@ -1,33 +1,126 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import InputField2 from '../ui/InputField2';
 import PrimaryNoneFillButton from '../ui/PrimaryNoneFillButton';
-import PrimaryButton from '../ui/PrimaryButton';
-import FileInputField from '../ui/FileInputField';
-import TextAreaField from '../ui/TextAreaField';
+import { useParams, useNavigate } from 'react-router-dom';
+import { fetchBlogById, updateBlog } from '../../services/blogServices';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 function UpdateBlogForm() {
+    const { id } = useParams(); // Get the blog id from the URL
+    const [formData, setFormData] = useState({
+        title: '',
+        image: null,
+        description: ''
+    });
+
+    const [loading, setLoading] = useState(true); // State to track loading
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchBlog = async () => {
+            try {
+                const { blog } = await fetchBlogById(id); // Fetch blog and destructure it from the response object
+
+                setFormData({
+                    title: blog.title || '', // Use blog.title from the nested "blog" key
+                    description: blog.description || '', // Same for description
+                    image: null  // Image remains null because the backend response doesn't provide the image file directly
+                });
+            } catch (error) {
+                setError(error.message); // Set error message if any
+            } finally {
+                setLoading(false); // Stop loading
+            }
+        };
+
+        fetchBlog();
+    }, [id]);
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
     const handleFileChange = (event) => {
         const file = event.target.files[0];
-        console.log("Selected file:", file);
+        setFormData((prevData) => ({ ...prevData, image: file })); // Correctly set the file in state
     };
+
+    const handleReset = () => {
+        setFormData({
+            title: '',
+            image: null,
+            description: ''
+        });
+        document.getElementById('file-upload').value = ''; // Clear file input
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError(''); // Clear previous errors
+    
+        // Validate the required fields
+        if (!formData.title || !formData.description) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please fill all the required fields (Title and Description).',
+                confirmButtonText: 'OK',
+                background: '#FFF8F5',
+                color: '#000000',
+                confirmButtonColor: '#A57E17',
+            });
+            return;
+        }
+    
+        try {
+            // Call the updateBlog service with form data
+            const response = await updateBlog(id, { title: formData.title, description: formData.description }, formData.image);
+    
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Blog updated successfully!',
+                confirmButtonText: 'OK',
+                background: '#FFF8F5',
+                color: '#000000',
+                confirmButtonColor: '#A57E17', // Custom button color
+            });
+    
+            navigate('/vendor/blog'); // Redirect after successful update
+        } catch (error) {
+            console.error("Blog Updating failed: ", error);
+            setError('Blog Updating failed: ' + error.message); // Show error message
+    
+            Swal.fire({
+                icon: 'error',
+                title: 'Update Failed',
+                text: `Blog Updating failed: ${error.message}`,
+                confirmButtonText: 'OK',
+                background: '#FFF8F5',
+                color: '#000000',
+                confirmButtonColor: '#A57E17', // Custom button color for retry
+            });
+        }
+    };
+    
+
     return (
         <div>
-            <form className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 pb-5'>
+            <form className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 pb-5' onSubmit={handleSubmit}>
                 <div className='flex flex-col md:flex-row gap-5 lg:gap-20 w-full p-3 px-5 md:px-[5%]'>
                     <div className='w-full'>
-
                         <InputField2
                             id="title"
                             name="title"
                             placeholder="Input"
                             type="text"
-                            value={"Love in Full Blooms - Navigating the Delicate Petals of Romance"}
-
+                            value={formData.title} // Conditionally render blog title or formData.title
+                            onChange={handleChange}                        
                         />
                     </div>
 
                     <div className='w-full'>
-
                         <div>
                             <style jsx>{`
                                 .file-input-container {
@@ -82,7 +175,7 @@ function UpdateBlogForm() {
                                     type="file"
                                     accept=".png, .jpg"
                                     className="file-input"
-
+                                    onChange={handleFileChange}
                                 />
                             </div>
                         </div>
@@ -132,8 +225,8 @@ function UpdateBlogForm() {
                                 placeholder="..."
                                 className="input2"
                                 name="description"
-                                value={"On October 22, 2020, Neville arrived at a house gathering, and Chelsie opened the door for him. Instantly he thought, “Man, this girl’s beautiful. She’s amazing.” They talked a little at the gathering, but nothing came of it that night. A few days later, Neville reached out to Chelsie, and they got the chance to bond over their love for music and sports. It felt like they had known each other forever. After about a month, they were officially a couple. A year and a half later, Neville asked Chelsie to become his wife. This fun-loving couple tied the knot in an elegant, black-and-white wedding ceremony, followed by a reception that went viral! See all of the details of this wedding featured in the spring 2024 issue of Black Bride Magazine, and captured by Jamaal McKenzie and Paul McFall IV of Capital Films DC."}
-
+                                value={formData.description} // Conditionally render blog description or formData.description
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -141,14 +234,9 @@ function UpdateBlogForm() {
 
                 <div className='flex flex-wrap justify-end items-center gap-2 sm:gap-5 p-3 px-5 md:px-[5%]'>
                     <PrimaryNoneFillButton
-                        text={"Reset"}
-                        link={"/"}
+                        text="Reset"
+                        onClick={handleReset}
                     />
-
-                    {/* <PrimaryButton
-                        text={"Save Changes"}
-                        link={"/"}
-                    /> */}
                     <button
                         type="submit"
                         className="border-0 rounded-full px-8 h-10 bg-custom-primary text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:text-custom-secondary hover:border-2 hover:border-custom-secondary"

@@ -24,3 +24,12 @@ export const registerUser = async (data) => {
     throw new Error('Registration failed.');
   }
 };
+
+export const forgetPassword = async (email) => {
+  try {
+    const response = await api.post('/api/forget-password', { email });
+    return response.data;
+  } catch (error) {
+    throw new Error('Registration failed.');
+  }
+}

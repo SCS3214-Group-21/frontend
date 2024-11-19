@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchBlogById, updateBlog, deleteBlog } from '../../services/blogServices'; // Updated import
+import { fetchBlogById, deleteBlog } from '../../services/blogServices'; // Updated import
 import CommentSection from '../../components/common/CommentSection.jsx';
 import RegisterHeader from '../../components/common/RegisterHeader.jsx';
 import VendorSidebar from '../../components/vendor/VendorSidebar.jsx';
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
+import Swal from 'sweetalert2'; // Import SweetAlert2
+import api from '../../api.jsx';
 
 const ViewMyBlogPage = () => {
     const { id } = useParams(); // Get the blog id from the URL
@@ -34,27 +36,41 @@ const ViewMyBlogPage = () => {
     };
 
     const handleDelete = async () => {
-        if (window.confirm('Are you sure you want to delete this blog?')) {
+        // Show SweetAlert confirmation dialog
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+        });
+
+        if (result.isConfirmed) {
             try {
-                await deleteBlog(id);
+                await deleteBlog(id); // Proceed with deleting the blog
+                Swal.fire('Deleted!', 'Your blog has been deleted.', 'success'); // Success message
                 navigate('/vendor/blog'); // Redirect to blog list after deletion
             } catch (error) {
-                setError(error.message);
+                Swal.fire('Error!', 'Something went wrong. Please try again.', 'error'); // Error message
+                setError(error.message); // Update state with error message
             }
         }
     };
 
-    const breadcrumbItems = [
-        { label: 'Dashboard', href: '/vendor/dashboard' },
-        { label: 'Blogs', href: '/vendor/blog' },
-        { label: 'ViewMyBlog' },
-    ];
+    const breadcrumbItems = blog
+        ? [
+            { label: 'Dashboard', href: '/vendor/dashboard' },
+            { label: 'Blogs', href: '/vendor/blog' },
+            { label: blog.title },
+        ]
+        : [];
 
     if (loading) return <div>Loading...</div>; // Display loading state
     if (error) return <div>Error: {error}</div>; // Display error state
 
     if (!blog) return <div>No blog found</div>; // Display if no blog found
-
     return (
         <div>
             <RegisterHeader />
@@ -71,7 +87,7 @@ const ViewMyBlogPage = () => {
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col'>
-                            <h1 className='text-2xl font-semibold text-center text-black'>{blog.subtitle || 'Blog Subtitle'}</h1>
+                            <h1 className='text-2xl font-semibold text-center text-black'>{blog.title || 'Blog Title'}</h1>
                             <div className="flex flex-row items-end justify-end gap-2">
                                 <button onClick={handleUpdate} className="p-1 text-black rounded-full hover:bg-custom-secondary hover:text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
@@ -85,7 +101,7 @@ const ViewMyBlogPage = () => {
                                 </button>
                             </div>
                             <div className="flex items-center justify-center p-5">
-                                <img src={blog.img ? `http://localhost:3000/uploads/${blog.img}` : 'src/assets/Images/Images/default.png'} alt="blog" className="w-full h-full sm:w-3/4 sm:h-3/4" />
+                                <img src={blog.img ? `${api.defaults.baseURL}/uploads/${blog.img}` : 'src/assets/Images/Images/default.png'} alt="blog" className="w-full h-full sm:w-3/4 sm:h-3/4" />
                             </div>
                             <div>
                                 <p className="p-5 text-justify text-black">{blog.description || 'No description available.'}</p>

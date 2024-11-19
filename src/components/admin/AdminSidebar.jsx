@@ -15,8 +15,8 @@ export default function AdminSidebar() {
     const isManagePage = location.pathname === '/admin/manageusers' || location.pathname === '/';//rename actual path
     const isNotificationPage = location.pathname === '/';//rename actual path
     const isMessagesPage = location.pathname === '/' || location.pathname === '/';//rename actual path
-    const isBlogsPage = location.pathname === '/admin/blogs/createblog' || location.pathname === '/admin/blogs' || location.pathname === '/admin/blogs/acceptblogs';//rename actual path
-    const isFeedbacksPage = location.pathname === '/' || location.pathname === '/';//rename actual path
+    const isBlogsPage = location.pathname === '/admincreateblog' || location.pathname === '/acceptblogs';//rename actual path
+    const isFeedbacksPage = location.pathname === '/adminfeedback' || location.pathname === '/';//rename actual path
 
     //const isLogoutPage = location.pathname === '/';//rename actual path
 
@@ -88,7 +88,7 @@ export default function AdminSidebar() {
                         /> */}
 
                         <SidebarButton
-                            href="/admin/blogs"
+                            href="/acceptblogs"
                             iconPath="M11 9h6m-6 3h6m-6 3h6M6.996 9h.01m-.01 3h.01m-.01 3h.01M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
                             label="Blogs"
                             isOpen={isDrawerOpen}
@@ -96,7 +96,7 @@ export default function AdminSidebar() {
 
                         />
                         <SidebarButton
-                            href="#"
+                            href="/adminfeedback"
                             iconPath="M9 17h6l3 3v-3h2V9h-2M4 4h11v8H9l-3 3v-3H4V4Z"
                             label="Feedbacks"
                             isOpen={isDrawerOpen}
