@@ -28,10 +28,10 @@ function AdminRoutes() {
                     path="/dashboard"
                     element={isAuthenticatedAdmin ? <AdminDashboardPage /> : <Navigate to="/login" />}
                 />
-                <Route
+                {/* <Route
                     path="/manageusers"
                     element={isAuthenticatedAdmin ? <AdminManageUsersPage /> : <Navigate to="/login" />}
-                />
+                /> */}
                 <Route
                     path="/blogs"
                     element={isAuthenticatedAdmin ? <AdminBlogPage /> : <Navigate to="/login" />}

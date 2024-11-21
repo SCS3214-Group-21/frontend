@@ -4,6 +4,7 @@ import TextAreaField from '../ui/TextAreaField';
 
 function BusinessDetailsForm() {
     const [items, setItems] = useState([]);
+    const [images, setImages] = useState([]); // State to manage image files
 
     const addItem = () => {
         const newItem = {
@@ -22,6 +23,17 @@ function BusinessDetailsForm() {
         }));
         setItems(renamedItems);
     };
+
+    const addImageInput = () => {
+        if (images.length < 20) {
+            setImages([...images, { id: images.length + 1, file: null }]);
+        }
+    };
+
+    const handleImageChange = (id, file) => {
+        setImages(images.map(image => image.id === id ? { ...image, file } : image));
+    };
+
 
     return (
         <div>
@@ -118,6 +130,7 @@ function BusinessDetailsForm() {
                 <div className='flex justify-end items-center p-3 px-5 md:px-[5%]'>
                     <h5 className='cursor-pointer text-custom-primary hover:underline' onClick={addItem}>+ Add new branch</h5>
                 </div>
+
                 <div className="w-full h-40 p-3 px-5 md:px-[5%]">
                     <TextAreaField
                         id="text-input"
@@ -125,6 +138,37 @@ function BusinessDetailsForm() {
                         name="Description"
                         height="100px" // Pass the height as a prop
                     />
+                </div>
+
+                {/* Dynamic Image Inputs */}
+                <div className='w-full p-3 px-5'>
+                    <h1 className='text-4xl text-black pb-5'>Images</h1>
+                    {images.map((image, index) => (
+                        <div key={image.id} className="flex items-center gap-5 mb-4">
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => handleImageChange(image.id, e.target.files[0])}
+                                className="block w-full border rounded-lg p-2"
+                            />
+                            {image.file && (
+                                <img
+                                    src={URL.createObjectURL(image.file)}
+                                    alt={`Preview ${image.id}`}
+                                    className="w-20 h-20 object-cover rounded-lg border"
+                                />
+                            )}
+                        </div>
+                    ))}
+                    {images.length < 20 && (
+                        <button
+                            type="button"
+                            onClick={addImageInput}
+                            className="text-custom-primary hover:underline"
+                        >
+                            + Add Image
+                        </button>
+                    )}
                 </div>
             </form>
         </div>
