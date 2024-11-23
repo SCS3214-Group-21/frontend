@@ -82,11 +82,27 @@ function BusinessDetailsForm() {
   useEffect(() => {
     const fetchVendor = async () => {
       try {
-        const response = await fetchVendorById();
+        const response =await fetchVendorById();
         const { vendorDetails } = response;
 
         if (!vendorDetails) {
-          throw new Error("No vendor data found");
+          // If no vendor data is found, set formData with default values
+          setFormData({
+            pic: "",
+            first_name: "",
+            last_name: "",
+            business_name: "",
+            contact_number: "",
+            email: "",
+            address: "",
+            city: "",
+            branch: [],
+            description: "",
+            images: [],
+          });
+          setItems([]); // No branches
+          setImages([]); // No images
+          return; // Stop further processing if there's no vendor data
         }
 
         // Parse branch details
@@ -147,7 +163,7 @@ function BusinessDetailsForm() {
             id: index + 1,
             file: null, // Default to null if fetched from the server
             url: `${api.defaults.baseURL}/uploads/vendor/images/${imageUrl}`, // Provide a URL for fetched images
-            name: `${imageUrl}`
+            name: `${imageUrl}`,
           }));
           setImages(imageItems);
         }
@@ -260,7 +276,7 @@ function BusinessDetailsForm() {
       Swal.fire({
         icon: "error",
         title: "Update Failed",
-        text: `Failed to update package: ${error.message}`,
+        text: `Failed to update profile: ${error.message}`,
         confirmButtonText: "OK",
         background: "#FFF8F5",
         color: "#000000",
