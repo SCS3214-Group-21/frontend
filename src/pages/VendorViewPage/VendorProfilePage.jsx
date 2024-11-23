@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
 import VendorSidebar from "../../components/vendor/VendorSidebar.jsx";
 import BusinesSDetailsForm from "../../components/vendor/BusinessDetailsForm.jsx";
-import SocialMediaForm from "../../components/vendor/SocialMediaForm.jsx";
-import PrimaryButton from "../../components/ui/PrimaryButton.jsx";
-import PrimaryNoneFillButton from "../../components/ui/PrimaryNoneFillButton.jsx";
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 
 function VendorProfilePage() {
@@ -13,21 +10,8 @@ function VendorProfilePage() {
         { label: 'Profile' },
     ];
 
-    // State to manage profile photo
-    const [profilePhoto, setProfilePhoto] = useState("../src/assets/images/Images/avatar.png");
-
-    // File input handler
-    const handleFileChange = (event) => {
-        if (event.target.files && event.target.files[0]) {
-            const file = event.target.files[0];
-            setProfilePhoto(URL.createObjectURL(file)); // Preview the selected file
-        }
-    };
-
-    // Trigger hidden file input
-    const triggerFileInput = () => {
-        document.getElementById("profileFileInput").click();
-    };
+    // Assuming the vendor's ID is stored in localStorage or comes from elsewhere
+    const vendorId = localStorage.getItem("vendor_id");  // or wherever you store it
 
     return (
         <div>
@@ -44,51 +28,7 @@ function VendorProfilePage() {
                         <h1 className='text-4xl font-bold text-custom-primary'>Edit Profile</h1>
                     </div>
                     <div className="pb-5">
-                        <form className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col sm:flex-row items-center sm:justify-start gap-10 sm:gap-5'>
-                            <div className="relative">
-                                <img src={profilePhoto} alt="profile" className="w-32 h-32 rounded-full" />
-                                {/* Hidden file input */}
-                                <input
-                                    type="file"
-                                    id="profileFileInput"
-                                    accept="image/*"
-                                    style={{ display: "none" }}
-                                    onChange={handleFileChange}
-                                />
-                                {/* Edit icon */}
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="absolute text-black bg-white rounded-lg cursor-pointer size-10 left-12 top-28"
-                                    onClick={triggerFileInput}
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-                                </svg>
-                            </div>
-                            <div className="flex flex-col items-center justify-center sm:items-start">
-                                <h1 className='text-3xl text-center text-black'>Thilina Kaluthotage</h1>
-                                <h3 className='text-xl text-center text-black'>Photographer</h3>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="pb-5">
-                        <BusinesSDetailsForm />
-                    </div>
-                    {/* <div className="pb-5">
-                        <SocialMediaForm />
-                    </div> */}
-                    <div className="flex flex-row flex-wrap justify-end gap-5 pb-5">
-                        <PrimaryNoneFillButton
-                            link={'/'}
-                            text={"Reset"}
-                        />
-                        <PrimaryButton
-                            link={'/'}
-                            text={"Save Changes"}
-                        />
+                        <BusinesSDetailsForm vendorId={vendorId} />
                     </div>
                 </div>
             </div>
