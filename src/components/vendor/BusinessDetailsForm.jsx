@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import InputField2 from "../ui/InputField2";
 import PrimaryNoneFillButton from "../ui/PrimaryNoneFillButton";
-import { fetchVendorById } from "../../services/vendorprofileServices";
+import {
+  fetchVendorById,
+  updateVendor,
+} from "../../services/vendorprofileServices";
+import { useNavigate } from "react-router-dom";
 import api from "../../api";
+import Swal from "sweetalert2";
 
 function BusinessDetailsForm() {
   const [items, setItems] = useState([]);
   const [images, setImages] = useState([]); // State to manage image files
   const [profilePhoto, setProfilePhoto] = useState("");
+  const navigate = useNavigate();
 
   const addItem = () => {
     const newItem = {
@@ -33,24 +39,23 @@ function BusinessDetailsForm() {
     }
   };
 
-  const handleImageChange = (id, file) => {
-    setImages(
-      images.map((image) => (image.id === id ? { ...image, file } : image))
-    );
-  };
-
   // File input handler
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
-
-      // Update the preview state
-      setProfilePhoto(URL.createObjectURL(file));
-
-      // Optionally, prepare to send the file to the server
-      setFormData({ ...formData, pic: file });
+      setProfilePhoto(URL.createObjectURL(file)); // Update the preview state
+      setFormData({ ...formData, pic: file }); // Save the file to formData
     }
   };
+  
+  const handleImageChange = (id, file) => {
+    setImages(
+      images.map(
+        (image) => (image.id === id ? { ...image, file, url: null } : image) // Clear `url` when a new file is added
+      )
+    );
+  };  
+
 
   // Trigger hidden file input
   const triggerFileInput = () => {
@@ -68,7 +73,7 @@ function BusinessDetailsForm() {
     city: "",
     branch: "",
     description: "",
-    images: [],
+    images: "",
   });
 
   const [loading, setLoading] = useState(true);
@@ -86,24 +91,65 @@ function BusinessDetailsForm() {
 
         // Parse branch details
         let parsedBranches = [];
+
+        // Ensure the branch data exists and is a string that can be parsed
         if (vendorDetails.branch) {
           try {
-            parsedBranches = JSON.parse(vendorDetails.branch);
+            parsedBranches = JSON.parse(vendorDetails.branch); // Parse the branch JSON string
           } catch (e) {
             console.error("Error parsing branch data:", e.message);
+            // Optionally handle the error with a UI alert (e.g. Swal.fire)
           }
         }
 
+        console.log(parsedBranches);
+
         // Set branches based on parsed data
         if (parsedBranches.length > 0) {
-          const branchItems = Object.entries(parsedBranches[0]).map(
-            ([key, value], index) => ({
-              id: index + 1,
-              name: key,
-              value,
-            })
-          );
+          // Mapping the parsed branches into an array of objects with `id` and `value`
+          const branchItems = parsedBranches.map((branch, index) => {
+            // Flattening each branch object and extracting the first key-value pair
+            const branchKey = Object.keys(branch)[0]; // e.g., "Branch 1"
+            const branchValue = branch[branchKey]; // e.g., "Main Branch"
+            return {
+              id: index + 1, // Assigning a unique ID for each branch
+              name: branchKey, // Using the branch key as the name
+              value: branchValue, // The value is the branch detail (e.g., "Main Branch")
+            };
+          });
+
+          console.log(branchItems);
+
+          // Update the items state with the formatted branch data
           setItems(branchItems);
+        }
+
+        let parsedImages = [];
+        if (vendorDetails.images) {
+          try {
+            parsedImages = JSON.parse(vendorDetails.images);
+          } catch (e) {
+            console.error("Error parsing images:", e.message);
+            // Swal.fire({
+            //   icon: "error",
+            //   title: "Parsing Error",
+            //   text: "Failed to parse image data.",
+            //   confirmButtonText: "OK",
+            //   background: "#FFF8F5",
+            //   color: "#000000",
+            //   confirmButtonColor: "#A57E17",
+            // });
+          }
+        }
+
+        if (parsedImages.length > 0) {
+          const imageItems = parsedImages.map((imageUrl, index) => ({
+            id: index + 1,
+            file: null, // Default to null if fetched from the server
+            url: `${api.defaults.baseURL}/uploads/vendor/images/${imageUrl}`, // Provide a URL for fetched images
+            name: `${imageUrl}`
+          }));
+          setImages(imageItems);
         }
 
         setFormData({
@@ -121,11 +167,31 @@ function BusinessDetailsForm() {
         });
 
         // Dynamically set profile photo after fetching data
-        setProfilePhoto(`${api.defaults.baseURL}/uploads/${vendorDetails.pic}`);
+        setProfilePhoto(
+          `${api.defaults.baseURL}/uploads/vendor/pic/${vendorDetails.pic}`
+        );
 
         console.log("Fetch Data:", vendorDetails);
+        // Swal.fire({
+        //   icon: "success",
+        //   title: "Success!",
+        //   text: "Vendor data fetched successfully.",
+        //   confirmButtonText: "OK",
+        //   background: "#FFF8F5",
+        //   color: "#000000",
+        //   confirmButtonColor: "#A57E17",
+        // });
       } catch (error) {
         setError(error.message);
+        // Swal.fire({
+        //   icon: "error",
+        //   title: "Fetch Failed",
+        //   text: `Failed to fetch vendor data: ${error.message}`,
+        //   confirmButtonText: "OK",
+        //   background: "#FFF8F5",
+        //   color: "#000000",
+        //   confirmButtonColor: "#A57E17",
+        // });
       } finally {
         setLoading(false);
       }
@@ -133,14 +199,74 @@ function BusinessDetailsForm() {
     fetchVendor();
   }, []);
 
+  useEffect(() => {
+    return () => {
+      images.forEach((image) => {
+        if (image.file) URL.revokeObjectURL(image.file);
+      });
+    };
+  }, [images]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = () => {
-    e.preventDefault();
-    setError("");
-    // const { a}
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the default form submission
+    setError(""); // Clear any previous errors
+
+    try {
+      // Prepare the branches data
+      const branchesData = items.map((item) => ({ [item.name]: item.value }));
+
+      // Prepare the images data
+      const uploadedImages = images.map(
+        (image) => (image.file ? image.file : image.url) // Use file if newly uploaded, otherwise keep the URL
+      );
+
+      // Call the updateVendor function
+      const response = await updateVendor(
+        formData.first_name,
+        formData.last_name,
+        formData.business_name,
+        formData.contact_number,
+        formData.email,
+        formData.address,
+        formData.city,
+        JSON.stringify(branchesData), // Ensure the branches data is sent as a string
+        formData.description,
+        formData.pic, // Profile picture file
+        uploadedImages // Other image files
+      );
+      
+
+      // Handle success response
+      // alert(response.message || "Profile updated successfully!");
+      Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: "Profile updated successfully!",
+        confirmButtonText: "OK",
+        background: "#FFF8F5",
+        color: "#000000",
+        confirmButtonColor: "#A57E17",
+      });
+
+      navigate("/vendor/profile");
+    } catch (err) {
+      // Error handling
+      console.error("Error updating profile:", err.message);
+      setError(err.message || "An error occurred while updating the profile.");
+      Swal.fire({
+        icon: "error",
+        title: "Update Failed",
+        text: `Failed to update package: ${error.message}`,
+        confirmButtonText: "OK",
+        background: "#FFF8F5",
+        color: "#000000",
+        confirmButtonColor: "#A57E17",
+      });
+    }
   };
 
   if (loading) return <div>Loading...</div>;
@@ -148,7 +274,7 @@ function BusinessDetailsForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col sm:flex-row items-center sm:justify-start gap-10 sm:gap-5 mb-5">
           <div className="relative">
             <img
@@ -264,16 +390,16 @@ function BusinessDetailsForm() {
                 onChange={handleChange}
               />
             </div>
-            <div className="md:w-[45%] w-full">
-              {/* <InputField2
+            {/* <div className="md:w-[45%] w-full">
+              <InputField2
                 id={1}
                 name={"Main Branch"}
                 placeholder={"Input"}
                 type={"text"}
                 value={formData.first_name}
                 onChange={handleChange}
-              /> */}
-            </div>
+              />
+            </div> */}
           </div>
           <div className="flex flex-col md:flex-row flex-wrap gap-[5%] justify-center items-center w-full p-3 px-5">
             {items.map((item, index) => (
@@ -372,7 +498,7 @@ function BusinessDetailsForm() {
           {/* Dynamic Image Inputs */}
           <div className="w-full p-3 px-5">
             <h1 className="text-4xl text-black pb-5">Images</h1>
-            {images.map((image, index) => (
+            {images.map((image) => (
               <div key={image.id} className="flex items-center gap-5 mb-4">
                 <input
                   type="file"
@@ -382,15 +508,22 @@ function BusinessDetailsForm() {
                   }
                   className="block w-full border rounded-lg p-2"
                 />
-                {image.file && (
+                {image.file ? (
                   <img
                     src={URL.createObjectURL(image.file)}
                     alt={`Preview ${image.id}`}
                     className="w-20 h-20 object-cover rounded-lg border"
                   />
-                )}
+                ) : image.url ? (
+                  <img
+                    src={image.url}
+                    alt={`Preview ${image.id}`}
+                    className="w-20 h-20 object-cover rounded-lg border"
+                  />
+                ) : null}
               </div>
             ))}
+
             {images.length < 20 && (
               <button
                 type="button"
@@ -404,10 +537,11 @@ function BusinessDetailsForm() {
         </div>
       </form>
       <div className="flex flex-row flex-wrap justify-end gap-5 pb-5">
-        <PrimaryNoneFillButton link={"/"} text={"Reset"} />
+        <PrimaryNoneFillButton onClick={() => window.location.reload()} text={"Reset"} />
         <button
-          type="submit"
-          className="border-0 rounded-full px-8 h-10 bg-custom-primary text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:text-custom-secondary hover:border-2 hover:border-custom-secondary"
+          type="button"
+          onClick={handleSubmit}
+          className="border-0 rounded-full px-8 h-10 bg-custom-primary text-white"
         >
           Save Changes
         </button>

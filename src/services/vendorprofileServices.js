@@ -12,8 +12,18 @@ export const updateVendor = async(first_name, last_name, business_name, contact_
         formData.append('city', city);
         formData.append('branch', branch);
         formData.append('description', description);
-        formData.append('profilePic', JSON.stringify(profilePic));
-        formData.append('uploadedImages', JSON.stringify(uploadedImages));
+
+        // Append the profile picture (assuming it's a File object)
+        if (profilePic) {
+            formData.append('pic', profilePic);
+        }
+
+        // Append uploaded images (assuming each item in uploadedImages is a File object)
+        if (uploadedImages && uploadedImages.length > 0) {
+            uploadedImages.forEach((image) => {
+                formData.append('images', image);
+            });
+        }
 
         const response = await api.post(`/vendor/update`, formData, {
             headers: {
