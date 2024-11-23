@@ -81,14 +81,12 @@ const VendorRoutes = () => {
       />
 
       {/* Chat */}
+      
       <Route
         path="/messages"
-        element={isAuthenticatedVendor ? <VendorAllChatsPage /> : <Navigate to="/login" />}
-      />
-      <Route
-        path="/messages/chat"
         element={isAuthenticatedVendor ? <VendorChatPage /> : <Navigate to="/login" />}
       />
+
 
       {/* Schedule */}
       <Route
