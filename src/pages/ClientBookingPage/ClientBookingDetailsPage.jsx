@@ -21,9 +21,39 @@ function ClientBookingDetailsPage(props) {
         { label: 'Booking Details' },
     ];
 
-    // const makePayment= async(req,res)=>{
-    //     //const stripe = await loadStripe('pk_test_51QMkG6Kt5ygtiLn42cdRHWwll1JzXghV4ErkCQyg4D4qnoCXeIPedgmhLajkEdZoXF2FwR9exiNxC7S0Cs4Qz7OM00GHOy17MB');
-    // }
+const stripePromise = loadStripe('pk_test_51QMkG6Kt5ygtiLn42cdRHWwll1JzXghV4ErkCQyg4D4qnoCXeIPedgmhLajkEdZoXF2FwR9exiNxC7S0Cs4Qz7OM00GHOy17MB');
+
+const makePayment = async () => {
+    try {
+        const stripe = await stripePromise;
+
+        const bookingData = [
+            { name: packagename, guest_Count: guestcount, booking_date: date, price: totalamount },
+        ];
+
+        const response = await fetch(`http://localhost:5000/payment/create-checkout-session`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ booking: bookingData }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch session ID');
+        }
+
+        const session = await response.json();
+
+        if (session.id) {
+            const result = await stripe.redirectToCheckout({ sessionId: session.id });
+            if (result.error) console.error(result.error.message);
+        } else {
+            console.error('Session ID not received');
+        }
+    } catch (error) {
+        console.error('Payment failed:', error.message);
+    }
+};
+
 
     return (
         <>
@@ -48,10 +78,18 @@ function ClientBookingDetailsPage(props) {
                             <div className='absolute flex gap-4 px-2 py-1 text-sm right-8 bottom-4'>
                                 <PrimaryNoneFillButton text="Cancel" link="/client/bookings" />
                                 {/* <SecondaryButton text="Pay Now" link="#" /> */}
-                                {/* <button onClick={makePayment}
-                                 className='border-0 rounded-full px-8 h-10 bg-custom-secondary text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:from-custom-gray hover:via-custom-gray hover:to-custom-gray hover:text-custom-primary hover:border-2 hover:border-custom-primary'>
-                                   Pay Now!
-                                </button> */}
+                                <button 
+                                    onClick={makePayment}
+                                    disabled={status === 'Pending'} // Disable if status is "Pending"
+                                    className={`border-0 rounded-full px-8 h-10 text-white transition-all duration-[600ms] ease-in-out font-semibold
+                                        ${status === 'Pending' 
+                                        ? 'bg-gray-400 cursor-not-allowed'  // Disabled styling
+                                        : 'bg-custom-secondary hover:bg-custom-gray hover:from-custom-gray hover:via-custom-gray hover:to-custom-gray hover:text-custom-primary hover:border-2 hover:border-custom-primary'
+                                        }`}
+                                    >
+                                    Pay Now!
+                                </button>
+
                             </div>
                         </div>
                     </div>
