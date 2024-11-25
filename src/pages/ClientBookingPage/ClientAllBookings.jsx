@@ -59,7 +59,7 @@ function ClientAllBookings() {
                             </div>
                             {/* Booking Status Cards */}
                             <div className="flex flex-col gap-2 pt-4"> {/* Added pt-8 to ensure margin from sorting buttons */}
-                                <BookingStatusCard vendorname="Rose Garden" date="2024/07/28" status="Accepted" expiration="24hrs" vendortype="Floral" packagename="Venetian Blue" price="50000" guestcount="100" totalamount="5000000" />
+                                <BookingStatusCard vendorname="Rose Garden" date="2024/07/28" status="Accepted" expiration="24hrs" vendortype="Floral" packagename="Venetian Blue" price="5" guestcount="100" totalamount="12" />
                                 <BookingStatusCard vendorname="Orange Blooms Cake" date="2024/07/29" status="Pending" vendortype="Cake" packagename="Wedding Cakes" price="200" guestcount="200" totalamount="40000" />
                                 <BookingStatusCard vendorname="Shangrila" date="2024/07/30" status="Pending" vendortype="Hotel" packagename="Package1" price="20000" guestcount="200" totalamount="4000000" />
                             </div>

@@ -10,6 +10,8 @@ import VendorRegisterPage2 from '../pages/PublicPage/VendorRegisterPage2.jsx';
 import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
 import AboutUsPage from '../pages/PublicPage/AboutUsPage.jsx';
 import ForgotPasswordPage from '../pages/PublicPage/ForgotPasswordPage.jsx';
+import SuccessPage from '../pages/PaymentPage/SuccessPage.jsx';
+import CanclePage from '../pages/PaymentPage/CancelPage.jsx';
 
 import { getToken, getUserRole } from '../utils/auth'; // Import token and role retrieval functions
 
@@ -53,6 +55,14 @@ function PublicRoutes() {
       <Route
         path="/vendorregister2"
         element={!token ? <VendorRegisterPage2 /> : <Navigate to={getDashboardRoute(userRole)} />}
+      />
+      <Route
+        path="/payment/success"
+        element={!token ? <SuccessPage /> : <Navigate to={getDashboardRoute(userRole)} />}
+      />
+      <Route
+        path="/payment/cancel"
+        element={!token ? <CanclePage /> : <Navigate to={getDashboardRoute(userRole)} />}
       />
       {/* Catch-all route for undefined paths */}
       <Route path="*"
