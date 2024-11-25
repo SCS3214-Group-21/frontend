@@ -1,24 +1,14 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import AdminSidebar from '../../components/AdminSidebar.jsx';
+import AdminSidebar from '../../components/admin/AdminSidebar.jsx';
 import AdminHeader from '../../components/common/AdminHeader.jsx';
 import SecondaryButton from '../../components/ui/SecondaryButton.jsx';
-import ManageUserPopup from '../../components/ManageUserPopup.jsx';
+// import ManageUserPopup from '../../components/ManageUserPopup.jsx';
 import DeleteButton from '../../components/ui/DeleteButton.jsx';
 
 function AdminManageUserPage() {
-    const [isPopupOpen, setIsPopupOpen] = useState(false); // Control popup visibility
-    const [selectedUser, setSelectedUser] = useState(null); // Hold user data
-=======
-// src/pages/AdminManageUsersPage.js
-import React from 'react';
-import AdminSidebar from '../../components/admin/AdminSidebar.jsx';
-import AdminHeader from '../../components/common/AdminHeader.jsx';
-import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
-import SortingButton from '../../components/ui/SortingButton.jsx';
-import UserTypeBox from '../../components/admin/UserTypeBox.jsx';
->>>>>>> 97cfa8c3362a78f148cf41d94b8695489cdc93ac
+    // const [isPopupOpen, setIsPopupOpen] = useState(false); // Control popup visibility
+    // const [selectedUser, setSelectedUser] = useState(null); // Hold user data
 
     const breadcrumbItems = [
         { label: 'Dashboard', href: '/admindashboard' },
@@ -30,16 +20,16 @@ import UserTypeBox from '../../components/admin/UserTypeBox.jsx';
         { id: 2, name: 'John Doe', type: 'Admin', regDate: '2024/10/01', location: 'Colombo' },
     ];
 
-    const handleViewUser = (user) => {
-        console.log('User data:', user); // Debugging log
-        setSelectedUser(user);
-        setIsPopupOpen(true); // Trigger popup display
-    };
+    // const handleViewUser = (user) => {
+    //     console.log('User data:', user); // Debugging log
+    //     setSelectedUser(user);
+    //     setIsPopupOpen(true); // Trigger popup display
+    // };
 
-    const handleClosePopup = () => {
-        setIsPopupOpen(false); // Close the popup
-        setSelectedUser(null); // Clear selected user
-    };
+    // const handleClosePopup = () => {
+    //     setIsPopupOpen(false); // Close the popup
+    //     setSelectedUser(null); // Clear selected user
+    // };
 
     return (
         <>
@@ -79,7 +69,7 @@ import UserTypeBox from '../../components/admin/UserTypeBox.jsx';
                                             <td className="px-4 py-2 border-b">{user.location}</td>
                                             <td className="px-4 py-2 space-x-2 border-b">
                                                 <SecondaryButton
-                                                    onClick={() => handleViewUser(user)} // Call the function with user data
+                                                    // onClick={() => handleViewUser(user)} // Call the function with user data
                                                     text="View"
                                                 />
                                                 <DeleteButton link="/deleteUser/1" text="Remove" />
@@ -93,10 +83,7 @@ import UserTypeBox from '../../components/admin/UserTypeBox.jsx';
                 </div>
             </div>
 
-            {/* Popup */}
-            {isPopupOpen && selectedUser && (
-                <ManageUserPopup user={selectedUser} onClose={handleClosePopup} />
-            )}
+            
         </>
     );
 }

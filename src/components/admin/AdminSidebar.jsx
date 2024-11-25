@@ -15,13 +15,8 @@ export default function AdminSidebar() {
     const isManagePage = location.pathname === '/admin/manageusers' || location.pathname === '/';//rename actual path
     const isNotificationPage = location.pathname === '/';//rename actual path
     const isMessagesPage = location.pathname === '/' || location.pathname === '/';//rename actual path
-<<<<<<< HEAD:src/components/AdminSidebar.jsx
-    const isBlogsPage = location.pathname === '/admincreateblog' || location.pathname === '/acceptblogs';//rename actual path
-    const isFeedbacksPage = location.pathname === '/adminfeedback' || location.pathname === '/';//rename actual path
-=======
     const isBlogsPage = location.pathname === '/admin/blogs/createblog' || location.pathname === '/admin/blogs' || location.pathname === '/admin/blogs/acceptblogs';//rename actual path
     const isFeedbacksPage = location.pathname === '/' || location.pathname === '/';//rename actual path
->>>>>>> 97cfa8c3362a78f148cf41d94b8695489cdc93ac:src/components/admin/AdminSidebar.jsx
 
     //const isLogoutPage = location.pathname === '/';//rename actual path
 
@@ -93,11 +88,7 @@ export default function AdminSidebar() {
                         /> */}
 
                         <SidebarButton
-<<<<<<< HEAD:src/components/AdminSidebar.jsx
-                            href="/acceptblogs"
-=======
                             href="/admin/blogs"
->>>>>>> 97cfa8c3362a78f148cf41d94b8695489cdc93ac:src/components/admin/AdminSidebar.jsx
                             iconPath="M11 9h6m-6 3h6m-6 3h6M6.996 9h.01m-.01 3h.01m-.01 3h.01M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
                             label="Blogs"
                             isOpen={isDrawerOpen}
