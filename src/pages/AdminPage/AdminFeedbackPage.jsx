@@ -5,7 +5,7 @@ import AdminHeader from "../../components/common/AdminHeader.jsx";
 import SecondaryButton from "../../components/ui/SecondaryButton.jsx";
 import DeleteButton from "../../components/ui/DeleteButton.jsx";
 
-function AdminManageUserPage() {
+function AdminFeedbackPage() {
   const breadcrumbItems = [
     { label: "Dashboard", href: "/admindashboard" },
     { label: "Feedback" },
@@ -86,4 +86,4 @@ function AdminManageUserPage() {
     </>
   );
 }
-export default AdminManageUserPage;
+export default AdminFeedbackPage;

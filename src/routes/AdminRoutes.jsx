@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { getToken, getUserRole } from '../utils/auth';
 
@@ -8,9 +8,13 @@ import AdminTransactions from '../pages/AdminPage/AdminTransactions.jsx';
 import AdminBlogPage from '../pages/AdminPage/AdminBlogPage.jsx';
 import AdminCreateBlogPage from '../pages/AdminPage/AdminCreateBlogPage.jsx';
 import AdminBlogAcceptPage from '../pages/AdminPage/AdminBlogAcceptPage.jsx';
+//import AdminFeedbackPage from '../pages/AdminPage/AdminFeedbackPage.jsx';
+
+import NotFoundPage from '../pages/errors/NotFoundPage';
+import Logout from '../components/Logout.jsx';
+
 
 function AdminRoutes() {
-
     const token = getToken(); // Get the token from storage
     const userRole = getUserRole(); // Get the user role from storage
 
@@ -18,38 +22,49 @@ function AdminRoutes() {
     const isAuthenticatedAdmin = token && userRole === 'admin';
 
     return (
-        <div>
-            <Routes>
-                <Route path="/logout" element={<Logout />} />
+        <Routes>
 
-                <Route
-                    path="/dashboard"
-                    element={isAuthenticatedAdmin ? <AdminDashboardPage /> : <Navigate to="/login" />}
-                />
-                {/* <Route
+<Route path="/logout" element={<Logout />} />
+
+            <Route
+                path="/dashboard"
+                element={isAuthenticatedAdmin ? <AdminDashboard /> : <Navigate to="/login" />}
+            />
+
+            <Route
                     path="/manageusers"
-                    element={isAuthenticatedAdmin ? <AdminManageUsersPage /> : <Navigate to="/login" />}
-                /> */}
-                <Route
-                    path="/blogs"
-                    element={isAuthenticatedAdmin ? <AdminBlogPage /> : <Navigate to="/login" />}
+                    element={isAuthenticatedAdmin ? <AdminManageUser /> : <Navigate to="/login" />}
                 />
-                <Route
-                    path="/blogs/createblog"
-                    element={isAuthenticatedAdmin ? <AdminCreateBlogPage /> : <Navigate to="/login" />}
-                />
-                <Route
-                    path="/blogs/acceptblogs"
-                    element={isAuthenticatedAdmin ? <AdminBlogAcceptPage /> : <Navigate to="/login" />}
-                />
-                <Route
-                    path="/*"
-                    element={isAuthenticatedAdmin ? <NotFoundPage text="Back to Dashboard" link="/admin/dashboard" /> : <Navigate to="/login" />}
-                />
-            </Routes>
 
-        </div>
-    )
+            <Route
+                    path="/transaction"
+                    element={isAuthenticatedAdmin ? <AdminTransactions /> : <Navigate to="/login" />}
+                />
+            
+            {/* <Route
+                    path="/feedback"
+                    element={isAuthenticatedAdmin ? <AdminFeedbackPage /> : <Navigate to="/login" />}
+                /> */}
+
+            <Route
+                path="/blogs"
+                element={isAuthenticatedAdmin ? <AdminBlogPage /> : <Navigate to="/login" />}
+            />
+
+            <Route
+                path="/blogs/createblog"
+                element={isAuthenticatedAdmin ? <AdminCreateBlogPage /> : <Navigate to="/login" />}
+            />
+            <Route
+                path="/blogs/acceptblogs"
+                element={isAuthenticatedAdmin ? <AdminBlogAcceptPage /> : <Navigate to="/login" />}
+            />
+            <Route
+                path="/*"
+                element={isAuthenticatedAdmin ? <NotFoundPage text="Back to Dashboard" link="/dashboard" /> : <Navigate to="/login" />}
+            />
+        </Routes>
+    );
 }
 
-export default AdminRoutes
+export default AdminRoutes;
