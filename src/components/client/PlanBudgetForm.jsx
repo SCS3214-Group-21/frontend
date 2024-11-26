@@ -222,8 +222,7 @@ function PlanBudgetForm() {
             );
             
             // Assuming the response contains the newly created budget's ID, e.g. response.data.id
-            const newBudgetId = response.budget.plan_id; // Adjust this based on how your backend sends the ID
-    
+            const newBudgetId = response.budget.plan_id; // Adjust this based on how your backend sends the ID    
             // Show success message
             Swal.fire({
                 title: 'Success!',
@@ -234,7 +233,16 @@ function PlanBudgetForm() {
                 // After the success alert is closed, navigate to the next page with the new budget ID
                 window.location.href = `/client/viewbudget/${newBudgetId}`; // Dynamic URL with the ID
             });
-    
+//             // Show success message
+//             Swal.fire({
+//                 title: 'Success!',
+//                 text: 'Your budget has been created successfully!',
+//                 icon: 'success',
+//                 confirmButtonText: 'OK',
+//             }).then(() => {
+//                 // After the success alert is closed, navigate to the next page with the new budget ID
+//                 window.location.href = `/client/viewbudget/${newBudgetId}`; // Dynamic URL with the ID
+//             });
         } catch (error) {
             Swal.fire({
                 title: 'Error!',
@@ -382,6 +390,4 @@ function PlanBudgetForm() {
 
 
 export default PlanBudgetForm;
-
-
 
