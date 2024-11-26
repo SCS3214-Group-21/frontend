@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { getToken, getUserRole } from '../utils/auth';
@@ -74,7 +75,7 @@ const ClientRoutes = () => {
         element={isAuthenticatedClient ? <AllHotelsPage /> : <Navigate to="/login" />}
       />
       <Route
-        path="vendors/hoteldetails"
+        path="vendors/hoteldetails/:id"
         element={isAuthenticatedClient ? <HotelVendorDetails /> : <Navigate to="/login" />}
       />
 
@@ -88,7 +89,7 @@ const ClientRoutes = () => {
         element={isAuthenticatedClient ? <PlanBudgetPage /> : <Navigate to="/login" />}
       />
       <Route
-        path="/viewbudget/:id"
+        path="/viewbudget"
         element={isAuthenticatedClient ? <PlanBudgetPage2 /> : <Navigate to="/login" />}
       />
 
@@ -139,11 +140,7 @@ const ClientRoutes = () => {
   );
 };
 
-export default ClientRoutes; 
-
-
-
-
+export default ClientRoutes;
 
 
 

@@ -1,3 +1,4 @@
+
 import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import { useState } from 'react'
 import SecondaryNoneFillButton from '../ui/SecondaryNoneFillButton'
@@ -17,7 +18,7 @@ function VendorImagesPopup({ images }) {
         <div className="grid grid-cols-2 gap-2">
             {currentItems.map((image, index) => (
                 <div key={index} className="relative overflow-hidden group">
-                    <img className="h-auto max-w-full transition-transform duration-300 transform rounded-lg group-hover:scale-150" src={`../../src/assets/images/Images/${image}`} alt="" />
+                    <img className="h-auto max-w-full transition-transform duration-300 transform rounded-lg group-hover:scale-150" src={`http://localhost:5000/uploads/vendor/images/${image}`} alt="" />
                 </div>
             ))}
         </div>
@@ -58,3 +59,4 @@ function VendorImagesPopup({ images }) {
 }
 
 export default VendorImagesPopup;
+

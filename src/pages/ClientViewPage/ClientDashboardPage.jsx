@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ClientSidebar from '../../components/client/ClientSidebar.jsx';
@@ -69,45 +70,7 @@ function ClientDashboardPage() {
                 return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             };
 
-    // Fetch existing client data
-    // useEffect(() => {
-    //     const fetchProfile = async () => {
-    //         try {
-    //             const token = localStorage.getItem('token');
-    //             const response = await axios.get('http://localhost:5000/client/profile/', {
-    //                 headers: {
-    //                     Authorization: `Bearer ${token}`,
-    //                 },
-    //             });
-
-    //             const { client } = response.data;
-    //             if (client) {
-    //                 const {
-    //                     bride_name,
-    //                     groom_name,
-    //                     location,
-    //                     wedding_date,
-    //                     budget,
-    //                     guest_count,
-    //                     pic,
-    //                 } = client;
-
-    //                 setBrideName(bride_name || '');
-    //                 setPartnerName(groom_name || '');
-    //                 setLocation(location || '');
-    //                 setWeddingDate(wedding_date ? new Date(wedding_date) : null);
-    //                 setBudget(budget || '');
-    //                 setGuestCount(guest_count || '');
-    //                 if (pic) setSelectedImage(pic);
-    //             }
-    //         } catch (error) {
-    //             console.error('Error fetching profile:', error);
-    //         }
-    //     };
-
-    //     fetchProfile();
-    // }, []);
-
+    
     useEffect(() => {
         const fetchProfile = async () => {
             try {
@@ -287,9 +250,7 @@ function ClientDashboardPage() {
                                         />
                                     </div>
                                 </div>
-                            </div>
-                            {/* <div className="flex items-center justify-between mt-3"> */}
-                            <div className="flex flex-col items-center justify-center w-full md:w-1/3">
+                                <div className="flex flex-col items-center justify-center w-full md:w-1/3">
                                     <div className="flex flex-col items-center p-5 bg-gray-200 rounded-3xl text-custom-secondary">
                                         {weddingDate ? (
                                             <>
@@ -310,11 +271,14 @@ function ClientDashboardPage() {
                                 <button
                                     type="button"
                                     onClick={handleSubmit}
-                                    className="px-8 py-3 text-white bg-custom-primary rounded-xl hover:scale-105"
+                                    className="px-8 py-3 mt-8 text-white bg-custom-primary rounded-xl hover:scale-105"
                                 >
                                     Save
                                 </button>
                             </div>
+                            </div>
+                            {/* <div className="flex items-center justify-between mt-3"> */}
+                            
                         </form>
                     </div>
                     {/* Progress Bar Section (Full Width) */}
@@ -343,5 +307,3 @@ function ClientDashboardPage() {
 }
 
 export default ClientDashboardPage;
-
-
