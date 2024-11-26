@@ -8,6 +8,7 @@ import AdminTransactions from '../pages/AdminPage/AdminTransactions.jsx';
 import AdminBlogPage from '../pages/AdminPage/AdminBlogPage.jsx';
 import AdminCreateBlogPage from '../pages/AdminPage/AdminCreateBlogPage.jsx';
 import AdminBlogAcceptPage from '../pages/AdminPage/AdminBlogAcceptPage.jsx';
+//import AdminFeedbackPage from '../pages/AdminPage/AdminFeedbackPage.jsx';
 
 import NotFoundPage from '../pages/errors/NotFoundPage';
 import Logout from '../components/Logout.jsx';
@@ -40,12 +41,16 @@ function AdminRoutes() {
                     element={isAuthenticatedAdmin ? <AdminTransactions /> : <Navigate to="/login" />}
                 />
             
-            
+            {/* <Route
+                    path="/feedback"
+                    element={isAuthenticatedAdmin ? <AdminFeedbackPage /> : <Navigate to="/login" />}
+                /> */}
 
             <Route
                 path="/blogs"
                 element={isAuthenticatedAdmin ? <AdminBlogPage /> : <Navigate to="/login" />}
             />
+
             <Route
                 path="/blogs/createblog"
                 element={isAuthenticatedAdmin ? <AdminCreateBlogPage /> : <Navigate to="/login" />}
