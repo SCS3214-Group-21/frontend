@@ -221,6 +221,9 @@ function PlanBudgetForm() {
                 selectedPrices.catering || 0
             );
             
+            // Assuming the response contains the newly created budget's ID, e.g. response.data.id
+            const newBudgetId = response.budget.plan_id; // Adjust this based on how your backend sends the ID
+    
             // Show success message
             Swal.fire({
                 title: 'Success!',
@@ -228,8 +231,8 @@ function PlanBudgetForm() {
                 icon: 'success',
                 confirmButtonText: 'OK',
             }).then(() => {
-                // After the success alert is closed, navigate to the next page
-                window.location.href = "/client/viewbudget"; // Or use React Router's navigate
+                // After the success alert is closed, navigate to the next page with the new budget ID
+                window.location.href = `/client/viewbudget/${newBudgetId}`; // Dynamic URL with the ID
             });
     
         } catch (error) {
@@ -240,10 +243,7 @@ function PlanBudgetForm() {
                 confirmButtonText: 'OK',
             });
         }
-    };
-    
-    
-    
+    };        
 
     return (
         <div>
@@ -380,4 +380,8 @@ function PlanBudgetForm() {
     );
 }
 
+
 export default PlanBudgetForm;
+
+
+

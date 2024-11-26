@@ -88,7 +88,7 @@ const ClientRoutes = () => {
         element={isAuthenticatedClient ? <PlanBudgetPage /> : <Navigate to="/login" />}
       />
       <Route
-        path="/viewbudget"
+        path="/viewbudget/:id"
         element={isAuthenticatedClient ? <PlanBudgetPage2 /> : <Navigate to="/login" />}
       />
 
