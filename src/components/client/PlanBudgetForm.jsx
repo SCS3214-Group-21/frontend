@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import ServiceSection from './ServiceSection';
 import PrimaryNoneFillButton from '../ui/PrimaryNoneFillButton';
 import PrimaryButton from '../ui/PrimaryButton';
 import CheckboxField from '../ui/CheckboxField';
 import ChangeBudget from '../common/ChangeBudget';
+import { getMinPackages, createBudget } from '../../services/budgetServices';
 
 function PlanBudgetForm() {
     const [totalBudget, setTotalBudget] = useState(0);
@@ -44,22 +45,41 @@ function PlanBudgetForm() {
         catering: false,
     });
 
-    const serviceData = [
-        { key: 'hotels', name: 'Hotels', minPrice: 100000, avgPrice: 350000, imageSrc: '../src/assets/images/services/hotel.png' },
-        { key: 'dressers', name: 'Dressers', minPrice: 100000, avgPrice: 350000, imageSrc: '../src/assets/images/services/dress.png' },
-        { key: 'photographers', name: 'Photography', minPrice: 100000, avgPrice: 350000, imageSrc: '../src/assets/images/services/photography.jpg' },
-        { key: 'floral', name: 'Floral', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/floral.png' },
-        { key: 'jewellary', name: 'Jewellary', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/jewellery.png' },
-        { key: 'dancing', name: 'Dancing Groups', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/dancing.png' },
-        { key: 'ashtaka', name: 'Ashtaka', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/ashtaka.jpg' },
-        { key: 'saloons', name: 'Salons', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/hair.jpeg' },
-        { key: 'djs', name: 'DJs', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/dj.jpg' },
-        { key: 'honeymoon', name: 'Honeymoon', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/honeymoon.jpg' },
-        { key: 'cars', name: 'Cars', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/car.jpg' },
-        { key: 'cards', name: 'Invitation Cards', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/invitation.jpg' },
-        { key: 'poruwa', name: 'Poruwa', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/poruwa.jpg' },
-        { key: 'catering', name: 'Catering', minPrice: 50000, avgPrice: 150000, imageSrc: '../src/assets/images/services/catering.jpg' }
-    ];
+    const [serviceData, setServiceData] = useState([
+        { key: 'hotels', name: 'Hotels', minPrice: 100000, imageSrc: '../src/assets/images/services/hotel.png' },
+        { key: 'dressers', name: 'Dressers', minPrice: 100000, imageSrc: '../src/assets/images/services/dress.png' },
+        { key: 'photographers', name: 'Photography', minPrice: 100000, imageSrc: '../src/assets/images/services/photography.jpg' },
+        { key: 'floral', name: 'Floral', minPrice: 50000, imageSrc: '../src/assets/images/services/floral.png' },
+        { key: 'jewellary', name: 'Jewellary', minPrice: 50000, imageSrc: '../src/assets/images/services/jewellery.png' },
+        { key: 'dancing', name: 'Dancing Groups', minPrice: 50000, imageSrc: '../src/assets/images/services/dancing.png' },
+        { key: 'ashtaka', name: 'Ashtaka', minPrice: 50000, imageSrc: '../src/assets/images/services/ashtaka.jpg' },
+        { key: 'saloons', name: 'Salons', minPrice: 50000, imageSrc: '../src/assets/images/services/hair.jpeg' },
+        { key: 'djs', name: 'DJs', minPrice: 50000, imageSrc: '../src/assets/images/services/dj.jpg' },
+        { key: 'honeymoon', name: 'Honeymoon', minPrice: 50000, imageSrc: '../src/assets/images/services/honeymoon.jpg' },
+        { key: 'cars', name: 'Cars', minPrice: 50000, imageSrc: '../src/assets/images/services/car.jpg' },
+        { key: 'cards', name: 'Invitation Cards', minPrice: 50000, imageSrc: '../src/assets/images/services/invitation.jpg' },
+        { key: 'poruwa', name: 'Poruwa', minPrice: 50000, imageSrc: '../src/assets/images/services/poruwa.jpg' },
+        { key: 'catering', name: 'Catering', minPrice: 50000, imageSrc: '../src/assets/images/services/catering.jpg' }
+    ]);
+
+    useEffect(() => {
+        const fetchMinPackages = async () => {
+            try {
+                const minPackages = await getMinPackages();
+                const updatedServiceData = serviceData.map(service => {
+                    const matchedPackage = minPackages.minPackages.find(
+                        pkg => pkg.role.toLowerCase() === service.key.toLowerCase()
+                    );
+                    return matchedPackage ? { ...service, minPrice: matchedPackage.min_price } : service;
+                });
+                setServiceData(updatedServiceData);
+            } catch (error) {
+                console.error("Error fetching minimum packages:", error);
+            }
+        };
+    
+        fetchMinPackages();
+    }, []);
 
     const handleTotalBudgetChange = (e) => {
         const newTotalBudget = parseFloat(e.target.value.replace(/[^\d]/g, '')) || 0;
@@ -161,7 +181,7 @@ function PlanBudgetForm() {
         });
     };
 
-    const handleNext = () => {
+    const handleNext = async () => {
         const isAnyServiceSelected = Object.values(checkboxes).some((isChecked) => isChecked);
     
         if (!isAnyServiceSelected) {
@@ -174,11 +194,56 @@ function PlanBudgetForm() {
             return;
         }
     
-        // Navigate to the next page if at least one service is selected
-        window.location.href = "/planbudget2"; // You can also use React Router's navigate
-    };
+        // Collect the allocated prices for the selected services
+        const selectedPrices = Object.keys(checkboxes).reduce((acc, key) => {
+            if (checkboxes[key]) {
+                acc[key] = allocatedPrices[key];
+            }
+            return acc;
+        }, {});
     
+        try {
+            // Call the createBudget function with the selected prices
+            const response = await createBudget(
+                selectedPrices.hotels || 0,
+                selectedPrices.dressers || 0,
+                selectedPrices.photographers || 0,
+                selectedPrices.floral || 0,
+                selectedPrices.jewellary || 0,
+                selectedPrices.dancing || 0,
+                selectedPrices.ashtaka || 0,
+                selectedPrices.saloons || 0,
+                selectedPrices.djs || 0,
+                selectedPrices.honeymoon || 0,
+                selectedPrices.cars || 0,
+                selectedPrices.cards || 0,
+                selectedPrices.poruwa || 0,
+                selectedPrices.catering || 0
+            );
+            
+            // Assuming the response contains the newly created budget's ID, e.g. response.data.id
+            const newBudgetId = response.budget.plan_id; // Adjust this based on how your backend sends the ID
     
+            // Show success message
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your budget has been created successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK',
+            }).then(() => {
+                // After the success alert is closed, navigate to the next page with the new budget ID
+                window.location.href = `/client/viewbudget/${newBudgetId}`; // Dynamic URL with the ID
+            });
+    
+        } catch (error) {
+            Swal.fire({
+                title: 'Error!',
+                text: `Budget creation failed: ${error.message}`,
+                icon: 'error',
+                confirmButtonText: 'OK',
+            });
+        }
+    };        
 
     return (
         <div>
@@ -283,7 +348,6 @@ function PlanBudgetForm() {
                             serviceKey={service.key}
                             serviceName={service.name}
                             minPrice={service.minPrice}
-                            avgPrice={service.avgPrice}
                             imageSrc={service.imageSrc}
                             allocatedPrice={allocatedPrices[service.key]}
                             handlePriceChange={handlePriceChange}
@@ -301,12 +365,81 @@ function PlanBudgetForm() {
                 ))}
 
                 <div className='flex flex-wrap items-center justify-end gap-2 py-3 sm:gap-5'>
-                    <PrimaryNoneFillButton text={"Reset"} link={"/client/planbudget"} />
-                    <PrimaryButton text={"Next    >>"} link={"/client/viewbudget"} />
+                    <PrimaryNoneFillButton text={"Reset"} onClick={() => window.location.reload()} />
+                    {/* <PrimaryButton text={"Next    >>"} onClick={handleNext} /> */}
+                    <button
+                        type="button"
+                        onClick={handleNext}
+                        className="border-0 rounded-full px-8 h-10 bg-custom-primary text-white"
+                    >
+                        {"Next    >>"} 
+                    </button>
                 </div>
             </form>
         </div>
     );
 }
 
+
 export default PlanBudgetForm;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
