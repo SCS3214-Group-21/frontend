@@ -63,6 +63,24 @@ function BlogPage() {
 
     ];
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
         <div>
             <RegisterHeader />
@@ -89,6 +107,11 @@ function BlogPage() {
 }
 
 export default BlogPage
+
+
+
+
+
 
 
 // import React from "react";
