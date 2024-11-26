@@ -22,8 +22,7 @@ import PlanBudgetPage from '../pages/ClientBudgetPage/PlanBudgetPage.jsx';
 import PlanBudgetPage2 from '../pages/ClientBudgetPage/PlanBudgetPage2.jsx';
 
 // import ClientChatPages
-import ClientAllChats from '../pages/ClientChatPage/ClientAllChats.jsx';
-import ClientChatPage from '../pages/ClientChatPage/ClientChatPage.jsx';
+import ChatPage from '../pages/ClientChatPage/ChatPage.jsx';
 
 // import ClientVendorsAllPage
 import AllCakesPage from '../pages/ClientVendorsPage/AllCakesPage.jsx';
@@ -100,14 +99,12 @@ const ClientRoutes = () => {
       />
 
       {/* Chat */}
+      
       <Route
         path="/messages"
-        element={isAuthenticatedClient ? <ClientAllChats /> : <Navigate to="/login" />}
+        element={isAuthenticatedClient ? <ChatPage /> : <Navigate to="/login" />}
       />
-      <Route
-        path="/messages/chat"
-        element={isAuthenticatedClient ? <ClientChatPage /> : <Navigate to="/login" />}
-      />
+      
 
       {/* Calendar */}
       <Route
@@ -131,7 +128,7 @@ const ClientRoutes = () => {
         element={isAuthenticatedClient ? <BlogPage /> : <Navigate to="/login" />}
       />
       <Route
-        path="/blogs/viewblog"
+        path="/blogs/viewblog/:id"
         element={isAuthenticatedClient ? <ViewBlogPage /> : <Navigate to="/login" />}
       />
       <Route

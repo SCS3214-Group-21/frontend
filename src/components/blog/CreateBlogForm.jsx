@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import InputField2 from '../ui/InputField2';
 import PrimaryNoneFillButton from '../ui/PrimaryNoneFillButton';
-import PrimaryButton from '../ui/PrimaryButton';
 import { useNavigate } from 'react-router-dom';
 import FileInputField from '../ui/FileInputField';
 import TextAreaField from '../ui/TextAreaField';
 import { createBlog } from '../../services/blogServices';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 function CreateBlogForm() {
     const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ function CreateBlogForm() {
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
-        setFormData((prevData) => ({ ...prevData, image: file })); // Correctly set the file in state
+        setFormData((prevData) => ({ ...prevData, image: file }));
     };
 
     const handleReset = () => {
@@ -33,23 +33,55 @@ function CreateBlogForm() {
         });
         document.getElementById('file-upload').value = ''; // Clear file input
     };
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(''); // Clear previous errors
-    
+
+        // Check if all required fields are filled
+        if (!formData.title || !formData.image || !formData.description) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please fill all the fields!',
+                confirmButtonText: 'OK',
+                background: '#FFF8F5',
+                color: '#000000',
+                confirmButtonColor: '#A57E17', // Custom button color
+            });
+            return;
+        }
+
         try {
             // Call the createBlog service with form data
-            const response = await createBlog(formData.title, formData.description);
-            
-            alert('Blog created successfully!');
+            const response = await createBlog(formData.title, formData.image, formData.description);
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Blog created successfully!',
+                confirmButtonText: 'OK',
+                background: '#FFF8F5',
+                color: '#000000',
+                confirmButtonColor: '#A57E17', // Custom button color
+            });
+
             navigate('/vendor/blog');   // Redirect after successful creation
         } catch (error) {
             console.error("Blog Creation failed: ", error);
-            setError('Blog Creation failed: ' + error.message); // Show error message
+            setError('Blog Creation failed: ' + error.message);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Create Failed',
+                text: `Blog Creation failed: ${error.message}`,
+                confirmButtonText: 'OK',
+                background: '#FFF8F5',
+                color: '#000000',
+                confirmButtonColor: '#A57E17', // Custom button color for retry
+            });
         }
     };
-    
 
     return (
         <div>
@@ -148,6 +180,7 @@ function CreateBlogForm() {
                                 width: fit-content;
                             }
                             
+
                             .coolinput2 .input2 {
                                 padding: 11px 10px;
                                 font-size: 1rem;
@@ -181,16 +214,12 @@ function CreateBlogForm() {
                         text="Reset"
                         onClick={handleReset}
                     />
-                    {/* <PrimaryButton
-                        text="Post Blog"
-                        type="submit"
-                    /> */}
                     <button
-                                type="submit"
-                                className="border-0 rounded-full px-8 h-10 bg-custom-primary text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:text-custom-secondary hover:border-2 hover:border-custom-secondary"
-                            >
-                                Register
-                            </button>
+                        type="submit"
+                        className="border-0 rounded-full px-8 h-10 bg-custom-primary text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:text-custom-secondary hover:border-2 hover:border-custom-secondary"
+                    >
+                        Submit
+                    </button>
                 </div>
             </form>
         </div>

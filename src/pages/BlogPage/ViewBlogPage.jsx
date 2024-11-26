@@ -1,24 +1,47 @@
-import React from "react";
-import { useNavigate, useParams } from 'react-router-dom';
-
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchBlogById } from '../../services/blogServices';
 import CommentSection from "../../components/common/CommentSection.jsx"
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
 import ClientSidebar from "../../components/client/ClientSidebar.jsx";
 import Breadcrumb from "../../components/ui/Breadcrumb.jsx";
+import api from '../../api.jsx';
 // import useFetchBlogs from "../../hooks/useFetchBlogs.js";
 // import blogService from "../../services/blogServices.js";
 
 function ViewBlogPage() {
+    const { id } = useParams(); // Get the blog id from the URL
+    const [blog, setBlog] = useState(null); // State to store blog details
+    const [loading, setLoading] = useState(true); // State to track loading
+    const [error, setError] = useState(null); // State to track errors
+   
+    useEffect(() => {
+        const fetchBlog = async () => {
+            try {
+                const { blog } = await fetchBlogById(id); // Fetch blog details using the service method and destructure the blog object
+                setBlog(blog); // Set the blog details in state
+            } catch (error) {
+                setError(error.message); // Set error message if any
+            } finally {
+                setLoading(false); // Stop loading
+            }
+        };
 
-    const navigate = useNavigate();
+        fetchBlog();
+    }, [id]); // Refetch if id changes
 
-    const breadcrumbItems = [
+    const breadcrumbItems = blog
+    ? [
         { label: 'My Wedding', href: './../mywedding' },
         { label: 'Blogs', href: '../blogs' },
-        { label: 'Love in Full Blooms' },
-    ];
+        { label: blog.title },
+    ]
+    : [];
 
+    if (loading) return <div>Loading...</div>; // Display loading state
+    if (error) return <div>Error: {error}</div>; // Display error state
 
+    if (!blog) return <div>No blog found</div>; // Display if no blog found
 
     return (
         <div>
@@ -32,16 +55,19 @@ function ViewBlogPage() {
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-4xl font-bold text-custom-primary'>Love in Full Blooms</h1>
+                        <h1 className='text-4xl font-bold text-custom-primary'>{blog.title || 'Blog Title'}</h1>
                     </div>
                     <div className="pb-5">
                         <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col'>
-                            <h1 className='text-2xl font-semibold text-center text-black'>Navigating the Delicate Petals of Romance</h1>
+                            <h1 className='text-2xl font-semibold text-center text-black'>{blog.title || 'Blog Title'}</h1>
 
                             <div className="flex items-center justify-center p-5">
-                                <img src='../../src/assets/Images/Images/01.png' alt="blog" className="w-full h-full sm:w-3/4 sm:h-3/4" />
+                                <img src={blog.img ? `${api.defaults.baseURL}/uploads/${blog.img}` : 'src/assets/Images/Images/default.png'} alt="blog" className="w-full h-full sm:w-3/4 sm:h-3/4" />
                             </div>
                             <div>
+                                <p className="p-5 text-justify text-black">{blog.description || 'No description available.'}</p>
+                            </div>
+                            {/* <div>
                                 <p className="p-5 text-justify text-black"> On October 22, 2020, Neville arrived at a house gathering, and Chelsie opened the door for him. Instantly he thought, “Man, this girl’s beautiful. She’s amazing.” They talked a little at the gathering, but nothing came of it that night. A few days later, Neville reached out to Chelsie, and they got the chance to bond over their love for music and sports. It felt like they had known each other forever. After about a month, they were officially a couple. A year and a half later, Neville asked Chelsie to become his wife. This fun-loving couple tied the knot in an elegant, black-and-white wedding ceremony, followed by a reception that went viral! See all of the details of this wedding featured in the spring 2024 issue of Black Bride Magazine, and captured by Jamaal McKenzie and Paul McFall IV of Capital Films DC.
                                 </p>
                             </div>
@@ -64,9 +90,15 @@ function ViewBlogPage() {
                             <p className="p-5 text-justify text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad culpa veniam dolorum sunt, eveniet optio voluptatum laboriosam perferendis alias aut, doloremque soluta adipisci placeat tenetur deleniti voluptate delectus tempora numquam?
                                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam molestiae pariatur nostrum autem esse assumenda eius dolorem placeat tenetur fugit veritatis, nam, doloremque ratione officia aut exercitationem, et quasi modi!
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate et voluptatibus eveniet commodi! Cumque, quam? Dolore temporibus tempore asperiores praesentium, hic est magnam perspiciatis nesciunt aliquam fugiat voluptatum iste autem.
-                            </p>
+                            </p> */}
 
-                            <h2 className="p-5 font-semibold text-black">Published By : <span className="font-normal">Admin</span></h2>
+                            <div className="px-5 text-black">
+                                {/* Add more details if available in the blog object */}
+                                <h2 className="font-semibold">Author : <span className="font-normal">{blog.author || 'Unknown'}</span></h2>
+                                <h2 className="font-semibold">Published Date : <span className="font-normal">{blog.date || 'Unknown'}</span></h2>
+                            </div>
+
+                            {/* <h2 className="p-5 font-semibold text-black">Published By : <span className="font-normal">Admin</span></h2> */}
                             <CommentSection date="17/09/2024" time="11:44 p.m" />
                         </div>
                     </div>

@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import ClientSidebar from '../../components/client/ClientSidebar';
 import ChatList from '../../components/common/ChatList';
 import ChatWindow from '../../components/common/ChatWindow';
 import RegisterHeader from '../../components/common/RegisterHeader';
 import Breadcrumb from '../../components/ui/Breadcrumb';
 import axios from 'axios';
-import VendorSidebar from '../../components/vendor/VendorSidebar';
 
-const VendorChatPage = () => {
+const ChatPage = () => {
 
     const breadcrumbItems = [
-        { label: 'Dashboard', href: '/vendor/dashboard' },
+        { label: 'My Wedding', href: './../mywedding' },
         { label: 'Chat' },
         
     ];
 
-    const [clients,setClients] = useState([]);
-    const [selectedClient, setSelectedClient] = useState(null);
+    const [vendors, setVendors] = useState([]);
+    const [selectedVendor, setSelectedVendor] = useState(null);
     const [messages, setMessages] = useState([]);
     const [currentConversationId, setCurrentConversationId] = useState(null);
 
@@ -23,35 +23,32 @@ const VendorChatPage = () => {
     const userId = localStorage.getItem('id');
 
     useEffect(() => {
-        const fetchClients = async () => {
+        const fetchVendors = async () => {
             try {
-                const { data } = await axios.get('http://localhost:5000/chat/clients', {
+                const { data } = await axios.get('http://localhost:5000/chat/vendors', {
                     headers: { Authorization: `Bearer ${token}` },
                 });
-    
-                // Ensure the data is an array
-                setClients(Array.isArray(data) ? data : []);
+                setVendors(Array.isArray(data) ? data : []);
             } catch (error) {
-                console.error('Error fetching clients:', error.response || error.message);
-                setClients([]);
+                console.error('Error fetching vendors:', error.response || error.message);
+                setVendors([]);
             }
         };
-    
-        fetchClients();
+
+        fetchVendors();
     }, [token]);
-    
 
     
-    const handleChatSelect = async (clientId) => {
+    const handleChatSelect = async (vendorId) => {
         try {
-            setSelectedClient(clientId);
-            console.log('Selected Client ID:', clientId);
-            console.log('Vendor ID:', userId);
+            setSelectedVendor(vendorId);
+            console.log('Selected Vendor ID:', vendorId);
+            console.log('Client ID:', userId);
     
             // Start a conversation or fetch an existing one
             const { data: conversation } = await axios.post(
                 'http://localhost:5000/conversation/start-conversation',
-                { clientId: parseInt(clientId), vendorId: parseInt(userId) }, // Ensure integers are sent
+                { clientId: parseInt(userId), vendorId: parseInt(vendorId) }, // Ensure integers are sent
                 { headers: { Authorization: `Bearer ${token}` } }
             );
     
@@ -82,7 +79,7 @@ const VendorChatPage = () => {
             const newMessage = {
                 conversationId: currentConversationId,
                 senderId: parseInt(userId),
-                receiverId: selectedClient,
+                receiverId: selectedVendor,
                 text,
             };
     
@@ -104,7 +101,7 @@ const VendorChatPage = () => {
             <RegisterHeader />
             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
                 <div className="w-[5%] sm:w-[10%] md:w-[20%]">
-                    <VendorSidebar/>
+                    <ClientSidebar />
                 </div>
                 <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
                 <div className="pb-5">
@@ -115,23 +112,23 @@ const VendorChatPage = () => {
                     </div>
                     <div className="relative flex gap-4 h-[calc(100vh-200px)]"> {/* Adjust the height calculation */}
     <div className="w-1/3 bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-4 max-h-full overflow-y-auto">
-        {clients.length > 0 ? (
+        {vendors.length > 0 ? (
             <ChatList
-                conversations={clients.map((client) => ({
-                    id: client.id,
-                    name: client.email,
+                conversations={vendors.map((vendor) => ({
+                    id: vendor.id,
+                    name: vendor.email,
                     lastMessage: 'Click to start chatting',
                 }))}
                 onSelect={handleChatSelect}
             />
         ) : (
             <div className="flex items-center justify-center h-full">
-                <p>No clients available for chat.</p>
+                <p>No vendors available for chat.</p>
             </div>
         )}
     </div>
     <div className="w-2/3 bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-4 max-h-full overflow-y-auto">
-        {selectedClient ? (
+        {selectedVendor ? (
             <ChatWindow messages={messages} onSend={handleSend} />
         ) : (
             <div className="flex flex-col items-center justify-center h-full bg-gray-50">
@@ -148,94 +145,83 @@ const VendorChatPage = () => {
     
 };
 
-export default VendorChatPage;
+export default ChatPage;
 
-
-// import React, { useState, useEffect, useRef } from 'react';
-// import { io } from 'socket.io-client';
+//////use socket.io//////////////////////////////////////////////////////////////
+// import React, { useState, useEffect } from 'react';
+// import ClientSidebar from '../../components/client/ClientSidebar';
 // import ChatList from '../../components/common/ChatList';
 // import ChatWindow from '../../components/common/ChatWindow';
 // import RegisterHeader from '../../components/common/RegisterHeader';
 // import Breadcrumb from '../../components/ui/Breadcrumb';
 // import axios from 'axios';
-// import VendorSidebar from '../../components/vendor/VendorSidebar';
+// import io from 'socket.io-client';
 
-// const VendorChatPage = () => {
+// const socket = io('http://localhost:5000'); // Connect to Socket.IO server
+
+// const ChatPage = () => {
 //     const breadcrumbItems = [
-//         { label: 'Dashboard', href: '/vendor/dashboard' },
+//         { label: 'My Wedding', href: './../mywedding' },
 //         { label: 'Chat' },
 //     ];
 
-//     const [clients, setClients] = useState([]);
-//     const [selectedClient, setSelectedClient] = useState(null);
+//     const [vendors, setVendors] = useState([]);
+//     const [selectedVendor, setSelectedVendor] = useState(null);
 //     const [messages, setMessages] = useState([]);
 //     const [currentConversationId, setCurrentConversationId] = useState(null);
 
 //     const token = localStorage.getItem('token');
 //     const userId = localStorage.getItem('id');
-//     const socket = useRef(null); // Use `useRef` for socket to persist across renders
 
-//     // Initialize Socket.IO connection
 //     useEffect(() => {
-//         socket.current = io('http://localhost:5000', {
-//             query: { userId }, // Send the userId as a query parameter for identification
-//         });
+//         // Fetch vendors on component mount
+//         const fetchVendors = async () => {
+//             try {
+//                 const { data } = await axios.get('http://localhost:5000/chat/vendors', {
+//                     headers: { Authorization: `Bearer ${token}` },
+//                 });
+//                 setVendors(Array.isArray(data) ? data : []);
+//             } catch (error) {
+//                 console.error('Error fetching vendors:', error.response || error.message);
+//                 setVendors([]);
+//             }
+//         };
 
-//         // Join the vendor's chat room (if applicable)
-//         socket.current.emit('joinVendor', userId);
+//         fetchVendors();
+//     }, [token]);
 
-//         // Handle incoming messages
-//         socket.current.on('receiveMessage', (message) => {
+//     // Listen for incoming messages via socket.io
+//     useEffect(() => {
+//         socket.on('receiveMessage', (message) => {
 //             if (message.conversationId === currentConversationId) {
 //                 setMessages((prevMessages) => [...prevMessages, message]);
 //             }
 //         });
 
-//         // Cleanup on component unmount
 //         return () => {
-//             socket.current.disconnect();
+//             socket.off('receiveMessage');
 //         };
-//     }, [userId, currentConversationId]);
+//     }, [currentConversationId]);
 
-//     useEffect(() => {
-//         const fetchClients = async () => {
-//             try {
-//                 const { data } = await axios.get('http://localhost:5000/chat/clients', {
-//                     headers: { Authorization: `Bearer ${token}` },
-//                 });
-
-//                 setClients(Array.isArray(data) ? data : []);
-//             } catch (error) {
-//                 console.error('Error fetching clients:', error.response || error.message);
-//                 setClients([]);
-//             }
-//         };
-
-//         fetchClients();
-//     }, [token]);
-
-//     const handleChatSelect = async (clientId) => {
+//     const handleChatSelect = async (vendorId) => {
 //         try {
-//             setSelectedClient(clientId);
-
+//             setSelectedVendor(vendorId);
+    
 //             // Start a conversation or fetch an existing one
 //             const { data: conversation } = await axios.post(
 //                 'http://localhost:5000/conversation/start-conversation',
-//                 { clientId: parseInt(clientId), vendorId: parseInt(userId) },
+//                 { clientId: parseInt(userId), vendorId: parseInt(vendorId) },
 //                 { headers: { Authorization: `Bearer ${token}` } }
 //             );
-
+    
 //             setCurrentConversationId(conversation.conversationId);
-
-//             // Join the specific conversation room
-//             socket.current.emit('joinConversation', conversation.conversationId);
-
+    
 //             // Fetch existing messages for the conversation
 //             const { data: fetchedMessages } = await axios.get(
 //                 `http://localhost:5000/messages/${conversation.conversationId}`,
 //                 { headers: { Authorization: `Bearer ${token}` } }
 //             );
-
+    
 //             setMessages(fetchedMessages || []);
 //         } catch (error) {
 //             console.error('Error selecting chat:', error.response?.data || error.message);
@@ -244,41 +230,33 @@ export default VendorChatPage;
 //         }
 //     };
 
-//     const handleSend = async (text) => {
+//     const handleSend = (text) => {
 //         if (!currentConversationId) {
 //             console.error('No conversation selected.');
 //             return;
 //         }
-
-//         try {
-//             const newMessage = {
-//                 conversationId: currentConversationId,
-//                 senderId: parseInt(userId),
-//                 receiverId: selectedClient,
-//                 text,
-//             };
-
-//             // Emit the message through Socket.IO
-//             socket.current.emit('sendMessage', newMessage);
-
-//             // Optimistically add the message to the chat
-//             setMessages((prevMessages) => [...prevMessages, { ...newMessage, senderId: parseInt(userId) }]);
-
-//             // Optionally, save the message via HTTP (if server requires it)
-//             await axios.post('http://localhost:5000/messages/send-message', newMessage, {
-//                 headers: { Authorization: `Bearer ${token}` },
-//             });
-//         } catch (error) {
-//             console.error('Error sending message:', error.response?.data || error.message);
-//         }
+    
+//         const newMessage = {
+//             conversationId: currentConversationId,
+//             senderId: parseInt(userId),
+//             receiverId: parseInt(selectedVendor), // Ensure receiverId is parsed correctly
+//             text,
+//         };
+    
+//         // Emit the message
+//         socket.emit('sendMessage', newMessage);
+    
+//         // Update the UI locally
+//         setMessages((prevMessages) => [...prevMessages, newMessage]);
 //     };
+    
 
 //     return (
 //         <>
 //             <RegisterHeader />
 //             <div className="bg-[#FFF8F5] min-h-screen w-full flex flex-row">
 //                 <div className="w-[5%] sm:w-[10%] md:w-[20%]">
-//                     <VendorSidebar />
+//                     <ClientSidebar />
 //                 </div>
 //                 <div className="w-[95%] sm:w-[90%] md:w-[80%] px-5 sm:px-10 md:pr-20 md:pl-32 xl:pl-5 xl:pr-16">
 //                     <div className="pb-5">
@@ -289,23 +267,23 @@ export default VendorChatPage;
 //                     </div>
 //                     <div className="relative flex gap-4 h-[calc(100vh-200px)]">
 //                         <div className="w-1/3 bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-4 max-h-full overflow-y-auto">
-//                             {clients.length > 0 ? (
+//                             {vendors.length > 0 ? (
 //                                 <ChatList
-//                                     conversations={clients.map((client) => ({
-//                                         id: client.id,
-//                                         name: client.email,
+//                                     conversations={vendors.map((vendor) => ({
+//                                         id: vendor.id,
+//                                         name: vendor.email,
 //                                         lastMessage: 'Click to start chatting',
 //                                     }))}
 //                                     onSelect={handleChatSelect}
 //                                 />
 //                             ) : (
 //                                 <div className="flex items-center justify-center h-full">
-//                                     <p>No clients available for chat.</p>
+//                                     <p>No vendors available for chat.</p>
 //                                 </div>
 //                             )}
 //                         </div>
 //                         <div className="w-2/3 bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-4 max-h-full overflow-y-auto">
-//                             {selectedClient ? (
+//                             {selectedVendor ? (
 //                                 <ChatWindow messages={messages} onSend={handleSend} />
 //                             ) : (
 //                                 <div className="flex flex-col items-center justify-center h-full bg-gray-50">
@@ -320,4 +298,4 @@ export default VendorChatPage;
 //     );
 // };
 
-// export default VendorChatPage;
+// export default ChatPage;
