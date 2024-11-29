@@ -73,6 +73,7 @@ function BusinessDetailsForm() {
     city: "",
     branch: "",
     description: "",
+    payment_key: "",
     images: "",
   });
 
@@ -84,8 +85,9 @@ function BusinessDetailsForm() {
       try {
         const response =await fetchVendorById();
         const { vendorDetails } = response;
+        const { paymentDetails } = response;
 
-        if (!vendorDetails) {
+        if (!vendorDetails && !paymentDetails) {
           // If no vendor data is found, set formData with default values
           setFormData({
             pic: "",
@@ -98,6 +100,7 @@ function BusinessDetailsForm() {
             city: "",
             branch: [],
             description: "",
+            payment_key: "",
             images: [],
           });
           setItems([]); // No branches
@@ -179,6 +182,7 @@ function BusinessDetailsForm() {
           city: vendorDetails.city || "",
           branch: parsedBranches || [],
           description: vendorDetails.description || "",
+          payment_key: paymentDetails.payment_key || "",
           images: vendorDetails.images || [],
         });
 
@@ -187,7 +191,7 @@ function BusinessDetailsForm() {
           `${api.defaults.baseURL}/uploads/vendor/pic/${vendorDetails.pic}`
         );
 
-        console.log("Fetch Data:", vendorDetails);
+        console.log("Fetch Data:", vendorDetails, paymentDetails);
         // Swal.fire({
         //   icon: "success",
         //   title: "Success!",
@@ -251,6 +255,7 @@ function BusinessDetailsForm() {
         formData.city,
         JSON.stringify(branchesData), // Ensure the branches data is sent as a string
         formData.description,
+        formData.payment_key,
         formData.pic, // Profile picture file
         uploadedImages // Other image files
       );
@@ -403,6 +408,16 @@ function BusinessDetailsForm() {
                 placeholder="City "
                 type="text"
                 value={formData.city}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="md:w-[45%] w-full">
+              <InputField2
+                id="payment_key"
+                name="Payment Key "
+                placeholder="Payment Key "
+                type="text"
+                value={formData.payment_key}
                 onChange={handleChange}
               />
             </div>
