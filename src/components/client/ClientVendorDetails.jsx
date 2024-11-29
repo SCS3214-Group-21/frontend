@@ -56,6 +56,7 @@ function ClientVendorDetails({ MainImgPath, Name, Type, StarCount, LocationCity,
                 <div className="h-96">
                     <div className='flex justify-center mt-5 space-x-10 '>
                         <div className='flex flex-row flex-wrap items-center justify-center gap-10'>
+                            
                             {packages.map((pkg, index) => (
                                 <div key={index} onClick={() => openModal(pkg)}>
                                     <ServiceDescriptionCard
@@ -65,7 +66,7 @@ function ClientVendorDetails({ MainImgPath, Name, Type, StarCount, LocationCity,
                                         name={pkg.name}
                                         price={pkg.price}
                                         description={pkg.description}
-                                        showStars={pkg.showStars}
+                                        showStars= {4}
                                     />
                                 </div>
                             ))}

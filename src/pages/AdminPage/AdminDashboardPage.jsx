@@ -5,6 +5,7 @@ import AdminGraph1 from "../../components/admin/AdminGraph1.jsx";
 import AdminGraph2 from "../../components/admin/AdminGraph2.jsx";
 
 function AdminDashboardPage() {
+    
     return (
         <div>
             <AdminHeader />
