@@ -11,7 +11,7 @@ function PlanBudgetForm2() {
     const navigate = useNavigate(); // Hook to navigate programmatically
     const [showSelectedServicePopup, setShowSelectedServicePopup] = useState(false);
     const [showChangePackagesPopup, setShowChangePackagesPopup] = useState(false);
-    const [services, setServices] = useState([]);
+    const [services, setServices] = useState([]); // This will hold the service details
     const [packageIds, setPackageIds] = useState({}); // To store selected package IDs
     const [selectedPackageId, setSelectedPackageId] = useState(null);
 
@@ -19,29 +19,60 @@ function PlanBudgetForm2() {
     useEffect(() => {
         const fetchBudgetDetails = async () => {
             try {
-                const response = await getInitialBudget(id); // Pass the dynamic id to the API function
-                const { suggestions } = response;
+                const storedSuggestions = localStorage.getItem('suggestions');
+                if (storedSuggestions) {
+                    // If suggestions exist in localStorage, use them to set services state
+                    const suggestions = JSON.parse(storedSuggestions);
 
-                const transformedServices = Object.keys(suggestions)
-                    .filter((key) => suggestions[key] !== null) // Exclude null packages
-                    .map((key, index) => {
-                        const suggestion = suggestions[key];
-                        return {
-                            id: index + 1,
-                            name: key.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase()), // Format key
-                            package: suggestion.name,
-                            packageId: suggestion.package_id, // Capture the package ID
-                        };
-                    });
+                    const transformedServices = Object.keys(suggestions)
+                        .filter((key) => suggestions[key] !== null) // Exclude null packages
+                        .map((key, index) => {
+                            const suggestion = suggestions[key];
+                            return {
+                                id: index + 1,
+                                name: key.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase()), // Format key
+                                package: suggestion.name,
+                                packageId: suggestion.package_id, // Capture the package ID
+                            };
+                        });
 
-                // Initialize packageIds state with the package IDs from the response
-                const initialPackageIds = Object.keys(suggestions).reduce((acc, key) => {
-                    acc[key] = suggestions[key] ? suggestions[key].package_id : null;
-                    return acc;
-                }, {});
+                    // Initialize packageIds state with the package IDs from the response
+                    const initialPackageIds = Object.keys(suggestions).reduce((acc, key) => {
+                        acc[key] = suggestions[key] ? suggestions[key].package_id : null;
+                        return acc;
+                    }, {});
 
-                setServices(transformedServices);
-                setPackageIds(initialPackageIds);
+                    setServices(transformedServices);
+                    setPackageIds(initialPackageIds);
+                } else {
+                    // If suggestions do not exist in localStorage, fetch them from the API
+                    const response = await getInitialBudget(id); // Fetch budget details
+                    const { suggestions } = response;
+
+                    // Store the fetched suggestions in localStorage
+                    localStorage.setItem('suggestions', JSON.stringify(suggestions));
+
+                    const transformedServices = Object.keys(suggestions)
+                        .filter((key) => suggestions[key] !== null) // Exclude null packages
+                        .map((key, index) => {
+                            const suggestion = suggestions[key];
+                            return {
+                                id: index + 1,
+                                name: key.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase()), // Format key
+                                package: suggestion.name,
+                                packageId: suggestion.package_id, // Capture the package ID
+                            };
+                        });
+
+                    // Initialize packageIds state with the package IDs from the response
+                    const initialPackageIds = Object.keys(suggestions).reduce((acc, key) => {
+                        acc[key] = suggestions[key] ? suggestions[key].package_id : null;
+                        return acc;
+                    }, {});
+
+                    setServices(transformedServices);
+                    setPackageIds(initialPackageIds);
+                }
             } catch (error) {
                 console.error(error.message);
             }
@@ -50,6 +81,7 @@ function PlanBudgetForm2() {
         fetchBudgetDetails();
     }, [id]);
 
+    // Handle saving changes
     const handleSaveChanges = async () => {
         try {
             // Destructure package IDs for the update API
@@ -89,6 +121,11 @@ function PlanBudgetForm2() {
                 catering
             );
 
+            // // Update localStorage after successful changes
+            // localStorage.setItem('packageIds', JSON.stringify(packageIds));
+            // Clear the 'suggestions' key from localStorage
+            localStorage.removeItem('suggestions');
+
             // Show SweetAlert success message and navigate
             Swal.fire({
                 icon: 'success',
@@ -109,19 +146,24 @@ function PlanBudgetForm2() {
         }
     };
 
+    // Handle "view" button click
     const handleViewClick = (packageId) => {
         setSelectedPackageId(packageId); // Set the selected package ID
         setShowSelectedServicePopup(true);
     };
 
+    // Handle close of the SelectedService popup
     const handleCloseSelectedServicePopup = () => {
         setShowSelectedServicePopup(false);
     };
 
-    const handleChangeClick = () => {
+    // Handle "change" button click
+    const handleChangeClick = (serviceName) => {
+        setSelectedPackageId(serviceName); // Store the selected service category (e.g., "photography")
         setShowChangePackagesPopup(true);
     };
 
+    // Handle close of the ChangePackages popup
     const handleCloseChangePackagesPopup = () => {
         setShowChangePackagesPopup(false);
     };
@@ -140,7 +182,7 @@ function PlanBudgetForm2() {
                         </div>
                         <div className="flex flex-row flex-wrap items-center justify-end w-full gap-5">
                             <CustomPinkButton text={"view"} onClick={() => handleViewClick(service.packageId)} />
-                            <CustomPinkButton text={"change"} onClick={handleChangeClick} />
+                            <CustomPinkButton text={"change"} onClick={() => handleChangeClick(service.name)} />
                         </div>
                     </div>
                 ))}
@@ -158,23 +200,16 @@ function PlanBudgetForm2() {
             </form>
 
             {/* Conditionally render the SelectedService component */}
-            {/* {showSelectedServicePopup && <SelectedService onClose={handleCloseSelectedServicePopup} />} */}
             {showSelectedServicePopup && (
                 <SelectedService packageId={selectedPackageId} onClose={handleCloseSelectedServicePopup} />
             )}
 
             {/* Conditionally render the ChangePackages component */}
-            {showChangePackagesPopup && <ChangePackages onClose={handleCloseChangePackagesPopup} />}
+            {showChangePackagesPopup && (
+                <ChangePackages serviceName={selectedPackageId} planId={id} onClose={handleCloseChangePackagesPopup} />
+            )}
         </div>
     );
 }
 
 export default PlanBudgetForm2;
-
-
-
-
-
-
-
-

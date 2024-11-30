@@ -38,7 +38,39 @@ function SelectedService({ packageId, onClose }) {
     }, [packageId]);
 
     const handleOkClick = () => {
-        onClose(); // Close the popup
+        // Update the suggestions in localStorage
+        if (packageDetails) {
+            // Retrieve the current suggestions from localStorage
+            const storedSuggestions = JSON.parse(localStorage.getItem('suggestions')) || {};
+
+            // Update the relevant package (e.g., photography) with the new details
+            const updatedSuggestions = {
+                ...storedSuggestions,
+                [packageDetails.role.toLowerCase()]: {
+                    vendor_id: packageDetails.vendor_id,
+                    package_id: packageDetails.package_id,
+                    name: packageDetails.name,
+                    img: packageDetails.img,
+                    amount: packageDetails.amount,
+                    items: JSON.stringify(packageDetails.items), // Make sure items is stored as a string
+                    description: packageDetails.description,
+                    is_enable: true,
+                    role: packageDetails.role,
+                },
+            };
+
+            // Store the updated suggestions back to localStorage
+            localStorage.setItem('suggestions', JSON.stringify(updatedSuggestions));
+
+            // Pass the updated suggestions back to the parent component (optional)
+            // onUpdateSuggestions(updatedSuggestions);
+
+            // Close the popup
+            // onClose();
+            // Reload the page
+            window.location.reload();
+            
+        }
     };
 
     if (loading) {
@@ -81,9 +113,13 @@ function SelectedService({ packageId, onClose }) {
                     </p>
                 </div>
                 <h1 className="text-black font-sans font-semibold text-2xl text-center">{packageDetails.amount} LKR</h1>
-                <div className='w-full flex justify-center items-center'>
-                    <PrimaryButton onClick={handleOkClick} text="OK" />
-                </div>
+                <button
+                    type="button"
+                    onClick={handleOkClick} // Trigger the save changes handler
+                    className="border-0 rounded-full px-8 h-10 bg-custom-primary text-white"
+                >
+                    OK
+                </button>
             </div>
         </div>
     );

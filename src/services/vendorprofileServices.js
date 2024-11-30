@@ -53,3 +53,7 @@ export const fetchVendorById = async () => {
         throw new Error('Failed to fetch packages');
     }
 };
+
+export const fetchHotelVendors = async () => {
+    
+}

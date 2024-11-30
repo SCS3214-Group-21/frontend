@@ -135,3 +135,31 @@ export const getMinPackages = async () => {
     throw new Error("Failed to fetch minimum budget!");
   }
 };
+
+
+export const getMinPackagesForCategory = async (planId, category) => {
+  if (!planId || !category) {
+      console.error('Invalid planId or category:', { planId, category });
+      throw new Error('Invalid planId or category');
+  }
+
+  try {
+      const normalizedCategory = category.toLowerCase();
+      console.log('Fetching packages for:', { planId, normalizedCategory });
+      const response = await api.post(
+          `budget/find-packages`,
+          { planId, category: normalizedCategory },
+          {
+              headers: {
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+          }
+      );
+      console.log('Fetched packages:', response.data);
+      return response.data;
+  } catch (error) {
+      console.error('Failed to fetch packages:', error.response?.data || error.message);
+      throw new Error('Failed to fetch packages!');
+  }
+};
+
