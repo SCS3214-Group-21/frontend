@@ -48,6 +48,7 @@ import ViewSaloonPage from '../pages/ClientVendorsPage/ViewSaloonPage.jsx';
 // import Logout Component
 import Logout from '../components/Logout.jsx';
 import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
+import MyBudgetPage from '../pages/ClientBudgetPage/MyBudgetPage.jsx';
 
 const ClientRoutes = () => {
   const token = getToken(); // Get the token from storage
@@ -91,6 +92,11 @@ const ClientRoutes = () => {
       <Route
         path="/viewbudget/:id"
         element={isAuthenticatedClient ? <PlanBudgetPage2 /> : <Navigate to="/login" />}
+      />
+
+      <Route
+        path="/viewmybudget/:id"
+        element={isAuthenticatedClient ? <MyBudgetPage /> : <Navigate to="/login" />}
       />
 
       {/* Notifications */}
