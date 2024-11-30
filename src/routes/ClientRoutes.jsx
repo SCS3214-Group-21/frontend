@@ -74,7 +74,7 @@ const ClientRoutes = () => {
         element={isAuthenticatedClient ? <AllHotelsPage /> : <Navigate to="/login" />}
       />
       <Route
-        path="vendors/hoteldetails"
+        path="vendors/hoteldetails/:id"
         element={isAuthenticatedClient ? <HotelVendorDetails /> : <Navigate to="/login" />}
       />
 

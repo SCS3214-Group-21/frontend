@@ -1,11 +1,11 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import PrimaryNoneFillButton from '../ui/PrimaryNoneFillButton';
 import SecondaryNoneFillButton from '../ui/SecondaryNoneFillButton';
 import FavoriteButton from '../ui/FavoriteButton';
 import BooknowPopup from './BooknowPopup';
 import GetQuotationPopup from './GetQuotationPopup';
 
-function PackageModal({ selectedPackage, packageItems, closeModal, downloadPDF, vendorName, vendorType }) {
+function PackageModal({ selectedPackage, closeModal, downloadPDF, vendorName, vendorType,vendorId }) {
     const [isBookNowOpen, setIsBookNowOpen] = useState(false);
     const [isQuotationOpen, setIsQuotationOpen] = useState(false);
 
@@ -23,7 +23,13 @@ function PackageModal({ selectedPackage, packageItems, closeModal, downloadPDF, 
                     onClick={downloadPDF}
                 >
                     <svg className="w-6 h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 13V4M7 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2m-1-5-4 5-4-5m9 8h.01" />
+                        <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M12 13V4M7 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2m-1-5-4 5-4-5m9 8h.01"
+                        />
                     </svg>
                 </button>
                 <button
@@ -37,18 +43,12 @@ function PackageModal({ selectedPackage, packageItems, closeModal, downloadPDF, 
                     <div className="ml-5">
                         <FavoriteButton />
                     </div>
-                    <div className="ml-5">
-                        <svg className="w-6 h-6 text-black " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16h13M4 16l4-4m-4 4 4 4M20 8H7m13 0-4 4m4-4-4-4" />
-                        </svg>
-                    </div>
-
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 py-4 form-control">
-                    {packageItems[selectedPackage.value]?.map((item, index) => (
+                    {JSON.parse(selectedPackage.items)?.map((item, index) => (
                         <label key={index} className="cursor-pointer label">
-                            <span className="text-black label-text"> {item.label}</span>
+                            <span className="text-black label-text">{item}</span>
                             <input
                                 type="checkbox"
                                 defaultChecked
@@ -57,33 +57,34 @@ function PackageModal({ selectedPackage, packageItems, closeModal, downloadPDF, 
                         </label>
                     ))}
                 </div>
-                {selectedPackage.additional && (
-                    <div className="relative mt-4">
-                        <div className="absolute -top-3 left-3 bg-[#f9e9e3] px-1">
-                            <span className="text-sm text-gray-700">Description</span>
-                        </div>
-                        <p className="w-full border-black bg-[#f9e9e3] border mt-5 p-2">
-                            {selectedPackage.additional}
-                        </p>
+                <div className="relative mt-4">
+                    <div className="absolute -top-3 left-3 bg-[#f9e9e3] px-1">
+                        <span className="text-sm text-gray-700">Description</span>
                     </div>
-                )}
-                <div className='my-4 text-xl font-bold text-center'>
-                    {selectedPackage.price} <span className='text-sm font-semibold'>per person</span>
+                    <p className="w-full border-black bg-[#f9e9e3] border mt-5 p-2">
+                        {selectedPackage.description}
+                    
+                        
+                    </p>
+                   
                 </div>
-                <div className='flex mt-4'>
+               
+         <div className='my-4 text-xl font-bold text-center'>
+         {selectedPackage.price} <span className='text-sm font-semibold'>per person</span>
+         </div>
+                <div className="flex mt-4">
                     <div onClick={openQuotation}>
-                        <PrimaryNoneFillButton text="Get Quotation" /></div>
+                        <PrimaryNoneFillButton text="Get Quotation" />
+                    </div>
                     <div className="absolute mb-4 right-4 bottom" onClick={openBookNow}>
                         <SecondaryNoneFillButton text="Book Now!" />
                     </div>
                 </div>
             </div>
-            {/* BooknowPopup Conditional Rendering */}
-            {isBookNowOpen && <BooknowPopup name={vendorName} type={vendorType} pkg={selectedPackage} closePopup={closeBookNow} />}
-            {isQuotationOpen && <GetQuotationPopup closePopup={closeQuotation} pkg={selectedPackage} pkgItems={packageItems} />}
-
+            {isBookNowOpen && <BooknowPopup name={vendorName} type={vendorType} pkg={selectedPackage} vendor_id={vendorId} closePopup={closeBookNow} pkgId={selectedPackage.id} />}
+            {isQuotationOpen && <GetQuotationPopup closePopup={closeQuotation} pkgId={selectedPackage.id} pkgItems={selectedPackage.items} vendor_id={vendorId} />}
         </div>
-    )
+    );
 }
 
 export default PackageModal;

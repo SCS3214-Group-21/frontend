@@ -1,48 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import RegisterHeader from '../../components/common/RegisterHeader';
 import ClientSidebar from '../../components/client/ClientSidebar';
 import Breadcrumb from '../../components/ui/Breadcrumb';
 import ClientVendorDetails from '../../components/client/ClientVendorDetails';
+import { fetchVendorDetailsById } from '../../services/packageService';
 
 function HotelVendorDetails() {
+    const { id } = useParams(); // Get vendor ID from URL
+    const [vendorDetails, setVendorDetails] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
     const breadcrumbItems = [
-        { label: 'My Wedding', href: '.././mywedding' },
-        { label: 'Vendors', href: '../vendors' },
-        { label: 'Hotels', href: './hotels' },
-        { label: 'Shangrila' },
+        { label: 'My Wedding', href: '../../mywedding' },
+        { label: 'Vendors', href: '../../vendors' },
+        { label: 'Hotels', href: '../hotels' },
+        { label: vendorDetails?.Vendor.business_name || 'Loading...' },
     ];
 
-    const images = [
-        'floral.png', 'cars.png', 'hotel.png', 'floral.png',
-        'floral.png', 'floral.png', 'floral.png', 'floral.png', 'floral.png'
-    ];
+    useEffect(() => {
+        const fetchDetails = async () => {
+            try {
+                const details = await fetchVendorDetailsById(id);
+                setVendorDetails(details);
+            } catch (error) {
+                console.error(error.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
-    const packages = [
-        { img: "../../src/assets/images/Images/03.png", alt: "Package 01", name: "Package 01", price: "20000LKR", description: "maximum 150 guests", showStars: false, value: 'package1', additional: 'This is package more details in paragraph.I want to show how this works and this is give more better idea about the package' },
-        { img: "../../src/assets/images/Images/03.png", alt: "Package 02", name: "Package 02", price: "25000LKR", description: "maximum 200 guests", showStars: false, value: 'package2' },
-        { img: "../../src/assets/images/Images/03.png", alt: "Package 03", name: "Package 03", price: "25000LKR", description: "maximum 200 guests", showStars: false, value: 'package3' },
-        // Add more packages as needed
-    ];
+        fetchDetails();
+    }, [id]);
 
-    const packageItems = {
-        package1: [
-            { label: 'Welcome Drinks', type: 'text', value: 'welcomeDrink' },
-            { label: 'Complimentary Meal Tasting', type: 'text', value: 'mealTasting' },
-            // More items
-        ],
-        package2: [
-            { label: 'Decorated Venue', type: 'text', value: 'decoratedVenue' },
-            { label: 'Transportation Services', type: 'text', value: 'transportation' },
-            // More items
-        ],
-        package3: [
-            { label: 'Decorated Venue', type: 'text', value: 'decoratedVenue' },
-            { label: 'Transportation Services', type: 'text', value: 'transportation' },
-            // More items
-        ],
+    if (isLoading) {
+        return <p>Loading vendor details...</p>;
+    }
 
-        // Add more package items as needed
-    };
+    if (!vendorDetails) {
+        return <p>Vendor details not found.</p>;
+    }
+
+    const packages = vendorDetails.Packages.map((pkg) => ({
+        img: `http://localhost:5000/uploads/${pkg.img}`,
+        alt: pkg.name,
+        name: pkg.name,
+        price: `${pkg.amount} LKR`,
+        description: pkg.description,
+        items: pkg.items, // This should be displayed as needed
+        id: pkg.package_id,
+    }));
 
     return (
         <>
@@ -55,18 +62,18 @@ function HotelVendorDetails() {
                     <div className="pb-5">
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
-                    <div className="mt-4 ml-4 mr-4 ">
+                    <div className="mt-4 ml-4 mr-4">
                         <ClientVendorDetails
-                            MainImgPath="../../src/assets/images/Images/03.png"
-                            Name="Shangri-la"
-                            Type="Hotel"
+                            MainImgPath={`http://localhost:5000/uploads/vendor/pic/${vendorDetails.Vendor.pic}`}
+                            Name={vendorDetails.Vendor.business_name}
+                            Type={vendorDetails.role}
                             StarCount="4"
-                            LocationCity="Colombo, Hambantota"
-                            Email="shangrila@gmail.com"
-                            ServiceDescription="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore autem ea eum qui? Error ipsum ut voluptate quia mollitia exercitationem accusantium at, provident a animi, illum odio quas sapiente tempore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur iste enim voluptatem ipsam numquam, animi porro omnis ab, nemo exercitationem quod optio. Ad velit consequatur assumenda ratione minus molestiae numquam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, necessitatibus excepturi cumque ratione cum debitis quidem molestias, esse recusandae, quaerat veniam ea iste autem! Modi eum quis culpa tempora deleniti."
+                            LocationCity={vendorDetails.Vendor.city}
+                            Email={vendorDetails.email}
+                            ServiceDescription={vendorDetails.Vendor.description}
                             packages={packages}
-                            packageItems={packageItems}
-                            images={images}
+                            images={JSON.parse(vendorDetails.Vendor.images)} // Parse images if stored as JSON
+                            vendorId ={vendorDetails.id}
                         />
                     </div>
                 </div>

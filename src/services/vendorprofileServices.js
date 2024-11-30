@@ -52,3 +52,18 @@ export const fetchVendorById = async () => {
         throw new Error('Failed to fetch packages');
     }
 };
+
+export const fetchHotelVendors = async () => {
+    try {
+        const response = await api.get(`/vendor/get-vendors/hotel`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
+        return response.data.vendorDetails; // Return the vendor details from the response
+    } catch (error) {
+        console.error('Server error:', error.response?.data || error.message);
+        throw new Error('Failed to fetch hotel vendors');
+    }
+};
