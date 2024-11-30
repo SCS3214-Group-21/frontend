@@ -13,7 +13,7 @@ function ServiceDescriptionCard(props) {
                 <div className="px-5 pb-4">
                     <h6 className="text-lg font-semibold tracking-tight text-gray-900">{name}</h6>
                     <div className="flex items-center justify-between mt-2">
-                         <span className="text-lg font-bold text-gray-900">Price per person<br />{price}</span> 
+                         {/* <span className="text-lg font-bold text-gray-900">Price per person<br />{price}</span>  */}
                     </div>
                     <p className="mt-2 text-sm text-gray-600 line-clamp-2">
                         {description}

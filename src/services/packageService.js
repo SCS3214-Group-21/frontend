@@ -143,16 +143,18 @@ export const ChangeStatus = async (id) => {
     }
 };
 
+
 export const fetchVendorDetailsById = async (id) => {
     try {
-        const response = await api.delete(`/package/package/${id}`, {
+        const response = await api.get(`/package/vendor/details/${id}`, {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`,  // Add token from localStorage
-            }
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
         });
-        return response.data;  // Return the actual API response (if available)
+        return response.data.vendorDetails;
     } catch (error) {
-        // Include the error message from the server if available
-        throw new Error(error.response?.data?.message || 'Failed to delete package!');
+        console.error('Failed to fetch vendor details:', error.response?.data || error.message);
+        throw new Error('Error fetching vendor details');
     }
 };
