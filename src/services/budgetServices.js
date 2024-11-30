@@ -163,3 +163,79 @@ export const getMinPackagesForCategory = async (planId, category) => {
   }
 };
 
+export const getAllPackages = async () => {
+  try {
+    const response = await api.get(`/budget/get-all`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    console.log("Fetch budget: ", response.data);
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch budget!");
+  }
+}
+
+// export const ChangeBudgetStatus = async (id) => {
+//     try {
+//         const response = await api.patch(`/budget/budget-status/${id}`, null, {
+//             headers: {
+//                 Authorization: `Bearer ${localStorage.getItem("token")}`,
+//             },
+//         });
+//         return response.data;
+//     } catch (error) {
+//         throw new Error(error.response?.data?.message || "Failed to update status.");
+//     }
+// };
+
+export const ChangeBudgetStatus = async (id) => {
+  try {
+      const token = localStorage.getItem('token');
+      if (!token) throw new Error('No token found in localStorage.');
+
+      const response = await api.put(
+          `/budget/budget-status/${id}`, 
+          {}, // Pass an empty object if no payload is required
+          {
+              headers: {
+                  Authorization: `Bearer ${token}`, // Correctly include the Authorization header
+              },
+          }
+      );
+
+      return response.data;
+  } catch (error) {
+      console.error('Error toggling package status:', error.response?.data || error.message);
+      throw error; // Re-throw the error for handling in the caller
+  }
+};
+
+export const getBudgetById = async (id) => {
+  try {
+      const response = await api.get(`budget/get-one/${id}`, {
+          headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+      });
+      return response.data;  // This will be the data object you use
+  } catch (error) {
+      throw new Error("Failed to fetch budget!");
+  }
+};
+
+export const deleteBudget = async (id) => {
+  try {
+      const response = await api.delete(`/budget/delete/${id}`, {
+          headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,  // Add token from localStorage
+          }
+      });
+      return response.data;  // Return the actual API response (if available)
+  } catch (error) {
+      // Include the error message from the server if available
+      throw new Error(error.response?.data?.message || 'Failed to delete budget!');
+  }
+};
+

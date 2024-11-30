@@ -1,51 +1,76 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
 import ClientSidebar from "../../components/client/ClientSidebar.jsx";
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 import AddCard from '../../components/common/AddCard.jsx';
 import PackageCard from '../../components/common/PackageCard.jsx';
-import Pagination from '../../components/common/Pagination.jsx'
-
-const items = [
-    { img: '../src/assets/images/Images/hotel.png', text: 'Budget 01', link: '/client/viewbudget', },
-    { img: '../src/assets/Images/Images/hotel6.jpeg', text: 'Budget 02', link: '/viewpackage', },
-    { img: '../src/assets/Images/Images/hotel7.jpeg', text: 'Budget 03', link: '/viewpackage', },
-    { img: '../src/assets/Images/Images/03.png', text: 'Budget 04', link: '/viewpackage', },
-    { img: '../src/assets/Images/Images/01.png', text: 'Budget 05', link: '/viewpackage', },
-    { img: '../src/assets/Images/Images/hotel6.jpeg', text: 'Budget 06', link: '/viewpackage', },
-    { img: '../src/assets/Images/Images/hotel7.jpeg', text: 'Budget 07', link: '/viewpackage', },
-    { img: '../src/assets/Images/Images/hotel8.jpeg', text: 'Budget 08', link: '/viewpackage', },
-];
-
-const renderItems = (currentItems) => (
-    // <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-    <div className="flex flex-row flex-wrap items-center justify-center gap-10">
-        <div className="flex items-center justify-center p-2 bg-white h-60 w-52">
-            <AddCard
-                text={"Plan Budget"}
-                link={"/client/planbudget"}
-            />
-        </div>
-        {currentItems.map((item, index) => (
-            <div key={index} className="flex items-center justify-center p-2 bg-white h-60 w-52">
-                <PackageCard
-                    img={item.img}
-                    text={item.text}
-                    button={"See more"}
-                    link={item.link}
-                    showToggle={false}
-                />
-            </div>
-        ))}
-    </div>
-    // </div>
-);
+import Pagination from '../../components/common/Pagination.jsx';
+import { getAllPackages } from "../../services/budgetServices.js";
 
 function BudgetPage() {
+    const [budgets, setBudgets] = useState([]); // State to store budget data
+    const [loading, setLoading] = useState(true); // Loading state
+    const [error, setError] = useState(null); // Error state
+
+    // Fetch budget data on component mount
+    useEffect(() => {
+        const fetchBudgets = async () => {
+            try {
+                const response = await getAllPackages();
+                setBudgets(response.data); // Update state with fetched data
+                setLoading(false);
+            } catch (err) {
+                setError(err.message);
+                setLoading(false);
+            }
+        };
+        fetchBudgets();
+    }, []);
+
+    // Breadcrumb items
     const breadcrumbItems = [
         { label: 'My Wedding', href: './mywedding' },
         { label: 'Budget' },
     ];
+
+    // Render individual items in the pagination
+    const renderItems = (currentItems) => (
+        <div className="flex flex-row flex-wrap items-center justify-center gap-10">
+            <div className="flex items-center justify-center p-2 bg-white h-60 w-52">
+                <AddCard text={"Plan Budget"} link={"/client/planbudget"} />
+            </div>
+            {currentItems.map((budget, index) => (
+                <div key={index} className="flex items-center justify-center p-2 bg-white h-60 w-52">
+                    <PackageCard
+                        img={"../src/assets/images/Images/hotel.png"} // Replace with relevant image logic
+                        text={`Budget ${budget.plan_id}`} // Display budget info
+                        button={"See more"}
+                        link={`/client/viewmybudget/${budget.plan_id}`} // Dynamic link
+                        showToggle1={false}
+                        id={budget.plan_id}
+                        initialIsEnabled={budget.status === 1} // Example: use status as an enabled toggle
+                    />
+                </div>
+            ))}
+        </div>
+    );
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <p>Loading budgets...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <p>Error loading budgets: {error}</p>
+            </div>
+        );
+    }
+
     return (
         <div>
             <RegisterHeader />
@@ -61,20 +86,18 @@ function BudgetPage() {
                         <h1 className='text-4xl font-bold text-custom-primary'>Budget</h1>
                     </div>
                     <div className="pb-5">
-                        <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row items-center justify-center gap-10 sm:gap-5 flex-wrap'>
-                            {/* <div className="flex items-center justify-center p-2 bg-white h-60 w-52">
-                                <AddCard
-                                    text={"Plan Budget"}
-                                    link={"/client/planbudget"}
-                                />
-                            </div> */}
-                            <Pagination items={items} itemsPerPage={5} renderItems={renderItems} />
+                        <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8'>
+                            <Pagination
+                                items={budgets} // Use fetched budgets
+                                itemsPerPage={15} // Customize items per page
+                                renderItems={renderItems} // Pass the render function
+                            />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default BudgetPage
+export default BudgetPage;
