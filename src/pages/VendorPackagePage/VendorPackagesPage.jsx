@@ -55,6 +55,7 @@ function VendorPackagesPage() {
                         text={item.name}
                         button={"See more"}
                         link={`./viewpackage/${item.package_id}`}
+                        showToggle2={false}
                         id={item.package_id}
                         initialIsEnabled={item.is_enable}
                     />

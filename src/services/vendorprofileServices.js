@@ -1,6 +1,6 @@
 import api from '../api';
 
-export const updateVendor = async(first_name, last_name, business_name, contact_number, email, address, city, branch, description, profilePic, uploadedImages ) => {
+export const updateVendor = async(first_name, last_name, business_name, contact_number, email, address, city, branch, description, payment_key, profilePic, uploadedImages ) => {
     try{
         const formData = new FormData();
         formData.append('first_name', first_name);
@@ -12,6 +12,7 @@ export const updateVendor = async(first_name, last_name, business_name, contact_
         formData.append('city', city);
         formData.append('branch', branch);
         formData.append('description', description);
+        formData.append('payment_key', payment_key)
 
         // Append the profile picture (assuming it's a File object)
         if (profilePic) {

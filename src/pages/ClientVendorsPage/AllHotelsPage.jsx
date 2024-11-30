@@ -96,3 +96,4 @@ const AllHotelsPage = () => {
 };
 
 export default AllHotelsPage;
+

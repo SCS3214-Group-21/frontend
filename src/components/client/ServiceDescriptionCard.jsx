@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 function ServiceDescriptionCard(props) {
@@ -47,3 +48,4 @@ ServiceDescriptionCard.defaultProps = {
 };
 
 export default ServiceDescriptionCard;
+
