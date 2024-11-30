@@ -1,10 +1,12 @@
-import React from 'react';
+import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { getToken, getUserRole } from '../utils/auth';
 
-import AdminDashboard from '../pages/AdminPage/AdminDashboardPage.jsx';
-import AdminManageUser from '../pages/AdminPage/AdminManageUsersPage.jsx';
-import AdminTransactions from '../pages/AdminPage/AdminTransactions.jsx';
+// import Logout Component
+import Logout from '../components/Logout.jsx';
+import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
+import AdminDashboardPage from '../pages/AdminPage/AdminDashboardPage.jsx';
+import AdminManageUsersPage from '../pages/AdminPage/AdminManageUsersPage.jsx';
 import AdminBlogPage from '../pages/AdminPage/AdminBlogPage.jsx';
 import AdminCreateBlogPage from '../pages/AdminPage/AdminCreateBlogPage.jsx';
 import AdminBlogAcceptPage from '../pages/AdminPage/AdminBlogAcceptPage.jsx';
@@ -67,4 +69,4 @@ function AdminRoutes() {
     );
 }
 
-export default AdminRoutes;
+export default AdminRoutes
