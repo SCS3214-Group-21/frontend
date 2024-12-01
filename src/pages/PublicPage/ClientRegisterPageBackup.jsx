@@ -10,6 +10,9 @@ import ClientRegistrationHeader from "../../components/common/ClientRegistration
 import backgroundImage from '../../assets/images/login/l1.png';
 import { registerUser } from '../../services/authServices.js';
 
+// Import SweetAlert2
+import Swal from 'sweetalert2';
+
 export default function ClientRegisterPage() {
     const [formData, setFormData] = useState({ email: '', password: '', confirmPassword: '' });
     const [error, setError] = useState('');
@@ -28,11 +31,27 @@ export default function ClientRegisterPage() {
 
         try {
             const response = await registerUser({ email: formData.email, password: formData.password, role: 'client' });
-            alert(response.msg);  // Success message from the server
-            navigate('/login');   // Redirect to login after successful registration
+
+            // Success SweetAlert
+            Swal.fire({
+                title: 'Registration Successful!',
+                text: response.msg,  // Success message from the server
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                navigate('/login');  // Redirect to login page after successful registration
+            });
+
         } catch (error) {
             console.error("Registration failed: ", error);
-            setError('Registration failed!');
+
+            // Error SweetAlert
+            Swal.fire({
+                title: 'Registration Failed!',
+                text: 'An error occurred while registering. Please try again later.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
 
@@ -95,15 +114,15 @@ export default function ClientRegisterPage() {
                             </button>
                         </form>
 
-                        <div className="flex items-center w-4/5 mt-2 mb-3">
+                        {/* <div className="flex items-center w-4/5 mt-2 mb-3">
                             <div className="flex-grow border-t border-gray-400"></div>
                             <span className="mx-4">or</span>
                             <div className="flex-grow border-t border-gray-400"></div>
-                        </div>
+                        </div> */}
 
-                        <div className="flex justify-between mt-3">
+                        {/* <div className="flex justify-between mt-3">
                             <SocialButton text="Sign up with Google" />
-                        </div>
+                        </div> */}
 
                         <div className="w-4/5 mt-2 mb-2 text-[12px] text-center">
                             Already have an account..? Then{" "}

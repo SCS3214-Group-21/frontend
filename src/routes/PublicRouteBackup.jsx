@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "../pages/PublicPage/LoginPageBackup.jsx";
-import ClientRegisterPage from "../pages/PublicPage/ClientRegisterPageBackup.jsx"
+import ClientRegisterPageBackup from "../pages/PublicPage/ClientRegisterPageBackup.jsx"
 import VendorRegister01 from "../pages/PublicPage/VendorRegisterPage1.jsx";
 
 import ClientAllVendors from "../pages/ClientVendorsPage/ClientAllVendors.jsx";
@@ -79,7 +79,7 @@ function PublicRoute() {
                     {/*<Route path="/" element={<LandingPage />}></Route>*/}
                     <Route path="/" element={<LandingPage />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
-                    <Route path="/register" element={<ClientRegisterPage />}></Route>
+                    <Route path="/register" element={<ClientRegisterPageBackup />}></Route>
                     <Route path="/vendorregister" element={<VendorRegister />}></Route>
                     <Route path="/vendorregister1" element={<VendorRegister01 />}></Route>
                     {/* <Route path="/vendorregister2" element={<VendorRegister02 />}></Route>
