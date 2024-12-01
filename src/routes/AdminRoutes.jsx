@@ -12,8 +12,8 @@ import AdminCreateBlogPage from '../pages/AdminPage/AdminCreateBlogPage.jsx';
 import AdminBlogAcceptPage from '../pages/AdminPage/AdminBlogAcceptPage.jsx';
 //import AdminFeedbackPage from '../pages/AdminPage/AdminFeedbackPage.jsx';
 
-import NotFoundPage from '../pages/errors/NotFoundPage';
-import Logout from '../components/Logout.jsx';
+// import NotFoundPage from '../pages/errors/NotFoundPage';
+// import Logout from '../components/Logout.jsx';
 
 
 function AdminRoutes() {

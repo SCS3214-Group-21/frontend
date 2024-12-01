@@ -32,8 +32,8 @@ function ViewBlogPage() {
 
     const breadcrumbItems = blog
     ? [
-        { label: 'My Wedding', href: './../mywedding' },
-        { label: 'Blogs', href: '../blogs' },
+        { label: 'My Wedding', href: './../../mywedding' },
+        { label: 'Blogs', href: '../../blogs' },
         { label: blog.title },
     ]
     : [];

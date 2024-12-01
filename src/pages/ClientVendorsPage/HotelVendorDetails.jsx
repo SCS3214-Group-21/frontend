@@ -1,11 +1,10 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import RegisterHeader from '../../components/common/RegisterHeader';
 import ClientSidebar from '../../components/client/ClientSidebar';
 import Breadcrumb from '../../components/ui/Breadcrumb';
 import ClientVendorDetails from '../../components/client/ClientVendorDetails';
-// import { fetchVendorDetailsById } from '../../services/packageService';
+import { fetchVendorDetailsById } from '../../services/packageService';
 
 function HotelVendorDetails() {
     const { id } = useParams(); // Get vendor ID from URL
@@ -19,20 +18,20 @@ function HotelVendorDetails() {
         { label: vendorDetails?.Vendor.business_name || 'Loading...' },
     ];
 
-    // useEffect(() => {
-    //     const fetchDetails = async () => {
-    //         try {
-    //             const details = await fetchVendorDetailsById(id);
-    //             setVendorDetails(details);
-    //         } catch (error) {
-    //             console.error(error.message);
-    //         } finally {
-    //             setIsLoading(false);
-    //         }
-    //     };
+    useEffect(() => {
+        const fetchDetails = async () => {
+            try {
+                const details = await fetchVendorDetailsById(id);
+                setVendorDetails(details);
+            } catch (error) {
+                console.error(error.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
-    //     fetchDetails();
-    // }, [id]);
+        fetchDetails();
+    }, [id]);
 
     if (isLoading) {
         return <p>Loading vendor details...</p>;
@@ -49,6 +48,7 @@ function HotelVendorDetails() {
         price: `${pkg.amount} LKR`,
         description: pkg.description,
         items: pkg.items, // This should be displayed as needed
+        id: pkg.package_id,
     }));
 
     return (
@@ -73,6 +73,7 @@ function HotelVendorDetails() {
                             ServiceDescription={vendorDetails.Vendor.description}
                             packages={packages}
                             images={JSON.parse(vendorDetails.Vendor.images)} // Parse images if stored as JSON
+                            vendorId ={vendorDetails.id}
                         />
                     </div>
                 </div>
