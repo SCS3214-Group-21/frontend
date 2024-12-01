@@ -29,6 +29,8 @@ import VendorChatPage from "../pages/VendorViewPage/VendorChatPage.jsx";
 import VendorBlogPage from "../pages/VendorViewPage/VendorBlogPage.jsx";
 import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
 
+import VendorOrdersPage from '../pages/VendorViewPage/VendorOrdersPage.jsx';
+
 const VendorRoutes = () => {
   const token = getToken(); // Retrieve the token from storage
   const userRole = getUserRole(); // Retrieve the user role from storage
@@ -110,6 +112,10 @@ const VendorRoutes = () => {
       <Route
         path="/blog/viewmyblog/:id"
         element={isAuthenticatedVendor ? <ViewMyBlogPage /> : <Navigate to="/login" />}
+      />
+       <Route
+        path="/orders"
+        element={isAuthenticatedVendor ? <VendorOrdersPage /> : <Navigate to="/login" />}
       />
       <Route
         path="/*"
