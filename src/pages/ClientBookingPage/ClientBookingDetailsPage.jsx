@@ -12,7 +12,7 @@ import {loadStripe} from '@stripe/stripe-js';
 function ClientBookingDetailsPage(props) {
     //after create db this location hook can remove
     const location = useLocation();
-    const { vendorname, vendortype, packagename, date, price, guestcount, totalamount, status } = location.state || {};
+    const { vendorname, vendortype, packagename, date, price, guestcount, totalamount, status, vendorId } = location.state || {};
 
 
     const breadcrumbItems = [
@@ -34,7 +34,10 @@ const makePayment = async () => {
         const response = await fetch(`http://localhost:5000/payment/create-checkout-session`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ booking: bookingData }),
+            body: JSON.stringify({ 
+                booking: bookingData,
+                vendorId: vendorId  // Include vendor ID here
+            }),
         });
 
         if (!response.ok) {
