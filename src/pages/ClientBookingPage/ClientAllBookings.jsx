@@ -158,15 +158,16 @@ function ClientAllBookings() {
                                     {bookings.map((booking, index) => (
                                         <BookingStatusCard
                                             key={index}
-                                            vendorname={booking.vendor_name}
+                                            vendorname={booking.vendor.business_name}
                                             date={booking.booking_date}
                                             status={booking.status}
-                                            expiration="24hrs" // Placeholder; update based on business logic
+                                            //expiration="24hrs" // Placeholder; update based on business logic
                                             vendortype={booking.vendor_type}
                                             packagename={booking.package_name}
                                             price={booking.price}
                                             guestcount={booking.guest_count}
                                             totalamount={booking.price * booking.guest_count}
+                                            pic={booking.vendor.pic}
                                         />
                                     ))}
                                 </div>

@@ -29,6 +29,7 @@ export const getAllBookings = async () => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         });
+        console.log(response.data.bookings);
         return response.data.bookings;
     } catch (error) {
         console.error('Error fetching bookings:', error.response?.data || error.message);
