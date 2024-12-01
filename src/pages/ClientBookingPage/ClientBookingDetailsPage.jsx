@@ -12,7 +12,7 @@ import {loadStripe} from '@stripe/stripe-js';
 function ClientBookingDetailsPage(props) {
     //after create db this location hook can remove
     const location = useLocation();
-    const { vendorname, vendortype, packagename, date, price, guestcount, totalamount, status } = location.state || {};
+    const { vendorname, vendortype, packagename, date, price, guestcount, totalamount, status, vendorId } = location.state || {};
 
 
     const breadcrumbItems = [
@@ -34,7 +34,10 @@ const makePayment = async () => {
         const response = await fetch(`http://localhost:5000/payment/create-checkout-session`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ booking: bookingData }),
+            body: JSON.stringify({ 
+                booking: bookingData,
+                vendorId: vendorId  // Include vendor ID here
+            }),
         });
 
         if (!response.ok) {
@@ -72,7 +75,7 @@ const makePayment = async () => {
                     <div className="relative flex items-center justify-center pb-5">
                         <div className='relative w-full lg:w-2/3 bg-white border  border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-row  gap-10 sm:gap-5 flex-wrap text-black '>
                             <div className='absolute top-3 right-8'>
-                                Status: <span className={status === 'Pending' ? 'text-custom-primary font-bold' : 'text-custom-secondary font-bold'}>{status}</span>
+                                Status: <span className={status === 'pending' ? 'text-custom-primary font-bold' : 'text-custom-secondary font-bold'}>{status}</span>
                             </div>
                             <BookingDetailsTable vendorname={vendorname} vendortype={vendortype} packagename={packagename} bookingdate={date} price={price} guestcount={guestcount} totalamount={totalamount} />
                             <div className='absolute flex gap-4 px-2 py-1 text-sm right-8 bottom-4'>
@@ -80,9 +83,9 @@ const makePayment = async () => {
                                 {/* <SecondaryButton text="Pay Now" link="#" /> */}
                                 <button 
                                     onClick={makePayment}
-                                    disabled={status === 'Pending'} // Disable if status is "Pending"
+                                    disabled={status === 'pending'} // Disable if status is "Pending"
                                     className={`border-0 rounded-full px-8 h-10 text-white transition-all duration-[600ms] ease-in-out font-semibold
-                                        ${status === 'Pending' 
+                                        ${status === 'pending' 
                                         ? 'bg-gray-400 cursor-not-allowed'  // Disabled styling
                                         : 'bg-custom-secondary hover:bg-custom-gray hover:from-custom-gray hover:via-custom-gray hover:to-custom-gray hover:text-custom-primary hover:border-2 hover:border-custom-primary'
                                         }`}

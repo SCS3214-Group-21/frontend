@@ -11,10 +11,10 @@ function StatusButton(props) {
             textColor: 'text-white',
             text: 'Pending',
         },
-        Accepted: {
+        accept: {
             bgColor: 'bg-green-700', // Use custom-secondary color for accepted status
             textColor: 'text-white',
-            text: 'Accepted',
+            text: 'Accept',
         },
         // Add more status styles if needed
     };
@@ -24,7 +24,7 @@ function StatusButton(props) {
     return (
         <>
             <div className={`inline-block px-5 py-1 text-xs font-medium text-center ${currentStatus.textColor} ${currentStatus.bgColor} rounded-lg shadow-xl`}>
-                <span className={status === 'Pending' ? 'pending-animation' : ''}>
+                <span className={status === 'pending' ? 'pending-animation' : ''}>
                     {currentStatus.text}
                 </span>
             </div>
@@ -55,7 +55,7 @@ function StatusButton(props) {
 }
 
 StatusButton.propTypes = {
-    status: PropTypes.oneOf(['pending', 'accepted']).isRequired,
+    status: PropTypes.oneOf(['pending', 'accept']).isRequired,
 };
 
 export default StatusButton;
