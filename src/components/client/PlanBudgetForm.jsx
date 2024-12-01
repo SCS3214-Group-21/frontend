@@ -5,7 +5,7 @@ import PrimaryNoneFillButton from '../ui/PrimaryNoneFillButton';
 import PrimaryButton from '../ui/PrimaryButton';
 import CheckboxField from '../ui/CheckboxField';
 import ChangeBudget from '../common/ChangeBudget';
-import { getMinPackages, createBudget } from '../../services/budgetServices';
+import { getMinPackages, createBudget, getBudgetAmount, updateBudgetAmount } from '../../services/budgetServices';
 
 function PlanBudgetForm() {
     const [totalBudget, setTotalBudget] = useState(0);
@@ -73,6 +73,9 @@ function PlanBudgetForm() {
                     return matchedPackage ? { ...service, minPrice: matchedPackage.min_price } : service;
                 });
                 setServiceData(updatedServiceData);
+                const budgetResponse = await getBudgetAmount();
+                setTotalBudget(budgetResponse.budget);
+                setRemainingBudget(budgetResponse.budget);
             } catch (error) {
                 console.error("Error fetching minimum packages:", error);
             }
@@ -201,8 +204,13 @@ function PlanBudgetForm() {
             }
             return acc;
         }, {});
-    
+        console.log("totalBudget", totalBudget)
+        console.log("hotel", selectedPrices.hotels)
+        console.log("hotel", selectedPrices.photographers)
+        
         try {
+            // Update total budget in the backend
+            await updateBudgetAmount(totalBudget);
             // Call the createBudget function with the selected prices
             const response = await createBudget(
                 selectedPrices.hotels || 0,
