@@ -239,3 +239,42 @@ export const deleteBudget = async (id) => {
   }
 };
 
+
+export const getBudgetAmount = async () => {
+  try {
+    const response =  await api.get('/budget/get-amount', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Failed to fetch budget amount')
+  }
+}
+
+export const updateBudgetAmount = async (amount) => {
+  try {
+    console.log("Amount", amount)
+    const response = await api.put(
+      `/budget/update-amount`,
+      { 
+        "budget": amount
+      }, // Send the updated amount in the request body
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Include the Authorization token
+        },
+      }
+    );
+    return response.data; // Return the response data
+  } catch (error) {
+    console.error(
+      "Error updating budget amount:",
+      error.response?.data || error.message
+    );
+    throw new Error(
+      error.response?.data?.message || "Failed to update budget amount!"
+    );
+  }
+};

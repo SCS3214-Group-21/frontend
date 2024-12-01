@@ -15,6 +15,13 @@ function BusinessDetailsForm() {
   const [profilePhoto, setProfilePhoto] = useState("");
   const navigate = useNavigate();
 
+  const sriLankanDistricts = [
+    "Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya", "Galle", "Matara", 
+    "Hambantota", "Jaffna", "Kilinochchi", "Mannar", "Vavuniya", "Mullaitivu", "Batticaloa", 
+    "Ampara", "Polonnaruwa", "Anuradhapura", "Kurunegala", "Puttalam", "Kegalle", "Ratnapura", 
+    "Badulla", "Monaragala", "Trincomalee", "Kurunegala", "Mannar", "Kegalle"
+];
+
   const addItem = () => {
     const newItem = {
       id: items.length + 1,
@@ -402,14 +409,109 @@ function BusinessDetailsForm() {
               />
             </div>
             <div className="md:w-[45%] w-full">
-              <InputField2
+              {/* <InputField2
                 id="city"
                 name="City "
                 placeholder="City "
                 type="text"
                 value={formData.city}
                 onChange={handleChange}
-              />
+              /> */}
+              <style jsx>{`
+                .coolinput {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    position: relative;
+                }
+
+                .coolinput label.text {
+                    font-size: 1rem;
+                    color: #000000;
+                    font-weight: 500;
+                    position: relative;
+                    top: 0.5rem;
+                    margin: 0 0 0 7px;
+                    padding: 0 3px;
+                    background: #FFF8F5;
+                    width: fit-content;
+                    z-index: 10;
+                }
+
+                .coolinput .input-wrapper {
+                    position: relative;
+                    width: 100%;
+                }
+
+                .coolinput .input {
+                    width: 100%;
+                    padding: 11px 10px;
+                    font-size: 1rem;
+                    border: 1px #000000 solid;
+                    border-radius: 5px;
+                    background: #FFF8F5;
+                    color: #000000;
+                    height: 100%;
+                }
+
+                .coolinput .input:focus {
+                    outline: none;
+                }
+
+                .coolinput .input::placeholder {
+                    color: #888888;
+                }
+
+                .coolinput select {
+                    width: 100%;
+                    padding: 11px 10px;
+                    font-size: 1rem;
+                    border: 1px #000000 solid;
+                    border-radius: 5px;
+                    background: #FFF8F5;
+                    color: #000000;
+                    height: 100%;
+                }
+
+                .coolinput select:focus {
+                    outline: none;
+                }
+
+                .coolinput select option {
+                    background-color: #FFF8F5;
+                    color: #000000;
+                }
+
+                .coolinput select option:hover {
+                    background-color: #006972; /* custom-secondary */
+                    color: #FFFFFF;
+                }
+
+                .coolinput select option:selected {
+                    background-color: #A57E17;
+                    color: #FFFFFF;
+                }
+            `}</style>
+
+              <div className="coolinput">
+                  <label htmlFor="city" className="text">Select District</label>
+                  <div className="input-wrapper">
+                      <select
+                          id="city"
+                          className="input"
+                          value={formData.city}
+                          onChange={handleChange}
+                      >
+                          <option value="">Select District</option>
+                          {sriLankanDistricts.map((district) => (
+                              <option key={district} value={district}>
+                                  {district}
+                              </option>
+                          ))}
+                      </select>
+                  </div>
+              </div>
+
             </div>
             <div className="md:w-[45%] w-full">
               <InputField2

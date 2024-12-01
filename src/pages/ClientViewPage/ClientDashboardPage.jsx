@@ -22,6 +22,13 @@ function ClientDashboardPage() {
     const [budget, setBudget] = useState('');
     const [guestCount, setGuestCount] = useState('');
 
+    const sriLankanDistricts = [
+        "Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya", "Galle", "Matara", 
+        "Hambantota", "Jaffna", "Kilinochchi", "Mannar", "Vavuniya", "Mullaitivu", "Batticaloa", 
+        "Ampara", "Polonnaruwa", "Anuradhapura", "Kurunegala", "Puttalam", "Kegalle", "Ratnapura", 
+        "Badulla", "Monaragala", "Trincomalee", "Kurunegala", "Mannar", "Kegalle"
+    ];
+
     // Handlers for form fields
     const handleFirstNameChange = (event) => setBrideName(event.target.value);
     const handlePartnerNameChange = (event) => setPartnerName(event.target.value);
@@ -225,13 +232,26 @@ function ClientDashboardPage() {
                                             dateFormat="MMMM d, yyyy"
                                             placeholderText="Wedding Date"
                                         />
-                                        <input
+                                        {/* <input
                                             type="text"
                                             value={location}
                                             onChange={handleLocationChange}
                                             className="flex-grow p-2 text-black bg-gray-200 border-2 rounded-full border-custom-primary"
                                             placeholder="Location"
-                                        />
+                                        /> */}
+                                        {/* <label className="block text-xl font-semibold mb-2">Select District</label> */}
+                                        <select
+                                            className="w-full p-2 text-black bg-gray-200 border-2 rounded-full border-custom-primary focus:outline-none"
+                                            value={location}
+                                            onChange={handleLocationChange}
+                                        >
+                                            <option value="">Select District</option>
+                                            {sriLankanDistricts.map((district) => (
+                                                <option key={district} value={district}>
+                                                    {district}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </div>
                                     <div className="flex flex-col gap-4 mb-4 md:flex-row">
                                         <input
