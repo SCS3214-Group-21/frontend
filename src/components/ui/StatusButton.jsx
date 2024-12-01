@@ -6,24 +6,31 @@ function StatusButton(props) {
 
     // Define the styles for each status
     const statusStyles = {
-        Pending: {
+        pending: {
             bgColor: 'bg-custom-primary',
             textColor: 'text-white',
             text: 'Pending',
         },
         accept: {
-            bgColor: 'bg-green-700', // Use custom-secondary color for accepted status
+            bgColor: 'bg-green-700',
             textColor: 'text-white',
             text: 'Accept',
         },
-        // Add more status styles if needed
+        reject: {
+            bgColor: 'bg-red-600',
+            textColor: 'text-white',
+            text: 'Reject',
+        },
     };
 
-    const currentStatus = statusStyles[status] || statusStyles['Pending'];
+    // Default to pending if the status is not found
+    const currentStatus = statusStyles[status] || statusStyles['pending'];
 
     return (
         <>
-            <div className={`inline-block px-5 py-1 text-xs font-medium text-center ${currentStatus.textColor} ${currentStatus.bgColor} rounded-lg shadow-xl`}>
+            <div
+                className={`inline-block px-5 py-1 text-xs font-medium text-center ${currentStatus.textColor} ${currentStatus.bgColor} rounded-lg shadow-xl`}
+            >
                 <span className={status === 'pending' ? 'pending-animation' : ''}>
                     {currentStatus.text}
                 </span>
@@ -36,7 +43,8 @@ function StatusButton(props) {
                 }
 
                 @keyframes dots {
-                    0%, 20% {
+                    0%,
+                    20% {
                         content: '...';
                     }
                     40% {
@@ -45,7 +53,8 @@ function StatusButton(props) {
                     60% {
                         content: '.....';
                     }
-                    80%, 100% {
+                    80%,
+                    100% {
                         content: '......';
                     }
                 }
@@ -55,7 +64,7 @@ function StatusButton(props) {
 }
 
 StatusButton.propTypes = {
-    status: PropTypes.oneOf(['pending', 'accept']).isRequired,
+    status: PropTypes.oneOf(['pending', 'accept', 'reject']).isRequired,
 };
 
 export default StatusButton;

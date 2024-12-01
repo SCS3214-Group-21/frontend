@@ -51,6 +51,9 @@ function BookingStatusCard(props) {
         vendorId
     };
 
+    // Check if the button should be disabled
+    const isViewDisabled = expiration === "Expired" || status === "reject";
+
     return (
         <div className="w-full p-2 lg:p-4 mt-4 rounded-xl bg-[#FFDBC8] bg-opacity-30 text-black border-2 border-[#FFDBC8]">
             <div className="flex flex-col mx-1 lg:flex-row lg:mx-4">
@@ -82,7 +85,14 @@ function BookingStatusCard(props) {
                 {/* View Button */}
                 <div className="absolute right-10 lg:right-16">
                     <Link to="./bookingdetails" state={bookingDetails}>
-                        <button className="px-6 border-0 rounded-full h-8 mt-1 bg-custom-blue-dark text-white transition-all duration-[600ms] ease-in-out font-semibold hover:bg-custom-gray hover:from-custom-gray hover:via-custom-gray hover:to-custom-gray hover:text-custom-primary hover:border-2 hover:border-custom-primary">
+                    <button
+                            className={`px-6 border-0 rounded-full h-8 mt-1 transition-all duration-[600ms] ease-in-out font-semibold ${
+                                isViewDisabled
+                                    ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+                                    : 'bg-custom-blue-dark text-white hover:bg-custom-gray hover:text-custom-primary hover:border-2 hover:border-custom-primary'
+                            }`}
+                            disabled={isViewDisabled}
+                        >
                             View
                         </button>
                     </Link>
