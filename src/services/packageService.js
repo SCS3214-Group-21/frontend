@@ -142,3 +142,17 @@ export const ChangeStatus = async (id) => {
         throw error; // Re-throw the error for handling in the caller
     }
 };
+
+export const fetchVendorDetailsById = async (id) => {
+    try {
+        const response = await api.delete(`/package/package/${id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,  // Add token from localStorage
+            }
+        });
+        return response.data;  // Return the actual API response (if available)
+    } catch (error) {
+        // Include the error message from the server if available
+        throw new Error(error.response?.data?.message || 'Failed to delete package!');
+    }
+};
