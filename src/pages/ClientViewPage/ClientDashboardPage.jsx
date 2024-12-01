@@ -9,6 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import ProgressBar from '../../components/client/ProgressBar.jsx';
 import CheckboxField from '../../components/ui/CheckboxField.jsx';
 import PrimaryNoneFillButton from '../../components/ui/PrimaryNoneFillButton.jsx';
+import api from '../../api.jsx';
 
 function ClientDashboardPage() {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -75,7 +76,7 @@ function ClientDashboardPage() {
         const fetchProfile = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:5000/client/profile/', {
+                const response = await api.get('/client/profile/', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -104,9 +105,9 @@ function ClientDashboardPage() {
                     // Set image preview or fallback to default
                     if (pic) {
                         setSelectedImage(pic);
-                        setImagePreview(`http://localhost:5000/${pic}`);
+                        setImagePreview(`${api.defaults.baseURL}/${pic}`);
                     } else {
-                        setImagePreview('http://localhost:5000/uploads/client/profilepics/1732247247769-4236879.jpg');
+                        setImagePreview(`${api.defaults.baseURL}/uploads/client/profilepics/1732247247769-4236879.jpg`);
                     }
                 }
             } catch (error) {
@@ -130,7 +131,7 @@ function ClientDashboardPage() {
 
         try {
             const token = localStorage.getItem('token');
-            await axios.patch('http://localhost:5000/client/profile/create', formData, {
+            await api.patch('/client/profile/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`,
