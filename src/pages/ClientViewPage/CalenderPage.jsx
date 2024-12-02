@@ -1,12 +1,32 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import RegisterHeader from "../../components/common/RegisterHeader.jsx";
 import ClientSidebar from "../../components/client/ClientSidebar.jsx";
 import Breadcrumb from '../../components/ui/Breadcrumb.jsx';
 import Calendar from '../../components/common/Calender.jsx';
 import ReminderCard from "../../components/common/ReminderCard.jsx";
 import BookingSchedule from "../../components/common/BookingSchedule.jsx";
+import {fetchMyEvents} from "../../services/eventService.js";
 
 function CalenderPage() {
+    const [events, setEvents] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+
+    useEffect(() => {
+        const fetchEventData = async () => {
+            try {
+                const data = await fetchMyEvents()
+                setEvents(data.packages || [])
+                setLoading(false)
+            } catch (error) {
+                setError(error.message)
+                setLoading(false)
+            }
+        }
+
+        fetchEventData()
+    }, []);
+
     const breadcrumbItems = [
         { label: 'My Wedding', href: './mywedding' },
         { label: 'Calendar' },
