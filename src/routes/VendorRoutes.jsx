@@ -30,6 +30,7 @@ import VendorBlogPage from "../pages/VendorViewPage/VendorBlogPage.jsx";
 import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
 
 import VendorOrdersPage from '../pages/VendorViewPage/VendorOrdersPage.jsx';
+import VendorQuotationPage from '../pages/VendorViewPage/VendorQuotationPage.jsx';
 
 const VendorRoutes = () => {
   const token = getToken(); // Retrieve the token from storage
@@ -116,6 +117,10 @@ const VendorRoutes = () => {
        <Route
         path="/orders"
         element={isAuthenticatedVendor ? <VendorOrdersPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/quotation"
+        element={isAuthenticatedVendor ? <VendorQuotationPage /> : <Navigate to="/login" />}
       />
       <Route
         path="/*"

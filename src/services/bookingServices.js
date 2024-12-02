@@ -71,3 +71,21 @@ export const updateBookingStatus = async (bookingId, status) => {
         throw new Error(error.response?.data?.message || 'Failed to update booking status!');
     }
 };
+
+export const getBookingsByType = async (vendorType) => {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error('Authorization token missing');
+
+        const response = await api.get('/booking/searchByType', {
+            params: { vendorType },
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data.bookings;
+    } catch (error) {
+        console.error('Error fetching bookings by type:', error.response?.data || error.message);
+        throw new Error(error.response?.data?.message || 'Failed to fetch bookings by type!');
+    }
+};

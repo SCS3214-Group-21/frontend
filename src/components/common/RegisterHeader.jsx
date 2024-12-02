@@ -39,11 +39,11 @@ function RegisterHeader() {
               </div>
             )}
           </div>
-          <img
+          {/* <img
             src="../../../src/assets/images/Images/profile.png"
             alt="profile"
             className="w-8 h-8 sm:w-10 sm:h-10"
-          />
+          /> */}
         </div>
       </div>
     </div>

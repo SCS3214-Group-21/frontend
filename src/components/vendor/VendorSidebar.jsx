@@ -18,7 +18,7 @@ export default function VendorSidebar() {
     const isMessagesPage = location.pathname === '/vendor/messages' || location.pathname === '/vendor/messages/chat';//rename actual path
     const isSchedulePage = location.pathname === '/vendor/schedule';//rename actual path
     const isOrdersPage = location.pathname === '/vendor/orders';//rename actual path
-    const isHistoryPage = location.pathname === '/';//rename actual path
+    const isQuotationPage = location.pathname === '/vendor/quotation';//rename actual path
     const isBlogsPage = location.pathname === '/vendor/blog' || location.pathname === '/vendor/blog/viewmyblog' || location.pathname === '/vendor/blog/createblog' || location.pathname === '/vendor/blog/updateblog';//rename actual path
     const isReviewsPage = location.pathname === '/';//rename actual path
     const isLogoutPage = location.pathname === 'vendor/logout';//rename actual path
@@ -92,6 +92,7 @@ export default function VendorSidebar() {
                             isOpen={isDrawerOpen}
                             isActive={isOrdersPage}
                         />
+                      
 
                         <SidebarButton
                             href="/vendor/schedule"
@@ -109,15 +110,15 @@ export default function VendorSidebar() {
                             label="History"
                             isOpen={isDrawerOpen}
                             isActive={isHistoryPage}
-                        />
+                        />*/}
 
                         <SidebarButton
-                            href="#"
-                            iconPath="M4 4v15a1 1 0 0 0 1 1h15M8 16l2.5-5.5 3 3L17.273 7 20 9.667"
-                            label="Analytics"
+                            href="/vendor/quotation"
+                            iconPath="m11.0001 18-.8536-.8536c-.0937-.0937-.1464-.2209-.1464-.3535v-4.4172c0-.2422-.08794-.4762-.24744-.6585L4.45127 5.6585C3.88551 5.01192 4.34469 4 5.20385 4H18.7547c.8658 0 1.3225 1.02544.7433 1.66896L16.5001 9m-2.5 9.3754c.3347.3615.7824.6134 1.2788.7195.4771.1584 1.0002.1405 1.464-.05.4638-.1906.8338-.5396 1.0356-.977.2462-.8286-.6363-1.7337-1.7735-1.9948-1.1372-.2611-2.016-1.1604-1.7735-1.9948.2016-.4375.5716-.7868 1.0354-.9774.4639-.1905.9871-.2082 1.4643-.0496.491.1045.9348.3517 1.2689.7067m-1.9397 5.41V20m0-8v.9771"
+                            label="Quotation"
                             isOpen={isDrawerOpen}
-                            isActive={isAnalyticsPage}
-                        /> */}
+                            isActive={isQuotationPage}
+                        /> 
 
                         <SidebarButton
                             href="/vendor/blog"

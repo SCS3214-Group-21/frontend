@@ -24,23 +24,7 @@ const AllHotelsPage = () => {
                 // Add more location options
             ],
         },
-        {
-            iconPath: "M8 17.345a4.76...",
-            title: "Price",
-            items: [
-                { label: 'Low to High', type: 'price', value: 'lowToHigh' },
-                { label: 'High to Low', type: 'price', value: 'highToLow' },
-            ],
-        },
-        {
-            iconPath: "M11.083 5.104c...",
-            title: "Rating",
-            items: [
-                { label: '1 Star', type: 'rating', value: 1 },
-                { label: '2 Stars', type: 'rating', value: 2 },
-                // Add more rating options
-            ],
-        },
+        
     ];
 
     // Fetch hotel data on component load
