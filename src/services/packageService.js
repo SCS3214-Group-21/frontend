@@ -142,3 +142,19 @@ export const ChangeStatus = async (id) => {
         throw error; // Re-throw the error for handling in the caller
     }
 };
+
+
+export const fetchVendorDetailsById = async (id) => {
+    try {
+        const response = await api.get(`/package/vendor/details/${id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
+        return response.data.vendorDetails;
+    } catch (error) {
+        console.error('Failed to fetch vendor details:', error.response?.data || error.message);
+        throw new Error('Error fetching vendor details');
+    }
+};

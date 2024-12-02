@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Breadcrumb from '../../components/ui/Breadcrumb';
 import RegisterHeader from '../../components/common/RegisterHeader';
 import ClientSidebar from '../../components/client/ClientSidebar';
 import SortingButton from '../../components/ui/SortingButton';
 import BookingStatusCard from '../../components/common/BookingStatusCard';
+import { getAllBookings } from '../../services/bookingServices.js';
 
 function ClientAllBookings() {
+    const [bookings, setBookings] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const breadcrumbItems = [
         { label: 'My Wedding', href: './mywedding' },
@@ -29,6 +32,20 @@ function ClientAllBookings() {
         { iconPath: "m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z", title: "Type", items: typeOptions },
         { iconPath: "M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z", title: "Date", items: dateOptions },
     ];
+
+    useEffect(() => {
+        const fetchBookings = async () => {
+            try {
+                const bookingsData = await getAllBookings();
+                setBookings(bookingsData);
+            } catch (error) {
+                console.error('Error fetching bookings:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchBookings();
+    }, []);
 
     return (
         <>
@@ -58,11 +75,28 @@ function ClientAllBookings() {
                                 ))}
                             </div>
                             {/* Booking Status Cards */}
-                            <div className="flex flex-col gap-2 pt-4"> {/* Added pt-8 to ensure margin from sorting buttons */}
-                                <BookingStatusCard vendorname="Rose Garden" date="2024/07/28" status="Accepted" expiration="24hrs" vendortype="Floral" packagename="Venetian Blue" price="5" guestcount="100" totalamount="12" />
-                                <BookingStatusCard vendorname="Orange Blooms Cake" date="2024/07/29" status="Pending" vendortype="Cake" packagename="Wedding Cakes" price="200" guestcount="200" totalamount="40000" />
-                                <BookingStatusCard vendorname="Shangrila" date="2024/07/30" status="Pending" vendortype="Hotel" packagename="Package1" price="20000" guestcount="200" totalamount="4000000" />
-                            </div>
+                            {loading ? (
+                                <div>Loading...</div>
+                            ) : (
+                                <div className="flex flex-col gap-2 pt-4">
+                                    {bookings.map((booking, index) => (
+                                        <BookingStatusCard
+                                            key={index}
+                                            vendorname={booking.vendor.business_name}
+                                            date={booking.booking_date}
+                                            status={booking.status}
+                                            //expiration="24hrs" // Placeholder; update based on business logic
+                                            vendortype={booking.vendor_type}
+                                            packagename={booking.package_name}
+                                            price={booking.price}
+                                            guestcount={booking.guest_count}
+                                            totalamount={booking.price * booking.guest_count}
+                                            pic={booking.vendor.pic}
+                                            vendorId={booking.vendor_id}
+                                        />
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -72,3 +106,4 @@ function ClientAllBookings() {
 }
 
 export default ClientAllBookings;
+

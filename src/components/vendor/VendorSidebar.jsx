@@ -17,7 +17,7 @@ export default function VendorSidebar() {
     const isNotificationPage = location.pathname === '/vendor/notification';//rename actual path
     const isMessagesPage = location.pathname === '/vendor/messages' || location.pathname === '/vendor/messages/chat';//rename actual path
     const isSchedulePage = location.pathname === '/vendor/schedule';//rename actual path
-    const isOrdersPage = location.pathname === '/';//rename actual path
+    const isOrdersPage = location.pathname === '/vendor/orders';//rename actual path
     const isHistoryPage = location.pathname === '/';//rename actual path
     const isBlogsPage = location.pathname === '/vendor/blog' || location.pathname === '/vendor/blog/viewmyblog' || location.pathname === '/vendor/blog/createblog' || location.pathname === '/vendor/blog/updateblog';//rename actual path
     const isReviewsPage = location.pathname === '/';//rename actual path
@@ -86,7 +86,7 @@ export default function VendorSidebar() {
                             isActive={isMessagesPage}
                         />
                         <SidebarButton
-                            href="#"
+                            href="/vendor/orders"
                             iconPath="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                             label="Orders"
                             isOpen={isDrawerOpen}

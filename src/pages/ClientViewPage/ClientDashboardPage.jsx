@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ClientSidebar from '../../components/client/ClientSidebar.jsx';
@@ -8,6 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import ProgressBar from '../../components/client/ProgressBar.jsx';
 import CheckboxField from '../../components/ui/CheckboxField.jsx';
 import PrimaryNoneFillButton from '../../components/ui/PrimaryNoneFillButton.jsx';
+import api from '../../api.jsx';
 
 function ClientDashboardPage() {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -19,6 +21,13 @@ function ClientDashboardPage() {
     const [location, setLocation] = useState('');
     const [budget, setBudget] = useState('');
     const [guestCount, setGuestCount] = useState('');
+
+    const sriLankanDistricts = [
+        "Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya", "Galle", "Matara", 
+        "Hambantota", "Jaffna", "Kilinochchi", "Mannar", "Vavuniya", "Mullaitivu", "Batticaloa", 
+        "Ampara", "Polonnaruwa", "Anuradhapura", "Kurunegala", "Puttalam", "Kegalle", "Ratnapura", 
+        "Badulla", "Monaragala", "Trincomalee", "Kurunegala", "Mannar", "Kegalle"
+    ];
 
     // Handlers for form fields
     const handleFirstNameChange = (event) => setBrideName(event.target.value);
@@ -69,50 +78,12 @@ function ClientDashboardPage() {
                 return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             };
 
-    // Fetch existing client data
-    // useEffect(() => {
-    //     const fetchProfile = async () => {
-    //         try {
-    //             const token = localStorage.getItem('token');
-    //             const response = await axios.get('http://localhost:5000/client/profile/', {
-    //                 headers: {
-    //                     Authorization: `Bearer ${token}`,
-    //                 },
-    //             });
-
-    //             const { client } = response.data;
-    //             if (client) {
-    //                 const {
-    //                     bride_name,
-    //                     groom_name,
-    //                     location,
-    //                     wedding_date,
-    //                     budget,
-    //                     guest_count,
-    //                     pic,
-    //                 } = client;
-
-    //                 setBrideName(bride_name || '');
-    //                 setPartnerName(groom_name || '');
-    //                 setLocation(location || '');
-    //                 setWeddingDate(wedding_date ? new Date(wedding_date) : null);
-    //                 setBudget(budget || '');
-    //                 setGuestCount(guest_count || '');
-    //                 if (pic) setSelectedImage(pic);
-    //             }
-    //         } catch (error) {
-    //             console.error('Error fetching profile:', error);
-    //         }
-    //     };
-
-    //     fetchProfile();
-    // }, []);
-
+    
     useEffect(() => {
         const fetchProfile = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:5000/client/profile/', {
+                const response = await api.get('/client/profile/', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -141,9 +112,9 @@ function ClientDashboardPage() {
                     // Set image preview or fallback to default
                     if (pic) {
                         setSelectedImage(pic);
-                        setImagePreview(`http://localhost:5000/${pic}`);
+                        setImagePreview(`${api.defaults.baseURL}/${pic}`);
                     } else {
-                        setImagePreview('http://localhost:5000/uploads/client/profilepics/1732247247769-4236879.jpg');
+                        setImagePreview(`${api.defaults.baseURL}/uploads/client/profilepics/1732247247769-4236879.jpg`);
                     }
                 }
             } catch (error) {
@@ -167,7 +138,7 @@ function ClientDashboardPage() {
 
         try {
             const token = localStorage.getItem('token');
-            await axios.patch('http://localhost:5000/client/profile/create', formData, {
+            await api.patch('/client/profile/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`,
@@ -261,13 +232,26 @@ function ClientDashboardPage() {
                                             dateFormat="MMMM d, yyyy"
                                             placeholderText="Wedding Date"
                                         />
-                                        <input
+                                        {/* <input
                                             type="text"
                                             value={location}
                                             onChange={handleLocationChange}
                                             className="flex-grow p-2 text-black bg-gray-200 border-2 rounded-full border-custom-primary"
                                             placeholder="Location"
-                                        />
+                                        /> */}
+                                        {/* <label className="block text-xl font-semibold mb-2">Select District</label> */}
+                                        <select
+                                            className="w-full p-2 text-black bg-gray-200 border-2 rounded-full border-custom-primary focus:outline-none"
+                                            value={location}
+                                            onChange={handleLocationChange}
+                                        >
+                                            <option value="">Select District</option>
+                                            {sriLankanDistricts.map((district) => (
+                                                <option key={district} value={district}>
+                                                    {district}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </div>
                                     <div className="flex flex-col gap-4 mb-4 md:flex-row">
                                         <input
@@ -287,9 +271,7 @@ function ClientDashboardPage() {
                                         />
                                     </div>
                                 </div>
-                            </div>
-                            {/* <div className="flex items-center justify-between mt-3"> */}
-                            <div className="flex flex-col items-center justify-center w-full md:w-1/3">
+                                <div className="flex flex-col items-center justify-center w-full md:w-1/3">
                                     <div className="flex flex-col items-center p-5 bg-gray-200 rounded-3xl text-custom-secondary">
                                         {weddingDate ? (
                                             <>
@@ -310,11 +292,14 @@ function ClientDashboardPage() {
                                 <button
                                     type="button"
                                     onClick={handleSubmit}
-                                    className="px-8 py-3 text-white bg-custom-primary rounded-xl hover:scale-105"
+                                    className="px-8 py-3 mt-8 text-white bg-custom-primary rounded-xl hover:scale-105"
                                 >
                                     Save
                                 </button>
                             </div>
+                            </div>
+                            {/* <div className="flex items-center justify-between mt-3"> */}
+                            
                         </form>
                     </div>
                     {/* Progress Bar Section (Full Width) */}
@@ -343,5 +328,3 @@ function ClientDashboardPage() {
 }
 
 export default ClientDashboardPage;
-
-

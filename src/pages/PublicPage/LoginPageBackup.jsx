@@ -88,7 +88,7 @@ export default function LoginPage() {
               </button>
             </form>
 
-            <div className="flex items-center w-4/5 mt-2 mb-3">
+            {/* <div className="flex items-center w-4/5 mt-2 mb-3">
               <div className="flex-grow border-t border-gray-400"></div>
               <span className="mx-4">or</span>
               <div className="flex-grow border-t border-gray-400"></div>
@@ -96,7 +96,7 @@ export default function LoginPage() {
 
             <div className="flex justify-between mt-3">
               <SocialButton text="Sign in with Google" />
-            </div>
+            </div> */}
 
             <div className="w-4/5 mt-3 mb-2 text-[12px] text-center">
               Don’t have an account..?{' '}

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { getToken, getUserRole } from '../utils/auth';
@@ -44,9 +45,13 @@ import ViewJewelleryPage from '../pages/ClientVendorsPage/ViewJewelleryPage.jsx'
 import ViewPackagePage from '../pages/VendorPackagePage/ViewPackagePage.jsx';
 import ViewSaloonPage from '../pages/ClientVendorsPage/ViewSaloonPage.jsx';
 
+import CancelPayment from '../pages/PaymentPage/CancelPage.jsx';
+import SuccessPayment from '../pages/PaymentPage/SuccessPage.jsx';
+
 // import Logout Component
 import Logout from '../components/Logout.jsx';
 import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
+import MyBudgetPage from '../pages/ClientBudgetPage/MyBudgetPage.jsx';
 
 const ClientRoutes = () => {
   const token = getToken(); // Get the token from storage
@@ -74,7 +79,7 @@ const ClientRoutes = () => {
         element={isAuthenticatedClient ? <AllHotelsPage /> : <Navigate to="/login" />}
       />
       <Route
-        path="vendors/hoteldetails"
+        path="vendors/hoteldetails/:id"
         element={isAuthenticatedClient ? <HotelVendorDetails /> : <Navigate to="/login" />}
       />
 
@@ -88,8 +93,13 @@ const ClientRoutes = () => {
         element={isAuthenticatedClient ? <PlanBudgetPage /> : <Navigate to="/login" />}
       />
       <Route
-        path="/viewbudget"
+        path="/viewbudget/:id"
         element={isAuthenticatedClient ? <PlanBudgetPage2 /> : <Navigate to="/login" />}
+      />
+
+      <Route
+        path="/viewmybudget/:id"
+        element={isAuthenticatedClient ? <MyBudgetPage /> : <Navigate to="/login" />}
       />
 
       {/* Notifications */}
@@ -132,6 +142,14 @@ const ClientRoutes = () => {
         element={isAuthenticatedClient ? <ViewBlogPage /> : <Navigate to="/login" />}
       />
       <Route
+        path="/payment/cancel"
+        element={isAuthenticatedClient ? <CancelPayment /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/payment/success"
+        element={isAuthenticatedClient ? <SuccessPayment /> : <Navigate to="/login" />}
+      />
+      <Route
         path="/*"
         element={isAuthenticatedClient ? <NotFoundPage text="Back to Dashboard" link="/client/mywedding" /> : <Navigate to="/login" />}
       />
@@ -140,3 +158,15 @@ const ClientRoutes = () => {
 };
 
 export default ClientRoutes;
+
+
+
+
+
+
+
+
+
+
+
+

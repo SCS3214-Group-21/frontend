@@ -10,12 +10,12 @@ function RegisterHeader() {
       >
         <div className="flex flex-row flex-wrap items-center justify-between gap-5">
           <img
-            src="../../src/assets/images/Images/logo2.png"
+            src="../../../src/assets/images/Images/logo2.png"
             alt="logo"
             className="hidden w-10 h-10 sm:block"
           />
           <img
-            src="../../src/assets/images/Images/logo1.png"
+            src="../../../src/assets/images/Images/logo1.png"
             alt="logo"
             className="w-44 sm:w-56 sm:h-12"
           />
@@ -23,13 +23,13 @@ function RegisterHeader() {
 
         <div className="relative flex flex-row gap-5">
           <img
-            src="../../src/assets/images/Images/wishlist.png"
+            src="../../../src/assets/images/Images/wishlist.png"
             alt="wishlist"
             className="w-5 h-5 mt-3 md:w-6 md:h-6"
           />
           <div className="relative">
             <img
-              src="../../src/assets/images/Images/notification1.png"
+              src="../../../src/assets/images/Images/notification1.png"
               alt="notification"
               className="w-6 h-6 mt-2 md:w-7 md:h-7"
             />
@@ -40,7 +40,7 @@ function RegisterHeader() {
             )}
           </div>
           <img
-            src="../../src/assets/images/Images/profile.png"
+            src="../../../src/assets/images/Images/profile.png"
             alt="profile"
             className="w-8 h-8 sm:w-10 sm:h-10"
           />

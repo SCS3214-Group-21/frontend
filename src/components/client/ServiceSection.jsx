@@ -13,10 +13,10 @@ function ServiceSection({ serviceKey, serviceName, minPrice, avgPrice, imageSrc,
                     <div className="d-input-wrapper">
                         <input id={`${serviceKey}-min-price`} type="text" value={`Rs ${minPrice}/=`} name={`${serviceKey}-min-price`} className="d-input" disabled />
                     </div>
-                    <label htmlFor={`${serviceKey}-avg-price`} className="d-text">Average Price</label>
+                    {/* <label htmlFor={`${serviceKey}-avg-price`} className="d-text">Average Price</label>
                     <div className="d-input-wrapper">
                         <input id={`${serviceKey}-avg-price`} type="text" value={`Rs ${avgPrice}/=`} name={`${serviceKey}-avg-price`} className="d-input" disabled />
-                    </div>
+                    </div> */}
                 </div>
                 <div className="d-coolinput flex flex-row justify-end">
                     <label htmlFor={`${serviceKey}-allocated-price`} className="d-text">Enter your allocated price</label>

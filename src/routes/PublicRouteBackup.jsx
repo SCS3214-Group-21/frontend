@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "../pages/PublicPage/LoginPageBackup.jsx";
-import ClientRegisterPage from "../pages/PublicPage/ClientRegisterPageBackup.jsx"
+import ClientRegisterPageBackup from "../pages/PublicPage/ClientRegisterPageBackup.jsx"
 import VendorRegister01 from "../pages/PublicPage/VendorRegisterPage1.jsx";
 
 import ClientAllVendors from "../pages/ClientVendorsPage/ClientAllVendors.jsx";
@@ -66,6 +66,7 @@ import PlanBudgetPage2 from "../pages/ClientBudgetPage/PlanBudgetPage2.jsx";
 import AdminDashboard from '../pages/AdminPage/AdminDashboardPage.jsx';
 import AdminManageUser from '../pages/AdminPage/AdminManageUsersPage.jsx'
 import AdminFeedbackPage from "../pages/AdminPage/AdminFeedbackPage.jsx";
+import AdminTransactions from "../pages/AdminPage/AdminTransactions.jsx";
 // import AdminBlogPage from '../pages/AdminPage/AdminBlogPage.jsx'
 
 
@@ -78,7 +79,7 @@ function PublicRoute() {
                     {/*<Route path="/" element={<LandingPage />}></Route>*/}
                     <Route path="/" element={<LandingPage />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
-                    <Route path="/register" element={<ClientRegisterPage />}></Route>
+                    <Route path="/register" element={<ClientRegisterPageBackup />}></Route>
                     <Route path="/vendorregister" element={<VendorRegister />}></Route>
                     <Route path="/vendorregister1" element={<VendorRegister01 />}></Route>
                     {/* <Route path="/vendorregister2" element={<VendorRegister02 />}></Route>
@@ -145,6 +146,7 @@ function PublicRoute() {
                     <Route path="/adminmanageuser" element={<AdminManageUser />} />
                     <Route path="/acceptblogs" element={<AdminBlogAcceptPage />}/>
                     <Route path="/adminfeedback" element={<AdminFeedbackPage />} />
+                    <Route path="/AdminTransactions" element={<AdminTransactions />} />
                     {/* <Route path="/adminblog" element={<AdminBlogPage />} /> */}
 
                 </Routes>

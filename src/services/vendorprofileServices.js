@@ -1,6 +1,6 @@
 import api from '../api';
 
-export const updateVendor = async(first_name, last_name, business_name, contact_number, email, address, city, branch, description, profilePic, uploadedImages ) => {
+export const updateVendor = async(first_name, last_name, business_name, contact_number, email, address, city, branch, description, payment_key, profilePic, uploadedImages ) => {
     try{
         const formData = new FormData();
         formData.append('first_name', first_name);
@@ -12,6 +12,7 @@ export const updateVendor = async(first_name, last_name, business_name, contact_
         formData.append('city', city);
         formData.append('branch', branch);
         formData.append('description', description);
+        formData.append('payment_key', payment_key)
 
         // Append the profile picture (assuming it's a File object)
         if (profilePic) {
@@ -50,5 +51,20 @@ export const fetchVendorById = async () => {
     } catch (error) {
         console.error('Server error:', error.response?.data || error.message);
         throw new Error('Failed to fetch packages');
+    }
+};
+
+export const fetchHotelVendors = async () => {
+    try {
+        const response = await api.get(`/vendor/get-vendors/hotel`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
+        return response.data.vendorDetails; // Return the vendor details from the response
+    } catch (error) {
+        console.error('Server error:', error.response?.data || error.message);
+        throw new Error('Failed to fetch hotel vendors');
     }
 };
