@@ -45,6 +45,9 @@ import ViewJewelleryPage from '../pages/ClientVendorsPage/ViewJewelleryPage.jsx'
 import ViewPackagePage from '../pages/VendorPackagePage/ViewPackagePage.jsx';
 import ViewSaloonPage from '../pages/ClientVendorsPage/ViewSaloonPage.jsx';
 
+import CancelPayment from '../pages/PaymentPage/CancelPage.jsx';
+import SuccessPayment from '../pages/PaymentPage/SuccessPage.jsx';
+
 // import Logout Component
 import Logout from '../components/Logout.jsx';
 import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
@@ -137,6 +140,14 @@ const ClientRoutes = () => {
       <Route
         path="/blogs/viewblog/:id"
         element={isAuthenticatedClient ? <ViewBlogPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/payment/cancel"
+        element={isAuthenticatedClient ? <CancelPayment /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/payment/success"
+        element={isAuthenticatedClient ? <SuccessPayment /> : <Navigate to="/login" />}
       />
       <Route
         path="/*"
