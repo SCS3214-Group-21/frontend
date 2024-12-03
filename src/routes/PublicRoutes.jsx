@@ -2,9 +2,9 @@ import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 // Import PublicPages
-import ClientRegisterPage from '../pages/PublicPage/ClientRegisterPageBackup.jsx';
+import ClientRegisterPageBackup from '../pages/PublicPage/ClientRegisterPageBackup.jsx';
 import LandingPage from '../pages/PublicPage/LandingPage.jsx';
-import LoginPage from '../pages/PublicPage/LoginPageBackup.jsx';
+import LoginPageBackup from '../pages/PublicPage/LoginPageBackup.jsx';
 import VendorRegisterPage1 from '../pages/PublicPage/VendorRegisterPage1.jsx';
 import VendorRegisterPage2 from '../pages/PublicPage/VendorRegisterPage2.jsx';
 import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
@@ -30,7 +30,7 @@ function PublicRoutes() {
     <Routes>
       <Route
         path="/register"
-        element={!token ? <ClientRegisterPage /> : <Navigate to={getDashboardRoute(userRole)} />}
+        element={!token ? <ClientRegisterPageBackup /> : <Navigate to={getDashboardRoute(userRole)} />}
       />
       <Route
         path="/"
@@ -46,7 +46,7 @@ function PublicRoutes() {
       />
       <Route
         path="/login"
-        element={!token ? <LoginPage /> : <Navigate to={getDashboardRoute(userRole)} />}
+        element={!token ? <LoginPageBackup /> : <Navigate to={getDashboardRoute(userRole)} />}
       />
       <Route
         path="/vendorregister"

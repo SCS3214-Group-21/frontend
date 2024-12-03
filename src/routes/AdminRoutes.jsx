@@ -10,7 +10,9 @@ import AdminManageUsersPage from '../pages/AdminPage/AdminManageUsersPage.jsx';
 import AdminBlogPage from '../pages/AdminPage/AdminBlogPage.jsx';
 import AdminCreateBlogPage from '../pages/AdminPage/AdminCreateBlogPage.jsx';
 import AdminBlogAcceptPage from '../pages/AdminPage/AdminBlogAcceptPage.jsx';
-//import AdminFeedbackPage from '../pages/AdminPage/AdminFeedbackPage.jsx';
+import AdminTransactions from '../pages/AdminPage/AdminTransactions.jsx';
+import AdminFeedbackPage from '../pages/AdminPage/AdminFeedbackPage.jsx';
+import VendorNotificationPage from "../pages/VendorViewPage/VendorNotificationPage.jsx";
 
 // import NotFoundPage from '../pages/errors/NotFoundPage';
 // import Logout from '../components/Logout.jsx';
@@ -30,12 +32,12 @@ function AdminRoutes() {
 
             <Route
                 path="/dashboard"
-                element={isAuthenticatedAdmin ? <AdminDashboard /> : <Navigate to="/login" />}
+                element={isAuthenticatedAdmin ? <AdminDashboardPage /> : <Navigate to="/login" />}
             />
 
             <Route
                     path="/manageusers"
-                    element={isAuthenticatedAdmin ? <AdminManageUser /> : <Navigate to="/login" />}
+                    element={isAuthenticatedAdmin ? <AdminManageUsersPage /> : <Navigate to="/login" />}
                 />
 
             <Route
@@ -43,10 +45,10 @@ function AdminRoutes() {
                     element={isAuthenticatedAdmin ? <AdminTransactions /> : <Navigate to="/login" />}
                 />
             
-            {/* <Route
+            <Route
                     path="/feedback"
                     element={isAuthenticatedAdmin ? <AdminFeedbackPage /> : <Navigate to="/login" />}
-                /> */}
+                />
 
             <Route
                 path="/blogs"
@@ -60,6 +62,10 @@ function AdminRoutes() {
             <Route
                 path="/blogs/acceptblogs"
                 element={isAuthenticatedAdmin ? <AdminBlogAcceptPage /> : <Navigate to="/login" />}
+            />
+            <Route
+                path="/notification"
+                element={isAuthenticatedAdmin ? <VendorNotificationPage /> : <Navigate to="/login" />}
             />
             <Route
                 path="/*"

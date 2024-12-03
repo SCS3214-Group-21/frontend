@@ -8,14 +8,24 @@ import RegistrationHeader from '../../components/common/RegistrationHeader.jsx';
 // Import asset
 import backgroundImage from '../../assets/images/Images/007.png';
 
+// Import SweetAlert2
+import Swal from 'sweetalert2';
+
 const vendorOptions = [
-    { value: 'photographer', label: 'Photographer' },
-    { value: 'florist', label: 'Florist' },
-    { value: 'caterer', label: 'Caterer' },
-    { value: 'hotel', label: 'Hotel' },
-    { value: 'dj', label: 'DJ' },
+    { value: 'hotels', label: 'Hotels' },
+    { value: 'dressers', label: 'Florist' },
+    { value: 'photography', label: 'Photography' },
+    { value: 'floral', label: 'Floral' },
+    { value: 'jewellary', label: 'Jewellary' },
+    { value: 'dancing_groups', label: 'Dancing Groups' },
+    { value: 'ashtaka', label: 'Ashtaka' },
+    { value: 'salons', label: 'Salons' },
+    { value: 'dJs', label: 'DJs' },
+    { value: 'honeymoon', label: 'Honeymoon' },
     { value: 'cars', label: 'Cars' },
-    { value: 'jewellery', label: 'Jewellery' },
+    { value: 'invitation_cards', label: 'Invitation Cards' },
+    { value: 'poruwa', label: 'Poruwa' },
+    { value: 'catering', label: 'Catering' },
 ];
 
 export default function VendorRegisterPage2() {
@@ -43,11 +53,26 @@ export default function VendorRegisterPage2() {
 
         try {
             const response = await registerUser({ email, password, role: vendorType });
-            alert(response.msg);  // Success message from the server
-            window.location.href = '/login';  // Redirect to login page
+            
+            // Success SweetAlert
+            Swal.fire({
+                title: 'Registration Successful!',
+                text: response.msg,  // Success message from the server
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = '/login';  // Redirect to login page
+            });
         } catch (error) {
             console.error("Registration failed: ", error);
-            setError('Registration failed!');
+
+            // Error SweetAlert
+            Swal.fire({
+                title: 'Registration Failed!',
+                text: 'An error occurred while registering. Please try again later.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
 

@@ -1,20 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Breadcrumb from '../../components/ui/Breadcrumb';
 import VendorSidebar from '../../components/vendor/VendorSidebar';
 import RegisterHeader from '../../components/common/RegisterHeader';
+import {fetchMyNotifications} from "../../services/notificationService.js";
 
 function VendorNotificationPage() {
+    const [notifications, setNotifications] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+
     const breadcrumbItems = [
         { label: 'Dashboard', href: '/vendor/dashboard' },
         { label: 'Notifications' },
     ];
 
-    const notifications = [
-        { title: 'New Booking Request', content: 'You have received a new booking request for a wedding on August 15th.', time: '2:45 PM', read: false },
-        { title: 'Review Posted', content: 'A client has posted a review on your services.', time: '11:00 AM', read: true },
-        { title: 'Payment Pending', content: 'Your payment for the last booking is still pending.', time: '9:30 AM', read: false },
-        { title: 'Profile Update Required', content: 'Please update your profile information to ensure accuracy.', time: 'Yesterday', read: true },
-    ];
+    useEffect(() => {
+        const getNotifications = async () => {
+            try {
+                const data = await fetchMyNotifications()
+                setNotifications(data)
+            } catch (error) {
+                setError('Failed to fetch notifications!')
+            } finally {
+                setLoading(false)
+            }
+        }
+        getNotifications()
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <p className="text-lg font-semibold text-gray-500">Loading notifications...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <p className="text-lg font-semibold text-red-500">{error}</p>
+            </div>
+        );
+    }
+
+    // const notifications = [
+    //     { title: 'New Booking Request', content: 'You have received a new booking request for a wedding on August 15th.', time: '2:45 PM', read: false },
+    //     { title: 'Review Posted', content: 'A client has posted a review on your services.', time: '11:00 AM', read: true },
+    //     { title: 'Payment Pending', content: 'Your payment for the last booking is still pending.', time: '9:30 AM', read: false },
+    //     { title: 'Profile Update Required', content: 'Please update your profile information to ensure accuracy.', time: 'Yesterday', read: true },
+    // ];
 
     return (
         <div>

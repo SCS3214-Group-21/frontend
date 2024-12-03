@@ -11,12 +11,12 @@ export default function AdminSidebar() {
     };
 
     const isDashboardPage = location.pathname === '/admin/dashboard';
-    const isTransactionsPage = location.pathname === '/' || location.pathname === '/' || location.pathname === '/';
+    const isTransactionsPage = location.pathname === '/admin/transaction' || location.pathname === '/' || location.pathname === '/';
     const isManagePage = location.pathname === '/admin/manageusers' || location.pathname === '/';//rename actual path
-    const isNotificationPage = location.pathname === '/';//rename actual path
-    const isMessagesPage = location.pathname === '/' || location.pathname === '/';//rename actual path
+    const isNotificationPage = location.pathname === '/admin/notification';//rename actual path
+    // const isMessagesPage = location.pathname === '/' || location.pathname === '/';//rename actual path
     const isBlogsPage = location.pathname === '/admin/blogs/createblog' || location.pathname === '/admin/blogs' || location.pathname === '/admin/blogs/acceptblogs';//rename actual path
-    const isFeedbacksPage = location.pathname === '/' || location.pathname === '/';//rename actual path
+    const isFeedbacksPage = location.pathname === '/admin/feedback' || location.pathname === '/';//rename actual path
 
     //const isLogoutPage = location.pathname === '/';//rename actual path
 
@@ -64,7 +64,7 @@ export default function AdminSidebar() {
                         />
 
                         <SidebarButton
-                            href="/admin/Transactions"
+                            href="/admin/transaction"
                             iconPath="M13.6 16.733c.234.269.548.456.895.534a1.4 1.4 0 0 0 1.75-.762c.172-.615-.446-1.287-1.242-1.481-.796-.194-1.41-.861-1.241-1.481a1.4 1.4 0 0 1 1.75-.762c.343.077.654.26.888.524m-1.358 4.017v.617m0-5.939v.725M4 15v4m3-6v6M6 8.5 10.5 5 14 7.5 18 4m0 0h-3.5M18 4v3m2 8a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"
                             label="Transactions"
                             isOpen={isDrawerOpen}
@@ -72,7 +72,7 @@ export default function AdminSidebar() {
                         />
 
                         <SidebarButton
-                            href="#"
+                            href="/admin/notification"
                             iconPath="m10.827 5.465-.435-2.324m.435 2.324a5.338 5.338 0 0 1 6.033 4.333l.331 1.769c.44 2.345 2.383 2.588 2.6 3.761.11.586.22 1.171-.31 1.271l-12.7 2.377c-.529.099-.639-.488-.749-1.074C5.813 16.73 7.538 15.8 7.1 13.455c-.219-1.169.218 1.162-.33-1.769a5.338 5.338 0 0 1 4.058-6.221Zm-7.046 4.41c.143-1.877.822-3.461 2.086-4.856m2.646 13.633a3.472 3.472 0 0 0 6.728-.777l.09-.5-6.818 1.277Z"
                             label="Notifications"
                             isOpen={isDrawerOpen}
