@@ -13,6 +13,7 @@ function BusinessDetailsForm() {
   const [items, setItems] = useState([]);
   const [images, setImages] = useState([]); // State to manage image files
   const [profilePhoto, setProfilePhoto] = useState("");
+  const [role, setRole] = useState("");
   const navigate = useNavigate();
 
   const sriLankanDistricts = [
@@ -93,6 +94,8 @@ function BusinessDetailsForm() {
         const response =await fetchVendorById();
         const { vendorDetails } = response;
         const { paymentDetails } = response;
+        // console.log("ss",vendorDetails.role);
+        setRole(vendorDetails.role);
 
         if (!vendorDetails && !paymentDetails) {
           // If no vendor data is found, set formData with default values
@@ -340,7 +343,7 @@ function BusinessDetailsForm() {
             <h1 className="text-3xl text-center text-black">
               {formData.first_name} {formData.last_name}
             </h1>
-            <h3 className="text-xl text-center text-black">Photographer</h3>
+            <h3 className="text-xl text-center text-black">{role}</h3>
           </div>
         </div>
         <div className="w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 pb-5 mb-5">

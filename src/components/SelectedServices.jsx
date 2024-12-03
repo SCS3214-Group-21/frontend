@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PrimaryButton from './ui/PrimaryButton';
 import { fetchPackageById } from '../services/packageService'; // Import the API function
+import { getBudgetAmount } from '../services/budgetServices';
 
 function SelectedService({ packageId, onClose }) {
+    const [guestCount, setGuestCount] = useState(0);
+    const [role, setRole] = useState(null);
     const [packageDetails, setPackageDetails] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -11,8 +14,12 @@ function SelectedService({ packageId, onClose }) {
     useEffect(() => {
         const fetchPackageDetails = async () => {
             try {
+                const budgetResponse = await getBudgetAmount();
+                setGuestCount(budgetResponse.guest);
+
                 const response = await fetchPackageById(packageId);
-                console.log("Fetched package:", response);
+                console.log("Fetched package:", response.packageItem.role);
+                setRole(response.packageItem.role)
 
                 let parsedItems;
                 try {
@@ -112,7 +119,15 @@ function SelectedService({ packageId, onClose }) {
                         {packageDetails.description}
                     </p>
                 </div>
-                <h1 className="text-black font-sans font-semibold text-2xl text-center">{packageDetails.amount} LKR</h1>
+                {role === 'hotels' || role === 'catering' ? (
+                    <h1 className="text-black font-sans font-semibold text-2xl text-center">
+                        {packageDetails.amount * guestCount} LKR
+                    </h1>
+                ) : (
+                    <h1 className="text-black font-sans font-semibold text-2xl text-center">
+                        {packageDetails.amount} LKR
+                    </h1>
+                )}
                 <button
                     type="button"
                     onClick={handleOkClick} // Trigger the save changes handler

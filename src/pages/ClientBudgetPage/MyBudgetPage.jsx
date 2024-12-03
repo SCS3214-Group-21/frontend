@@ -4,34 +4,69 @@ import ClientSidebar from '../../components/client/ClientSidebar';
 import Breadcrumb from '../../components/ui/Breadcrumb';
 import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { getBudgetById, deleteBudget } from '../../services/budgetServices'; // Import deleteBudget service
+import { fetchVendorDetailsById } from '../../services/packageService';
 import api from '../../api';
 import Swal from 'sweetalert2';  // Import SweetAlert2
 
 function MyBudgetPage() {
     const { id } = useParams();  // Get the `id` from the URL parameters
     const [services, setServices] = useState([]);  // Store the fetched services (packages)
+    const [getVendor, setGetVendor] = useState([]); // Store vendor details for each package
     const navigate = useNavigate();  // Initialize the navigate function
-    
+
     useEffect(() => {
         // Fetch the budget data when the component mounts
         const fetchBudget = async () => {
             try {
-                const response = await getBudgetById(id);  // Fetch data using your backend API
-                const fetchedServices = response.packages.map((pkg) => ({
-                    id: pkg.package_id,
-                    name: pkg.name,
-                    package: pkg.role,  // You can use package name or any other details
-                    packageId: pkg.package_id,
-                    description: pkg.description,
-                    amount: pkg.amount,
-                    img: pkg.img,  // Image URL
-                    items: JSON.parse(pkg.items), // Parse items to make it an array
+                const response = await getBudgetById(id);  // Fetch budget data
+                console.log('Budget Response:', response);  // Log the budget response for debugging
+        
+                const fetchedServices = await Promise.all(response.packages.map(async (pkg) => {
+                    try {
+                        // Fetch vendor details for each package
+                        const vendorResponse = await fetchVendorDetailsById(pkg.vendor_id);
+                        console.log('Vendor Response:', vendorResponse);  // Debugging vendor response
+        
+                        return {
+                            vendor: pkg.vendor_id,
+                            id: pkg.package_id,
+                            name: pkg.name,
+                            package: pkg.role,
+                            packageId: pkg.package_id,
+                            description: pkg.description,
+                            amount: pkg.amount,
+                            img: pkg.img,
+                            items: JSON.parse(pkg.items),
+                            // Extract and map relevant Vendor details
+                            vendorDetails: {
+                                business_name: vendorResponse.Vendor.business_name,
+                                email: vendorResponse.Vendor.email,
+                                contact_number: vendorResponse.Vendor.contact_number,
+                                address: vendorResponse.Vendor.address,
+                            },
+                        };
+                    } catch (vendorError) {
+                        console.error(`Error fetching vendor details for vendor ID ${pkg.vendor_id}:`, vendorError);
+                        return {
+                            vendor: pkg.vendor_id,
+                            id: pkg.package_id,
+                            name: pkg.name,
+                            package: pkg.role,
+                            packageId: pkg.package_id,
+                            description: pkg.description,
+                            amount: pkg.amount,
+                            img: pkg.img,
+                            items: JSON.parse(pkg.items),
+                            vendorDetails: {},  // Fallback to empty object
+                        };
+                    }
                 }));
-                setServices(fetchedServices);  // Update the services state
+        
+                setServices(fetchedServices);  // Update the services state with the mapped data
             } catch (error) {
-                console.error("Error fetching budget data", error);
+                console.error("Error fetching budget data:", error);
             }
-        };
+        };                       
         fetchBudget();
     }, [id]);  // Fetch data when the `id` changes (if URL changes)
 
@@ -75,6 +110,7 @@ function MyBudgetPage() {
         { label: `Budget ${id}` },
     ];
 
+    console.log("ssss", services);
     return (
         <div>
             <RegisterHeader />
@@ -132,28 +168,23 @@ function MyBudgetPage() {
                                         </ul>
                                     </div>
 
-                                    {/* Delete Button */}
-                                    {/* <div className="flex justify-end">
-                                        <button
-                                            type="button"
-                                            onClick={() => handleDelete(service.id)} // Trigger delete on button click
-                                            className="text-red-700 hover:text-red-500"
-                                        >
-                                            Delete Package
-                                        </button>
-                                    </div> */}
+                                    {/* Vendor Details */}
+                                    <div className="w-full mb-2">
+                                        <h2 className="text-lg font-semibold text-black">Vendor Details:</h2>
+                                        {service?.vendorDetails? (
+                                            <div>
+                                                {/* <p className="text-gray-700"><strong>Vendor Id:</strong> {service.vendorDetails.Vendor.vendor_id || 'N/A'}</p> */}
+                                                <p className="text-gray-700"><strong>Business Name:</strong> {service.vendorDetails.business_name || 'N/A'}</p>
+                                                <p className="text-gray-700"><strong>Email:</strong> {service.vendorDetails.email || 'N/A'}</p>
+                                                <p className="text-gray-700"><strong>Contact Number:</strong> {service.vendorDetails.contact_number || 'N/A'}</p>
+                                                <p className="text-gray-700"><strong>Address:</strong> {service.vendorDetails.address || 'N/A'}</p>
+                                            </div>
+                                        ) : (
+                                            <p className="text-gray-700">Vendor details not available</p>
+                                        )}
+                                    </div>
                                 </div>
                             ))}
-
-                            {/* Bottom buttons */}
-                            {/* <div className="flex flex-wrap items-center justify-end gap-2 py-3 sm:gap-5">
-                                <button
-                                    type="button"
-                                    className="border-0 rounded-full px-8 h-10 bg-custom-primary text-white"
-                                >
-                                    Save Changes
-                                </button>
-                            </div> */}
                         </form>
                     </div>
                 </div>
