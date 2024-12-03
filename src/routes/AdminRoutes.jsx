@@ -13,9 +13,9 @@ import AdminBlogAcceptPage from '../pages/AdminPage/AdminBlogAcceptPage.jsx';
 import AdminTransactions from '../pages/AdminPage/AdminTransactions.jsx';
 import AdminFeedbackPage from '../pages/AdminPage/AdminFeedbackPage.jsx';
 import VendorNotificationPage from "../pages/VendorViewPage/VendorNotificationPage.jsx";
-
 // import NotFoundPage from '../pages/errors/NotFoundPage';
 // import Logout from '../components/Logout.jsx';
+import AdminViewBlogPage from '../pages/AdminPage/AdminViewBlogPage.jsx';
 
 
 function AdminRoutes() {
@@ -62,6 +62,10 @@ function AdminRoutes() {
             <Route
                 path="/blogs/acceptblogs"
                 element={isAuthenticatedAdmin ? <AdminBlogAcceptPage /> : <Navigate to="/login" />}
+            />
+            <Route
+                path="/blogs/view/:id"
+                element={isAuthenticatedAdmin ? <AdminViewBlogPage /> : <Navigate to="/login" />}
             />
             <Route
                 path="/notification"

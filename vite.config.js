@@ -80,6 +80,11 @@ export default defineConfig({
         changeOrigin: true, // Adjusts the origin header to match the target
         rewrite: (path) => path.replace(/^\/uploads/, '/uploads'), // Optional: Modify the request path
       },
+      // '/generate-report': {
+      //   target: 'http://localhost:5000', // Backend URL
+      //   changeOrigin: true,
+      //   secure: false,
+      // },
     },
   },
 });
