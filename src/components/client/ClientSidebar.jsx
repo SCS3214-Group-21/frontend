@@ -91,7 +91,7 @@ export default function ClientSidebar() {
                             label="Messages"
                             isOpen={isDrawerOpen}
                             isActive={isMessagesPage}
-                            messagesCount="4"
+                            // messagesCount="4"
                         />
                         <SidebarButton
                             href="/client/calendar"

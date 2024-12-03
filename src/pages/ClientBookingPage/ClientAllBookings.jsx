@@ -122,6 +122,7 @@ function ClientAllBookings() {
                                             totalamount={booking.price * booking.guest_count}
                                             pic={booking.vendor.pic}
                                             vendorId={booking.vendor_id}
+                                            bookingId={booking.booking_id}
                                         />
                                     ))}
                                 </div>

@@ -80,8 +80,20 @@ const ClientRoutes = () => {
         element={isAuthenticatedClient ? <AllHotelsPage /> : <Navigate to="/login" />}
       />
       <Route
+        path="/vendors/allflorals"
+        element={isAuthenticatedClient ? <AllFloralsPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/vendors/allphotographers"
+        element={isAuthenticatedClient ? <AllPhotographers /> : <Navigate to="/login" />}
+      />
+      <Route
         path="vendors/hoteldetails/:id"
         element={isAuthenticatedClient ? <HotelVendorDetails /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="vendors/floraldetails/:id"
+        element={isAuthenticatedClient ? <FloralVendorDetails /> : <Navigate to="/login" />}
       />
 
       {/* Budget */}

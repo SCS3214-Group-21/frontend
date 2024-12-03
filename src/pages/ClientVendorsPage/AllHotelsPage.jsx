@@ -3,7 +3,7 @@ import VendorCategory from '../../components/client/VendorCategory';
 import ClientSidebar from '../../components/client/ClientSidebar';
 import RegisterHeader from '../../components/common/RegisterHeader';
 import Breadcrumb from '../../components/ui/Breadcrumb';
-import { fetchHotelVendors } from '../../services/vendorprofileServices';
+import { fetchVendorsByRole } from '../../services/vendorprofileServices';
 
 const AllHotelsPage = () => {
     const [hotelData, setHotelData] = useState([]);
@@ -21,6 +21,11 @@ const AllHotelsPage = () => {
             title: "Location",
             items: [
                 { label: 'Colombo', type: 'location', value: 'location1' },
+                { label: 'Matara', type: 'location', value: 'location1' },
+                { label: 'Galle', type: 'location', value: 'location1' },
+                { label: 'Kandy', type: 'location', value: 'location1' },
+                { label: 'Matale', type: 'location', value: 'location1' },
+                { label: 'Badulla', type: 'location', value: 'location1' },
                 // Add more location options
             ],
         },
@@ -31,7 +36,7 @@ const AllHotelsPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const vendors = await fetchHotelVendors();
+                const vendors = await fetchVendorsByRole('hotel');
                 //console.log("This is vendor" ,vendors);
                 const transformedData = vendors.map((vendor) => ({
                     href: `/client/vendors/hoteldetails/${vendor.id}`, 

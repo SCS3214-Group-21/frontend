@@ -33,3 +33,19 @@ export const forgetPassword = async (email) => {
     throw new Error('Registration failed.');
   }
 }
+
+
+export const fetchUserEmail = async () => {
+    try {
+        const response = await api.get("api/email", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
+        console.log("Fetch user email: ", response.data);
+        return response.data.email; // Return email from the response
+    } catch (error) {
+        throw new Error("Failed to fetch user email!");
+    }
+};
+

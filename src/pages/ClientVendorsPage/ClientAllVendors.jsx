@@ -9,8 +9,8 @@ function ClientAllVendors() {
     const cardData = [
         { img: "../src/assets/images/services/hotel.png", alt: "hotels", type: "Hotels", href: "././vendors/hotels" },
         { img: "../src/assets/images/services/dress.png", alt: "Dressers", type: "Dressers", href: "/alldressers" },
-        { img: "../src/assets/images/services/photography.jpg", alt: "Photography", type: "Photography", href: "/allphotographers" },
-        { img: "../src/assets/images/services/floral.png", alt: "Floral", type: "Floral", href: "/allflorals" },
+        { img: "../src/assets/images/services/photography.jpg", alt: "Photography", type: "Photography", href: "././vendors/allphotographers" },
+        { img: "../src/assets/images/services/floral.png", alt: "Floral", type: "Floral", href: "././vendors/allflorals" },
         { img: "../src/assets/images/services/jewellery.png", alt: "Jewellery", type: "Jewellery", href: "/alljewellery" },
         { img: "../src/assets/images/services/dancing.png", alt: "Dancing Groups", type: "Dancing Groups", href: "#" },
         { img: "../src/assets/images/services/ashtaka.jpg", alt: "Ashtaka", type: "Ashtaka", href: "#" },
