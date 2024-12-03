@@ -4,48 +4,75 @@ import RegisterHeader from '../../components/common/RegisterHeader';
 import ClientSidebar from '../../components/client/ClientSidebar';
 import SortingButton from '../../components/ui/SortingButton';
 import BookingStatusCard from '../../components/common/BookingStatusCard';
-import { getAllBookings } from '../../services/bookingServices.js';
+import { getAllBookings, getBookingsByType } from '../../services/bookingServices';
 
 function ClientAllBookings() {
-    const [bookings, setBookings] = useState([]);
+    const [bookings, setBookings] = useState([]); // Stores all bookings
     const [loading, setLoading] = useState(true);
+    const [selectedType, setSelectedType] = useState('all'); // Default type (All)
+    const [noBookings, setNoBookings] = useState(false); // To track if there are no bookings
 
     const breadcrumbItems = [
         { label: 'My Wedding', href: './mywedding' },
         { label: 'Bookings' },
     ];
 
+    // Updated typeOptions with string values
     const typeOptions = [
-        { label: 'All', type: 'type', value: 1 },
-        { label: 'Hotels', type: 'type', value: 2 },
-        { label: 'Floral', type: 'type', value: 3 },
-        { label: 'Cakes', type: 'type', value: 4 },
-        { label: 'Cars', type: 'type', value: 5 },
-    ];
-
-    const dateOptions = [
-        { label: 'This month', type: 'date', value: 'thisMonth' },
-        { label: 'Last month', type: 'date', value: 'lastMonth' },
+        { label: 'All', value: 'all' },
+        { label: 'Hotels', value: 'hotel' },
+        { label: 'Floral', value: 'floral' },
+        { label: 'Cakes', value: 'cakes' },
+        { label: 'Cars', value: 'cars' },
     ];
 
     const sortingButtons = [
-        { iconPath: "m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z", title: "Type", items: typeOptions },
-        { iconPath: "M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z", title: "Date", items: dateOptions },
+        {
+            iconPath: "m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z",
+            title: "Type",
+            items: typeOptions,
+        },
     ];
 
     useEffect(() => {
         const fetchBookings = async () => {
             try {
-                const bookingsData = await getAllBookings();
+                setLoading(true);
+                let bookingsData;
+
+                if (!selectedType) {
+                    console.error('Selected type is missing.');
+                    return;
+                }
+
+                if (selectedType === 'all') {
+                    bookingsData = await getAllBookings();
+                } else {
+                    bookingsData = await getBookingsByType(selectedType);
+                }
+
+                // If no bookings found, set noBookings to true
+                if (bookingsData.length === 0) {
+                    setNoBookings(true);
+                } else {
+                    setNoBookings(false);
+                }
+
                 setBookings(bookingsData);
             } catch (error) {
                 console.error('Error fetching bookings:', error);
+                setNoBookings(true); // Set noBookings to true if an error occurs
             } finally {
                 setLoading(false);
             }
         };
         fetchBookings();
-    }, []);
+    }, [selectedType]);
+
+    const handleTypeChange = (type) => {
+        console.log('Selected Type:', type);
+        setSelectedType(type); // Update the selected type
+    };
 
     return (
         <>
@@ -59,10 +86,10 @@ function ClientAllBookings() {
                         <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <div className="pb-5">
-                        <h1 className='text-4xl font-bold text-custom-primary'>Bookings</h1>
+                        <h1 className="text-4xl font-bold text-custom-primary">Bookings</h1>
                     </div>
                     <div className="relative pb-5">
-                        <div className='w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col gap-2 pt-12'>
+                        <div className="w-full bg-white border border-[#FFDBC8] rounded-xl border-b-8 p-8 flex flex-col gap-2 pt-12">
                             {/* Sorting Buttons */}
                             <div className="absolute flex flex-row gap-1 mb-0 top-3 right-5">
                                 {sortingButtons.map((button, index) => (
@@ -71,21 +98,23 @@ function ClientAllBookings() {
                                         iconPath={button.iconPath}
                                         title={button.title}
                                         items={button.items}
+                                        onSelect={handleTypeChange} // Pass the handler
                                     />
                                 ))}
                             </div>
                             {/* Booking Status Cards */}
                             {loading ? (
                                 <div>Loading...</div>
+                            ) : noBookings ? (
+                                <div className="text-center text-red-500">No bookings available for the selected type.</div>
                             ) : (
                                 <div className="flex flex-col gap-2 pt-4">
                                     {bookings.map((booking, index) => (
-                                        <BookingStatusCard
+                                       <BookingStatusCard
                                             key={index}
                                             vendorname={booking.vendor.business_name}
                                             date={booking.booking_date}
                                             status={booking.status}
-                                            //expiration="24hrs" // Placeholder; update based on business logic
                                             vendortype={booking.vendor_type}
                                             packagename={booking.package_name}
                                             price={booking.price}
@@ -93,6 +122,7 @@ function ClientAllBookings() {
                                             totalamount={booking.price * booking.guest_count}
                                             pic={booking.vendor.pic}
                                             vendorId={booking.vendor_id}
+                                            bookingId={booking.booking_id}
                                         />
                                     ))}
                                 </div>
@@ -106,4 +136,3 @@ function ClientAllBookings() {
 }
 
 export default ClientAllBookings;
-

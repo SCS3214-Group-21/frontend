@@ -3,7 +3,7 @@ import VendorCategory from '../../components/client/VendorCategory';
 import ClientSidebar from '../../components/client/ClientSidebar';
 import RegisterHeader from '../../components/common/RegisterHeader';
 import Breadcrumb from '../../components/ui/Breadcrumb';
-import { fetchHotelVendors } from '../../services/vendorprofileServices';
+import { fetchVendorsByRole } from '../../services/vendorprofileServices';
 
 const AllHotelsPage = () => {
     const [hotelData, setHotelData] = useState([]);
@@ -21,33 +21,22 @@ const AllHotelsPage = () => {
             title: "Location",
             items: [
                 { label: 'Colombo', type: 'location', value: 'location1' },
+                { label: 'Matara', type: 'location', value: 'location1' },
+                { label: 'Galle', type: 'location', value: 'location1' },
+                { label: 'Kandy', type: 'location', value: 'location1' },
+                { label: 'Matale', type: 'location', value: 'location1' },
+                { label: 'Badulla', type: 'location', value: 'location1' },
                 // Add more location options
             ],
         },
-        {
-            iconPath: "M8 17.345a4.76...",
-            title: "Price",
-            items: [
-                { label: 'Low to High', type: 'price', value: 'lowToHigh' },
-                { label: 'High to Low', type: 'price', value: 'highToLow' },
-            ],
-        },
-        {
-            iconPath: "M11.083 5.104c...",
-            title: "Rating",
-            items: [
-                { label: '1 Star', type: 'rating', value: 1 },
-                { label: '2 Stars', type: 'rating', value: 2 },
-                // Add more rating options
-            ],
-        },
+        
     ];
 
     // Fetch hotel data on component load
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const vendors = await fetchHotelVendors();
+                const vendors = await fetchVendorsByRole('hotel');
                 //console.log("This is vendor" ,vendors);
                 const transformedData = vendors.map((vendor) => ({
                     href: `/client/vendors/hoteldetails/${vendor.id}`, 

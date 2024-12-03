@@ -12,7 +12,7 @@ import {loadStripe} from '@stripe/stripe-js';
 function ClientBookingDetailsPage(props) {
     //after create db this location hook can remove
     const location = useLocation();
-    const { vendorname, vendortype, packagename, date, price, guestcount, totalamount, status, vendorId } = location.state || {};
+    const { vendorname, vendortype, packagename, date, price, guestcount, totalamount, status, vendorId, bookingId } = location.state || {};
 
 
     const breadcrumbItems = [
@@ -26,17 +26,17 @@ const stripePromise = loadStripe('pk_test_51QMkG6Kt5ygtiLn42cdRHWwll1JzXghV4ErkC
 const makePayment = async () => {
     try {
         const stripe = await stripePromise;
-
-        const bookingData = [
-            { name: packagename, guest_Count: guestcount, booking_date: date, price: totalamount },
-        ];
-
+        const bookingData = [{ name: packagename, guest_Count: guestcount, booking_date: date, price: totalamount }];
+        
         const response = await fetch(`http://localhost:5000/payment/create-checkout-session`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
+            headers: { 'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+             },
+            body: JSON.stringify({
                 booking: bookingData,
-                vendorId: vendorId  // Include vendor ID here
+                vendorId: vendorId,
+                bookingId: bookingId  // Include bookingId here
             }),
         });
 
@@ -49,6 +49,8 @@ const makePayment = async () => {
         if (session.id) {
             const result = await stripe.redirectToCheckout({ sessionId: session.id });
             if (result.error) console.error(result.error.message);
+            // Navigate to SuccessPage with bookingId (after successful payment)
+            navigate('/client/payment/success', { state: { bookingId } });
         } else {
             console.error('Session ID not received');
         }
@@ -56,6 +58,7 @@ const makePayment = async () => {
         console.error('Payment failed:', error.message);
     }
 };
+
 
 
     return (

@@ -15,7 +15,8 @@ function BookingStatusCard(props) {
         guestcount,
         totalamount,
         pic,
-        vendorId
+        vendorId,
+        bookingId
     } = props;
 
     // Calculate expiration dynamically
@@ -48,7 +49,8 @@ function BookingStatusCard(props) {
         guestcount,
         totalamount,
         status,
-        vendorId
+        vendorId,
+        bookingId
     };
 
     // Check if the button should be disabled

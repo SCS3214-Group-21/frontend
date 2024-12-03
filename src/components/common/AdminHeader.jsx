@@ -1,7 +1,22 @@
 import React, { useState } from "react";
+import { fetchUserEmail } from "../../services/authServices"; 
 
 function AdminHeader() {
-    const [notificationCount, setNotificationCount] = useState(5); // Example count
+    //const [notificationCount, setNotificationCount] = useState(5); // Example count
+
+    const [email, setEmail] = useState(null);
+
+    useEffect(() => {
+        const fetchEmail = async () => {
+            const token = localStorage.getItem("token"); // Retrieve token from storage
+            if (token) {
+                const userEmail = await fetchUserEmail(token);
+                setEmail(userEmail);
+            }
+        };
+
+        fetchEmail();
+    }, []);
 
     return (
         <div className="sticky top-0 z-50">
@@ -33,17 +48,17 @@ function AdminHeader() {
                             alt="notification"
                             className="w-6 h-6 mt-2 md:w-7 md:h-7"
                         />
-                        {notificationCount > 0 && (
+                        {/* {notificationCount > 0 && (
                             <div className="absolute right-0 flex items-center justify-center w-4 h-4 text-xs text-white bg-red-600 rounded-full top-2 sm:w-4 sm:h-4 sm:text-sm">
                                 {notificationCount}
                             </div>
-                        )}
+                        )} */}
                     </div>
-                    <img
-                        src="../../src/assets/images/Images/avatar.png"
-                        alt="profile"
-                        className="w-8 h-8 sm:w-10 sm:h-10"
-                    />
+                    {email && (
+                        <div className="flex items-center px-4 py-2 text-sm text-black bg-gray-200 rounded-lg">
+                            {email}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
