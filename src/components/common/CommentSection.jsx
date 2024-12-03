@@ -139,7 +139,7 @@ function CommentSection(props) {
                         name={"Ashan Praboda"}
                         comment={"Beautiful Wedding"}
                         time={"Just Now"}
-                        img={"src/assets/Images/Images/profile.png"}
+                        img={"../../../src/assets/Images/Images/profile.png"}
                     />
                     {/* </div> */}
                 </div>
@@ -148,7 +148,7 @@ function CommentSection(props) {
                         name={"Ashan Praboda"}
                         comment={"Beautiful Wedding"}
                         time={"Just Now"}
-                        img={"src/assets/Images/Images/profile.png"}
+                        img={"../../../src/assets/Images/Images/profile.png"}
                     />
                 </div>
                 <div className='ml-[10%] w-[90%]'>
@@ -159,7 +159,7 @@ function CommentSection(props) {
                         name={"Ashan Praboda"}
                         comment={"Beautiful Wedding"}
                         time={"Just Now"}
-                        img={"src/assets/Images/Images/profile.png"}
+                        img={"../../../src/assets/Images/Images/profile.png"}
                     />
                 </div>
             </div>
