@@ -336,7 +336,7 @@ function AdminManageUserPage() {
             {popupError ? (
               <div className="text-red-500">{popupError}</div>
             ) : popupType === "client" ? (
-              <div>
+              <div className="text-black">
                 <p>
                   <strong>Bride Name:</strong> {selectedUser.bride_name}
                 </p>
@@ -344,19 +344,34 @@ function AdminManageUserPage() {
                   <strong>Groom Name:</strong> {selectedUser.groom_name}
                 </p>
                 <p>
+                  <strong>Date:</strong> {selectedUser.date}
+                </p>
+                <p>
+                  <strong>Budget:</strong> {selectedUser.budget}
+                </p>
+                <p>
+                  <strong>Guest Count:</strong> {selectedUser.guest_count}
+                </p>
+                <p>
                   <strong>Location:</strong> {selectedUser.location}
                 </p>
               </div>
             ) : (
-              <div>
+              <div className="text-black">
                 <p>
-                  <strong>Business Name:</strong> {selectedUser.business_name}
+                  <strong>Name:</strong>{selectedUser.first_name} {selectedUser.last_name}
                 </p>
                 <p>
                   <strong>Email:</strong> {selectedUser.email}
                 </p>
                 <p>
                   <strong>Contact Number:</strong> {selectedUser.contact_number}
+                </p>
+                <p>
+                  <strong>Business Name:</strong> {selectedUser.business_name}
+                </p>
+                <p>
+                  <strong>Email:</strong> {selectedUser.email}
                 </p>
               </div>
             )}
