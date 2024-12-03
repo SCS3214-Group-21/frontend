@@ -34,7 +34,7 @@
 //   ],
 //   server: {
 //     proxy: {
-//       '/uploads': 'http://localhost:3000', // Proxy requests to your backend server
+//       '/uploads': 'http://localhost:5000', // Proxy requests to your backend server
 //     },
 //   },
 // });
@@ -76,7 +76,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/uploads': {
-        target: 'http://localhost:3000', // Backend server
+        target: 'http://localhost:5000', // Backend server
         changeOrigin: true, // Adjusts the origin header to match the target
         rewrite: (path) => path.replace(/^\/uploads/, '/uploads'), // Optional: Modify the request path
       },
