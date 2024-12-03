@@ -12,7 +12,7 @@ import AdminCreateBlogPage from '../pages/AdminPage/AdminCreateBlogPage.jsx';
 import AdminBlogAcceptPage from '../pages/AdminPage/AdminBlogAcceptPage.jsx';
 import AdminTransactions from '../pages/AdminPage/AdminTransactions.jsx';
 import AdminFeedbackPage from '../pages/AdminPage/AdminFeedbackPage.jsx';
-import NotificationPage from "../pages/ClientViewPage/NotificationPage.jsx";
+import VendorNotificationPage from "../pages/VendorViewPage/VendorNotificationPage.jsx";
 
 // import NotFoundPage from '../pages/errors/NotFoundPage';
 // import Logout from '../components/Logout.jsx';
@@ -65,7 +65,7 @@ function AdminRoutes() {
             />
             <Route
                 path="/notification"
-                element={isAuthenticatedAdmin ? <NotificationPage /> : <Navigate to="/login" />}
+                element={isAuthenticatedAdmin ? <VendorNotificationPage /> : <Navigate to="/login" />}
             />
             <Route
                 path="/*"
