@@ -73,11 +73,11 @@ export const fetchQuotationById = async (id) => {
 };
 
 // Update the status of a quotation
-export const updateQuotationStatus = async (id, status) => {
+export const updateQuotationStatus = async (quotationId, { price }) => {
     try {
         const response = await api.patch(
-            `/quotation/status/${id}`,
-            { status },
+            `/quotation/status/${quotationId}`,
+            { price }, // Send price in the request body
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,

@@ -54,9 +54,9 @@ export const fetchVendorById = async () => {
     }
 };
 
-export const fetchHotelVendors = async () => {
+export const fetchVendorsByRole = async (role) => {
     try {
-        const response = await api.get(`/vendor/get-vendors/hotel`, {
+        const response = await api.get(`/vendor/get-vendors/${role}`, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -65,6 +65,6 @@ export const fetchHotelVendors = async () => {
         return response.data.vendorDetails; // Return the vendor details from the response
     } catch (error) {
         console.error('Server error:', error.response?.data || error.message);
-        throw new Error('Failed to fetch hotel vendors');
+        throw new Error(`Failed to fetch vendors for role: ${role}`);
     }
 };

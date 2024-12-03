@@ -9,6 +9,7 @@ const ClientFloralVendorDetails = ({
     email,
     rating,
     defaultColor,
+    MainImgPath,
     images,
     colorOptions,
     description,
@@ -54,7 +55,7 @@ const ClientFloralVendorDetails = ({
             <div className="flex flex-col lg:flex-row">
                 <div className="flex flex-col items-center justify-center p-4 space-y-4 lg:w-1/2">
                     {[mainImage, ...smallImages].map((image, index) => (
-                        <img key={index} className="object-cover w-full h-auto max-w-md rounded-lg" src={`../src/assets/images/Images/${image}`} alt={`Image ${index + 1}`} />
+                        <img key={index} className="object-cover w-full h-auto max-w-md rounded-lg" src={`http://localhost:5000/uploads/vendor/pic/${image}`} alt={`Image ${index + 1}`} />
                     ))}
                 </div>
                 <div className="flex flex-col justify-between flex-1 p-4">
@@ -123,3 +124,4 @@ const ClientFloralVendorDetails = ({
 };
 
 export default ClientFloralVendorDetails;
+

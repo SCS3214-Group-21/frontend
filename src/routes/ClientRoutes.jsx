@@ -52,6 +52,7 @@ import SuccessPayment from '../pages/PaymentPage/SuccessPage.jsx';
 import Logout from '../components/Logout.jsx';
 import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
 import MyBudgetPage from '../pages/ClientBudgetPage/MyBudgetPage.jsx';
+import ClientQuotationPage from '../pages/ClientViewPage/ClientQuotationPage.jsx';
 
 const ClientRoutes = () => {
   const token = getToken(); // Get the token from storage
@@ -79,8 +80,20 @@ const ClientRoutes = () => {
         element={isAuthenticatedClient ? <AllHotelsPage /> : <Navigate to="/login" />}
       />
       <Route
+        path="/vendors/allflorals"
+        element={isAuthenticatedClient ? <AllFloralsPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/vendors/allphotographers"
+        element={isAuthenticatedClient ? <AllPhotographers /> : <Navigate to="/login" />}
+      />
+      <Route
         path="vendors/hoteldetails/:id"
         element={isAuthenticatedClient ? <HotelVendorDetails /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="vendors/floraldetails/:id"
+        element={isAuthenticatedClient ? <FloralVendorDetails /> : <Navigate to="/login" />}
       />
 
       {/* Budget */}
@@ -148,6 +161,10 @@ const ClientRoutes = () => {
       <Route
         path="/payment/success"
         element={isAuthenticatedClient ? <SuccessPayment /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/quotation"
+        element={isAuthenticatedClient ? <ClientQuotationPage /> : <Navigate to="/login" />}
       />
       <Route
         path="/*"
