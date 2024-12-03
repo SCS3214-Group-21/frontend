@@ -8,21 +8,22 @@ import ChangeBudget from '../common/ChangeBudget';
 import { getMinPackages, createBudget, getBudgetAmount, updateBudgetAmount } from '../../services/budgetServices';
 
 function PlanBudgetForm() {
+    const [guestCount, setGuestCount] = useState(0);
     const [totalBudget, setTotalBudget] = useState(0);
     const [allocatedPrices, setAllocatedPrices] = useState({
         hotels: 0,
         dressers: 0,
-        photographers: 0,
+        Photography: 0,
         floral: 0,
         jewellary: 0,
-        dancing: 0,
+        dancing_groups: 0,
         ashtaka: 0,
-        saloons: 0,
+        salons: 0,
         djs: 0,
         honeymoon: 0,
         cakes: 0,
         cars: 0,
-        cards: 0,
+        invitation_cards: 0,
         poruwa: 0,
         catering: 0,
     });
@@ -30,59 +31,72 @@ function PlanBudgetForm() {
     const [checkboxes, setCheckboxes] = useState({
         hotels: false,
         dressers: false,
-        photographers: false,
+        Photography: false,
         floral: false,
         jewellary: false,
-        dancing: false,
+        dancing_groups: false,
         ashtaka: false,
-        saloons: false,
+        salons: false,
         djs: false,
         honeymoon: false,
         cakes: false,
         cars: false,
-        cards: false,
+        invitation_cards: false,
         poruwa: false,
         catering: false,
     });
 
     const [serviceData, setServiceData] = useState([
-        { key: 'hotels', name: 'Hotels', minPrice: 100000, imageSrc: '../src/assets/images/services/hotel.png' },
-        { key: 'dressers', name: 'Dressers', minPrice: 100000, imageSrc: '../src/assets/images/services/dress.png' },
-        { key: 'photographers', name: 'Photography', minPrice: 100000, imageSrc: '../src/assets/images/services/photography.jpg' },
-        { key: 'floral', name: 'Floral', minPrice: 50000, imageSrc: '../src/assets/images/services/floral.png' },
-        { key: 'jewellary', name: 'Jewellary', minPrice: 50000, imageSrc: '../src/assets/images/services/jewellery.png' },
-        { key: 'dancing', name: 'Dancing Groups', minPrice: 50000, imageSrc: '../src/assets/images/services/dancing.png' },
-        { key: 'ashtaka', name: 'Ashtaka', minPrice: 50000, imageSrc: '../src/assets/images/services/ashtaka.jpg' },
-        { key: 'saloons', name: 'Salons', minPrice: 50000, imageSrc: '../src/assets/images/services/hair.jpeg' },
-        { key: 'djs', name: 'DJs', minPrice: 50000, imageSrc: '../src/assets/images/services/dj.jpg' },
-        { key: 'honeymoon', name: 'Honeymoon', minPrice: 50000, imageSrc: '../src/assets/images/services/honeymoon.jpg' },
-        { key: 'cars', name: 'Cars', minPrice: 50000, imageSrc: '../src/assets/images/services/car.jpg' },
-        { key: 'cards', name: 'Invitation Cards', minPrice: 50000, imageSrc: '../src/assets/images/services/invitation.jpg' },
-        { key: 'poruwa', name: 'Poruwa', minPrice: 50000, imageSrc: '../src/assets/images/services/poruwa.jpg' },
-        { key: 'catering', name: 'Catering', minPrice: 50000, imageSrc: '../src/assets/images/services/catering.jpg' }
+        { key: 'hotels', name: 'Hotels', minPrice: 0, imageSrc: '../src/assets/images/services/hotel.png' },
+        { key: 'dressers', name: 'Dressers', minPrice: 0, imageSrc: '../src/assets/images/services/dress.png' },
+        { key: 'Photography', name: 'Photography', minPrice: 0, imageSrc: '../src/assets/images/services/photography.jpg' },
+        { key: 'floral', name: 'Floral', minPrice: 0, imageSrc: '../src/assets/images/services/floral.png' },
+        { key: 'jewellary', name: 'Jewellary', minPrice: 0, imageSrc: '../src/assets/images/services/jewellery.png' },
+        { key: 'dancing_groups', name: 'Dancing Groups', minPrice: 0, imageSrc: '../src/assets/images/services/dancing.png' },
+        { key: 'ashtaka', name: 'Ashtaka', minPrice: 0, imageSrc: '../src/assets/images/services/ashtaka.jpg' },
+        { key: 'salons', name: 'Salons', minPrice: 0, imageSrc: '../src/assets/images/services/hair.jpeg' },
+        { key: 'djs', name: 'DJs', minPrice: 0, imageSrc: '../src/assets/images/services/dj.jpg' },
+        { key: 'honeymoon', name: 'Honeymoon', minPrice: 0, imageSrc: '../src/assets/images/services/honeymoon.jpg' },
+        { key: 'cars', name: 'Cars', minPrice: 0, imageSrc: '../src/assets/images/services/car.jpg' },
+        { key: 'invitation_cards', name: 'Invitation Cards', minPrice: 0, imageSrc: '../src/assets/images/services/invitation.jpg' },
+        { key: 'poruwa', name: 'Poruwa', minPrice: 0, imageSrc: '../src/assets/images/services/poruwa.jpg' },
+        { key: 'catering', name: 'Catering', minPrice: 0, imageSrc: '../src/assets/images/services/catering.jpg' }
     ]);
 
     useEffect(() => {
         const fetchMinPackages = async () => {
             try {
+                const budgetResponse = await getBudgetAmount();
+                setTotalBudget(budgetResponse.budget);
+                setRemainingBudget(budgetResponse.budget);
+                setGuestCount(budgetResponse.guest);
+
                 const minPackages = await getMinPackages();
                 const updatedServiceData = serviceData.map(service => {
                     const matchedPackage = minPackages.minPackages.find(
                         pkg => pkg.role.toLowerCase() === service.key.toLowerCase()
                     );
-                    return matchedPackage ? { ...service, minPrice: matchedPackage.min_price } : service;
+    
+                    if (matchedPackage) {
+                        // If service is Photography or Catering, adjust the minPrice by guestCount
+                        if (service.key.toLowerCase() === 'hotels' || service.key.toLowerCase() === 'catering') {
+                            return { ...service, minPrice: matchedPackage.min_price * guestCount };
+                        }
+    
+                        return { ...service, minPrice: matchedPackage.min_price };
+                    }
+    
+                    return service;
                 });
+    
                 setServiceData(updatedServiceData);
-                const budgetResponse = await getBudgetAmount();
-                setTotalBudget(budgetResponse.budget);
-                setRemainingBudget(budgetResponse.budget);
             } catch (error) {
                 console.error("Error fetching minimum packages:", error);
             }
         };
     
         fetchMinPackages();
-    }, []);
+    }, [guestCount]); // Add guestCount as a dependency    
 
     const handleTotalBudgetChange = (e) => {
         const newTotalBudget = parseFloat(e.target.value.replace(/[^\d]/g, '')) || 0;
@@ -150,17 +164,17 @@ function PlanBudgetForm() {
         setAllocatedPrices({
             hotels: 0,
             dressers: 0,
-            photographers: 0,
+            Photography: 0,
             floral: 0,
             jewellary: 0,
-            dancing: 0,
+            dancing_groups: 0,
             ashtaka: 0,
-            saloons: 0,
+            salons: 0,
             djs: 0,
             honeymoon: 0,
             cakes: 0,
             cars: 0,
-            cards: 0,
+            invitation_cards: 0,
             poruwa: 0,
             catering: 0,
         });
@@ -168,17 +182,17 @@ function PlanBudgetForm() {
         setCheckboxes({
             hotels: false,
             dressers: false,
-            photographers: false,
+            Photography: false,
             floral: false,
             jewellary: false,
-            dancing: false,
+            dancing_groups: false,
             ashtaka: false,
-            saloons: false,
+            salons: false,
             djs: false,
             honeymoon: false,
             cakes: false,
             cars: false,
-            cards: false,
+            invitation_cards: false,
             poruwa: false,
             catering: false,
         });
@@ -206,27 +220,31 @@ function PlanBudgetForm() {
         }, {});
         console.log("totalBudget", totalBudget)
         console.log("hotel", selectedPrices.hotels)
-        console.log("hotel", selectedPrices.photographers)
+        console.log("hotel", selectedPrices.Photography)
         
+        // Divide hotels and catering prices by guestCount and round up
+        const adjustedHotels = selectedPrices.hotels ? Math.ceil(selectedPrices.hotels / guestCount) : 0;
+        const adjustedCatering = selectedPrices.catering ? Math.ceil(selectedPrices.catering / guestCount) : 0;
+
         try {
             // Update total budget in the backend
             await updateBudgetAmount(totalBudget);
             // Call the createBudget function with the selected prices
             const response = await createBudget(
-                selectedPrices.hotels || 0,
+                adjustedHotels,
                 selectedPrices.dressers || 0,
-                selectedPrices.photographers || 0,
+                selectedPrices.Photography || 0,
                 selectedPrices.floral || 0,
                 selectedPrices.jewellary || 0,
-                selectedPrices.dancing || 0,
+                selectedPrices.dancing_groups || 0,
                 selectedPrices.ashtaka || 0,
-                selectedPrices.saloons || 0,
+                selectedPrices.salons || 0,
                 selectedPrices.djs || 0,
                 selectedPrices.honeymoon || 0,
                 selectedPrices.cars || 0,
-                selectedPrices.cards || 0,
+                selectedPrices.invitation_cards || 0,
                 selectedPrices.poruwa || 0,
-                selectedPrices.catering || 0
+                adjustedCatering
             );
             
             // Assuming the response contains the newly created budget's ID, e.g. response.data.id
