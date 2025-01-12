@@ -127,11 +127,11 @@ function AdminFeedbackPage() {
   
                   <tr className="text-center">
   
-                    <td className="px-4 py-2 border-b ">1</td>
+                    <td className="px-4 py-2 border-b ">24</td>
   
                     <td className="px-4 py-2 border-b">Lakshani</td>
   
-                    <td className="px-4 py-2 border-b">Vendor</td>
+                    <td className="px-4 py-2 border-b">Photography</td>
   
                     <td className="px-8 py-2 border-b">Regarding a vendor in the system</td>
   
@@ -164,7 +164,26 @@ function AdminFeedbackPage() {
                     </td>
   
                   </tr>
-  
+
+                  <tr className="text-center">
+                    <td className="px-4 py-2 border-b ">41</td>
+                    <td className="px-4 py-2 border-b">Ashan</td>
+                    <td className="px-4 py-2 border-b">Dancing Group</td>
+                    <td className="px-8 py-2 border-b">Regarding a vendor in the system</td>
+                    <td className=" px-4 py-2 space-x-2 border-b ml-10 flex items- gap-2">
+                      <SecondaryButton  link="./manageUserPopup" text="View" />
+                      <SecondaryButton  link="/deleteUser/1" text="Resolve" />
+                      <button onClick={() => alert("View blog details")}>
+                        {/* <FaEye className="text-blue-500" /> */}  
+                      </button>
+                      <button onClick={() => handleAccept(1)}>
+                        {/* <FaCheck className="text-green-500" /> */}
+                      </button>
+                      <button onClick={() => handleReject(1)}>
+                        {/* <FaTimes className="text-red-500" /> */}
+                      </button>
+                    </td>
+                  </tr>
                   {/* Add more rows as needed */}
   
                 </tbody>
