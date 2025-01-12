@@ -19,6 +19,7 @@ export default function VendorSidebar() {
     const isSchedulePage = location.pathname === '/vendor/schedule';//rename actual path
     const isOrdersPage = location.pathname === '/vendor/orders';//rename actual path
     const isQuotationPage = location.pathname === '/vendor/quotation';//rename actual path
+    const isSubscriptionPage = location.pathname === '/vendor/subscription';//rename actual path
     const isBlogsPage = location.pathname === '/vendor/blog' || location.pathname === '/vendor/blog/viewmyblog' || location.pathname === '/vendor/blog/createblog' || location.pathname === '/vendor/blog/updateblog';//rename actual path
     const isReviewsPage = location.pathname === '/';//rename actual path
     const isLogoutPage = location.pathname === 'vendor/logout';//rename actual path
@@ -44,7 +45,7 @@ export default function VendorSidebar() {
                     } sm:translate-x-0 sm:w-20 md:w-64 ${isDrawerOpen ? 'w-64' : 'w-20'}`}
             >
                 <div className="py-2 my-2 mt-24 overflow-y-auto">
-                    <ul className="space-y-3 font-medium">
+                    <ul className="space-y-2 font-medium">
 
                         <SidebarButton
                             href="/vendor/dashboard"
@@ -61,6 +62,8 @@ export default function VendorSidebar() {
                             isOpen={isDrawerOpen}
                             isActive={isProfilePage}
                         />
+
+
 
                         <SidebarButton
                             href="/vendor/packages"
@@ -104,13 +107,13 @@ export default function VendorSidebar() {
 
 
 
-                        {/* <SidebarButton
-                            href="#"
-                            iconPath="M18.5 4h-13m13 16h-13M8 20v-3.333a2 2 0 0 1 .4-1.2L10 12.6a1 1 0 0 0 0-1.2L8.4 8.533a2 2 0 0 1-.4-1.2V4h8v3.333a2 2 0 0 1-.4 1.2L13.957 11.4a1 1 0 0 0 0 1.2l1.643 2.867a2 2 0 0 1 .4 1.2V20H8Z"
-                            label="History"
+<SidebarButton
+                            href="/vendor/subscription"
+                            iconPath="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2"
+                            label="Subscription"
                             isOpen={isDrawerOpen}
-                            isActive={isHistoryPage}
-                        />*/}
+                            isActive={isSubscriptionPage}
+                        />
 
                         <SidebarButton
                             href="/vendor/quotation"

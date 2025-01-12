@@ -31,6 +31,7 @@ import NotFoundPage from '../pages/errors/NotFoundPage.jsx';
 
 import VendorOrdersPage from '../pages/VendorViewPage/VendorOrdersPage.jsx';
 import VendorQuotationPage from '../pages/VendorViewPage/VendorQuotationPage.jsx';
+import SubscriptionPage from '../pages/VendorViewPage/SubscriptionPage.jsx';
 
 const VendorRoutes = () => {
   const token = getToken(); // Retrieve the token from storage
@@ -121,6 +122,10 @@ const VendorRoutes = () => {
       <Route
         path="/quotation"
         element={isAuthenticatedVendor ? <VendorQuotationPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/subscription"
+        element={isAuthenticatedVendor ? <SubscriptionPage /> : <Navigate to="/login" />}
       />
       <Route
         path="/*"
